@@ -1,0 +1,133 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:landlord/components/custom_text.dart';
+import 'package:landlord/data/model/property_details_model.dart';
+import 'package:landlord/utils/theme/app_colors.dart';
+
+class TenantsListContainer extends StatelessWidget {
+  const TenantsListContainer({
+    Key? key, this.currentTenant,
+  }) : super(key: key);
+
+  final CurrentTenant? currentTenant;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: AppColors.stockColor)),
+      child: Padding(
+        padding: EdgeInsets.all(8.0.sp),
+        child: Row(
+          children: [
+            Image.network(
+              currentTenant?.image ?? '',
+              height: 54.h,
+              width: 54.w,
+            ),
+            SizedBox(
+              width: 20.w,
+            ),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                          height: 1,
+                          text: currentTenant?.name ?? '',
+                          color: AppColors.titleTextColor,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        SizedBox(
+                          height: 6.h,
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(
+                              'assets/dashboard/home_vector.png',
+                              height: 15.h,
+                              width: 15.w,
+                            ),
+                            SizedBox(
+                              width: 4.w,
+                            ),
+                            CustomText(
+                              height: 1,
+                              text: currentTenant?.propertiesName ?? '',
+                              color: const Color(0xff828282),
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 6.h,
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(
+                              'assets/dashboard/Map-Line_vector.png',
+                              height: 15.h,
+                              width: 15.w,
+                            ),
+                            SizedBox(
+                              width: 4.w,
+                            ),
+                            Expanded(
+                              child: CustomText(
+                                height: 1,
+                                maxLine: 3,
+                                text: currentTenant?.presentAddress ?? '',
+                                color: const Color(0xff828282),
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Image.asset(
+                        'assets/dashboard/call_vector.png',
+                        height: 20.h,
+                        width: 20.w,
+                      ),
+                      SizedBox(
+                        height: 2.h,
+                      ),
+                      Image.asset(
+                        'assets/dashboard/message_vector.png',
+                        height: 20.h,
+                        width: 20.w,
+                      ),
+                      SizedBox(
+                        height: 2.h,
+                      ),
+                      Image.asset(
+                        'assets/dashboard/more_vector.png',
+                        height: 20.h,
+                        width: 20.w,
+                      ),
+                      SizedBox(
+                        height: 2.h,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

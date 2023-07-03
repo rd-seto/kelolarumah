@@ -1,0 +1,114 @@
+part of 'repository.dart';
+
+class RepositoryImpl {
+  late BuildContext _context;
+  late RepositoryMethods _repositoryMethods;
+
+  RepositoryImpl(BuildContext context) {
+    _context = context;
+    _repositoryMethods = RepositoryMethods(_context);
+  }
+
+  Future<UserModel?> login(UserLogin userLogin) =>
+      _repositoryMethods.login(userLogin: userLogin);
+
+  Future<UserModel?> registration(UserRegistration userRegistration) =>
+      _repositoryMethods.registration(userLogin: userRegistration);
+
+  Future forgetPass(final data) => _repositoryMethods.forgetPass(data: data);
+
+  Future resetPass(final data) => _repositoryMethods.resetPass(data: data);
+
+  Future<DashboardModel?> getDashboardData() =>
+      _repositoryMethods.getDashboardData();
+
+  Future<PropertyListModel?> getPropertyData() =>
+      _repositoryMethods.getPropertyData();
+
+  Future<PropertyListModel?> searchPropertyData({required String search}) =>
+      _repositoryMethods.searchPropertyData(search: search);
+
+  Future<TransactionListModel?> searchTransactionData(
+          {required String search}) =>
+      _repositoryMethods.searchTransactionData(search: search);
+
+  Future<AddPropertyDataModel?> getAddPropertiesData() =>
+      _repositoryMethods.getAddPropertyData();
+
+  Future<LocationModel?> getCountryData() =>
+      _repositoryMethods.getCountryData();
+
+  Future<LocationModel?> getDivisionsData(data) =>
+      _repositoryMethods.getDivisionData(data);
+
+  Future<LocationModel?> getDistrictData(data) =>
+      _repositoryMethods.getDistrictData(data);
+
+  Future<LocationModel?> getAresData(data) =>
+      _repositoryMethods.getAreaData(data);
+
+  Future createProperty(data) => _repositoryMethods.createProperty(data);
+
+  Future<ReportPropertyModel?> getReportPropertyList() =>
+      _repositoryMethods.getReportProperty();
+
+  Future<ReportTenantModel?> getReportTenantList(propertyId) =>
+      _repositoryMethods.getReportTenant(propertyId);
+
+  Future<ReportDetailsModel?> getReportDetails(data) =>
+      _repositoryMethods.reportDetails(data);
+
+  Future<bool> createTransaction(data) =>
+      _repositoryMethods.createTransaction(data);
+
+  Future<TenantsDetailsModel?> getTenantsDetails(tenantsId) =>
+      _repositoryMethods.getTenantsDetails(tenantsId);
+
+  Future<bool> addTenantData({required TenantBodyModel model}) =>
+      _repositoryMethods.addTenantData(model: model);
+
+  Future<TenantModel?> searchTenantData({required String search}) =>
+      _repositoryMethods.searchTenantData(search: search);
+
+  Future<List<TenantProperty>> getTenantPropertiesData() =>
+      _repositoryMethods.getTenantPropertiesData();
+
+  Future<bool> tenantsEditBasicInfo({required TenantEditBodyModel model,int? tenantId}) =>
+      _repositoryMethods.tenantsEditBasicInfo(model: model,tenantId: tenantId);
+
+
+  Future<UserModel?> updateProfile({required Map<String, dynamic> json}) =>
+      _repositoryMethods.updateProfile(json: json);
+
+  Future<NotificationModel?> getNotificationData() =>
+      _repositoryMethods.getNotification();
+
+  Future<TransactionListModel?> getTransactionListData() =>
+      _repositoryMethods.getTransactionListData();
+
+  Future<AddTransactionModel?> getAddTransactionData() =>
+      _repositoryMethods.getAddTransactionData();
+
+  Future<CashManagementListModel?> getCashManagementListData() =>
+      _repositoryMethods.getCashManagementListData();
+
+  Future<PropertyDetailsModel?> getPropertyDetails(id) =>
+      _repositoryMethods.getPropertyDetails(id);
+
+  Future<DocumentListModel?> getDocumentList() =>
+      _repositoryMethods.getDocumentListData();
+
+  Future<TransactionDetailsModel?> getTransactionDetails(id) =>
+      _repositoryMethods.getTransactionDetails(id);
+
+  Future<TenantModel?> getTenantData() => _repositoryMethods.getTenantData();
+
+  // Future<TenantModel?> searchTenantData({required String search}) =>
+  //     _repositoryMethods.searchTenantData(search: search);
+
+  // Future<UserModel?> updateProfile({required Map<String, dynamic> json}) =>
+  //     _repositoryMethods.updateProfile(json: json);
+
+  Future<UserModel?> updatePassword({required Map<String, dynamic> json}) =>
+      _repositoryMethods.updatePassword(json: json);
+}
