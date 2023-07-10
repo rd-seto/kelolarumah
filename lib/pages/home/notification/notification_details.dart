@@ -49,12 +49,12 @@ class NotificationDetails extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            CustomText(
-              text: item?.description ?? "",
-              color: Colors.black54,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.bold,
-              height: 1.6,
+            Text(
+                item?.description ?? "",
+              style: TextStyle(color: Colors.black54,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.bold,
+                height: 1.6),
             ),
           ],
         ),
