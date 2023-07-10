@@ -109,6 +109,8 @@ class RepositoryImpl {
   // Future<UserModel?> updateProfile({required Map<String, dynamic> json}) =>
   //     _repositoryMethods.updateProfile(json: json);
 
-  Future<UserModel?> updatePassword({required Map<String, dynamic> json}) =>
-      _repositoryMethods.updatePassword(json: json);
+  // Future<UpdatePassword?> updatePassword({required Map<String, dynamic> json}) =>
+  //     _repositoryMethods.updatePassword(json: json);
+
+  Future postPasswordUpdate(data) => _repositoryMethods.postPasswordUpdate(data);
 }

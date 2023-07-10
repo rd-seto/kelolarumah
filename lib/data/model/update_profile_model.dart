@@ -19,7 +19,7 @@ class UpdateProfile {
    };
 }
 
-class UpdatePassword{
+  class UpdatePassword{
    String? oldPassword;
    String? password;
    String? confirmPassword;
@@ -27,7 +27,8 @@ class UpdatePassword{
   UpdatePassword({this.oldPassword, this.password, this.confirmPassword});
 
   Map<String,dynamic> toJson() =>{
-    'old_password':oldPassword,
+    'password':oldPassword,
     'new_password':password,
+    'confirm_password' : confirmPassword
   };
 }

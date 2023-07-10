@@ -20,6 +20,7 @@ import 'package:landlord/data/network/api/api_provider.dart';
 import '../../model/transactionListModel.dart';
 import '../../model/tenant_body_model.dart';
 import '../../model/tenant_model.dart';
+import '../../model/update_profile_model.dart';
 import '../dio/generic_dio.dart';
 
 part 'repository_http_methods.dart';

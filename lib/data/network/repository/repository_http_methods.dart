@@ -311,16 +311,27 @@ class RepositoryMethods {
           name: ApiProvider.profileUpdate);
     }
 
-    Future<UserModel?> updatePassword(
-        {required Map<String, dynamic> json}) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.type,
-          methodType: MethodType.post,
-          json: json,
-          toJsonFunc: (json) => UserModel.fromJson(json),
-          returnDataFun: (data) => data,
-          name: ApiProvider.passwordUpdate);
-    }
+  Future postPasswordUpdate(data) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.passwordUpdate);
+  }
+
+    // Future<UpdatePassword?> updatePassword(
+    //     {required Map<String, dynamic> json}) async {
+    //   return await GenericHttp(context).callApi(
+    //       returnType: ReturnType.type,
+    //       methodType: MethodType.post,
+    //       json: json,
+    //       toJsonFunc: (json) => UserModel.fromJson(json),
+    //       returnDataFun: (data) => data,
+    //       name: ApiProvider.passwordUpdate);
+    // }
 
     ///transactionList
     Future<TransactionListModel?> getTransactionListData() async {

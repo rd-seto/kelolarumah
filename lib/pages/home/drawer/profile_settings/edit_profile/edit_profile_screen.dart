@@ -39,6 +39,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
     Provider.of<UpdateProfileProvider>(context, listen: false);
 
     UpdatePassword updatePassword = UpdatePassword();
+    final provider =  Provider.of<UpdateProfileProvider>(context);
 
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
@@ -140,6 +141,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                             ),
                             FromField(
                               title: "Current_Password",
+                              controller: provider.oldPasswordController,
                               onChange: (currentPassword) {
                                 updatePassword.oldPassword = currentPassword;
                               },
@@ -150,6 +152,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                             ),
                             FromField(
                               title: "New_Password",
+                              controller: provider.newPasswordController,
                               onChange: (newPassword) {
                                 updatePassword.password = newPassword;
                               },
@@ -160,6 +163,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                             ),
                             FromField(
                               title: "Confirm_Password",
+                              controller: provider.confirmPasswordController,
                               onChange: (confirmPassword) {
                                 updatePassword.confirmPassword =
                                     confirmPassword;
@@ -172,17 +176,13 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                             ElevatedButtonWidget(
                               text: "Save",
                               onPressed: () {
-                                if (updatePassword.password ==
-                                    updatePassword.confirmPassword) {
-                                  Provider.of<UpdateProfileProvider>(context,
-                                          listen: false)
-                                      .updateProfile(
-                                          json: updatePassword.toJson(),
-                                          context: context);
+                                if (provider.newPasswordController.text ==
+                                    provider.confirmPasswordController.text) {
+                                  provider.passwordUpdate(context);
                                 } else {
                                   Fluttertoast.showToast(
                                     msg:
-                                        'Password and confirm password not matched',
+                                    'Password and confirm password not matched',
                                   );
                                 }
                               },

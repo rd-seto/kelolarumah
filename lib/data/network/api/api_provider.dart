@@ -27,7 +27,7 @@ class ApiProvider{
   static String getReportTenantListData = '$baseUrl/reports/property-wise-tenants';
   static String getReportDetails = '$baseUrl/reports/search';
   static String profileUpdate = '$baseUrl/profile-update';
-  static String passwordUpdate = '$baseUrl/password-update';
+  static String passwordUpdate = '$baseUrl/change-password';
   static String transactionList = '$baseUrl/transaction';
   static String transactionDetails = "$baseUrl/transaction/details";
   static String addTransaction = '$baseUrl/transaction/create';
