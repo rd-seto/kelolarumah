@@ -85,10 +85,7 @@ class DashboardScreen extends StatelessWidget {
                             '',
                         containerColor: AppColors.colorPrimary,
                       ),
-                      // Row(children: [
-                      //   Text("sample",style: TextStyle(),),
-                      //   Text()
-                      // ],),
+
                       SizedBox(
                         height: 16.h,
                       ),

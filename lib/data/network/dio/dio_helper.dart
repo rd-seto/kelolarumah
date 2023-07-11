@@ -293,6 +293,7 @@ class DioHelper {
         case 401:
         case 301:
         case 302:
+          LoadingDialog.showToastNotification(data.toString(), color: Colors.red);
           tokenExpired();
           break;
       }

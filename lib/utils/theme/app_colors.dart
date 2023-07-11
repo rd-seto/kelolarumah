@@ -13,6 +13,7 @@ class AppColors {
   static const Color paraTxt1 = Color(0xff474747);
   static const Color backgroundColor = Color(0xffF5F6FA);
   static const Color errorColor = Colors.red;
+  static const Color successColor = Colors.green;
 
   static const Color colorWhite = Colors.white;
   static const Color hintTextColor = Color(0xff9DA8B5);
