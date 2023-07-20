@@ -11,6 +11,7 @@ class TenantsDetailsProvider extends ChangeNotifier {
 
   void tenantsDetailsData(BuildContext context, tenantId) async {
     var apiResponse = await RepositoryImpl(context).getTenantsDetails(tenantId);
+    print("..........tenant details.............$apiResponse");
     if (apiResponse != null) {
       tenantsDetailsResponse = apiResponse;
     }

@@ -69,11 +69,11 @@ class BasicInfoSummaryCart extends StatelessWidget {
                         title: "Institution",
                         subTitle: basicInfo?.institution ?? "N/A",
                       ),
-                      SummaryContainerBlack(
+                      SummaryContainerWhite(
                         title: "NID_No",
                         subTitle: basicInfo?.nid ?? "N/A",
                       ),
-                      SummaryContainerWhite(
+                      SummaryContainerBlack(
                         title: "Passport No",
                         subTitle: basicInfo?.passport ?? "N/A",
                       ),

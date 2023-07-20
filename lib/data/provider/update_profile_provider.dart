@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:landlord/pages/auth/login/login_screen.dart';
+import 'package:landlord/pages/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/pages/home/dashboard/dashboard_screen.dart';
 import 'package:landlord/pages/home/home_screen/home_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
@@ -35,7 +36,7 @@ class UpdateProfileProvider extends ChangeNotifier{
     var apiResponse = await RepositoryImpl(context).postPasswordUpdate(data);
     if(apiResponse["message"] == "Password changed successfully"){
       Fluttertoast.showToast(msg: apiResponse['message']);
-      NavUtil.pushAndRemoveUntil(context, const DashboardScreen());
+      NavUtil.pushAndRemoveUntil(context, const CustomBottomNavBar());
       oldPasswordController.clear();
       newPasswordController.clear();
       confirmPasswordController.clear();

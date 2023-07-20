@@ -7,8 +7,6 @@ import 'dart:convert';
 TenantsDetailsModel tenantsDetailsModelFromJson(String str) =>
     TenantsDetailsModel.fromJson(json.decode(str));
 
-String tenantsDetailsModelToJson(TenantsDetailsModel data) =>
-    json.encode(data.toJson());
 
 class TenantsDetailsModel {
   TenantsDetailsModel({
@@ -31,12 +29,6 @@ class TenantsDetailsModel {
         data: json["data"] == null ? null : Data.fromJson(json["data"]),
       );
 
-  Map<String, dynamic> toJson() => {
-        "result": result,
-        "api_end_point": apiEndPoint,
-        "message": message,
-        "data": data?.toJson(),
-      };
 }
 
 class Data {
@@ -52,7 +44,7 @@ class Data {
 
   BasicInfo? basicInfo;
   List<Document>? document;
-  EmergencyContact? emergencyContact;
+  List<EmergencyContact>? emergencyContact;
   List<Account>? accounts;
   List<TenantTransaction>? tenantTransaction;
   Agreement? agreement;
@@ -66,9 +58,11 @@ class Data {
             ? []
             : List<Document>.from(
                 json["document"]!.map((x) => Document.fromJson(x))),
-        emergencyContact: json["emergencyContact"] == null
-            ? null
-            : EmergencyContact.fromJson(json["emergencyContact"]),
+        emergencyContact:  json["emergencyContact"] == null
+            ? []
+            : List<EmergencyContact>.from(
+            json["emergencyContact"]!.map((x) => EmergencyContact.fromJson(x))),
+
         accounts: json["accounts"] == null
             ? []
             : List<Account>.from(
@@ -83,20 +77,6 @@ class Data {
         messages: json["messages"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "basicInfo": basicInfo?.toJson(),
-        "document": document == null
-            ? []
-            : List<dynamic>.from(document!.map((x) => x.toJson())),
-        "emergencyContact": emergencyContact?.toJson(),
-        "accounts": accounts == null
-            ? []
-            : List<dynamic>.from(accounts!.map((x) => x.toJson())),
-        "tenantTransaction": tenantTransaction == null
-            ? []
-            : List<dynamic>.from(tenantTransaction!.map((x) => x.toJson())),
-        "messages": messages,
-      };
 }
 
 class Account {

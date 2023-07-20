@@ -20,72 +20,74 @@ class AddDocumentsScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(20.0.sp),
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(8)),
-              child: const NewTextFromField(
-                title: "Tenants_Name",
-                hintText: "Tenants_Name",
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white, borderRadius: BorderRadius.circular(8)),
+                child: const NewTextFromField(
+                  title: "Tenants_Name",
+                  hintText: "Tenants_Name",
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(8)),
-              child: const NewTextFromField(
-                title: "File_Name",
-                hintText: "name",
+              SizedBox(
+                height: 20.h,
               ),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            Center(
-              child: DottedBorder(
-                  dashPattern: const [8, 4],
-                  borderType: BorderType.RRect,
-                  radius: const Radius.circular(8),
-                  color: AppColors.colorPrimary,
-                  strokeWidth: 1,
-                  child: Container(
-                    height: 88.h,
-                    width: double.infinity,
-                    color: AppColors.colorWhite,
-                    child: Center(
-                      child: RichText(
-                        text: TextSpan(
-                            text: "Choose_a_file".tr(),
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.titleTextColor,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: 'Or_drag_it_here'.tr(),
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff828282),
-                                ),
-                              )
-                            ]),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white, borderRadius: BorderRadius.circular(8)),
+                child: const NewTextFromField(
+                  title: "File_Name",
+                  hintText: "name",
+                ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Center(
+                child: DottedBorder(
+                    dashPattern: const [8, 4],
+                    borderType: BorderType.RRect,
+                    radius: const Radius.circular(8),
+                    color: AppColors.colorPrimary,
+                    strokeWidth: 1,
+                    child: Container(
+                      height: 88.h,
+                      width: double.infinity,
+                      color: AppColors.colorWhite,
+                      child: Center(
+                        child: RichText(
+                          text: TextSpan(
+                              text: "Choose_a_file".tr(),
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.titleTextColor,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: 'Or_drag_it_here'.tr(),
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff828282),
+                                  ),
+                                )
+                              ]),
+                        ),
                       ),
-                    ),
-                  )),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            ElevatedButtonWidget(
-              text: "Save",
-              onPressed: () {},
-            )
-          ],
+                    )),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              ElevatedButtonWidget(
+                text: "Save",
+                onPressed: () {},
+              )
+            ],
+          ),
         ),
       ),
     );

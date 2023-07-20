@@ -8,21 +8,24 @@ import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
 class EmergencySummaryCart extends StatelessWidget {
-  final EmergencyContact? emergencyContact;
+  final List<EmergencyContact>? emergencyContact;
 
   const EmergencySummaryCart({super.key, this.emergencyContact});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
+    return ListView.builder(
+      itemCount: emergencyContact?.length,
+      itemBuilder: (BuildContext context, int index){
+        final data = emergencyContact?[index];
+   return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             height: 30.h,
           ),
           CustomText(
-            text: emergencyContact?.type ?? "N/A",
+            text: data?.type ?? "N/A",
             color: AppColors.black2Sd,
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
@@ -37,6 +40,7 @@ class EmergencySummaryCart extends StatelessWidget {
               padding: EdgeInsets.all(18.0.sp),
               child: Row(
                 children: [
+                  
                   Column(
                     children: [
                       ClipOval(
@@ -44,7 +48,7 @@ class EmergencySummaryCart extends StatelessWidget {
                           height: 43.h,
                           width: 43.w,
                           fit: BoxFit.cover,
-                          imageUrl: emergencyContact?.image ??
+                          imageUrl: data?.image ??
                               "https://www.w3schools.com/howto/img_avatar.png",
                           placeholder: (context, url) => Center(
                             child: Image.asset(
@@ -60,7 +64,7 @@ class EmergencySummaryCart extends StatelessWidget {
                       //   width: 43.w,
                       // ),
                       CustomText(
-                        text: emergencyContact?.relation ?? "N/A",
+                        text: data?.relation ?? "N/A",
                         color: AppColors.black2Sd,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w600,
@@ -71,64 +75,67 @@ class EmergencySummaryCart extends StatelessWidget {
                   SizedBox(
                     width: 20.w,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(
-                        text: emergencyContact?.name ?? "N/A",
-                        color: AppColors.black2Sd,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
-                        height: 1.75,
-                      ),
-                      CustomText(
-                        text: emergencyContact?.occupied ?? "N/A",
-                        color: AppColors.titleTextColor,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                        height: 1.75,
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.call,
-                            size: 14.sp,
-                            color: AppColors.black2Sd,
-                          ),
-                          SizedBox(
-                            width: 4.w,
-                          ),
-                          CustomText(
-                            text: emergencyContact?.phone ?? "N/A",
-                            color: AppColors.titleTextColor,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            height: 1.75,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.mail_outline_outlined,
-                            size: 14.sp,
-                            color: AppColors.black2Sd,
-                          ),
-                          SizedBox(
-                            width: 4.w,
-                          ),
-                          CustomText(
-                            text: emergencyContact?.email ?? "N/A",
-                            color: AppColors.titleTextColor,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            height: 1.75,
-                          ),
-                        ],
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                          text: data?.name ?? "N/A",
+                          color: AppColors.black2Sd,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                          height: 1.75,
+                        ),
+                        CustomText(
+                          text: data?.occupied ?? "N/A",
+                          color: AppColors.titleTextColor,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          height: 1.75,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.call,
+                              size: 14.sp,
+                              color: AppColors.black2Sd,
+                            ),
+                            SizedBox(
+                              width: 4.w,
+                            ),
+                            CustomText(
+                              text: data?.phone ?? "N/A",
+                              color: AppColors.titleTextColor,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w400,
+                              height: 1.75,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.mail_outline_outlined,
+                              size: 14.sp,
+                              color: AppColors.black2Sd,
+                            ),
+                            SizedBox(
+                              width: 4.w,
+                            ),
+                            Expanded(
+                              child: CustomText(
+                                text: data?.email ?? "N/A",
+                                color: AppColors.titleTextColor,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                height: 1.75,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  const Spacer(),
                   PopupMenuButton<int>(
                     icon: const Icon(
                       Icons.more_vert,
@@ -193,7 +200,8 @@ class EmergencySummaryCart extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      );
+      }
     );
   }
 }
