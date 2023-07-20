@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:landlord/pages/auth/login/login_screen.dart';
 import 'package:landlord/pages/home/bottom_navigation_bar/custom_bottom_nav.dart';
-import 'package:landlord/pages/home/dashboard/dashboard_screen.dart';
-import 'package:landlord/pages/home/home_screen/home_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:provider/provider.dart';
 import '../local/local_auth_provider.dart';
