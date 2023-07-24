@@ -296,7 +296,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                           child: Image.file(
                             //to show image, you type like this.
                             File(provider.image!.path),
-                            fit: BoxFit.fill,
+                            fit: BoxFit.cover,
                             width: MediaQuery.of(context).size.height / 6,
                             height: 93.h,
                           ),

@@ -74,7 +74,7 @@ class _AddTenantsScreenState extends State<AddTenantsScreen> {
                                 ? Image.file(
                                     //to show image, you type like this.
                                     File(provider.image!.path),
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.cover,
                                     width:
                                         MediaQuery.of(context).size.width / 2.8,
                                     height: 93.h,

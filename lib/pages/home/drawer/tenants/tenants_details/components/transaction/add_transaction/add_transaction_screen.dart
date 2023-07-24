@@ -101,7 +101,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                       ? Image.file(
                                           //to show image, you type like this.
                                           File(provider.image!.path),
-                                          fit: BoxFit.fill,
+                                          fit: BoxFit.cover,
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width /

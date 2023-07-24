@@ -202,9 +202,9 @@ class AddPropertyProvider extends ChangeNotifier {
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.colorPrimary),
-                    child: Row(
+                    child:const Row(
 
-                      children:  const [
+                      children:   [
 
                         Icon(Icons.image),
                         SizedBox(
@@ -221,8 +221,8 @@ class AddPropertyProvider extends ChangeNotifier {
                       Navigator.pop(context);
                       getImage(ImageSource.camera);
                     },
-                    child: Row(
-                      children:  const [
+                    child:const Row(
+                      children:   [
                         Icon(Icons.camera),
                         SizedBox(
                           width: 16,
