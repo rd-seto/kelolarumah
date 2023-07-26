@@ -52,6 +52,7 @@ class LoginScreen extends StatelessWidget {
                 AuthFromField(
                   hintText: "Email",
                   title: "Email",
+                  cursorColor: AppColors.colorWhite,
                   onChange: (email) {
                     userLogin.email = email;
                   },
@@ -60,7 +61,8 @@ class LoginScreen extends StatelessWidget {
                   height: 20.h,
                 ),
                 AuthFromField(
-                  hintText: "xxxxxx",
+                  cursorColor: AppColors.colorWhite,
+                  hintText: "Enter your password",
                   title: "Password",
                   onChange: (password) {
                     userLogin.password = password;

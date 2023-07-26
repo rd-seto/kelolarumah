@@ -46,6 +46,7 @@ class ForgetPassScreen extends StatelessWidget {
                     ),
                     AuthFromField(
                       controller: emailController,
+                      cursorColor: AppColors.colorWhite,
                       hintText: "EMAIL",
                       title: "EMAIL",
                     ),
