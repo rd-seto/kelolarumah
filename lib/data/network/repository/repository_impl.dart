@@ -77,8 +77,8 @@ class RepositoryImpl {
       _repositoryMethods.tenantsEditBasicInfo(model: model,tenantId: tenantId);
 
 
-  Future<UserModel?> updateProfile({required Map<String, dynamic> json}) =>
-      _repositoryMethods.updateProfile(json: json);
+  Future updateProfile(data) =>
+      _repositoryMethods.updateProfile(data);
 
   Future<NotificationModel?> getNotificationData() =>
       _repositoryMethods.getNotification();

@@ -300,14 +300,14 @@ class RepositoryMethods {
           name: '${ApiProvider.tenant}?search=$search');
     }
 
-    Future<UserModel?> updateProfile(
-        {required Map<String, dynamic> json}) async {
+    Future updateProfile(data) async {
       return await GenericHttp(context).callApi(
           returnType: ReturnType.model,
           methodType: MethodType.post,
-          json: json,
-          toJsonFunc: (json) => UserModel.fromJson(json),
+          json: data,
+          toJsonFunc: (json) => json,
           returnDataFun: (data) => data,
+          showLoader: true,
           name: ApiProvider.profileUpdate);
     }
 

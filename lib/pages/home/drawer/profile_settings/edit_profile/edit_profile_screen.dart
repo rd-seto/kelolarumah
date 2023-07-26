@@ -213,6 +213,7 @@ class ProfileEditBasicInfo extends StatelessWidget {
     UpdateProfile user = UpdateProfile();
 
     final userModel = Provider.of<LocalAutProvider>(context).getUser();
+    final provider =  Provider.of<UpdateProfileProvider>(context);
 
     return SingleChildScrollView(
       child: Column(
@@ -222,10 +223,10 @@ class ProfileEditBasicInfo extends StatelessWidget {
           ),
           FromField(
             hintText: "name",
-            controller: TextEditingController(text: userModel?.name),
-            onChange: (name) {
-              user.name = name;
-            },
+            controller: provider.userNameController,
+            // onChange: (name) {
+            //   user.name = name;
+            // },
             title: "name",
           ),
           SizedBox(
@@ -233,66 +234,77 @@ class ProfileEditBasicInfo extends StatelessWidget {
           ),
           FromField(
             title: "Email",
-            controller: TextEditingController(text: userModel?.email),
-            onChange: (email) {
-              user.email = email;
-            },
-            hintText: "example@gmail.com",
+            controller: provider.userEmailController,
+            // onChange: (email) {
+            //   user.email = email;
+            // },
+            hintText: "enter your email",
           ),
           SizedBox(
             height: 16.h,
           ),
+
           FromField(
             title: "Phone_Number",
-            onChange: (phone) {
-              user.phone = phone;
-            },
+            controller: provider.userPhoneController,
+            // onChange: (phone) {
+            //   user.phone = phone;
+            // },
             hintText: "01XXXXXXXXXX",
           ),
+
           SizedBox(
             height: 16.h,
           ),
           FromField(
-            hintText: "2023/02/15",
-            title: "Date_Of_Birth",
-            onChange: (date) {
-              user.dateOfBirth = date;
-            },
-            suffixIcon: IconButton(
-              icon: const Icon(Icons.calendar_month_outlined),
-              onPressed: () {},
-            ),
-          ),
-          SizedBox(
-            height: 16.h,
-          ),
-          FromField(
-            hintText: "01xxxxxxxxxx",
-            controller: TextEditingController(text: userModel?.nid),
-            onChange: (nid) {
-              user.nidNo = nid;
-            },
-            title: "NID_No",
+            title: "Occupation",
+            controller: provider.userOccupationController,
+            // onChange: (email) {
+            //   user.email = email;
+            // },
+            hintText: "enter your Occupation",
           ),
           SizedBox(
             height: 16.h,
           ),
           FromField(
-            hintText: "BDXXXXXXXXXX",
-            controller: TextEditingController(text: userModel?.passport),
-            onChange: (passport) {
-              user.passportNo = passport;
-            },
-            title: "Passport_No",
+            title: "Institution",
+            controller: provider.userInstituteController,
+            // onChange: (email) {
+            //   user.email = email;
+            // },
+            hintText: "enter your Institution name",
           ),
           SizedBox(
-            height: 20.h,
+            height: 16.h,
           ),
+          FromField(
+            title: "NID",
+            controller: provider.userNidController,
+            // onChange: (email) {
+            //   user.email = email;
+            // },
+            hintText: "enter your Occupation",
+          ),
+          SizedBox(
+            height: 16.h,
+          ),
+          FromField(
+            title: "Gender",
+            controller: provider.userGenderController,
+            // onChange: (email) {
+            //   user.email = email;
+            // },
+            hintText: "",
+          ),
+          SizedBox(
+            height: 16.h,
+          ),
+
           ElevatedButtonWidget(
             text: "Save",
             onPressed: () {
-              Provider.of<UpdateProfileProvider>(context, listen: false)
-                  .updateProfile(json: user.toJson(), context: context);
+             provider.postProfileData(context);
             },
           )
         ],

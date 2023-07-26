@@ -8,21 +8,54 @@ import '../network/repository/repository.dart';
 
 class UpdateProfileProvider extends ChangeNotifier{
 
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController userEmailController = TextEditingController();
+  TextEditingController userOccupationController = TextEditingController();
+  TextEditingController userInstituteController = TextEditingController();
+  TextEditingController userGenderController = TextEditingController();
+  TextEditingController userPhoneController = TextEditingController();
+  TextEditingController userNidController = TextEditingController();
+
+
 
   TextEditingController oldPasswordController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
 
-  updateProfile({required Map<String,dynamic> json,required BuildContext context}){
-    RepositoryImpl(context).updateProfile(json: json).then((user){
-      if(user != null){
-        debugPrint('Profile data updated');
-        Provider.of<LocalAutProvider>(context,listen: false).updateUser(user);
-        Navigator.of(context).pop();
-      }
-    });
+  // updateProfile({required Map<String,dynamic> json,required BuildContext context}){
+  //   RepositoryImpl(context).updateProfile(json: json).then((user){
+  //     if(user != null){
+  //       debugPrint('Profile data updated');
+  //       Provider.of<LocalAutProvider>(context,listen: false).updateUser(user);
+  //       Navigator.of(context).pop();
+  //     }
+  //   });
+  // }
+
+  void postProfileData (context) async {
+    final data = {
+      "name": userNameController.text,
+      "email": userEmailController.text,
+      "occupation": userOccupationController.text,
+      "institution": userInstituteController.text,
+      "phone": userPhoneController.text,
+      "nid": userNidController.text,
+
+    };
+    var apiResponse = await RepositoryImpl(context).updateProfile(data);
+    if(apiResponse["result"] == true){
+      Fluttertoast.showToast(msg: apiResponse['message']);
+      Navigator.of(context).pop();
+      notifyListeners();
+    }
   }
+
+
+
+
+
+
 
   void passwordUpdate (context) async {
     final data = {
@@ -43,15 +76,5 @@ class UpdateProfileProvider extends ChangeNotifier{
       Fluttertoast.showToast(msg: apiResponse['message']);
     }
   }
-
-  //   updatePassword({required Map<String,dynamic> json,required BuildContext context}){
-  //   RepositoryImpl(context).updatePassword(json: json).then((updatedPasswordValue){
-  //     if(updatedPasswordValue != null){
-  //       debugPrint('Profile password updated');
-  //       //Provider.of<LocalAutProvider>(context,listen: false).updateUser(UpdatePassword);
-  //       notifyListeners();
-  //     }
-  //   });
-  // }
 
 }
