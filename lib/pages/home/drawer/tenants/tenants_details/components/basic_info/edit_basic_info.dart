@@ -40,7 +40,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
     phone = TextEditingController(text: widget.basicInfo?.phone);
     email = TextEditingController(text: widget.basicInfo?.email);
     occupation = TextEditingController(text: widget.basicInfo?.occupation);
-    designation = TextEditingController(text: widget.basicInfo?.designation);
+    //designation = TextEditingController(text: widget.basicInfo?.designation);
     institution = TextEditingController(text: widget.basicInfo?.institution);
     date = TextEditingController(text: widget.basicInfo?.joinDate);
     nidNo = TextEditingController(text: widget.basicInfo?.nid);
@@ -84,7 +84,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
                   ),
                   FromField(
                     controller: name,
-                    hintText: "name",
+                    hintText: "",
                     title: "name",
                     onChange: (val) {
                       provider.tenantEditBodyModel.name = val;
@@ -96,7 +96,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
                   FromField(
                     hintText:
                         provider.dateOfJoining ?? widget.basicInfo?.joinDate,
-                    title: "Date",
+                    title: "Join date",
                     suffixIcon: IconButton(
                       icon: const Icon(
                         Icons.calendar_month_outlined,
@@ -112,7 +112,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
                   ),
                   FromField(
                     controller: phone,
-                    hintText: "01XXXXXXXXXX",
+                    hintText: "",
                     title: "Phone_Number",
                     onChange: (val) {
                       provider.tenantEditBodyModel.phone = val;
@@ -123,7 +123,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
                   ),
                   FromField(
                     controller: email,
-                    hintText: "example@gmail.com",
+                    hintText: "",
                     title: "Email",
                     onChange: (val) {
                       provider.tenantEditBodyModel.email = val;
@@ -134,7 +134,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
                   ),
                   FromField(
                     controller: occupation,
-                    hintText: "Banker",
+                    hintText: "",
                     title: "Occupation",
                     onChange: (val) {
                       provider.tenantEditBodyModel.occupation = val;
@@ -156,7 +156,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
                   ),
                   FromField(
                     controller: institution,
-                    hintText: "Sonali Bank",
+                    hintText: "",
                     title: "Institution",
                     onChange: (val) {
                       provider.tenantEditBodyModel.institution = val;
@@ -167,7 +167,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
                   ),
                   FromField(
                     controller: nidNo,
-                    hintText: "01xxxxxxxxxx",
+                    hintText: "",
                     title: "NID_No",
                     onChange: (val) {
                       provider.tenantEditBodyModel.nid = val;
@@ -178,7 +178,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
                   ),
                   FromField(
                     controller: permanentAddress,
-                    hintText: "13/B, Banani Dhaka",
+                    hintText: "",
                     title: "Permanent_Address",
                     onChange: (val) {
                       provider.tenantEditBodyModel.presentAddress = val;
@@ -189,7 +189,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
                   ),
                   FromField(
                     controller: passportNumber,
-                    hintText: "BDXXXXXXXXXX",
+                    hintText: "",
                     title: "Passport_No",
                     onChange: (val) {
                       provider.tenantEditBodyModel.passport = val;
@@ -200,7 +200,7 @@ class _EditBasicInfoState extends State<EditBasicInfo> {
                   ),
                   FromField(
                     controller: nationality,
-                    hintText: "Bangladeshi",
+                    hintText: "",
                     title: "Nationality",
                     onChange: (val) {
                       provider.tenantEditBodyModel.nationality = val;

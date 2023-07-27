@@ -28,7 +28,7 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
 
   @override
   void initState() {
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
     super.initState();
   }
 
@@ -88,9 +88,6 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                               text: 'Basic_Info'.tr(),
                             ),
                             Tab(
-                              text: 'Documents'.tr(),
-                            ),
-                            Tab(
                               text: 'Emergency'.tr(),
                             ),
                             Tab(
@@ -118,10 +115,6 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                                   .tenantsDetailsResponse?.data?.basicInfo,
                               tenantsId: widget.tenantsId,
                               provider: provider,
-                            ),
-                            DocumentsSummaryCart(
-                              document: provider
-                                  .tenantsDetailsResponse?.data?.document,
                             ),
                             EmergencySummaryCart(
                               emergencyContact: provider.tenantsDetailsResponse

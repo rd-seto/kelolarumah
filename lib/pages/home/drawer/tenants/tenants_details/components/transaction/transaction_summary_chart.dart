@@ -58,7 +58,7 @@ class TransactionSummaryCart extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CustomText(
-                              text: tenantTransaction?[index].bankName ?? 'N/A',
+                              text: tenantTransaction?[index].property ?? 'N/A',
                               color: AppColors.titleTextColor,
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
@@ -73,7 +73,7 @@ class TransactionSummaryCart extends StatelessWidget {
                                 ),
                                 CustomText(
                                   text: tenantTransaction?[index]
-                                          .attachmentCount ??
+                                          .attachmentCount.toString() ??
                                       "N/A",
                                   color: AppColors.black2Sd,
                                   fontSize: 12.sp,
@@ -119,7 +119,7 @@ class TransactionSummaryCart extends StatelessWidget {
                               height: 6.h,
                             ),
                             CustomText(
-                              text: tenantTransaction?[index].date ?? "N/A",
+                              text: tenantTransaction?[index].date.toString() ?? "N/A",
                               color: AppColors.black2Sd,
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w500,
