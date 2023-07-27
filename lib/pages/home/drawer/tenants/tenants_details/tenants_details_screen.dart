@@ -119,6 +119,7 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                             EmergencySummaryCart(
                               emergencyContact: provider.tenantsDetailsResponse
                                   ?.data?.emergencyContact,
+                              tenantId: provider.tenantsDetailsResponse?.data?.basicInfo?.id ?? 0,
                             ),
                             AccountsSummaryCart(
                               accounts: provider

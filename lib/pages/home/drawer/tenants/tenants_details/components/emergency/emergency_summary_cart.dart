@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/tenants_details_model.dart';
+import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/emergency/add_emergency_screen.dart';
 import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/emergency/edit_emergency_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
 class EmergencySummaryCart extends StatelessWidget {
   final List<EmergencyContact>? emergencyContact;
+  final int tenantId;
 
-  const EmergencySummaryCart({super.key, this.emergencyContact});
+  const   EmergencySummaryCart({super.key, this.emergencyContact, required this.tenantId});
 
   @override
   Widget build(BuildContext context) {
@@ -20,21 +22,11 @@ class EmergencySummaryCart extends StatelessWidget {
           itemCount: emergencyContact?.length,
           itemBuilder: (BuildContext context, int index){
             final data = emergencyContact?[index];
-   return Column(
+            return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 30.h,
-              ),
-              CustomText(
-                text: data?.type ?? "N/A",
-                color: AppColors.black2Sd,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w600,
-                height: 1.75,
-              ),
-              SizedBox(
-                height: 30.h,
+              const SizedBox(
+                height: 10,
               ),
               Container(
                 color: AppColors.colorWhite,
@@ -211,15 +203,17 @@ class EmergencySummaryCart extends StatelessWidget {
             right: 0,
             child: InkWell(
               onTap: () {
-                // NavUtil.navigateScreen(
-                //     context,
-                //     EditBasicInfo(
-                //       basicInfo: basicInfo,
-                //       tenantsId: basicInfo?.id,
-                //       onSave: () {
-                //         provider?.tenantsDetailsData(context, basicInfo?.id);
-                //       },
-                //     ));
+
+                NavUtil.navigateScreen(
+                    context, AddEmergencyScreen(tenantId: tenantId,)
+                    // EditBasicInfo(
+                    //   basicInfo: basicInfo,
+                    //   tenantsId: basicInfo?.id,
+                    //   onSave: () {
+                    //     provider?.tenantsDetailsData(context, basicInfo?.id);
+                    //   },
+                    // )
+                );
               },
               child: Container(
                   decoration: const BoxDecoration(

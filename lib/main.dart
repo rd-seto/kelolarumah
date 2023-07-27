@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/data/model/user_model.dart';
+import 'package:landlord/data/provider/add_emergency_contact_provider.dart';
 import 'package:landlord/data/provider/add_property_provider.dart';
 import 'package:landlord/data/provider/auth_provider.dart';
 import 'package:landlord/data/provider/cash_management_provider.dart';
@@ -63,6 +64,8 @@ class MyApp extends StatelessWidget {
             create: (context) => TransactionListProvider(context)),
         ChangeNotifierProvider<AddTransactionProvider>(
             create: (context) => AddTransactionProvider(context)),
+        ChangeNotifierProvider<AddEmergencyContractProvider>(
+            create: (context) => AddEmergencyContractProvider(context)),
         ChangeNotifierProvider<CashManagementListProvider>(
             create: (context) => CashManagementListProvider(context)),
         ChangeNotifierProvider<NotificationProvider>(

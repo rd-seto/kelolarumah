@@ -377,4 +377,18 @@ class RepositoryMethods {
           showLoader: true,
           name: ApiProvider.cashManagementList);
     }
+
+
+  /// Get Area data from add property
+  Future createEmergencyContact(data, tenantId) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: "${ApiProvider.tenantUpdate}$tenantId/emergency");
+  }
+
   }
