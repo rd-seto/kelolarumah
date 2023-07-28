@@ -47,7 +47,7 @@ class TenantEditProvider extends ChangeNotifier {
         .then((success) {
       if (success) {
         Provider.of<TenantProvider>(context, listen: false).tenantData(context);
-        onDone();
+         onDone();
         debounce.run(() {
           Navigator.pop(context);
         });

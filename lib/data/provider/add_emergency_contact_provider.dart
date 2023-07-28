@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
+import 'package:landlord/data/provider/tenants_details_provider.dart';
 import 'package:landlord/pages/home/drawer/tenants/tenants_details/tenants_details_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
@@ -21,12 +22,13 @@ class AddEmergencyContractProvider extends ChangeNotifier {
   final relationController = TextEditingController();
   final occupationController = TextEditingController();
 
+  final debounce = Debounce(milliseconds: 500);
 
 
   AddEmergencyContractProvider(context){}
 
 
-  void addEmergencyContract(context, tenantId) async {
+  void addEmergencyContract(context, tenantId, VoidCallback onDone) async {
     final data = {
       "name" : nameController.text,
       "occupied" : occupationController.text,
@@ -39,8 +41,10 @@ class AddEmergencyContractProvider extends ChangeNotifier {
     if(apiResponse["result"] == true){
       Fluttertoast.showToast(msg: apiResponse['message']);
       clearData();
-      Provider.of<TenantProvider>(context, listen: false).tenantData(context);
-      NavUtil.navigateScreen(context, const TenantsDetailsScreen());
+      onDone();
+      debounce.run(() {
+        Navigator.pop(context);
+      });
     }
     notifyListeners();
   }

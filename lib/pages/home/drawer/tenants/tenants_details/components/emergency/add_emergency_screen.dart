@@ -15,8 +15,9 @@ import '../../../../../../../data/provider/add_emergency_contact_provider.dart';
 class AddEmergencyScreen extends StatefulWidget {
 
   final int? tenantId;
+  final VoidCallback onSave;
 
-  const AddEmergencyScreen({super.key, required this.tenantId});
+  const AddEmergencyScreen({super.key, required this.tenantId, required this.onSave });
 
   @override
   State<AddEmergencyScreen> createState() => _AddEmergencyScreenState();
@@ -144,7 +145,9 @@ class _AddEmergencyScreenState extends State<AddEmergencyScreen> {
                   ElevatedButtonWidget(
                     text: "Save",
                     onPressed: () {
-                      provider.addEmergencyContract(context, widget.tenantId);
+                      provider.addEmergencyContract(context, widget.tenantId, (){
+                        widget.onSave();
+                      });
                     },
                   ),
                 ],
