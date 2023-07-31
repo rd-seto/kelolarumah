@@ -18,72 +18,88 @@ class AgreementsSummaryCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
 
-          SizedBox(
-            height: 30.h,
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.colorWhite,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 18.0.w,
+              SizedBox(
+                height: 30.h,
               ),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 28.h,
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColors.colorWhite,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.0.w,
                   ),
-                  SummaryContainerBlack(
-                    title: "Property_Name",
-                    subTitle: agreement?.property ?? "N/A",
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 28.h,
+                      ),
+                      SummaryContainerBlack(
+                        title: "Property_Name",
+                        subTitle: agreement?.property ?? "N/A",
+                      ),
+                      SummaryContainerWhite(
+                        title: "Move_In_Date",
+                        subTitle: agreement?.moveIn ?? "N/A",
+                      ),
+                      SummaryContainerBlack(
+                        title: "Move_out_Date",
+                        subTitle: agreement?.moveOut ?? "N/A",
+                      ),
+                      SummaryContainerWhite(
+                        title: "Rent_Amount",
+                        subTitle: agreement?.rentAmount.toString() ?? "N/A",
+                      ),
+                      SummaryContainerBlack(
+                        title: "Advance Amount",
+                        subTitle: agreement?.advanceAmount.toString() ?? "N/A",
+                      ),
+                      SummaryContainerWhite(
+                        title: "Rent_Type",
+                        subTitle: agreement?.rentType ?? "N/A",
+                      ),
+
+                      SummaryContainerBlack(
+                        title: "Reminder_Date",
+                        subTitle: agreement?.reminderDate.toString() ?? "N/A",
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      )
+                    ],
                   ),
-                  SummaryContainerWhite(
-                    title: "Move_In_Date",
-                    subTitle: agreement?.moveIn ?? "N/A",
-                  ),
-                  SummaryContainerBlack(
-                    title: "Move_out_Date",
-                    subTitle: agreement?.moveOut ?? "N/A",
-                  ),
-                  SummaryContainerWhite(
-                    title: "Rent_Amount",
-                    subTitle: agreement?.rentAmount.toString() ?? "N/A",
-                  ),
-                  SummaryContainerBlack(
-                    title: "Rent_Type",
-                    subTitle: agreement?.rentType ?? "N/A",
-                  ),
-                  SummaryContainerWhite(
-                    title: "Rent_For",
-                    subTitle: agreement?.rentFor.toString() ?? "N/A",
-                  ),
-                  SummaryContainerBlack(
-                    title: "Reminder_Date",
-                    subTitle: agreement?.reminderDate ?? "N/A",
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  )
-                ],
+                ),
               ),
-            ),
+              SizedBox(
+                height: 30.h,
+              ),
+
+            ],
           ),
-          SizedBox(
-            height: 30.h,
-          ),
-          Row(
+        ),
+        Positioned(
+          bottom: 0,
+          right: 0,
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               InkWell(
                 onTap: () {
-                  NavUtil.navigateScreen(context, const AddAgreementsScreen());
+                  NavUtil.navigateScreen(context,  AddAgreementsScreen(
+                    agreement: agreement,
+                    tenantId: tenantId!,
+                    onSave: (){
+                      provider?.tenantsDetailsData(context, tenantId);
+                    },
+                  ));
                 },
                 child: Image.asset(
                   'assets/dashboard/edit_float_img.png',
@@ -93,8 +109,8 @@ class AgreementsSummaryCart extends StatelessWidget {
               ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

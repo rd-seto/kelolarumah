@@ -5,10 +5,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/elevated_button_widget.dart';
 import 'package:landlord/components/text_form_field.dart';
+import 'package:landlord/data/provider/tenant_edit_provider.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../../../../data/model/tenants_details_model.dart';
 
 class AddAgreementsScreen extends StatefulWidget {
-  const AddAgreementsScreen({super.key});
+
+  final Agreement? agreement;
+  final int tenantId;
+  final VoidCallback onSave;
+
+  const AddAgreementsScreen({super.key, this.agreement, required this.tenantId, required this.onSave});
 
   @override
   State<AddAgreementsScreen> createState() => _AddAgreementsScreenState();
@@ -18,13 +27,32 @@ class _AddAgreementsScreenState extends State<AddAgreementsScreen> {
   String dropdownValue = 'Name';
   String dropdownValue1 = 'Monthly';
 
+  late TextEditingController moveIn;
+  late TextEditingController moveOut;
+  late TextEditingController rentAmount;
+  late TextEditingController advanceAmount;
+  late TextEditingController rentType;
+  late TextEditingController reminderDate;
+  late TextEditingController note;
+
   @override
+  void initState(){
+    moveIn = TextEditingController(text: widget.agreement?.moveIn);
+    moveOut = TextEditingController(text: widget.agreement?.moveOut);
+    rentAmount = TextEditingController(text: widget.agreement?.rentAmount);
+    advanceAmount = TextEditingController(text: widget.agreement?.advanceAmount);
+    rentType = TextEditingController(text: widget.agreement?.rentType);
+    reminderDate = TextEditingController(text: widget.agreement?.reminderDate);
+    note = TextEditingController(text: widget.agreement?.note);
+    super.initState();
+  }
   Widget build(BuildContext context) {
+    final provider = Provider.of<TenantEditProvider>(context);
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70.h),
-        child: const CustomAppBar(appBarName: 'Add_Agreements'),
+        child: const CustomAppBar(appBarName: 'Update Agreement'),
       ),
       body: Stack(
         children: [
@@ -46,207 +74,107 @@ class _AddAgreementsScreenState extends State<AddAgreementsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.colorWhite,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 12),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                'Property_Name',
-                                style: TextStyle(
-                                    letterSpacing: 1,
-                                    color: Colors.black,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w700),
-                              ).tr(),
-                              Text(
-                                '*',
-                                style: TextStyle(
-                                    letterSpacing: 1,
-                                    color: Colors.red,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 8.h,
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18, vertical: 0),
-                            decoration: BoxDecoration(
-                                color: AppColors.colorWhite,
-                                borderRadius: BorderRadius.circular(5),
-                                border:
-                                    Border.all(color: const Color(0xffD6D6D6))),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton<String>(
-                                isExpanded: true,
-                                value: dropdownValue,
-                                icon: const Icon(Icons.keyboard_arrow_down),
-                                elevation: 16,
-                                style:
-                                    const TextStyle(color: Color(0xff8A8A8A)),
-                                onChanged: (String? newValue) {
-                                  setState(() {
-                                    dropdownValue = newValue!;
-                                  });
-                                },
-                                items: <String>[
-                                  'Name',
-                                  'Cash',
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
                   SizedBox(
                     height: 16.h,
                   ),
                   FromField(
-                    hintText: "2023/02/15",
+                    hintText: provider.dateOfMoveIn ?? widget.agreement?.moveIn,
                     title: "Move_In_Date",
                     suffixIcon: IconButton(
-                      icon: const Icon(Icons.calendar_month_outlined),
-                      onPressed: () {},
+                      icon: const Icon(Icons.calendar_month_outlined, color: AppColors.colorPrimary,),
+                      onPressed: () {
+                        provider.selectMoveInDate(context);
+                      },
                     ),
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
                   FromField(
-                    hintText: "2023/02/15",
+                    hintText: provider.dateOfMoveOut ?? widget.agreement?.moveOut,
                     title: "Move_out_Date",
                     suffixIcon: IconButton(
-                      icon: const Icon(Icons.calendar_month_outlined),
-                      onPressed: () {},
+                      icon: const Icon(Icons.calendar_month_outlined, color: AppColors.colorPrimary,),
+                      onPressed: () {
+                        provider.selectMoveOutDate(context);
+                      },
                     ),
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  const FromField(
-                    hintText: "15235328",
-                    title: "Rent_Amount",
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.colorWhite,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 12),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                'Property_Name',
-                                style: TextStyle(
-                                    letterSpacing: 1,
-                                    color: Colors.black,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w700),
-                              ).tr(),
-                              Text(
-                                '*',
-                                style: TextStyle(
-                                    letterSpacing: 1,
-                                    color: Colors.red,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 8.h,
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18, vertical: 0),
-                            decoration: BoxDecoration(
-                                color: AppColors.colorWhite,
-                                borderRadius: BorderRadius.circular(5),
-                                border:
-                                    Border.all(color: const Color(0xffD6D6D6))),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton<String>(
-                                isExpanded: true,
-                                value: dropdownValue1,
-                                icon: const Icon(Icons.keyboard_arrow_down),
-                                elevation: 16,
-                                style:
-                                    const TextStyle(color: Color(0xff8A8A8A)),
-                                onChanged: (String? newValue) {
-                                  setState(() {
-                                    dropdownValue1 = newValue!;
-                                  });
-                                },
-                                items: <String>[
-                                  'Monthly',
-                                  'Yearly',
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  const FromField(
-                    hintText: "3",
-                    title: "Rent_For",
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
                   FromField(
-                    hintText: "2023/02/15",
+                    hintText: "Enter Rent Amount",
+                    title: "Rent_Amount",
+                    controller: rentAmount,
+                    onChange: (val){
+                      provider.agreementEditModel.rentAmount = val;
+                    },
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  FromField(
+                    hintText: "Enter Advance Amount",
+                    title: "Advance Amount",
+                    controller: advanceAmount,
+                    onChange: (val){
+                      provider.agreementEditModel.advanceAmount = val;
+                    },
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                   FromField(
+                    hintText: "Monthly / Yearly",
+                    title: "Rent Type",
+                    controller: rentType,
+                     onChange: (val){
+                      provider.agreementEditModel.rentType = val;
+                     },
+                  ),
+
+                  // SizedBox(
+                  //   height: 16.h,
+                  // ),
+                  // const FromField(
+                  //   hintText: "3",
+                  //   title: "Rent_For",
+                  // ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  FromField(
+                    hintText: provider.dateOfReminder ?? widget.agreement?.reminderDate,
                     title: "Reminder_Date",
                     suffixIcon: IconButton(
-                      icon: const Icon(Icons.calendar_month_outlined),
-                      onPressed: () {},
+                      icon: const Icon(Icons.calendar_month_outlined, color: AppColors.colorPrimary,),
+                      onPressed: () {
+                        provider.selectReminderDate(context);
+                      },
                     ),
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
-                  const FromField(
-                    hintText: "Note",
+                   FromField(
+                    hintText: "Enter your note",
                     title: "Note",
+                    controller: note,
+                     onChange: (val){
+                      provider.agreementEditModel.note = val;
+                     },
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
                   ElevatedButtonWidget(
                     text: "Save",
-                    onPressed: () {},
+                    onPressed: () {
+                        provider.tenantDetailsEditAgreement(context, widget.tenantId, () {
+                          widget.onSave();
+                        });
+                    },
                   ),
                 ],
               ),

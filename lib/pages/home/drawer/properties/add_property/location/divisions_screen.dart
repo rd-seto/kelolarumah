@@ -16,7 +16,7 @@ class DivisionsScreen extends StatelessWidget {
         return Scaffold(
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(70.h),
-            child: const CustomAppBar(appBarName: 'Division'),
+            child: const CustomAppBar(appBarName: 'State'),
           ),
           body: Padding(
             padding: const EdgeInsets.all(16.0),

@@ -211,7 +211,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                 child: IgnorePointer(
                   child: FromField(
                     controller: provider.countryController,
-                    hintText: "Select_Country",
+                    hintText: "Select Country",
                     title: "Country",
                   ),
                 ),
@@ -226,8 +226,8 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                 child: IgnorePointer(
                   child: FromField(
                     controller: provider.divisionsController,
-                    hintText: "Select_your_division",
-                    title: "Division",
+                    hintText: "Select your State",
+                    title: "State",
                   ),
                 ),
               ),
@@ -241,26 +241,26 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                 child: IgnorePointer(
                   child: FromField(
                     controller: provider.districtController,
-                    hintText: "Select_your_district",
-                    title: "District",
+                    hintText: "Select your City",
+                    title: "City",
                   ),
                 ),
               ),
               SizedBox(
                 height: 16.h,
               ),
-              InkWell(
-                onTap: () {
-                  NavUtil.navigateScreen(context, const CountryScreen());
-                },
-                child: IgnorePointer(
-                  child: FromField(
-                    controller: provider.areaController,
-                    hintText: "Select_your_area",
-                    title: "Area",
-                  ),
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     NavUtil.navigateScreen(context, const CountryScreen());
+              //   },
+              //   child: IgnorePointer(
+              //     child: FromField(
+              //       controller: provider.areaController,
+              //       hintText: "Select_your_area",
+              //       title: "Area",
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 height: 16.h,
               ),

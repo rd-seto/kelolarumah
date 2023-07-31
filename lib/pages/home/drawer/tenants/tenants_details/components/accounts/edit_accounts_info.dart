@@ -36,6 +36,7 @@ class _EditAccountsInfoState extends State<EditAccountsInfo> {
     accountHolderName = TextEditingController(text: widget.accounts?.accountName);
     bankName = TextEditingController(text: widget.accounts?.name);
     branchName = TextEditingController(text: widget.accounts?.branch);
+    super.initState();
   }
 
   @override

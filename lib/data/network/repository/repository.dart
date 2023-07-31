@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:landlord/data/model/TransactionDetailsModel.dart';
 import 'package:landlord/data/model/add_transaction_model.dart';
 import 'package:landlord/data/model/add_property_data_model.dart';
+import 'package:landlord/data/model/agreement_update_model.dart';
 import 'package:landlord/data/model/cashmanagement_list_model.dart';
 import 'package:landlord/data/model/dashboard_model.dart';
 import 'package:landlord/data/model/document_list_model.dart';

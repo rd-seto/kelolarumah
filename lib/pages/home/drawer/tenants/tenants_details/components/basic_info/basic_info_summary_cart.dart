@@ -44,6 +44,7 @@ class BasicInfoSummaryCart extends StatelessWidget {
                       SizedBox(
                         height: 28.h,
                       ),
+
                       SummaryContainerBlack(
                         title: "Join_Date",
                         subTitle: basicInfo?.joinDate ?? "N/A",

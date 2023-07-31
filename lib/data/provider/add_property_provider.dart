@@ -67,16 +67,16 @@ class AddPropertyProvider extends ChangeNotifier {
     districtData = value;
     districtController = TextEditingController(text: districtData?.name);
     getAreaData(context);
-    NavUtil.replaceScreen(context, const AreaScreen());
-    notifyListeners();
-  }
-
-  void setAreas(value, context) {
-    areaData = value;
-    areaController = TextEditingController(text: areaData?.name);
     Navigator.pop(context);
     notifyListeners();
   }
+
+  // void setAreas(value, context) {
+  //   areaData = value;
+  //   areaController = TextEditingController(text: areaData?.name);
+  //   Navigator.pop(context);
+  //   notifyListeners();
+  // }
 
   void getAddPropertyData(BuildContext context) async {
     var apiResponse = await RepositoryImpl(context).getAddPropertiesData();
@@ -141,9 +141,7 @@ class AddPropertyProvider extends ChangeNotifier {
     }else if(districtData?.id == null){
       Fluttertoast.showToast(msg: "Division Can not be Empty");
     }
-    else if(areaData?.id == null){
-      Fluttertoast.showToast(msg: "Area Can not be Empty");
-    }else if(categoryValue?.id == null){
+    else if(categoryValue?.id == null){
       Fluttertoast.showToast(msg: "Select your category Type");
     }else {
       final data = {

@@ -303,6 +303,19 @@ class RepositoryMethods {
   }
 
 
+  Future<bool> tenantDetailsEditAgreement(
+      {required AgreementUpdateModel model, int? tenantId}) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.type,
+        json: model.toJson(),
+        methodType: MethodType.post,
+        returnDataFun: (data) => data != null,
+        showLoader: true,
+        name: "${ApiProvider.editTenant}/$tenantId/agreement");
+  }
+
+
+
     Future<TenantModel?> searchTenantData({required String search}) async {
       return await GenericHttp(context).callApi(
           returnType: ReturnType.model,

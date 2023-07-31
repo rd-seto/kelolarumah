@@ -14,136 +14,146 @@ class TransactionSummaryCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 30.h,
-          ),
-          CustomText(
-            text: 'Transaction_History',
-            color: AppColors.titleTextColor,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-            height: 1.75,
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          ListView.separated(
-            shrinkWrap: true,
-            itemCount: tenantTransaction?.length ?? 0,
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  NavUtil.navigateScreen(
-                      context,
-                      TransactionsDetailsScreen(
-                        transactionId: tenantTransaction?[index].id,
-                      ));
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.colorWhite,
-                    borderRadius: BorderRadius.circular(8.r),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 12.0.w, vertical: 16.h),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 30.h,
+              ),
+              CustomText(
+                text: 'Transaction_History',
+                color: AppColors.titleTextColor,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600,
+                height: 1.75,
+              ),
+              SizedBox(
+                height: 30.h,
+              ),
+              ListView.separated(
+                shrinkWrap: true,
+                itemCount: tenantTransaction?.length ?? 0,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      NavUtil.navigateScreen(
+                          context,
+                          TransactionsDetailsScreen(
+                            transactionId: tenantTransaction?[index].id,
+                          ));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.colorWhite,
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 12.0.w, vertical: 16.h),
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CustomText(
-                              text: tenantTransaction?[index].property ?? 'N/A',
-                              color: AppColors.titleTextColor,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w600,
-                              height: 1.75,
-                            ),
-                            Row(
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Image.asset('assets/dashboard/file_vector.png',
-                                    height: 16.h),
+                                CustomText(
+                                  text: tenantTransaction?[index].property ?? 'N/A',
+                                  color: AppColors.titleTextColor,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600,
+                                  height: 1.75,
+                                ),
+                                Row(
+                                  children: [
+                                    Image.asset('assets/dashboard/file_vector.png',
+                                        height: 16.h),
+                                    SizedBox(
+                                      width: 8.w,
+                                    ),
+                                    CustomText(
+                                      text: tenantTransaction?[index]
+                                              .attachmentCount.toString() ??
+                                          "N/A",
+                                      color: AppColors.black2Sd,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      height: 1.75,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                        'assets/dashboard/propertise_vector.png',
+                                        height: 16.h),
+                                    SizedBox(
+                                      width: 8.w,
+                                    ),
+                                    CustomText(
+                                      text: tenantTransaction?[index].property ??
+                                          'N/A',
+                                      color: AppColors.black2Sd,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      height: 1.75,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                CustomText(
+                                  text:
+                                      tenantTransaction?[index].amount.toString() ??
+                                          "N/A",
+                                  color: const Color(0xff00BF08),
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1.75,
+                                ),
                                 SizedBox(
-                                  width: 8.w,
+                                  height: 6.h,
                                 ),
                                 CustomText(
-                                  text: tenantTransaction?[index]
-                                          .attachmentCount.toString() ??
-                                      "N/A",
+                                  text: tenantTransaction?[index].date.toString() ?? "N/A",
                                   color: AppColors.black2Sd,
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w500,
                                   height: 1.75,
                                 ),
                               ],
-                            ),
-                            Row(
-                              children: [
-                                Image.asset(
-                                    'assets/dashboard/propertise_vector.png',
-                                    height: 16.h),
-                                SizedBox(
-                                  width: 8.w,
-                                ),
-                                CustomText(
-                                  text: tenantTransaction?[index].property ??
-                                      'N/A',
-                                  color: AppColors.black2Sd,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  height: 1.75,
-                                ),
-                              ],
-                            ),
+                            )
                           ],
                         ),
-                        const Spacer(),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            CustomText(
-                              text:
-                                  tenantTransaction?[index].amount.toString() ??
-                                      "N/A",
-                              color: const Color(0xff00BF08),
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                              height: 1.75,
-                            ),
-                            SizedBox(
-                              height: 6.h,
-                            ),
-                            CustomText(
-                              text: tenantTransaction?[index].date.toString() ?? "N/A",
-                              color: AppColors.black2Sd,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w500,
-                              height: 1.75,
-                            ),
-                          ],
-                        )
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return const Divider(
-                thickness: 0,
-                color: Colors.transparent,
-              );
-            },
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return const Divider(
+                    thickness: 0,
+                    color: Colors.transparent,
+                  );
+                },
+              ),
+              SizedBox(
+                height: 30.h,
+              ),
+
+            ],
           ),
-          SizedBox(
-            height: 30.h,
-          ),
-          Row(
+        ),
+
+        Positioned(
+          bottom: 0,
+          right: 0,
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               InkWell(
@@ -158,8 +168,8 @@ class TransactionSummaryCart extends StatelessWidget {
               ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -83,11 +83,11 @@ class Agreement {
   String? property;
   String? moveIn;
   String? moveOut;
-  int? rentAmount;
+  String? rentAmount;
   String? rentType;
   dynamic reminderDate;
   dynamic note;
-  int? advanceAmount;
+  String? advanceAmount;
   int? status;
   dynamic rentFor;
 

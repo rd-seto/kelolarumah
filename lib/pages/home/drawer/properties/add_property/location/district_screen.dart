@@ -16,7 +16,7 @@ class DistrictScreen extends StatelessWidget {
         return Scaffold(
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(70.h),
-            child: const CustomAppBar(appBarName: 'District'),
+            child: const CustomAppBar(appBarName: 'City'),
           ),
           body: Padding(
             padding: const EdgeInsets.all(16.0),

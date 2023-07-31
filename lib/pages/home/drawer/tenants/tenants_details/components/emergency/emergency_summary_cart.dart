@@ -131,65 +131,65 @@ class EmergencySummaryCart extends StatelessWidget {
                           ],
                         ),
                       ),
-                      PopupMenuButton<int>(
-                        icon: const Icon(
-                          Icons.more_vert,
-                          color: AppColors.colorPrimary,
-                        ),
-                        itemBuilder: (context) => [
-                          PopupMenuItem(
-                            value: 1,
-                            child: InkWell(
-                              onTap: () {
-                                NavUtil.navigateScreen(
-                                    context, const EditEmergerncyScreen());
-                              },
-                              child: Column(
-                                children: [
-                                  Row(children: [
-                                    Image.asset(
-                                      'assets/dashboard/edit_vector.png',
-                                      height: 20.h,
-                                    ),
-                                    SizedBox(
-                                      width: 10.w,
-                                    ),
-                                    Text(
-                                      'Edit',
-                                      style: TextStyle(color: Colors.grey[600]),
-                                    )
-                                  ]),
-                                ],
-                              ),
-                            ),
-                          ),
-                          PopupMenuItem(
-                            value: 2,
-                            child: InkWell(
-                              onTap: () {},
-                              child: Column(
-                                children: [
-                                  Row(children: [
-                                    Image.asset(
-                                      'assets/dashboard/delete_vector.png',
-                                      height: 20.h,
-                                    ),
-                                    SizedBox(
-                                      width: 10.w,
-                                    ),
-                                    Text(
-                                      'Delete',
-                                      style: TextStyle(color: Colors.grey[600]),
-                                    )
-                                  ]),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                        color: Colors.white,
-                        elevation: 2,
-                      ),
+                      // PopupMenuButton<int>(
+                      //   icon: const Icon(
+                      //     Icons.more_vert,
+                      //     color: AppColors.colorPrimary,
+                      //   ),
+                      //   itemBuilder: (context) => [
+                      //     PopupMenuItem(
+                      //       value: 1,
+                      //       child: InkWell(
+                      //         onTap: () {
+                      //           NavUtil.navigateScreen(
+                      //               context, const EditEmergerncyScreen());
+                      //         },
+                      //         child: Column(
+                      //           children: [
+                      //             Row(children: [
+                      //               Image.asset(
+                      //                 'assets/dashboard/edit_vector.png',
+                      //                 height: 20.h,
+                      //               ),
+                      //               SizedBox(
+                      //                 width: 10.w,
+                      //               ),
+                      //               Text(
+                      //                 'Edit',
+                      //                 style: TextStyle(color: Colors.grey[600]),
+                      //               )
+                      //             ]),
+                      //           ],
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     PopupMenuItem(
+                      //       value: 2,
+                      //       child: InkWell(
+                      //         onTap: () {},
+                      //         child: Column(
+                      //           children: [
+                      //             Row(children: [
+                      //               Image.asset(
+                      //                 'assets/dashboard/delete_vector.png',
+                      //                 height: 20.h,
+                      //               ),
+                      //               SizedBox(
+                      //                 width: 10.w,
+                      //               ),
+                      //               Text(
+                      //                 'Delete',
+                      //                 style: TextStyle(color: Colors.grey[600]),
+                      //               )
+                      //             ]),
+                      //           ],
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      //   color: Colors.white,
+                      //   elevation: 2,
+                      // ),
                     ],
                   ),
                 ),

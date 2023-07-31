@@ -18,53 +18,63 @@ class AccountsSummaryCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 30.h,
-          ),
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 30.h,
+              ),
 
-       Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.colorWhite,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 18.0.w,
+           Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.colorWhite,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 18.0.w,
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 28.h,
+                            ),
+                            SummaryContainerBlack(
+                              title: "Account_No",
+                              subTitle: accounts?.accountNumber ?? "N/A",
+                            ),
+                            SummaryContainerWhite(
+                              title: "Account_Holder_Name",
+                              subTitle: accounts?.accountName ?? "N/A",
+                            ),
+                            SummaryContainerBlack(
+                              title: "Bank_Name",
+                              subTitle: accounts?.name ?? "N/A",
+                            ),
+                            SummaryContainerWhite(
+                              title: "Branch_Name",
+                              subTitle: accounts?.branch ?? "N/A",
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 28.h,
-                        ),
-                        SummaryContainerBlack(
-                          title: "Account_No",
-                          subTitle: accounts?.accountNumber ?? "N/A",
-                        ),
-                        SummaryContainerWhite(
-                          title: "Account_Holder_Name",
-                          subTitle: accounts?.accountName ?? "N/A",
-                        ),
-                        SummaryContainerBlack(
-                          title: "Bank_Name",
-                          subTitle: accounts?.name ?? "N/A",
-                        ),
-                        SummaryContainerWhite(
-                          title: "Branch_Name",
-                          subTitle: accounts?.branch ?? "N/A",
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
 
-          SizedBox(
-            height: 30.h,
+              SizedBox(
+                height: 30.h,
+              ),
+
+            ],
           ),
-          Row(
+        ),
+
+        Positioned(
+          bottom: 0,
+          right: 0,
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               InkWell(
@@ -85,8 +95,8 @@ class AccountsSummaryCart extends StatelessWidget {
               ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
