@@ -313,16 +313,26 @@ class RepositoryMethods {
           name: '${ApiProvider.tenant}?search=$search');
     }
 
-    Future updateProfile(data) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.post,
-          json: data,
-          toJsonFunc: (json) => json,
-          returnDataFun: (data) => data,
-          showLoader: true,
-          name: ApiProvider.profileUpdate);
-    }
+    // Future updateProfile(data) async {
+    //   return await GenericHttp(context).callApi(
+    //       returnType: ReturnType.model,
+    //       methodType: MethodType.post,
+    //       json: data,
+    //       toJsonFunc: (json) => json,
+    //       returnDataFun: (data) => data,
+    //       showLoader: true,
+    //       name: ApiProvider.profileUpdate);
+    // }
+  Future<bool> updateProfile(
+      {required ProfileBasicInfoUpdateModel model}) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.type,
+        json: model.toJson(),
+        methodType: MethodType.post,
+        returnDataFun: (data) => data != null,
+        showLoader: true,
+        name: ApiProvider.profileUpdate);
+  }
 
   Future postPasswordUpdate(data) async {
     return await GenericHttp(context).callApi(

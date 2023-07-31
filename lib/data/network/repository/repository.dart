@@ -7,6 +7,7 @@ import 'package:landlord/data/model/dashboard_model.dart';
 import 'package:landlord/data/model/document_list_model.dart';
 import 'package:landlord/data/model/location_model.dart';
 import 'package:landlord/data/model/profile_details_model.dart';
+import 'package:landlord/data/model/profile_update_model.dart';
 import 'package:landlord/data/model/property_details_model.dart';
 import 'package:landlord/data/model/notification_model.dart';
 import 'package:landlord/data/model/property_list_model.dart';

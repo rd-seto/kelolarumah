@@ -8,14 +8,22 @@ import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/components/elevated_button_widget.dart';
 import 'package:landlord/components/text_form_field.dart';
 import 'package:landlord/data/model/update_profile_model.dart';
+import 'package:landlord/pages/home/drawer/profile_settings/edit_profile/profile_edit_basic_info.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../data/local/local_auth_provider.dart';
+import '../../../../../data/model/profile_details_model.dart';
+import '../../../../../data/provider/profile_details_provider.dart';
 import '../../../../../data/provider/update_profile_provider.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key});
+
+  ProfileInfo? profileData;
+  final ProfileDetailsProvider? provider;
+
+
+   EditProfileScreen({super.key, this.profileData,  this.provider});
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -23,6 +31,8 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen>
     with SingleTickerProviderStateMixin {
+
+
   TabController? _tabController;
 
   @override
@@ -132,7 +142,12 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                     physics: const NeverScrollableScrollPhysics(),
                     // ignore: sort_child_properties_last
                     children: [
-                      const ProfileEditBasicInfo(),
+                       ProfileEditBasicInfo(
+                        profileData: widget.profileData,
+                         onSave: (){
+                          widget.provider?.profileDetailsData(context);
+                         },
+                      ),
                       SingleChildScrollView(
                         child: Column(
                           children: [
@@ -203,112 +218,4 @@ class _EditProfileScreenState extends State<EditProfileScreen>
   }
 }
 
-class ProfileEditBasicInfo extends StatelessWidget {
-  const ProfileEditBasicInfo({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    UpdateProfile user = UpdateProfile();
-
-    final userModel = Provider.of<LocalAutProvider>(context).getUser();
-    final provider =  Provider.of<UpdateProfileProvider>(context);
-
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 20.h,
-          ),
-          FromField(
-            hintText: "name",
-            controller: provider.userNameController,
-            // onChange: (name) {
-            //   user.name = name;
-            // },
-            title: "name",
-          ),
-          SizedBox(
-            height: 16.h,
-          ),
-          FromField(
-            title: "Email",
-            controller: provider.userEmailController,
-            // onChange: (email) {
-            //   user.email = email;
-            // },
-            hintText: "enter your email",
-          ),
-          SizedBox(
-            height: 16.h,
-          ),
-
-          FromField(
-            title: "Phone_Number",
-            controller: provider.userPhoneController,
-            // onChange: (phone) {
-            //   user.phone = phone;
-            // },
-            hintText: "01XXXXXXXXXX",
-          ),
-
-          SizedBox(
-            height: 16.h,
-          ),
-          FromField(
-            title: "Occupation",
-            controller: provider.userOccupationController,
-            // onChange: (email) {
-            //   user.email = email;
-            // },
-            hintText: "enter your Occupation",
-          ),
-          SizedBox(
-            height: 16.h,
-          ),
-          FromField(
-            title: "Institution",
-            controller: provider.userInstituteController,
-            // onChange: (email) {
-            //   user.email = email;
-            // },
-            hintText: "enter your Institution name",
-          ),
-          SizedBox(
-            height: 16.h,
-          ),
-          FromField(
-            title: "NID",
-            controller: provider.userNidController,
-            // onChange: (email) {
-            //   user.email = email;
-            // },
-            hintText: "enter your Occupation",
-          ),
-          SizedBox(
-            height: 16.h,
-          ),
-          FromField(
-            title: "Gender",
-            controller: provider.userGenderController,
-            // onChange: (email) {
-            //   user.email = email;
-            // },
-            hintText: "",
-          ),
-          SizedBox(
-            height: 16.h,
-          ),
-
-          ElevatedButtonWidget(
-            text: "Save",
-            onPressed: () {
-             provider.postProfileData(context);
-            },
-          )
-        ],
-      ),
-    );
-  }
-}

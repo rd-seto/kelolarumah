@@ -59,14 +59,14 @@ class ProfileSettingsScreen extends StatelessWidget {
                                 height: 80.h,
                               ),
                               CustomText(
-                                text: user?.name ?? '',
+                                text: provider.profileDetails?.data?.profileInfo?.name ?? '',
                                 color: AppColors.titleTextColor,
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w700,
                                 height: 1.75,
                               ),
                               CustomText(
-                                text: user?.email ?? '',
+                                text: provider.profileDetails?.data?.profileInfo?.email ?? '',
                                 color: AppColors.black2Sd,
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w400,
@@ -93,8 +93,8 @@ class ProfileSettingsScreen extends StatelessWidget {
                                   height: 28.h,
                                 ),
                                  SummaryContainerBlack(
-                                  title: "Join Date",
-                                  subTitle: provider.profileDetails?.data?.profileInfo?.joinDate ?? "N/A",
+                                  title: "Phone",
+                                  subTitle: provider.profileDetails?.data?.profileInfo?.phone ?? "N/A",
                                 ),
                                  SummaryContainerWhite(
                                   title: "Occupation",
@@ -116,6 +116,10 @@ class ProfileSettingsScreen extends StatelessWidget {
                                   title: "Passport_No",
                                   subTitle: provider.profileDetails?.data?.profileInfo?.passport ?? "N/A",
                                 ),
+                                SummaryContainerWhite(
+                                  title: "Gender",
+                                  subTitle: provider.profileDetails?.data?.profileInfo?.gender ?? "N/A",
+                                ),
                               ],
                             ),
                           ),
@@ -129,7 +133,10 @@ class ProfileSettingsScreen extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 NavUtil.navigateScreen(
-                                    context, const EditProfileScreen());
+                                    context,  EditProfileScreen(
+                                    profileData: provider.profileDetails?.data?.profileInfo,
+                                    provider: provider,
+                                ));
                               },
                               child: Image.asset(
                                 'assets/dashboard/edit_float_img.png',
