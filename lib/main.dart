@@ -13,6 +13,7 @@ import 'package:landlord/data/provider/cash_management_provider.dart';
 import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/data/provider/document_provider.dart';
 import 'package:landlord/data/provider/notification_provider.dart';
+import 'package:landlord/data/provider/profile_details_provider.dart';
 import 'package:landlord/data/provider/property_provider.dart';
 import 'package:landlord/data/provider/tenant_edit_provider.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
@@ -76,6 +77,8 @@ class MyApp extends StatelessWidget {
             create: (context) => AddPropertyProvider(context)),
         ChangeNotifierProvider<TenantProvider>(
             create: (context) => TenantProvider(context)),
+        ChangeNotifierProvider<ProfileDetailsProvider>(
+            create: (context) => ProfileDetailsProvider(context)),
         ChangeNotifierProvider<TenantEditProvider>(
             create: (context) => TenantEditProvider()),
         ChangeNotifierProvider<DocumentProvider>(

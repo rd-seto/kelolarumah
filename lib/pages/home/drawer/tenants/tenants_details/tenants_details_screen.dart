@@ -135,6 +135,9 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                             AgreementsSummaryCart(
                               agreement: provider
                                   .tenantsDetailsResponse?.data?.agreement,
+                              tenantId: widget.tenantsId,
+                              provider: provider,
+
                             )
                           ],
                         ),

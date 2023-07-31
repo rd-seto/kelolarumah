@@ -404,4 +404,19 @@ class RepositoryMethods {
         name: "${ApiProvider.tenantUpdate}$tenantId/emergency");
   }
 
+
+    ///profile details
+  /// Tenants Details API
+  Future<ProfileDetailsModel?> getProfileDetails() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => ProfileDetailsModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.profileDetails);
+  }
+
+
+
   }

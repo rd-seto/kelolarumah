@@ -117,4 +117,8 @@ class RepositoryImpl {
   //     _repositoryMethods.updatePassword(json: json);
 
   Future postPasswordUpdate(data) => _repositoryMethods.postPasswordUpdate(data);
+
+  Future<ProfileDetailsModel?> getProfileDetails() =>
+      _repositoryMethods.getProfileDetails();
+
 }

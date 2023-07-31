@@ -36,6 +36,7 @@ class ApiProvider{
   static String tenantDetails = '$baseUrl/tenant';
   static String documentList = '$baseUrl/documents';
   static String tenantUpdate = '$baseUrl/tenant/update/';
+  static String profileDetails = "$baseUrl/user";
 
 
 }
