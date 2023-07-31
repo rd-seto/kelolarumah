@@ -4,13 +4,43 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/elevated_button_widget.dart';
 import 'package:landlord/components/text_form_field.dart';
+import 'package:landlord/data/model/tenants_details_model.dart';
+import 'package:landlord/data/provider/tenant_edit_provider.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
+import 'package:provider/provider.dart';
 
-class EditAccountsInfo extends StatelessWidget {
-  const EditAccountsInfo({super.key});
+class EditAccountsInfo extends StatefulWidget {
+
+  final Account? accounts;
+  final int tenantId;
+  final VoidCallback onSave;
+
+
+  const EditAccountsInfo({super.key, this.accounts, required this.tenantId, required this.onSave});
+
+  @override
+  State<EditAccountsInfo> createState() => _EditAccountsInfoState();
+}
+
+class _EditAccountsInfoState extends State<EditAccountsInfo> {
+
+  late TextEditingController accountNumber;
+  late TextEditingController accountHolderName;
+  late TextEditingController bankName;
+  late TextEditingController branchName;
+
+  @override
+
+  void initState(){
+    accountNumber = TextEditingController(text: widget.accounts?.accountNumber);
+    accountHolderName = TextEditingController(text: widget.accounts?.accountName);
+    bankName = TextEditingController(text: widget.accounts?.name);
+    branchName = TextEditingController(text: widget.accounts?.branch);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<TenantEditProvider>(context);
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: PreferredSize(
@@ -39,30 +69,46 @@ class EditAccountsInfo extends StatelessWidget {
                   SizedBox(
                     height: 12.h,
                   ),
-                  const FromField(
-                    hintText: "15235328",
+                   FromField(
+                    controller: accountNumber,
+                    hintText: "Enter account number",
                     title: "Account_No",
+                    onChange: (val){
+                      provider.tenantAccountEditBodyModel.accountNumber = val;
+                    },
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
-                  const FromField(
-                    hintText: "Jenny Wilson",
+                   FromField(
+                    controller: accountHolderName,
+                    hintText: "Enter Account holder name",
                     title: "Account_Holder_Name",
+                     onChange: (val){
+                       provider.tenantAccountEditBodyModel.accountName = val;
+                     },
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
-                  const FromField(
-                    hintText: "HSBC",
+                   FromField(
+                    controller: bankName,
+                    hintText: "Enter Bank Name",
                     title: "Bank_Name",
+                     onChange: (val){
+                      provider.tenantAccountEditBodyModel.name =val;
+                     },
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
-                  const FromField(
-                    hintText: "Banani ",
+                   FromField(
+                    hintText: "Enter branch name",
                     title: "Branch_Name",
+                     controller: branchName,
+                     onChange: (val){
+                      provider.tenantAccountEditBodyModel.branch = val;
+                     },
                   ),
                   SizedBox(
                     height: 16.h,
@@ -75,7 +121,11 @@ class EditAccountsInfo extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0)),
                             backgroundColor: AppColors.colorPrimary),
-                        onPressed: () {},
+                        onPressed: () {
+                          provider.tenantDetailsEditAccount(context, widget.tenantId , () {
+                            widget.onSave();
+                          });
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

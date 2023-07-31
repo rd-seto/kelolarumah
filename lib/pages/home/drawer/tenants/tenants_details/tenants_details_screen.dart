@@ -14,9 +14,9 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class TenantsDetailsScreen extends StatefulWidget {
-  final int? tenantsId;
+  final int tenantsId;
 
-  const TenantsDetailsScreen({super.key, this.tenantsId});
+  const TenantsDetailsScreen({super.key, required this.tenantsId});
 
   @override
   State<TenantsDetailsScreen> createState() => _TenantsDetailsScreenState();
@@ -125,6 +125,8 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                             AccountsSummaryCart(
                               accounts: provider
                                   .tenantsDetailsResponse?.data?.accounts,
+                              tenantId: widget.tenantsId,
+                                provider : provider
                             ),
                             TransactionSummaryCart(
                               tenantTransaction: provider.tenantsDetailsResponse

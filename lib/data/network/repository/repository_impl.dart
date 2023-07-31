@@ -76,6 +76,8 @@ class RepositoryImpl {
   Future<bool> tenantsEditBasicInfo({required TenantEditBodyModel model,int? tenantId}) =>
       _repositoryMethods.tenantsEditBasicInfo(model: model,tenantId: tenantId);
 
+  Future<bool> tenantDetailsEditAccount({required TenantAccountEditBodyModel model, int? tenantId}) => _repositoryMethods.tenantDetailsEditAccount(model: model, tenantId: tenantId);
+
 
   Future updateProfile(data) =>
       _repositoryMethods.updateProfile(data);

@@ -28,7 +28,7 @@ class Data {
   BasicInfo? basicInfo;
   List<dynamic>? document;
   List<EmergencyContact>? emergencyContact;
-  List<Account>? accounts;
+  Account? accounts;
   List<TenantTransaction>? tenantTransaction;
   Agreement? agreement;
   String? messages;
@@ -47,7 +47,7 @@ class Data {
     basicInfo: json["basicInfo"] == null ? null : BasicInfo.fromJson(json["basicInfo"]),
     document: json["document"] == null ? [] : List<dynamic>.from(json["document"]!.map((x) => x)),
     emergencyContact: json["emergencyContact"] == null ? [] : List<EmergencyContact>.from(json["emergencyContact"]!.map((x) => EmergencyContact.fromJson(x))),
-    accounts: json["accounts"] == null ? [] : List<Account>.from(json["accounts"]!.map((x) => Account.fromJson(x))),
+    accounts: json["accounts"] == null ? null : Account.fromJson(json["accounts"]),
     tenantTransaction: json["tenantTransaction"] == null ? [] : List<TenantTransaction>.from(json["tenantTransaction"]!.map((x) => TenantTransaction.fromJson(x))),
     agreement: json["agreement"] == null ? null : Agreement.fromJson(json["agreement"]),
     messages: json["messages"],

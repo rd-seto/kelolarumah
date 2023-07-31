@@ -35,7 +35,6 @@ class ApiProvider{
   static String notification = '$baseUrl/notifications';
   static String tenantDetails = '$baseUrl/tenant';
   static String documentList = '$baseUrl/documents';
-
   static String tenantUpdate = '$baseUrl/tenant/update/';
 
 

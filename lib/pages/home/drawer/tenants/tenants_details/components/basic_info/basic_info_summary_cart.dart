@@ -26,16 +26,7 @@ class BasicInfoSummaryCart extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 30.h,
-              ),
-              CustomText(
-                text: 'Basic_Information',
-                color: AppColors.titleTextColor,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w600,
-                height: 1.75,
-              ),
+
               SizedBox(
                 height: 30.h,
               ),

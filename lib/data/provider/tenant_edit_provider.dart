@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:landlord/data/model/tenant_account_edit_body_model.dart';
 import 'package:landlord/data/model/tenant_edit_body_model.dart';
 import 'package:landlord/data/model/tenant_model.dart';
 import 'package:landlord/data/model/tenants_details_model.dart';
@@ -12,6 +14,10 @@ class TenantEditProvider extends ChangeNotifier {
   TenantEditBodyModel tenantEditBodyModel = TenantEditBodyModel();
   TenantsDetailsModel? tenantsDetailsResponse;
   TenantModel? tenantModel;
+
+
+  TenantAccountEditBodyModel tenantAccountEditBodyModel = TenantAccountEditBodyModel();
+
 
   ///date picker
   String? dateOfJoining;
@@ -46,6 +52,7 @@ class TenantEditProvider extends ChangeNotifier {
         .tenantsEditBasicInfo(model: tenantEditBodyModel, tenantId: tenantId)
         .then((success) {
       if (success) {
+        Fluttertoast.showToast(msg: "Successfully updated");
         Provider.of<TenantProvider>(context, listen: false).tenantData(context);
          onDone();
         debounce.run(() {
@@ -53,5 +60,21 @@ class TenantEditProvider extends ChangeNotifier {
         });
       }
     });
+  }
+
+
+
+  void tenantDetailsEditAccount (BuildContext context,  int tenantId, VoidCallback onDone) async {
+
+    RepositoryImpl(context).tenantDetailsEditAccount(model: tenantAccountEditBodyModel, tenantId: tenantId).then((success){
+      if (success) {
+        Fluttertoast.showToast(msg: "Successfully updated");
+        onDone();
+        debounce.run((){
+          Navigator.pop(context);
+        });
+      }
+    });
+
   }
 }

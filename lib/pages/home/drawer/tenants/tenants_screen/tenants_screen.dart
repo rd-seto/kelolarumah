@@ -138,7 +138,7 @@ class _TenantsScreenState extends State<TenantsScreen> {
                               return Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8.0.h),
                                 child: TenantRowItem(
-                                  tenant: tenant,
+                                  tenant: tenant!,
                                 ),
                               );
                             },
