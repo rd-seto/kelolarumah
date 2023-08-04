@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/property_details_model.dart';
+import 'package:landlord/data/provider/property_details_provider.dart';
 import 'package:landlord/pages/home/drawer/properties/properties_details/components/floor_plan/add_floor_plan/add_floor_plan.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
 class FloorPlanCart extends StatelessWidget {
+  final PropertyDetailsProvider? provider;
+  final List<FloorPlan>? propertyFlorPlans;
+  final int? pId;
   const FloorPlanCart({
     super.key,
+    this.pId,
+    this.provider,
     this.propertyFlorPlans,
   });
-  final List<FloorPlan>? propertyFlorPlans;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -71,7 +76,14 @@ class FloorPlanCart extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              NavUtil.navigateScreen(context, const AddFloorPlanScreen());
+              NavUtil.navigateScreen(
+                  context,
+                  AddFloorPlanScreen(
+                    propertyId: pId,
+                    onSave: () {
+                      provider?.propertyDetails(context, pId);
+                    },
+                  ));
             },
             child: Padding(
               padding: const EdgeInsets.only(right: 10.0),

@@ -1,7 +1,4 @@
-
-
-class ApiProvider{
-
+class ApiProvider {
   static const String baseUrl = 'https://landlord.onestweb.com/api';
 
   static String login = '$baseUrl/login';
@@ -13,6 +10,7 @@ class ApiProvider{
   static String searchTenant = '$baseUrl/tenant';
   static String createTenant = '$baseUrl/tenant/store';
   static String editTenant = '$baseUrl/tenant/update';
+  static String editpropertyBasic = '$baseUrl/property/update';
   static String propertiesTenant = '$baseUrl/tenant/create';
   static String propertyList = '$baseUrl/property/list';
   static String addPropertyData = '$baseUrl/property/create';
@@ -21,10 +19,12 @@ class ApiProvider{
   static String getDistrictsData = '$baseUrl/districts';
   static String getAreaData = '$baseUrl/area';
   static String createPropertyData = '$baseUrl/property/store';
+  static String postImage = '$baseUrl/property/gallery-floorplan/store';
   static String createTransactionData = '$baseUrl/transaction/store';
   static String propertyDetails = '$baseUrl/property';
   static String getReportPropertyListData = '$baseUrl/reports/properties';
-  static String getReportTenantListData = '$baseUrl/reports/property-wise-tenants';
+  static String getReportTenantListData =
+      '$baseUrl/reports/property-wise-tenants';
   static String getReportDetails = '$baseUrl/reports/search';
   static String profileUpdate = '$baseUrl/profile-update';
   static String passwordUpdate = '$baseUrl/change-password';
@@ -37,6 +37,4 @@ class ApiProvider{
   static String documentList = '$baseUrl/documents';
   static String tenantUpdate = '$baseUrl/tenant/update/';
   static String profileDetails = "$baseUrl/user";
-
-
 }

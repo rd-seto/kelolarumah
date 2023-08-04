@@ -127,6 +127,17 @@ class RepositoryMethods {
         name: ApiProvider.createPropertyData);
   }
 
+  Future postImage(data) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.postImage);
+  }
+
   /// Get report property list data
   Future<ReportPropertyModel?> getReportProperty() async {
     return await GenericHttp(context).callApi(
@@ -138,7 +149,7 @@ class RepositoryMethods {
         name: ApiProvider.getReportPropertyListData);
   }
 
- /// Get report Details data
+  /// Get report Details data
   Future<ReportDetailsModel?> reportDetails(data) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
@@ -149,8 +160,6 @@ class RepositoryMethods {
         showLoader: true,
         name: ApiProvider.getReportDetails);
   }
-
-
 
   /// Get report tenant list data
   Future<ReportTenantModel?> getReportTenant(propertyId) async {
@@ -163,48 +172,48 @@ class RepositoryMethods {
         name: "${ApiProvider.getReportTenantListData}/$propertyId");
   }
 
-    /// Get Area data from add transaction
-    Future<bool> createTransaction(data) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.post,
-          json: data,
-          toJsonFunc: (json) => json,
-          returnDataFun: (data) => data != null,
-          showLoader: true,
-          name: ApiProvider.createTransactionData);
-    }
+  /// Get Area data from add transaction
+  Future<bool> createTransaction(data) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data != null,
+        showLoader: true,
+        name: ApiProvider.createTransactionData);
+  }
 
-    /// Tenants Details API
-    Future<TenantsDetailsModel?> getTenantsDetails(tenantId) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.get,
-          toJsonFunc: (json) => TenantsDetailsModel.fromJson(json),
-          returnDataFun: (data) => data,
-          showLoader: true,
-          name: "${ApiProvider.tenantDetails}/$tenantId/details-list");
-    }
+  /// Tenants Details API
+  Future<TenantsDetailsModel?> getTenantsDetails(tenantId) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantsDetailsModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: "${ApiProvider.tenantDetails}/$tenantId/details-list");
+  }
 
-    Future<NotificationModel?> getNotification() async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.get,
-          toJsonFunc: (json) => NotificationModel.fromJson(json),
-          returnDataFun: (data) => data,
-          showLoader: true,
-          name: ApiProvider.notification);
-    }
+  Future<NotificationModel?> getNotification() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => NotificationModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.notification);
+  }
 
-    Future<PropertyDetailsModel?> getPropertyDetails(id) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.get,
-          toJsonFunc: (json) => PropertyDetailsModel.fromJson(json),
-          returnDataFun: (data) => data,
-          showLoader: true,
-          name: "${ApiProvider.propertyDetails}/$id/details-list");
-    }
+  Future<PropertyDetailsModel?> getPropertyDetails(id) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => PropertyDetailsModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: "${ApiProvider.propertyDetails}/$id/details-list");
+  }
 
   Future<DocumentListModel?> getDocumentListData() async {
     return await GenericHttp(context).callApi(
@@ -226,70 +235,80 @@ class RepositoryMethods {
         name: "${ApiProvider.transactionDetails}/$id");
   }
 
-    Future forgetPass({required data}) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.post,
-          json: data,
-          showLoader: true,
-          toJsonFunc: (json) => json,
-          returnDataFun: (data) => data,
-          name: ApiProvider.forgetPassword);
-    }
+  Future forgetPass({required data}) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        showLoader: true,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        name: ApiProvider.forgetPassword);
+  }
 
-    Future resetPass({required data}) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.post,
-          json: data,
-          showLoader: true,
-          toJsonFunc: (json) => json,
-          returnDataFun: (data) => data,
-          name: ApiProvider.resetPassword);
-    }
+  Future resetPass({required data}) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        showLoader: true,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        name: ApiProvider.resetPassword);
+  }
 
-    /// Tenants List API
-    Future<TenantModel?> getTenantData() async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.get,
-          toJsonFunc: (json) => TenantModel.fromJson(json),
-          returnDataFun: (data) => data,
-          showLoader: true,
-          name: ApiProvider.searchTenant);
-    }
+  /// Tenants List API
+  Future<TenantModel?> getTenantData() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.searchTenant);
+  }
 
-    Future<List<TenantProperty>> getTenantPropertiesData() async {
-      return await GenericHttp<TenantProperty>(context).callApi(
-          returnType: ReturnType.list,
-          methodType: MethodType.get,
-          toJsonFunc: (json) => TenantProperty.fromJson(json),
-          returnDataFun: (data) => data['data']['properties'],
-          showLoader: true,
-          name: ApiProvider.propertiesTenant) as List<TenantProperty>;
-    }
+  Future<List<TenantProperty>> getTenantPropertiesData() async {
+    return await GenericHttp<TenantProperty>(context).callApi(
+        returnType: ReturnType.list,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantProperty.fromJson(json),
+        returnDataFun: (data) => data['data']['properties'],
+        showLoader: true,
+        name: ApiProvider.propertiesTenant) as List<TenantProperty>;
+  }
 
-    Future<bool> addTenantData({required TenantBodyModel model}) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.type,
-          json: model.toJson(),
-          methodType: MethodType.post,
-          returnDataFun: (data) => data != null,
-          showLoader: true,
-          name: ApiProvider.createTenant);
-    }
+  Future<bool> addTenantData({required TenantBodyModel model}) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.type,
+        json: model.toJson(),
+        methodType: MethodType.post,
+        returnDataFun: (data) => data != null,
+        showLoader: true,
+        name: ApiProvider.createTenant);
+  }
 
-    Future<bool> tenantsEditBasicInfo(
-        {required TenantEditBodyModel model, int? tenantId}) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.type,
-          json: model.toJson(),
-          methodType: MethodType.post,
-          returnDataFun: (data) => data != null,
-          showLoader: true,
-          name: "${ApiProvider.editTenant}/$tenantId/basicinfo");
-    }
+  Future<bool> tenantsEditBasicInfo(
+      {required TenantEditBodyModel model, int? tenantId}) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.type,
+        json: model.toJson(),
+        methodType: MethodType.post,
+        returnDataFun: (data) => data != null,
+        showLoader: true,
+        name: "${ApiProvider.editTenant}/$tenantId/basicinfo");
+  }
 
+  Future<bool> propertyEditBasicInfo(
+      {required PropertyBasicInfoModel model, int? propertyId}) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.type,
+        json: model.toJson(),
+        methodType: MethodType.post,
+        returnDataFun: (data) => data != null,
+        showLoader: true,
+        name: "${ApiProvider.editpropertyBasic}/$propertyId/basicinfo");
+  }
 
   Future<bool> tenantDetailsEditAccount(
       {required TenantAccountEditBodyModel model, int? tenantId}) async {
@@ -302,7 +321,6 @@ class RepositoryMethods {
         name: "${ApiProvider.editTenant}/$tenantId/accounts");
   }
 
-
   Future<bool> tenantDetailsEditAgreement(
       {required AgreementUpdateModel model, int? tenantId}) async {
     return await GenericHttp(context).callApi(
@@ -314,28 +332,26 @@ class RepositoryMethods {
         name: "${ApiProvider.editTenant}/$tenantId/agreement");
   }
 
+  Future<TenantModel?> searchTenantData({required String search}) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: '${ApiProvider.tenant}?search=$search');
+  }
 
-
-    Future<TenantModel?> searchTenantData({required String search}) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.get,
-          toJsonFunc: (json) => TenantModel.fromJson(json),
-          returnDataFun: (data) => data,
-          showLoader: true,
-          name: '${ApiProvider.tenant}?search=$search');
-    }
-
-    // Future updateProfile(data) async {
-    //   return await GenericHttp(context).callApi(
-    //       returnType: ReturnType.model,
-    //       methodType: MethodType.post,
-    //       json: data,
-    //       toJsonFunc: (json) => json,
-    //       returnDataFun: (data) => data,
-    //       showLoader: true,
-    //       name: ApiProvider.profileUpdate);
-    // }
+  // Future updateProfile(data) async {
+  //   return await GenericHttp(context).callApi(
+  //       returnType: ReturnType.model,
+  //       methodType: MethodType.post,
+  //       json: data,
+  //       toJsonFunc: (json) => json,
+  //       returnDataFun: (data) => data,
+  //       showLoader: true,
+  //       name: ApiProvider.profileUpdate);
+  // }
   Future<bool> updateProfile(
       {required ProfileBasicInfoUpdateModel model}) async {
     return await GenericHttp(context).callApi(
@@ -358,62 +374,61 @@ class RepositoryMethods {
         name: ApiProvider.passwordUpdate);
   }
 
-    // Future<UpdatePassword?> updatePassword(
-    //     {required Map<String, dynamic> json}) async {
-    //   return await GenericHttp(context).callApi(
-    //       returnType: ReturnType.type,
-    //       methodType: MethodType.post,
-    //       json: json,
-    //       toJsonFunc: (json) => UserModel.fromJson(json),
-    //       returnDataFun: (data) => data,
-    //       name: ApiProvider.passwordUpdate);
-    // }
+  // Future<UpdatePassword?> updatePassword(
+  //     {required Map<String, dynamic> json}) async {
+  //   return await GenericHttp(context).callApi(
+  //       returnType: ReturnType.type,
+  //       methodType: MethodType.post,
+  //       json: json,
+  //       toJsonFunc: (json) => UserModel.fromJson(json),
+  //       returnDataFun: (data) => data,
+  //       name: ApiProvider.passwordUpdate);
+  // }
 
-    ///transactionList
-    Future<TransactionListModel?> getTransactionListData() async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.get,
-          toJsonFunc: (json) => TransactionListModel.fromJson(json),
-          returnDataFun: (data) => data,
-          showLoader: true,
-          name: ApiProvider.transactionList);
-    }
+  ///transactionList
+  Future<TransactionListModel?> getTransactionListData() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TransactionListModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.transactionList);
+  }
 
-    ///Add transaction get
-    Future<AddTransactionModel?> getAddTransactionData() async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.get,
-          toJsonFunc: (json) => AddTransactionModel.fromJson(json),
-          returnDataFun: (data) => data,
-          showLoader: true,
-          name: ApiProvider.addTransaction);
-    }
+  ///Add transaction get
+  Future<AddTransactionModel?> getAddTransactionData() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => AddTransactionModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.addTransaction);
+  }
 
-    ///Transaction Search
-    Future<TransactionListModel> searchTransactionData(
-        {required String search}) async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.get,
-          toJsonFunc: (json) => TransactionListModel.fromJson(json),
-          returnDataFun: (data) => data,
-          showLoader: true,
-          name: '${ApiProvider.transactionList}?search=$search');
-    }
+  ///Transaction Search
+  Future<TransactionListModel> searchTransactionData(
+      {required String search}) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TransactionListModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: '${ApiProvider.transactionList}?search=$search');
+  }
 
-    ///cashManagementList
-    Future<CashManagementListModel?> getCashManagementListData() async {
-      return await GenericHttp(context).callApi(
-          returnType: ReturnType.model,
-          methodType: MethodType.get,
-          toJsonFunc: (json) => CashManagementListModel.fromJson(json),
-          returnDataFun: (data) => data,
-          showLoader: true,
-          name: ApiProvider.cashManagementList);
-    }
-
+  ///cashManagementList
+  Future<CashManagementListModel?> getCashManagementListData() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => CashManagementListModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.cashManagementList);
+  }
 
   /// Get Area data from add property
   Future createEmergencyContact(data, tenantId) async {
@@ -427,8 +442,7 @@ class RepositoryMethods {
         name: "${ApiProvider.tenantUpdate}$tenantId/emergency");
   }
 
-
-    ///profile details
+  ///profile details
   /// Tenants Details API
   Future<ProfileDetailsModel?> getProfileDetails() async {
     return await GenericHttp(context).callApi(
@@ -439,7 +453,4 @@ class RepositoryMethods {
         showLoader: true,
         name: ApiProvider.profileDetails);
   }
-
-
-
-  }
+}

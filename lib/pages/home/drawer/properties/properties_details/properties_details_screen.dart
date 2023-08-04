@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -77,17 +78,27 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8.r),
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                            provider
-                                                    .propertyDetailsResponse
-                                                    ?.data
-                                                    ?.property?[0]
-                                                    .image ??
-                                                '',
-                                          ),
-                                          fit: BoxFit.cover),
                                     ),
+                                    child: CachedNetworkImage(
+                                      height: 200.h,
+                                      fit: BoxFit.cover,
+                                      imageUrl: provider.propertyDetailsResponse
+                                              ?.data?.property?[0].image ??
+                                          '',
+                                      placeholder: (context, url) => Center(
+                                        child: Image.asset(
+                                            "assets/dashboard/placeholder_image.png"),
+                                      ),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                    ),
+                                    //  image: DecorationImage(
+                                    //       image: NetworkImage(
+                                    //         provider.propertyDetailsResponse?.data
+                                    //                 ?.property?[0].image ??
+                                    //             '',
+                                    //       ),
+                                    //       fit: BoxFit.cover),
                                   ),
                                   Positioned(
                                     child: Container(
@@ -218,6 +229,8 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                                           .propertyDetailsResponse
                                           ?.data
                                           ?.property?[0],
+                                      pID: widget.propertyId,
+                                      provider: provider,
                                     ),
                                     //Gallery Cart
                                     PropertyGalleryCart(
@@ -225,6 +238,8 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                                           .propertyDetailsResponse
                                           ?.data
                                           ?.gallery,
+                                      pId: widget.propertyId,
+                                      provider: provider,
                                     ),
                                     //tenants cart
                                     PropertyTenantsContainer(
@@ -244,6 +259,8 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                                           .propertyDetailsResponse
                                           ?.data
                                           ?.floorPlans,
+                                      provider: provider,
+                                      pId: widget.propertyId,
                                     )
                                   ],
                                   controller: _tabController,

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -6,7 +7,8 @@ import 'package:landlord/utils/theme/app_colors.dart';
 
 class TenantsListContainer extends StatelessWidget {
   const TenantsListContainer({
-    Key? key, this.currentTenant,
+    Key? key,
+    this.currentTenant,
   }) : super(key: key);
 
   final CurrentTenant? currentTenant;
@@ -22,11 +24,21 @@ class TenantsListContainer extends StatelessWidget {
         padding: EdgeInsets.all(8.0.sp),
         child: Row(
           children: [
-            Image.network(
-              currentTenant?.image ?? '',
-              height: 54.h,
-              width: 54.w,
+            CachedNetworkImage(
+              height: 54,
+              width: 54,
+              fit: BoxFit.cover,
+              imageUrl: currentTenant?.image ?? '',
+              placeholder: (context, url) => Center(
+                child: Image.asset("assets/dashboard/placeholder_image.png"),
+              ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
+            // Image.network(
+            //   currentTenant?.image ?? '',
+            //   height: 54.h,
+            //   width: 54.w,
+            // ),
             SizedBox(
               width: 20.w,
             ),

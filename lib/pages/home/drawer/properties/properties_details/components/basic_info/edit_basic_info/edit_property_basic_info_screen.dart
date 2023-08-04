@@ -4,20 +4,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/elevated_button_widget.dart';
 import 'package:landlord/components/new_text_form_field.dart';
+import 'package:landlord/data/provider/property_details_edit_provider.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
+import 'package:provider/provider.dart';
 
 class EditPropertyBasicInfo extends StatefulWidget {
-  const EditPropertyBasicInfo({super.key});
+  final int? propertyId;
+  final VoidCallback onSave;
+  const EditPropertyBasicInfo(
+      {super.key, required this.onSave, this.propertyId});
 
   @override
   State<EditPropertyBasicInfo> createState() => _EditPropertyBasicInfoState();
 }
 
 class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
-  String dropdownValue = 'Singel';
-  String dropdownValue1 = 'Ready';
+  String dropdownValue = 'Residential';
+  String dropdownValue1 = 'Complete';
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<PropertyDetailsEditProvider>(context);
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: PreferredSize(
@@ -51,16 +57,22 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8)),
                     child: Row(
-                      children: const [
+                      children: [
                         Expanded(
                             child: NewTextFromField(
                           title: "Size_of_property",
                           hintText: "2566",
+                          onChange: (val) {
+                            provider.propertyEditBodyModel.size = val;
+                          },
                         )),
                         Expanded(
                             child: NewTextFromField(
                           title: "Rent_Price",
                           hintText: "\$2566",
+                          onChange: (val) {
+                            provider.propertyEditBodyModel.rentAmount = val;
+                          },
                         )),
                       ],
                     ),
@@ -73,16 +85,22 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8)),
                     child: Row(
-                      children: const [
+                      children: [
                         Expanded(
                             child: NewTextFromField(
                           title: "Bedroom",
                           hintText: "2",
+                          onChange: (val) {
+                            provider.propertyEditBodyModel.bedroom = val;
+                          },
                         )),
                         Expanded(
                             child: NewTextFromField(
                           title: "bathrooms",
                           hintText: "1",
+                          onChange: (val) {
+                            provider.propertyEditBodyModel.bathroom = val;
+                          },
                         )),
                       ],
                     ),
@@ -95,16 +113,22 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8)),
                     child: Row(
-                      children: const [
+                      children: [
                         Expanded(
                             child: NewTextFromField(
                           title: "Parking",
                           hintText: "2",
+                          onChange: (val) {
+                            provider.propertyEditBodyModel.size = val;
+                          },
                         )),
                         Expanded(
                             child: NewTextFromField(
                           title: "Flat_Number",
                           hintText: "A1",
+                          onChange: (val) {
+                            provider.propertyEditBodyModel.flatNo = val;
+                          },
                         )),
                       ],
                     ),
@@ -152,11 +176,13 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                                 onChanged: (String? newValue) {
                                   setState(() {
                                     dropdownValue = newValue!;
+                                    provider.propertyEditBodyModel.type =
+                                        dropdownValue;
                                   });
                                 },
                                 items: <String>[
-                                  'Singel',
-                                  'Double',
+                                  'Residential',
+                                  'Commercial',
                                 ].map<DropdownMenuItem<String>>((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -213,11 +239,13 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                                 onChanged: (String? newValue) {
                                   setState(() {
                                     dropdownValue1 = newValue!;
+                                    provider.propertyEditBodyModel.completion =
+                                        dropdownValue1;
                                   });
                                 },
                                 items: <String>[
-                                  'Ready',
-                                  'Ongoing',
+                                  'Complete',
+                                  'Under Construction',
                                 ].map<DropdownMenuItem<String>>((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -238,9 +266,12 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8)),
-                    child: const NewTextFromField(
+                    child: NewTextFromField(
                       title: "Description",
                       hintText: "Description",
+                      onChange: (val) {
+                        provider.propertyEditBodyModel.description = val;
+                      },
                     ),
                   ),
                   SizedBox(
@@ -248,7 +279,12 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                   ),
                   ElevatedButtonWidget(
                     text: "Save",
-                    onPressed: () {},
+                    onPressed: () {
+                      provider.editPropertyBasicInfo(context, widget.propertyId,
+                          () {
+                        widget.onSave();
+                      });
+                    },
                   )
                 ],
               ),

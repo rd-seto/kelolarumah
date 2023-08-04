@@ -48,6 +48,7 @@ class RepositoryImpl {
       _repositoryMethods.getAreaData(data);
 
   Future createProperty(data) => _repositoryMethods.createProperty(data);
+  Future postGalleryImage(data) => _repositoryMethods.postImage(data);
 
   Future<ReportPropertyModel?> getReportPropertyList() =>
       _repositoryMethods.getReportProperty();
@@ -73,15 +74,24 @@ class RepositoryImpl {
   Future<List<TenantProperty>> getTenantPropertiesData() =>
       _repositoryMethods.getTenantPropertiesData();
 
-  Future<bool> tenantsEditBasicInfo({required TenantEditBodyModel model,int? tenantId}) =>
-      _repositoryMethods.tenantsEditBasicInfo(model: model,tenantId: tenantId);
+  Future<bool> tenantsEditBasicInfo(
+          {required TenantEditBodyModel model, int? tenantId}) =>
+      _repositoryMethods.tenantsEditBasicInfo(model: model, tenantId: tenantId);
 
-  Future<bool> tenantDetailsEditAccount({required TenantAccountEditBodyModel model, int? tenantId}) => _repositoryMethods.tenantDetailsEditAccount(model: model, tenantId: tenantId);
+  Future<bool> propertyEditBasicInfo(
+          {required PropertyBasicInfoModel model, int? propertyId}) =>
+      _repositoryMethods.propertyEditBasicInfo(
+          model: model, propertyId: propertyId);
 
+  Future<bool> tenantDetailsEditAccount(
+          {required TenantAccountEditBodyModel model, int? tenantId}) =>
+      _repositoryMethods.tenantDetailsEditAccount(
+          model: model, tenantId: tenantId);
 
-  Future<bool> tenantDetailsEditAgreement({required AgreementUpdateModel model, int? tenantId}) => _repositoryMethods.tenantDetailsEditAgreement(model: model, tenantId: tenantId);
-
-
+  Future<bool> tenantDetailsEditAgreement(
+          {required AgreementUpdateModel model, int? tenantId}) =>
+      _repositoryMethods.tenantDetailsEditAgreement(
+          model: model, tenantId: tenantId);
 
   Future updateProfile({required ProfileBasicInfoUpdateModel model}) =>
       _repositoryMethods.updateProfile(model: model);
@@ -109,7 +119,8 @@ class RepositoryImpl {
 
   Future<TenantModel?> getTenantData() => _repositoryMethods.getTenantData();
 
-  Future createEmergencyContact(data, tenantId) => _repositoryMethods.createEmergencyContact(data, tenantId);
+  Future createEmergencyContact(data, tenantId) =>
+      _repositoryMethods.createEmergencyContact(data, tenantId);
 
   // Future<TenantModel?> searchTenantData({required String search}) =>
   //     _repositoryMethods.searchTenantData(search: search);
@@ -120,9 +131,9 @@ class RepositoryImpl {
   // Future<UpdatePassword?> updatePassword({required Map<String, dynamic> json}) =>
   //     _repositoryMethods.updatePassword(json: json);
 
-  Future postPasswordUpdate(data) => _repositoryMethods.postPasswordUpdate(data);
+  Future postPasswordUpdate(data) =>
+      _repositoryMethods.postPasswordUpdate(data);
 
   Future<ProfileDetailsModel?> getProfileDetails() =>
       _repositoryMethods.getProfileDetails();
-
 }

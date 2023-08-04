@@ -5,6 +5,7 @@ import 'package:landlord/utils/theme/app_colors.dart';
 
 class NewTextFromField extends StatelessWidget {
   final Function()? onTap;
+  final Function(String)? onChange;
   final TextEditingController? controller;
   final String? title;
   final String? hintText;
@@ -13,6 +14,7 @@ class NewTextFromField extends StatelessWidget {
   const NewTextFromField(
       {Key? key,
       this.hintText,
+      this.onChange,
       this.title,
       this.suffixIcon,
       this.controller,
@@ -39,6 +41,7 @@ class NewTextFromField extends StatelessWidget {
             height: 8.h,
           ),
           TextFormField(
+            onChanged: onChange,
             controller: controller,
             decoration: InputDecoration(
                 filled: true,
