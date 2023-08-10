@@ -20,7 +20,7 @@ class AddGalleryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => PropertyDetailsEditProvider(),
+      create: (context) => PropertyDetailsEditProvider(context),
       child: Consumer<PropertyDetailsEditProvider>(
         builder: (context, provider, _) {
           return Scaffold(

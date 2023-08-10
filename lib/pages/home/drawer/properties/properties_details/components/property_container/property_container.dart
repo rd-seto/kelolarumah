@@ -117,93 +117,103 @@ class PropertyTenantsContainer extends StatelessWidget {
               ],
             ),
           ),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: propertyDetails?.data?.previousTenants?.length ?? 0,
-            itemBuilder: (context, index) {
-              final data = propertyDetails?.data?.previousTenants?[index];
-              return Container(
-                margin: const EdgeInsets.only(bottom: 12.0),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: AppColors.stockColor)),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0.sp),
-                  child: Row(
-                    children: [
-                      Image.network(
-                        data?.image ?? '',
-                        height: 54.h,
-                        width: 54.w,
-                      ),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      Expanded(
+          propertyDetails?.data?.previousTenants?.isNotEmpty == true
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount:
+                      propertyDetails?.data?.previousTenants?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    final data = propertyDetails?.data?.previousTenants?[index];
+                    return Container(
+                      margin: const EdgeInsets.only(bottom: 12.0),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColors.stockColor)),
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0.sp),
                         child: Row(
                           children: [
+                            Image.network(
+                              data?.image ?? '',
+                              height: 54.h,
+                              width: 54.w,
+                            ),
+                            SizedBox(
+                              width: 20.w,
+                            ),
                             Expanded(
-                                child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CustomText(
-                                  height: 1,
-                                  text: data?.name ?? '',
-                                  color: AppColors.titleTextColor,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                SizedBox(
-                                  height: 6.h,
-                                ),
-                                Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.calendar_month_outlined,
-                                      color: AppColors.black2Sd,
-                                    ),
-                                    SizedBox(
-                                      width: 10.w,
-                                    ),
-                                    CustomText(
-                                      text: '${data?.startDate}',
-                                      color: AppColors.black2Sd,
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                    SizedBox(
-                                      width: 4.w,
-                                    ),
-                                    CustomText(
-                                      text: 'to',
-                                      color: AppColors.black2Sd,
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                    SizedBox(
-                                      width: 4.w,
-                                    ),
-                                    CustomText(
-                                      text: '${data?.endDate}',
-                                      color: AppColors.black2Sd,
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      CustomText(
+                                        height: 1,
+                                        text: data?.name ?? '',
+                                        color: AppColors.titleTextColor,
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                      SizedBox(
+                                        height: 6.h,
+                                      ),
+                                      // Row(
+                                      //   children: [
+                                      //     const Icon(
+                                      //       Icons.calendar_month_outlined,
+                                      //       color: AppColors.black2Sd,
+                                      //     ),
+                                      //     SizedBox(
+                                      //       width: 10.w,
+                                      //     ),
+                                      //     CustomText(
+                                      //       text: '${data?.startDate}',
+                                      //       color: AppColors.black2Sd,
+                                      //       fontSize: 14.sp,
+                                      //       fontWeight: FontWeight.w600,
+                                      //     ),
+                                      //     SizedBox(
+                                      //       width: 4.w,
+                                      //     ),
+                                      //     CustomText(
+                                      //       text: 'to',
+                                      //       color: AppColors.black2Sd,
+                                      //       fontSize: 14.sp,
+                                      //       fontWeight: FontWeight.w600,
+                                      //     ),
+                                      //     SizedBox(
+                                      //       width: 4.w,
+                                      //     ),
+                                      //     CustomText(
+                                      //       text: '${data?.endDate}',
+                                      //       color: AppColors.black2Sd,
+                                      //       fontSize: 14.sp,
+                                      //       fontWeight: FontWeight.w600,
+                                      //     ),
+                                      //   ],
+                                      // ),
+                                    ],
+                                  )),
+                                ],
+                              ),
+                            )
                           ],
                         ),
-                      )
-                    ],
-                  ),
-                ),
-              );
-            },
-          )
+                      ),
+                    );
+                  },
+                )
+              : CustomText(
+                  height: 1,
+                  text: 'No History Found',
+                  color: Colors.black,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w700,
+                )
         ],
       ),
     );

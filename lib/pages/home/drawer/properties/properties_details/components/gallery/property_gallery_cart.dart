@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 
 class PropertyGalleryCart extends StatelessWidget {
   final PropertyDetailsProvider? provider;
-  final List<FloorPlan>? propertyGalleries;
+  final List<Gallery>? propertyGalleries;
   final int? pId;
   const PropertyGalleryCart(
       {super.key, this.propertyGalleries, this.pId, this.provider});
@@ -21,50 +21,73 @@ class PropertyGalleryCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, __, _) {
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20.h,
-              ),
-              GridView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: propertyGalleries?.length ?? 0,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisExtent: 150,
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 20.0,
-                    mainAxisSpacing: 4.0),
-                itemBuilder: (BuildContext context, int index) {
-                  final data = propertyGalleries?[index];
-                  return Image.network(data!.path!);
-                },
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.mainColorsh1),
-                    color: AppColors.colorWhite,
-                    borderRadius: BorderRadius.circular(8)),
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 8.h),
-                  child: CustomText(
-                    text: 'Load_More',
-                    color: AppColors.mainColorsh1,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w700,
-                    height: 1.75,
+        return Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 20.h,
                   ),
-                ),
+                  propertyGalleries == null
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child: CustomText(
+                            height: 1,
+                            text: 'No Gallery Found Please add some',
+                            color: Colors.black,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        )
+                      : GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: propertyGalleries?.length ?? 0,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  mainAxisExtent: 150,
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 20.0,
+                                  mainAxisSpacing: 4.0),
+                          itemBuilder: (BuildContext context, int index) {
+                            final data = propertyGalleries?[index];
+                            return Image.network(data!.path!);
+                          },
+                        ),
+                  // SizedBox(
+                  //   height: 20.h,
+                  // ),
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //       border: Border.all(color: AppColors.mainColorsh1),
+                  //       color: AppColors.colorWhite,
+                  //       borderRadius: BorderRadius.circular(8)),
+                  //   child: Padding(
+                  //     padding: EdgeInsets.symmetric(
+                  //         horizontal: 10.0.w, vertical: 8.h),
+                  //     child: CustomText(
+                  //       text: 'Load_More',
+                  //       color: AppColors.mainColorsh1,
+                  //       fontSize: 16.sp,
+                  //       fontWeight: FontWeight.w700,
+                  //       height: 1.75,
+                  //     ),
+                  //   ),
+                  // ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 20.h,
-              ),
-              InkWell(
+            ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: InkWell(
                 onTap: () {
                   NavUtil.navigateScreen(
                       context,
@@ -94,11 +117,8 @@ class PropertyGalleryCart extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20.h,
-              ),
-            ],
-          ),
+            )
+          ],
         );
       },
     );

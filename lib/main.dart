@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<ProfileDetailsProvider>(
             create: (context) => ProfileDetailsProvider(context)),
         ChangeNotifierProvider<PropertyDetailsEditProvider>(
-            create: (context) => PropertyDetailsEditProvider()),
+            create: (context) => PropertyDetailsEditProvider(context)),
         ChangeNotifierProvider<TenantEditProvider>(
             create: (context) => TenantEditProvider()),
         ChangeNotifierProvider<DocumentProvider>(

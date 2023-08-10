@@ -1,23 +1,33 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:landlord/data/model/property_basic_info_body_model.dart';
+import 'package:landlord/data/model/property_facelities_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
-import 'package:landlord/pages/home/drawer/properties/properties_screen/properties_screen.dart';
-import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
-import 'package:provider/provider.dart';
 
 class PropertyDetailsEditProvider extends ChangeNotifier {
   PropertyBasicInfoModel propertyEditBodyModel = PropertyBasicInfoModel();
+  PropertyFacilitiesModel propertyFacilitiesBodyModel =
+      PropertyFacilitiesModel();
   TextEditingController titleController = TextEditingController();
+  TextEditingController facilitiesController = TextEditingController();
+  List<FacilityType> facilities = [];
+  FacilityType? selectedfacilities;
   XFile? image;
+  String? facilityType;
   final ImagePicker picker = ImagePicker();
   final debounce = Debounce(milliseconds: 500);
+  String? typeId;
 
+  PropertyDetailsEditProvider(context) {
+    getTenantProperties(context: context);
+  }
   void addImage(context, propertyData, VoidCallback onDone, String type) async {
     final data = {
       "title": titleController.text,
@@ -123,5 +133,64 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
         Fluttertoast.showToast(msg: "Something went wrong");
       }
     });
+  }
+
+  void getTenantProperties({required BuildContext context}) async {
+    facilities = await RepositoryImpl(context).getFacilitiesData();
+    selectedfacilities = facilities.first;
+    // propertyFacilitiesBodyModel.data.facilityTypes = '${selectedfacilities.data.facilityTypes}';
+    notifyListeners();
+  }
+
+  onPropertySelect({required FacilityType selectId}) {
+    selectedfacilities = selectId;
+    typeId = '${selectedfacilities?.id}';
+    print('typeId${typeId}');
+    notifyListeners();
+  }
+
+  // void addFacelities(
+  //     BuildContext context, int? propertyId, VoidCallback onDone) async {
+  //   RepositoryImpl(context)
+  //       .addFacilitiesData(
+  //           model: propertyFacilitiesBodyModel, propertyId: propertyId)
+  //       .then((success) {
+  //     if (success) {
+  //       Fluttertoast.showToast(msg: "Successfully updated");
+  //       onDone();
+  //       debounce.run(() {
+  //         Navigator.pop(context);
+  //       });
+  //       notifyListeners();
+  //     } else {
+  //       Fluttertoast.showToast(msg: "Something went wrong");
+  //     }
+  //   });
+  // }
+  void addFacelities(context, VoidCallback onDone, int facilityId) async {
+
+    final data = {
+      "content": [facilitiesController.text],
+      "property_facility_type_id": [typeId],
+    };
+    // var  data = json.encode(body);
+    await RepositoryImpl(context)
+        .addFacilitiesData(data, facilityId)
+        .then((success) {
+      if (success = true) {
+        Fluttertoast.showToast(msg: 'Successfully Updated');
+        onDone();
+        debounce.run(() {
+          Navigator.pop(context);
+        });
+      } else {
+        Fluttertoast.showToast(msg: 'Something Went Wrong');
+        debounce.run(() {
+          Navigator.pop(context);
+        });
+      }
+    });
+
+    notifyListeners();
   }
 }

@@ -21,7 +21,6 @@ class AddTransactionProvider extends ChangeNotifier {
   TextEditingController dueController = TextEditingController();
   TextEditingController noteController = TextEditingController();
 
-
   List<Property>? propertyList;
   List<Expense>? incomeList;
   List<Expense>? expenseList;
@@ -54,10 +53,9 @@ class AddTransactionProvider extends ChangeNotifier {
   final List<Expense>? income = [];
   final List<String> incomeStrList = [];
   late List<int> incomeIdList = [];
-  late List <String> incomePriceList = [];
+  late List<String> incomePriceList = [];
   TextEditingController price = TextEditingController();
   List<String> priceList = [];
-
 
   final List<Expense>? expense = [];
   final List<String> expenseStrList = [];
@@ -72,7 +70,9 @@ class AddTransactionProvider extends ChangeNotifier {
       transactionsList = [];
     }
     notifyListeners();
-    transactionsList.add(TransactionBillModel(title: "",));
+    transactionsList.add(TransactionBillModel(
+      title: "",
+    ));
 
     incomeIdList = List.filled(transactionsList.length, 0);
     incomePriceList = List.filled(transactionsList.length, "");
@@ -83,10 +83,9 @@ class AddTransactionProvider extends ChangeNotifier {
       expensePrice = [];
       expenseWidgetList = [];
     }
-   notifyListeners();
+    notifyListeners();
     transactionsList.add(TransactionBillModel());
   }
-
 
   AddTransactionProvider(BuildContext context) {
     getAddTransactionData(context);
@@ -111,73 +110,70 @@ class AddTransactionProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  int getIdByIncome({required String title,required int index}){
+  int getIdByIncome({required String title, required int index}) {
     final id = incomeList!.firstWhere((element) => element.title == title).id!;
     incomeIdList[index] = id;
 
     return id;
   }
 
-  void notify(){
+  void notify() {
     notifyListeners();
   }
 
-  int getIdByExpense({required String title}){
+  int getIdByExpense({required String title}) {
     return expenseList!.firstWhere((element) => element.title == title).id!;
   }
-  void notifyExp(){
+
+  void notifyExp() {
     notifyListeners();
   }
 
-
-  selectPaymentType(PaymentMethod paymentValue){
+  selectPaymentType(PaymentMethod paymentValue) {
     paymentType = paymentValue;
     notifyListeners();
   }
 
   ///dropdown for property type
-    selectProperty(Property propertyValue){
-      property = propertyValue;
+  selectProperty(Property propertyValue) {
+    property = propertyValue;
     notifyListeners();
-    }
-
+  }
 
   ///dropdown for tenant type
-  selectTenant(Tenant tenantValue){
+  selectTenant(Tenant tenantValue) {
     tenant = tenantValue;
     notifyListeners();
   }
 
-
   ///dropdown for income type
-    selectIncome(Expense incomeValue){
-      incomeValueData = incomeValue;
-      print(incomeValue);
+  selectIncome(Expense incomeValue) {
+    incomeValueData = incomeValue;
+    print(incomeValue);
     notifyListeners();
   }
 
   ///dropdown for expense type
-  selectExpense(Expense expenseValue){
+  selectExpense(Expense expenseValue) {
     expenseValueData = expenseValue;
     print(expenseValue);
     notifyListeners();
   }
 
   void selectDate(BuildContext context) async {
-         showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101)).then((value) {
-          if(value != null){
-            setDate = value;
-            finalSelectedDate = DateFormat('yyyy-MM-dd').format(value);
-          }
-          notifyListeners();
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(2015, 8),
+            lastDate: DateTime(2101))
+        .then((value) {
+      if (value != null) {
+        setDate = value;
+        finalSelectedDate = DateFormat('yyyy-MM-dd').format(value);
+      }
+      notifyListeners();
     });
-
   }
-
 
   void myAlert(context) {
     showDialog(
@@ -185,8 +181,11 @@ class AddTransactionProvider extends ChangeNotifier {
         builder: (BuildContext context) {
           return AlertDialog(
             shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            title: Center(child:  const Text('Please_choose_media_to_select', textAlign: TextAlign.center ).tr()),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            title: Center(
+                child: const Text('Please_choose_media_to_select',
+                        textAlign: TextAlign.center)
+                    .tr()),
             content: SizedBox(
               height: MediaQuery.of(context).size.height / 5,
               child: Column(
@@ -200,7 +199,7 @@ class AddTransactionProvider extends ChangeNotifier {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.colorPrimary),
                     child: Row(
-                      children:  [
+                      children: [
                         const Icon(Icons.image),
                         SizedBox(
                           width: 16.w,
@@ -217,7 +216,7 @@ class AddTransactionProvider extends ChangeNotifier {
                       getImage(ImageSource.camera);
                     },
                     child: Row(
-                      children:  [
+                      children: [
                         const Icon(Icons.camera),
                         SizedBox(
                           width: 16.w,
@@ -232,10 +231,9 @@ class AddTransactionProvider extends ChangeNotifier {
                     onPressed: () {
                       Navigator.pop(context);
                       _pickFile();
-                      },
-
+                    },
                     child: Row(
-                      children:  [
+                      children: [
                         const Icon(Icons.camera),
                         SizedBox(
                           width: 16.w,
@@ -249,7 +247,6 @@ class AddTransactionProvider extends ChangeNotifier {
             ),
           );
         });
-
   }
 
   //we can upload image from camera or from gallery based on parameter
@@ -280,38 +277,32 @@ class AddTransactionProvider extends ChangeNotifier {
   //
   // }
 
-
   void createTransaction(BuildContext context) async {
     priceList.addAll(transactionsList.map((e) => e.price ?? ""));
 
     final data = {
-       "type": transactionValue,
-       "date": finalSelectedDate,
-       "amount": dueController.text,
-       "property_id": property?.id,
-       "attachment_id": File(image?.path ?? ""),
+      "type": transactionValue,
+      "date": finalSelectedDate,
+      "amount": dueController.text,
+      "property_id": property?.id,
+      "attachment_id": File(image?.path ?? ""),
       "category_ids": incomeIdList.join(','),
       "values": priceList.join(','),
-       "tenant_id": tenant?.id,
+      "tenant_id": tenant?.id,
       //"note": noteController.text,
-       "payment_method" : paymentType?.name,
+      "payment_method": paymentType?.name,
     };
-
 
     if (kDebugMode) {
       print("Add transaction value............$data");
     }
 
-
-
-    RepositoryImpl(context).createTransaction(data).then((value){
-      if(value){
+    RepositoryImpl(context).createTransaction(data).then((value) {
+      if (value) {
         image = null;
 
         Fluttertoast.showToast(msg: 'transaction add successful');
         NavUtil.replaceScreen(context, const TransactionListScreen());
-
-
       }
     });
     // if(apiResponse['result'] == true){
@@ -319,9 +310,5 @@ class AddTransactionProvider extends ChangeNotifier {
     //   NavUtil.replaceScreen(context, TransactionListScreen());
     // }
     notifyListeners();
-
   }
-
-
-
 }

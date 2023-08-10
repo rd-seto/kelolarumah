@@ -10,7 +10,7 @@ class DioHelper {
     _dio = Dio(
       BaseOptions(
           baseUrl: ApiProvider.baseUrl,
-          contentType: "application/x-www-form-urlencoded; charset=utf-8"),
+          contentType: "application/json; charset=utf-8"),
     )
       ..interceptors.add(_getCacheManager().interceptor)
       ..interceptors.add(LogInterceptor(
@@ -90,7 +90,7 @@ class DioHelper {
     //create multipart request for POST or PATCH method
 
     try {
-      var response = await _dio.post("$url", data: haveFile ? formData : body);
+      var response = await _dio.post(url, data: haveFile ? formData : body);
       debugPrint("response ${response.statusCode}");
       if (showLoader) DioUtils.dismissDialog();
       if (response.statusCode == 200 || response.statusCode == 201) {

@@ -12,6 +12,7 @@ class ApiProvider {
   static String editTenant = '$baseUrl/tenant/update';
   static String editpropertyBasic = '$baseUrl/property/update';
   static String propertiesTenant = '$baseUrl/tenant/create';
+  static String facilityData = '$baseUrl/property/facility/edit/1';
   static String propertyList = '$baseUrl/property/list';
   static String addPropertyData = '$baseUrl/property/create';
   static String getCountryData = '$baseUrl/countries';
@@ -20,6 +21,7 @@ class ApiProvider {
   static String getAreaData = '$baseUrl/area';
   static String createPropertyData = '$baseUrl/property/store';
   static String postImage = '$baseUrl/property/gallery-floorplan/store';
+  static String addfacilities = '$baseUrl/property/facility/update';
   static String createTransactionData = '$baseUrl/transaction/store';
   static String propertyDetails = '$baseUrl/property';
   static String getReportPropertyListData = '$baseUrl/reports/properties';

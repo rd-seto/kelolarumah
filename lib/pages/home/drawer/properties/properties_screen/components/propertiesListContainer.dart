@@ -78,7 +78,9 @@ class PropertiesListContainer extends StatelessWidget {
                               ),
                               CustomText(
                                 height: 1,
-                                text: '$tenanted Tenanted'.tr(),
+                                text:
+                                    '${tenanted == "null" ? '0' : tenanted} Tenanted'
+                                        .tr(),
                                 color: AppColors.mainColorsh2,
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w700,
@@ -95,7 +97,8 @@ class PropertiesListContainer extends StatelessWidget {
                               ),
                               CustomText(
                                 height: 1,
-                                text: '$vacant Vacant',
+                                text:
+                                    '${vacant == "null" ? "0" : vacant} Vacant',
                                 color: AppColors.color2Sd,
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w700,

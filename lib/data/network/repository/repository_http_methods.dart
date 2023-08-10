@@ -138,6 +138,27 @@ class RepositoryMethods {
         name: ApiProvider.postImage);
   }
 
+  // Future<bool> addFacilities(
+  //     {required PropertyFacilitiesModel model, int? propertyId}) async {
+  //   return await GenericHttp(context).callApi(
+  //       returnType: ReturnType.type,
+  //       json: model.toJson(),
+  //       methodType: MethodType.post,
+  //       returnDataFun: (data) => data != null,
+  //       showLoader: true,
+  //       name: "${ApiProvider.addfacilities}/$propertyId");
+  // }
+  Future addFacilities(data, id) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.type,
+        methodType: MethodType.post,
+        json: data,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data['result'],
+        showLoader: true,
+        name: "${ApiProvider.addfacilities}/$id");
+  }
+
   /// Get report property list data
   Future<ReportPropertyModel?> getReportProperty() async {
     return await GenericHttp(context).callApi(
@@ -276,6 +297,16 @@ class RepositoryMethods {
         returnDataFun: (data) => data['data']['properties'],
         showLoader: true,
         name: ApiProvider.propertiesTenant) as List<TenantProperty>;
+  }
+
+  Future<List<FacilityType>> getFacilitiesData() async {
+    return await GenericHttp<FacilityType>(context).callApi(
+        returnType: ReturnType.list,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => FacilityType.fromJson(json),
+        returnDataFun: (data) => data['data']['facility_types'],
+        showLoader: true,
+        name: ApiProvider.facilityData) as List<FacilityType>;
   }
 
   Future<bool> addTenantData({required TenantBodyModel model}) async {

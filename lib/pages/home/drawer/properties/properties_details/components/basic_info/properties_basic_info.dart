@@ -22,84 +22,92 @@ class PropertiesBasicInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, __, _) {
-        return SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 20.h,
+        return Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  CustomText(
+                    text: 'Overview',
+                    color: AppColors.titleTextColor,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w700,
+                    height: 1.75,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  ContentListTile(
+                    image: 'assets/drawer/size_ic.png',
+                    color: AppColors.colorWhite,
+                    title: "Size",
+                    subTitle: propertyBasicInfo?.size ?? 'N/A',
+                  ),
+                  ContentListTile(
+                    image: 'assets/drawer/beds_ic.png',
+                    color: Colors.transparent,
+                    title: "Beds",
+                    subTitle: "${propertyBasicInfo?.bedroom ?? 'N/A'}",
+                  ),
+                  ContentListTile(
+                    image: 'assets/drawer/bath_ic.png',
+                    color: Colors.white,
+                    title: "Bath",
+                    subTitle: "${propertyBasicInfo?.bathroom ?? 'N/A'}",
+                  ),
+                  ContentListTile(
+                    image: 'assets/drawer/rent_ic.png',
+                    color: Colors.transparent,
+                    title: "Rent",
+                    subTitle: "${propertyBasicInfo?.rentAmount ?? 'N/A'}",
+                  ),
+                  ContentListTile(
+                    image: 'assets/drawer/type-ic.png',
+                    color: Colors.white,
+                    title: "Type",
+                    subTitle: propertyBasicInfo?.type ?? 'N/A',
+                  ),
+                  ContentListTile(
+                    image: 'assets/drawer/completion-ic.png',
+                    color: Colors.transparent,
+                    title: "Completion",
+                    subTitle: propertyBasicInfo?.completion ?? 'N/A',
+                  ),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                  CustomText(
+                    text: "Description",
+                    color: AppColors.titleTextColor,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w700,
+                    height: 1.75,
+                  ),
+                  SizedBox(
+                    height: 14.h,
+                  ),
+                  CustomText(
+                    text: propertyBasicInfo?.description ?? '',
+                    color: AppColors.black2Sd,
+                    textAlign: TextAlign.justify,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    height: 1.75,
+                  ),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                ],
               ),
-              CustomText(
-                text: 'Overview',
-                color: AppColors.titleTextColor,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w700,
-                height: 1.75,
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              ContentListTile(
-                image: 'assets/drawer/size_ic.png',
-                color: AppColors.colorWhite,
-                title: "Size",
-                subTitle: propertyBasicInfo?.size ?? 'N/A',
-              ),
-              ContentListTile(
-                image: 'assets/drawer/beds_ic.png',
-                color: Colors.transparent,
-                title: "Beds",
-                subTitle: "${propertyBasicInfo?.bedroom ?? 'N/A'}",
-              ),
-              ContentListTile(
-                image: 'assets/drawer/bath_ic.png',
-                color: Colors.white,
-                title: "Bath",
-                subTitle: "${propertyBasicInfo?.bathroom ?? 'N/A'}",
-              ),
-              ContentListTile(
-                image: 'assets/drawer/rent_ic.png',
-                color: Colors.transparent,
-                title: "Rent",
-                subTitle: "${propertyBasicInfo?.rentAmount ?? 'N/A'}",
-              ),
-              ContentListTile(
-                image: 'assets/drawer/type-ic.png',
-                color: Colors.white,
-                title: "Type",
-                subTitle: propertyBasicInfo?.type ?? 'N/A',
-              ),
-              ContentListTile(
-                image: 'assets/drawer/completion-ic.png',
-                color: Colors.transparent,
-                title: "Completion",
-                subTitle: propertyBasicInfo?.completion ?? 'N/A',
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              CustomText(
-                text: "Description",
-                color: AppColors.titleTextColor,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w700,
-                height: 1.75,
-              ),
-              SizedBox(
-                height: 14.h,
-              ),
-              CustomText(
-                text: propertyBasicInfo?.description ?? '',
-                color: AppColors.black2Sd,
-                textAlign: TextAlign.justify,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                height: 1.75,
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              Padding(
+            ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: Padding(
                 padding: const EdgeInsets.only(right: 10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -124,8 +132,8 @@ class PropertiesBasicInfo extends StatelessWidget {
                   ],
                 ),
               ),
-            ],
-          ),
+            )
+          ],
         );
       },
     );

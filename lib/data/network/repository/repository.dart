@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:landlord/data/model/TransactionDetailsModel.dart';
 import 'package:landlord/data/model/add_transaction_model.dart';
@@ -12,6 +13,7 @@ import 'package:landlord/data/model/profile_update_model.dart';
 import 'package:landlord/data/model/property_basic_info_body_model.dart';
 import 'package:landlord/data/model/property_details_model.dart';
 import 'package:landlord/data/model/notification_model.dart';
+import 'package:landlord/data/model/property_facelities_model.dart';
 import 'package:landlord/data/model/property_list_model.dart';
 import 'package:landlord/data/model/registration_model.dart';
 import 'package:landlord/data/model/report_details_model.dart';

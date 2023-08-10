@@ -49,6 +49,12 @@ class RepositoryImpl {
 
   Future createProperty(data) => _repositoryMethods.createProperty(data);
   Future postGalleryImage(data) => _repositoryMethods.postImage(data);
+  // Future<bool> addFacilitiesData(
+  //       {required PropertyFacilitiesModel model, int? propertyId}) =>
+  //   _repositoryMethods.addFacilities(
+  //       model: model, propertyId: propertyId);
+  Future addFacilitiesData(data, int? id) =>
+      _repositoryMethods.addFacilities(data, id);
 
   Future<ReportPropertyModel?> getReportPropertyList() =>
       _repositoryMethods.getReportProperty();
@@ -73,6 +79,9 @@ class RepositoryImpl {
 
   Future<List<TenantProperty>> getTenantPropertiesData() =>
       _repositoryMethods.getTenantPropertiesData();
+
+  Future<List<FacilityType>> getFacilitiesData() =>
+      _repositoryMethods.getFacilitiesData();
 
   Future<bool> tenantsEditBasicInfo(
           {required TenantEditBodyModel model, int? tenantId}) =>
