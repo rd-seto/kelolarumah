@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:landlord/data/model/property_list_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
 
@@ -20,13 +19,11 @@ class TransactionListProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void searchTransactionData(BuildContext context,String searchKey) async {
+  void searchTransactionData(BuildContext context, String searchKey) async {
     debounce.run(() async {
-      transactionListResponse = await RepositoryImpl(context).searchTransactionData(search: searchKey);
+      transactionListResponse = await RepositoryImpl(context)
+          .searchTransactionData(search: searchKey);
       notifyListeners();
     });
   }
-
 }
-
-

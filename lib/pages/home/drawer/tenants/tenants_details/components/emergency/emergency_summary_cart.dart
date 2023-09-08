@@ -5,7 +5,6 @@ import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/tenants_details_model.dart';
 import 'package:landlord/data/provider/tenants_details_provider.dart';
 import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/emergency/add_emergency_screen.dart';
-import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/emergency/edit_emergency_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
@@ -13,213 +12,143 @@ class EmergencySummaryCart extends StatelessWidget {
   final List<EmergencyContact>? emergencyContact;
   final int tenantId;
   final TenantsDetailsProvider? tenantDetailsProvider;
-  const   EmergencySummaryCart({super.key, this.emergencyContact, required this.tenantId, this.tenantDetailsProvider});
+  const EmergencySummaryCart(
+      {super.key,
+      this.emergencyContact,
+      required this.tenantId,
+      this.tenantDetailsProvider});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         ListView.builder(
-          itemCount: emergencyContact?.length,
-          itemBuilder: (BuildContext context, int index){
-            final data = emergencyContact?[index];
-            return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                color: AppColors.colorWhite,
-                child: Padding(
-                  padding: EdgeInsets.all(18.0.sp),
-                  child: Row(
-                    children: [
-
-                      Column(
+            itemCount: emergencyContact?.length,
+            itemBuilder: (BuildContext context, int index) {
+              final data = emergencyContact?[index];
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    color: AppColors.colorWhite,
+                    child: Padding(
+                      padding: EdgeInsets.all(18.0.sp),
+                      child: Row(
                         children: [
-                          ClipOval(
-                            child: CachedNetworkImage(
-                              height: 43.h,
-                              width: 43.w,
-                              fit: BoxFit.cover,
-                              imageUrl: data?.image ??
-                                  "https://www.w3schools.com/howto/img_avatar.png",
-                              placeholder: (context, url) => Center(
-                                child: Image.asset(
-                                    "assets/drawer/app_logo.png"),
-                              ),
-                              errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                            ),
-                          ),
-                          // Image.asset(
-                          //   'assets/dashboard/emergency_img.png',
-                          //   height: 43.h,
-                          //   width: 43.w,
-                          // ),
-                          CustomText(
-                            text: data?.relation ?? "N/A",
-                            color: AppColors.black2Sd,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
-                            height: 2,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomText(
-                              text: data?.name ?? "N/A",
-                              color: AppColors.black2Sd,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w700,
-                              height: 1.75,
-                            ),
-                            CustomText(
-                              text: data?.occupied ?? "N/A",
-                              color: AppColors.titleTextColor,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                              height: 1.75,
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.call,
-                                  size: 14.sp,
-                                  color: AppColors.black2Sd,
+                          Column(
+                            children: [
+                              ClipOval(
+                                child: CachedNetworkImage(
+                                  height: 43.h,
+                                  width: 43.w,
+                                  fit: BoxFit.cover,
+                                  imageUrl: data?.image ??
+                                      "https://www.w3schools.com/howto/img_avatar.png",
+                                  placeholder: (context, url) => Center(
+                                    child: Image.asset(
+                                        "assets/drawer/app_logo.png"),
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
                                 ),
-                                SizedBox(
-                                  width: 4.w,
+                              ),
+                              CustomText(
+                                text: data?.relation ?? "N/A",
+                                color: AppColors.black2Sd,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                                height: 2,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 20.w,
+                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomText(
+                                  text: data?.name ?? "N/A",
+                                  color: AppColors.black2Sd,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1.75,
                                 ),
                                 CustomText(
-                                  text: data?.phone ?? "N/A",
+                                  text: data?.occupied ?? "N/A",
                                   color: AppColors.titleTextColor,
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
                                   height: 1.75,
                                 ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.call,
+                                      size: 14.sp,
+                                      color: AppColors.black2Sd,
+                                    ),
+                                    SizedBox(
+                                      width: 4.w,
+                                    ),
+                                    CustomText(
+                                      text: data?.phone ?? "N/A",
+                                      color: AppColors.titleTextColor,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w400,
+                                      height: 1.75,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.mail_outline_outlined,
+                                      size: 14.sp,
+                                      color: AppColors.black2Sd,
+                                    ),
+                                    SizedBox(
+                                      width: 4.w,
+                                    ),
+                                    Expanded(
+                                      child: CustomText(
+                                        text: data?.email ?? "N/A",
+                                        color: AppColors.titleTextColor,
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.75,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.mail_outline_outlined,
-                                  size: 14.sp,
-                                  color: AppColors.black2Sd,
-                                ),
-                                SizedBox(
-                                  width: 4.w,
-                                ),
-                                Expanded(
-                                  child: CustomText(
-                                    text: data?.email ?? "N/A",
-                                    color: AppColors.titleTextColor,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.75,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      // PopupMenuButton<int>(
-                      //   icon: const Icon(
-                      //     Icons.more_vert,
-                      //     color: AppColors.colorPrimary,
-                      //   ),
-                      //   itemBuilder: (context) => [
-                      //     PopupMenuItem(
-                      //       value: 1,
-                      //       child: InkWell(
-                      //         onTap: () {
-                      //           NavUtil.navigateScreen(
-                      //               context, const EditEmergerncyScreen());
-                      //         },
-                      //         child: Column(
-                      //           children: [
-                      //             Row(children: [
-                      //               Image.asset(
-                      //                 'assets/dashboard/edit_vector.png',
-                      //                 height: 20.h,
-                      //               ),
-                      //               SizedBox(
-                      //                 width: 10.w,
-                      //               ),
-                      //               Text(
-                      //                 'Edit',
-                      //                 style: TextStyle(color: Colors.grey[600]),
-                      //               )
-                      //             ]),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     PopupMenuItem(
-                      //       value: 2,
-                      //       child: InkWell(
-                      //         onTap: () {},
-                      //         child: Column(
-                      //           children: [
-                      //             Row(children: [
-                      //               Image.asset(
-                      //                 'assets/dashboard/delete_vector.png',
-                      //                 height: 20.h,
-                      //               ),
-                      //               SizedBox(
-                      //                 width: 10.w,
-                      //               ),
-                      //               Text(
-                      //                 'Delete',
-                      //                 style: TextStyle(color: Colors.grey[600]),
-                      //               )
-                      //             ]),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      //   color: Colors.white,
-                      //   elevation: 2,
-                      // ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            ],
-          );
-          }
-        ),
-
+                ],
+              );
+            }),
         Positioned(
             bottom: 0,
             right: 0,
             child: InkWell(
               onTap: () {
-
                 NavUtil.navigateScreen(
-                    context, AddEmergencyScreen(
-                  tenantId: tenantId,
-                  onSave: () {
-                    tenantDetailsProvider?.tenantsDetailsData(context, tenantId);
-                  },
-                )
-                    // EditBasicInfo(
-                    //   basicInfo: basicInfo,
-                    //   tenantsId: basicInfo?.id,
-                    //   onSave: () {
-                    //     provider?.tenantsDetailsData(context, basicInfo?.id);
-                    //   },
-                    // )
-                );
+                    context,
+                    AddEmergencyScreen(
+                      tenantId: tenantId,
+                      onSave: () {
+                        tenantDetailsProvider?.tenantsDetailsData(
+                            context, tenantId);
+                      },
+                    ));
               },
               child: Container(
                   decoration: const BoxDecoration(
@@ -230,7 +159,6 @@ class EmergencySummaryCart extends StatelessWidget {
                     color: Colors.white,
                   )),
             )),
-
       ],
     );
   }

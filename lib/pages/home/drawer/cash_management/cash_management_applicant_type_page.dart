@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/custom_text.dart';
-import 'package:landlord/components/elevated_button_widget.dart';
 import 'package:landlord/pages/home/drawer/cash_management/cash_management_basic_info/cash_management_basic_info_page.dart';
-import 'package:landlord/pages/home/drawer/report/report_transaction_details/report_transaction_details.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 

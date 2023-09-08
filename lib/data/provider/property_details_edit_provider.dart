@@ -1,7 +1,4 @@
-import 'dart:convert';
 import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
@@ -138,7 +135,6 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
   void getTenantProperties({required BuildContext context}) async {
     facilities = await RepositoryImpl(context).getFacilitiesData();
     selectedfacilities = facilities.first;
-    // propertyFacilitiesBodyModel.data.facilityTypes = '${selectedfacilities.data.facilityTypes}';
     notifyListeners();
   }
 
@@ -149,26 +145,7 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // void addFacelities(
-  //     BuildContext context, int? propertyId, VoidCallback onDone) async {
-  //   RepositoryImpl(context)
-  //       .addFacilitiesData(
-  //           model: propertyFacilitiesBodyModel, propertyId: propertyId)
-  //       .then((success) {
-  //     if (success) {
-  //       Fluttertoast.showToast(msg: "Successfully updated");
-  //       onDone();
-  //       debounce.run(() {
-  //         Navigator.pop(context);
-  //       });
-  //       notifyListeners();
-  //     } else {
-  //       Fluttertoast.showToast(msg: "Something went wrong");
-  //     }
-  //   });
-  // }
   void addFacelities(context, VoidCallback onDone, int facilityId) async {
-
     final data = {
       "content": [facilitiesController.text],
       "property_facility_type_id": [typeId],

@@ -41,7 +41,6 @@ class TransactionListScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: ListView(
-                //crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     decoration: BoxDecoration(

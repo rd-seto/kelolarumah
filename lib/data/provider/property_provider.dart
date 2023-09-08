@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:landlord/data/model/property_details_model.dart';
 import 'package:landlord/data/model/property_list_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';

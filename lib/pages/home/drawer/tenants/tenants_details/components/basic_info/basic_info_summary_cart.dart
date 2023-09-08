@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/tenants_details_model.dart';
 import 'package:landlord/pages/home/drawer/tenants/components/summary_container_black.dart';
 import 'package:landlord/pages/home/drawer/tenants/components/summary_container_white.dart';
@@ -26,7 +25,6 @@ class BasicInfoSummaryCart extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               SizedBox(
                 height: 30.h,
               ),
@@ -44,7 +42,6 @@ class BasicInfoSummaryCart extends StatelessWidget {
                       SizedBox(
                         height: 28.h,
                       ),
-
                       SummaryContainerBlack(
                         title: "Join_Date",
                         subTitle: basicInfo?.joinDate ?? "N/A",
@@ -65,7 +62,6 @@ class BasicInfoSummaryCart extends StatelessWidget {
                         title: "Passport No",
                         subTitle: basicInfo?.passport ?? "N/A",
                       ),
-
                       SizedBox(
                         height: 28.h,
                       ),

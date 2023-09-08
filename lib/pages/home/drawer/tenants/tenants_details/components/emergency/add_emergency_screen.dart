@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,11 +11,11 @@ import 'package:provider/provider.dart';
 import '../../../../../../../data/provider/add_emergency_contact_provider.dart';
 
 class AddEmergencyScreen extends StatefulWidget {
-
   final int? tenantId;
   final VoidCallback onSave;
 
-  const AddEmergencyScreen({super.key, required this.tenantId, required this.onSave });
+  const AddEmergencyScreen(
+      {super.key, required this.tenantId, required this.onSave});
 
   @override
   State<AddEmergencyScreen> createState() => _AddEmergencyScreenState();
@@ -64,21 +62,20 @@ class _AddEmergencyScreenState extends State<AddEmergencyScreen> {
                                 color: Colors.white,
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                    color: const Color(0xFFE4E4E4),
-                                    width: 8)),
+                                    color: const Color(0xFFE4E4E4), width: 8)),
                             child: provider.image == null
                                 ? const Icon(
-                              CupertinoIcons.person_solid,
-                              color: Colors.grey,
-                              size: 60,
-                            )
+                                    CupertinoIcons.person_solid,
+                                    color: Colors.grey,
+                                    size: 60,
+                                  )
                                 : ClipOval(
-                                child: Image.file(
-                                  File(provider.image!.path),
-                                  fit: BoxFit.cover,
-                                  height: 100,
-                                  width: 100,
-                                )),
+                                    child: Image.file(
+                                    File(provider.image!.path),
+                                    fit: BoxFit.cover,
+                                    height: 100,
+                                    width: 100,
+                                  )),
                           ),
                         ),
                         Positioned(
@@ -102,7 +99,7 @@ class _AddEmergencyScreenState extends State<AddEmergencyScreen> {
                   SizedBox(
                     height: 12.h,
                   ),
-                   FromField(
+                  FromField(
                     hintText: "Enter emergency contract name",
                     title: "name",
                     controller: provider.nameController,
@@ -110,7 +107,7 @@ class _AddEmergencyScreenState extends State<AddEmergencyScreen> {
                   SizedBox(
                     height: 16.h,
                   ),
-                   FromField(
+                  FromField(
                     hintText: "Enter emergency contract phone number",
                     title: "Phone",
                     controller: provider.phoneController,
@@ -118,7 +115,7 @@ class _AddEmergencyScreenState extends State<AddEmergencyScreen> {
                   SizedBox(
                     height: 16.h,
                   ),
-                   FromField(
+                  FromField(
                     hintText: "Enter emergency contract email address",
                     title: "Email",
                     controller: provider.emailController,
@@ -126,7 +123,7 @@ class _AddEmergencyScreenState extends State<AddEmergencyScreen> {
                   SizedBox(
                     height: 16.h,
                   ),
-                   FromField(
+                  FromField(
                     hintText: "Relation",
                     title: "Relation",
                     controller: provider.relationController,
@@ -134,7 +131,7 @@ class _AddEmergencyScreenState extends State<AddEmergencyScreen> {
                   SizedBox(
                     height: 16.h,
                   ),
-                   FromField(
+                  FromField(
                     hintText: "Occupation",
                     title: "occupation",
                     controller: provider.occupationController,
@@ -145,7 +142,8 @@ class _AddEmergencyScreenState extends State<AddEmergencyScreen> {
                   ElevatedButtonWidget(
                     text: "Save",
                     onPressed: () {
-                      provider.addEmergencyContract(context, widget.tenantId, (){
+                      provider.addEmergencyContract(context, widget.tenantId,
+                          () {
                         widget.onSave();
                       });
                     },

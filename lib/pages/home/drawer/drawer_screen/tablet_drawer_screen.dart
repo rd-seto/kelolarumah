@@ -23,9 +23,6 @@ class TabletAppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('device type ${context.deviceType()}');
-
-    // if(context.deviceType() == DeviceType.tablet)
-
     return SizedBox(
       width: 220.w,
       child: Drawer(

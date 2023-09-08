@@ -1,5 +1,3 @@
-import 'package:dotted_border/dotted_border.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
@@ -12,12 +10,15 @@ import 'package:provider/provider.dart';
 import '../../../../../../../data/model/tenants_details_model.dart';
 
 class AddAgreementsScreen extends StatefulWidget {
-
   final Agreement? agreement;
   final int tenantId;
   final VoidCallback onSave;
 
-  const AddAgreementsScreen({super.key, this.agreement, required this.tenantId, required this.onSave});
+  const AddAgreementsScreen(
+      {super.key,
+      this.agreement,
+      required this.tenantId,
+      required this.onSave});
 
   @override
   State<AddAgreementsScreen> createState() => _AddAgreementsScreenState();
@@ -36,16 +37,18 @@ class _AddAgreementsScreenState extends State<AddAgreementsScreen> {
   late TextEditingController note;
 
   @override
-  void initState(){
+  void initState() {
     moveIn = TextEditingController(text: widget.agreement?.moveIn);
     moveOut = TextEditingController(text: widget.agreement?.moveOut);
     rentAmount = TextEditingController(text: widget.agreement?.rentAmount);
-    advanceAmount = TextEditingController(text: widget.agreement?.advanceAmount);
+    advanceAmount =
+        TextEditingController(text: widget.agreement?.advanceAmount);
     rentType = TextEditingController(text: widget.agreement?.rentType);
     reminderDate = TextEditingController(text: widget.agreement?.reminderDate);
     note = TextEditingController(text: widget.agreement?.note);
     super.initState();
   }
+
   Widget build(BuildContext context) {
     final provider = Provider.of<TenantEditProvider>(context);
     return Scaffold(
@@ -81,7 +84,10 @@ class _AddAgreementsScreenState extends State<AddAgreementsScreen> {
                     hintText: provider.dateOfMoveIn ?? widget.agreement?.moveIn,
                     title: "Move_In_Date",
                     suffixIcon: IconButton(
-                      icon: const Icon(Icons.calendar_month_outlined, color: AppColors.colorPrimary,),
+                      icon: const Icon(
+                        Icons.calendar_month_outlined,
+                        color: AppColors.colorPrimary,
+                      ),
                       onPressed: () {
                         provider.selectMoveInDate(context);
                       },
@@ -91,10 +97,14 @@ class _AddAgreementsScreenState extends State<AddAgreementsScreen> {
                     height: 16.h,
                   ),
                   FromField(
-                    hintText: provider.dateOfMoveOut ?? widget.agreement?.moveOut,
+                    hintText:
+                        provider.dateOfMoveOut ?? widget.agreement?.moveOut,
                     title: "Move_out_Date",
                     suffixIcon: IconButton(
-                      icon: const Icon(Icons.calendar_month_outlined, color: AppColors.colorPrimary,),
+                      icon: const Icon(
+                        Icons.calendar_month_outlined,
+                        color: AppColors.colorPrimary,
+                      ),
                       onPressed: () {
                         provider.selectMoveOutDate(context);
                       },
@@ -107,7 +117,7 @@ class _AddAgreementsScreenState extends State<AddAgreementsScreen> {
                     hintText: "Enter Rent Amount",
                     title: "Rent_Amount",
                     controller: rentAmount,
-                    onChange: (val){
+                    onChange: (val) {
                       provider.agreementEditModel.rentAmount = val;
                     },
                   ),
@@ -118,37 +128,33 @@ class _AddAgreementsScreenState extends State<AddAgreementsScreen> {
                     hintText: "Enter Advance Amount",
                     title: "Advance Amount",
                     controller: advanceAmount,
-                    onChange: (val){
+                    onChange: (val) {
                       provider.agreementEditModel.advanceAmount = val;
                     },
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
-                   FromField(
+                  FromField(
                     hintText: "Monthly / Yearly",
                     title: "Rent Type",
                     controller: rentType,
-                     onChange: (val){
+                    onChange: (val) {
                       provider.agreementEditModel.rentType = val;
-                     },
+                    },
                   ),
-
-                  // SizedBox(
-                  //   height: 16.h,
-                  // ),
-                  // const FromField(
-                  //   hintText: "3",
-                  //   title: "Rent_For",
-                  // ),
                   SizedBox(
                     height: 16.h,
                   ),
                   FromField(
-                    hintText: provider.dateOfReminder ?? widget.agreement?.reminderDate,
+                    hintText: provider.dateOfReminder ??
+                        widget.agreement?.reminderDate,
                     title: "Reminder_Date",
                     suffixIcon: IconButton(
-                      icon: const Icon(Icons.calendar_month_outlined, color: AppColors.colorPrimary,),
+                      icon: const Icon(
+                        Icons.calendar_month_outlined,
+                        color: AppColors.colorPrimary,
+                      ),
                       onPressed: () {
                         provider.selectReminderDate(context);
                       },
@@ -157,13 +163,13 @@ class _AddAgreementsScreenState extends State<AddAgreementsScreen> {
                   SizedBox(
                     height: 16.h,
                   ),
-                   FromField(
+                  FromField(
                     hintText: "Enter your note",
                     title: "Note",
                     controller: note,
-                     onChange: (val){
+                    onChange: (val) {
                       provider.agreementEditModel.note = val;
-                     },
+                    },
                   ),
                   SizedBox(
                     height: 16.h,
@@ -171,9 +177,10 @@ class _AddAgreementsScreenState extends State<AddAgreementsScreen> {
                   ElevatedButtonWidget(
                     text: "Save",
                     onPressed: () {
-                        provider.tenantDetailsEditAgreement(context, widget.tenantId, () {
-                          widget.onSave();
-                        });
+                      provider.tenantDetailsEditAgreement(
+                          context, widget.tenantId, () {
+                        widget.onSave();
+                      });
                     },
                   ),
                 ],

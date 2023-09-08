@@ -5,7 +5,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:landlord/data/model/tenant_body_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import '../../utils/theme/app_colors.dart';

@@ -5,7 +5,6 @@ import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/extention/device_type_extention.dart';
 import 'package:landlord/pages/home/bottom_navigation_bar/custom_bottom_nav.dart';
-import 'package:landlord/pages/home/drawer/cash_management/cash_management_applicant_type_page.dart';
 import 'package:landlord/pages/home/drawer/cash_management/cash_management_dashboard/cash_management_screen.dart';
 import 'package:landlord/pages/home/drawer/document/document_list/document_list_screen.dart';
 import 'package:landlord/pages/home/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
@@ -26,9 +25,6 @@ class MobileAppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('device type ${context.deviceType()}');
-
-    // if(context.deviceType() == DeviceType.tablet)
-
     return Drawer(
       backgroundColor: AppColors.backgroundColor,
       child: SafeArea(

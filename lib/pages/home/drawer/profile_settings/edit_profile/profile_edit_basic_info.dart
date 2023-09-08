@@ -8,21 +8,17 @@ import '../../../../../components/text_form_field.dart';
 import '../../../../../data/model/profile_details_model.dart';
 
 class ProfileEditBasicInfo extends StatefulWidget {
-
-  ProfileInfo? profileData;
+  final ProfileInfo? profileData;
   final VoidCallback onSave;
 
-  ProfileEditBasicInfo({
-    Key? key, this.profileData, required this.onSave
-  }) : super(key: key);
+  const ProfileEditBasicInfo({Key? key, this.profileData, required this.onSave})
+      : super(key: key);
 
   @override
   State<ProfileEditBasicInfo> createState() => _ProfileEditBasicInfoState();
 }
 
 class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
-  @override
-
   late TextEditingController name;
   late TextEditingController email;
   late TextEditingController phone;
@@ -39,18 +35,16 @@ class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
     phone = TextEditingController(text: widget.profileData?.phone);
     occupation = TextEditingController(text: widget.profileData?.occupation);
     institution = TextEditingController(text: widget.profileData?.institution);
-    gender = TextEditingController(text:  widget.profileData?.gender);
+    gender = TextEditingController(text: widget.profileData?.gender);
     nid = TextEditingController(text: widget.profileData?.nid);
     passport = TextEditingController(text: widget.profileData?.passport);
-
 
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    final provider =  Provider.of<UpdateProfileProvider>(context);
+    final provider = Provider.of<UpdateProfileProvider>(context);
 
     return SingleChildScrollView(
       child: Column(
@@ -62,7 +56,7 @@ class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
             hintText: "name",
             controller: name,
             onChange: (name) {
-             provider.profileBasicInfo.name = name;
+              provider.profileBasicInfo.name = name;
             },
             title: "name",
           ),
@@ -80,7 +74,6 @@ class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
           SizedBox(
             height: 16.h,
           ),
-
           FromField(
             title: "Phone_Number",
             controller: phone,
@@ -89,7 +82,6 @@ class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
             },
             hintText: "Enter Your phone number",
           ),
-
           SizedBox(
             height: 16.h,
           ),
@@ -137,11 +129,10 @@ class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
           SizedBox(
             height: 16.h,
           ),
-
           ElevatedButtonWidget(
             text: "Save",
             onPressed: () {
-              provider.postProfileData(context, (){
+              provider.postProfileData(context, () {
                 widget.onSave();
               });
             },

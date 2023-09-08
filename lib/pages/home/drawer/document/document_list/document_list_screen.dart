@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
@@ -95,10 +96,17 @@ class DocumentListScreen extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Image.asset(
-                                        'assets/dashboard/pdf_img.png',
-                                        height: 38.h,
+                                      CachedNetworkImage(
+                                        height: 30.h,
                                         width: 30.w,
+                                        fit: BoxFit.cover,
+                                        imageUrl: data?.icon ?? '',
+                                        placeholder: (context, url) => Center(
+                                          child: Image.asset(
+                                              "assets/dashboard/placeholder_image.png"),
+                                        ),
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(Icons.error),
                                       ),
                                       SizedBox(
                                         width: 12.w,
@@ -110,14 +118,15 @@ class DocumentListScreen extends StatelessWidget {
                                             MainAxisAlignment.start,
                                         children: [
                                           CustomText(
-                                            text: data?.filename ?? '',
+                                            text: data?.filename ??
+                                                'No Name Found',
                                             color: AppColors.titleTextColor,
                                             fontSize: 13.sp,
                                             fontWeight: FontWeight.w600,
                                             height: 1.75,
                                           ),
                                           CustomText(
-                                            text: '7 Days Ago',
+                                            text: data?.date ?? '7 Days Ago',
                                             color: AppColors.titleTextColor,
                                             fontSize: 12.sp,
                                             fontWeight: FontWeight.w400,

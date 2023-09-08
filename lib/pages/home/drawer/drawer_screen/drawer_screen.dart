@@ -10,11 +10,8 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('device type ${context.deviceType()}');
-
-    // if(context.deviceType() == DeviceType.tablet)
-
     if (context.deviceType() == DeviceType.tablet) {
-      return const TabletAppDrawer(); 
+      return const TabletAppDrawer();
     }
     return const MobileAppDrawer();
   }

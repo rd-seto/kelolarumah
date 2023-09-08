@@ -13,11 +13,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      // drawer: const AppDrawer(),
-      // appBar: PreferredSize(
-      //   preferredSize: Size.fromHeight(60.h),
-      //   child: const HomePageAppBar(appbarName: "HomePage"),
-      // ),
       body: Stack(
         children: [
           Positioned(

@@ -18,19 +18,14 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-
-    final provider = Provider.of<LocalAutProvider>(context,listen: false);
+    final provider = Provider.of<LocalAutProvider>(context, listen: false);
 
     Future.delayed(const Duration(seconds: 3), () async {
       Utils.initDio();
-      if(provider.getUser() != null){
-
-        ///set token as global variable, so that we can use
-        ///anywhere in the application
+      if (provider.getUser() != null) {
         GlobalState.instance.set('token', provider.getUser()?.token);
-
         NavUtil.navigateScreen(context, const CustomBottomNavBar());
-      }else{
+      } else {
         NavUtil.navigateScreen(context, const LoginOptionScreen());
       }
     });

@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intl/intl.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/components/elevated_button_widget.dart';
@@ -18,12 +17,10 @@ import '../../../../../data/provider/profile_details_provider.dart';
 import '../../../../../data/provider/update_profile_provider.dart';
 
 class EditProfileScreen extends StatefulWidget {
-
-  ProfileInfo? profileData;
+  final ProfileInfo? profileData;
   final ProfileDetailsProvider? provider;
 
-
-   EditProfileScreen({super.key, this.profileData,  this.provider});
+  const EditProfileScreen({super.key, this.profileData, this.provider});
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -31,8 +28,6 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen>
     with SingleTickerProviderStateMixin {
-
-
   TabController? _tabController;
 
   @override
@@ -49,7 +44,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
     Provider.of<UpdateProfileProvider>(context, listen: false);
 
     UpdatePassword updatePassword = UpdatePassword();
-    final provider =  Provider.of<UpdateProfileProvider>(context);
+    final provider = Provider.of<UpdateProfileProvider>(context);
 
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
@@ -97,7 +92,6 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                           ),
                         ],
                       ),
-
                       CustomText(
                         text: user?.name ?? '',
                         color: AppColors.titleTextColor,
@@ -142,11 +136,11 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                     physics: const NeverScrollableScrollPhysics(),
                     // ignore: sort_child_properties_last
                     children: [
-                       ProfileEditBasicInfo(
+                      ProfileEditBasicInfo(
                         profileData: widget.profileData,
-                         onSave: (){
+                        onSave: () {
                           widget.provider?.profileDetailsData(context);
-                         },
+                        },
                       ),
                       SingleChildScrollView(
                         child: Column(
@@ -197,7 +191,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                                 } else {
                                   Fluttertoast.showToast(
                                     msg:
-                                    'Password and confirm password not matched',
+                                        'Password and confirm password not matched',
                                   );
                                 }
                               },
@@ -217,5 +211,3 @@ class _EditProfileScreenState extends State<EditProfileScreen>
     );
   }
 }
-
-

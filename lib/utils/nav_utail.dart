@@ -5,17 +5,12 @@ class NavUtil {
     Navigator.push(
       context,
       PageRouteBuilder(
-        pageBuilder: (
-            BuildContext context,
-            Animation<double> animation,
+        pageBuilder: (BuildContext context, Animation<double> animation,
             Animation<double> secondaryAnimation) {
           return screen;
         },
-        transitionsBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-            Widget child) {
+        transitionsBuilder: (BuildContext context, Animation<double> animation,
+            Animation<double> secondaryAnimation, Widget child) {
           return Align(
             child: FadeTransition(
               opacity: animation,
@@ -24,7 +19,6 @@ class NavUtil {
           );
         },
       ),
-//      MaterialPageRoute(builder: (context) => screen),
     );
   }
 
@@ -36,6 +30,9 @@ class NavUtil {
   }
 
   static pushAndRemoveUntil(BuildContext context, Widget screen) {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => screen), ModalRoute.withName("/Home"));
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => screen),
+        ModalRoute.withName("/Home"));
   }
 }

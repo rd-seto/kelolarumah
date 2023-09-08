@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/tenants_details_model.dart';
 import 'package:landlord/data/provider/tenants_details_provider.dart';
 import 'package:landlord/pages/home/drawer/tenants/components/summary_container_black.dart';
@@ -14,7 +13,8 @@ class AgreementsSummaryCart extends StatelessWidget {
   final int? tenantId;
   final TenantsDetailsProvider? provider;
 
-  const AgreementsSummaryCart({super.key, this.agreement, this.tenantId,this.provider});
+  const AgreementsSummaryCart(
+      {super.key, this.agreement, this.tenantId, this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,6 @@ class AgreementsSummaryCart extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               SizedBox(
                 height: 30.h,
               ),
@@ -66,7 +65,6 @@ class AgreementsSummaryCart extends StatelessWidget {
                         title: "Rent_Type",
                         subTitle: agreement?.rentType ?? "N/A",
                       ),
-
                       SummaryContainerBlack(
                         title: "Reminder_Date",
                         subTitle: agreement?.reminderDate.toString() ?? "N/A",
@@ -81,7 +79,6 @@ class AgreementsSummaryCart extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-
             ],
           ),
         ),
@@ -93,13 +90,15 @@ class AgreementsSummaryCart extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  NavUtil.navigateScreen(context,  AddAgreementsScreen(
-                    agreement: agreement,
-                    tenantId: tenantId!,
-                    onSave: (){
-                      provider?.tenantsDetailsData(context, tenantId);
-                    },
-                  ));
+                  NavUtil.navigateScreen(
+                      context,
+                      AddAgreementsScreen(
+                        agreement: agreement,
+                        tenantId: tenantId!,
+                        onSave: () {
+                          provider?.tenantsDetailsData(context, tenantId);
+                        },
+                      ));
                 },
                 child: Image.asset(
                   'assets/dashboard/edit_float_img.png',

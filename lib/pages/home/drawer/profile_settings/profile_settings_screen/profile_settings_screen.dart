@@ -8,7 +8,6 @@ import 'package:landlord/pages/home/drawer/tenants/components/summary_container_
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
-import '../../../../../data/local/local_auth_provider.dart';
 import '../../../../../data/provider/profile_details_provider.dart';
 
 class ProfileSettingsScreen extends StatelessWidget {
@@ -17,24 +16,21 @@ class ProfileSettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<LocalAutProvider>(context);
-    final user = provider.getUser();
     return ChangeNotifierProvider(
-      create: (BuildContext context) =>
-          ProfileDetailsProvider(context),
+      create: (BuildContext context) => ProfileDetailsProvider(context),
       child: Consumer<ProfileDetailsProvider>(
         builder: (context, provider, _) {
           return Scaffold(
             backgroundColor: AppColors.backgroundColor,
             appBar: isBottomNav == false
                 ? PreferredSize(
-              preferredSize: Size.fromHeight(70.h),
-              child: const CustomAppBar(appBarName: 'Profile_Details'),
-            )
+                    preferredSize: Size.fromHeight(70.h),
+                    child: const CustomAppBar(appBarName: 'Profile_Details'),
+                  )
                 : const PreferredSize(
-              // ignore: sort_child_properties_last
-                child: SizedBox(),
-                preferredSize: Size.fromHeight(0)),
+                    // ignore: sort_child_properties_last
+                    child: SizedBox(),
+                    preferredSize: Size.fromHeight(0)),
             body: Stack(
               children: [
                 Positioned(
@@ -59,14 +55,18 @@ class ProfileSettingsScreen extends StatelessWidget {
                                 height: 80.h,
                               ),
                               CustomText(
-                                text: provider.profileDetails?.data?.profileInfo?.name ?? '',
+                                text: provider.profileDetails?.data?.profileInfo
+                                        ?.name ??
+                                    '',
                                 color: AppColors.titleTextColor,
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w700,
                                 height: 1.75,
                               ),
                               CustomText(
-                                text: provider.profileDetails?.data?.profileInfo?.email ?? '',
+                                text: provider.profileDetails?.data?.profileInfo
+                                        ?.email ??
+                                    '',
                                 color: AppColors.black2Sd,
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w400,
@@ -92,33 +92,47 @@ class ProfileSettingsScreen extends StatelessWidget {
                                 SizedBox(
                                   height: 28.h,
                                 ),
-                                 SummaryContainerBlack(
+                                SummaryContainerBlack(
                                   title: "Phone",
-                                  subTitle: provider.profileDetails?.data?.profileInfo?.phone ?? "N/A",
+                                  subTitle: provider.profileDetails?.data
+                                          ?.profileInfo?.phone ??
+                                      "N/A",
                                 ),
-                                 SummaryContainerWhite(
+                                SummaryContainerWhite(
                                   title: "Occupation",
-                                  subTitle: provider.profileDetails?.data?.profileInfo?.occupation ?? "N/A",
+                                  subTitle: provider.profileDetails?.data
+                                          ?.profileInfo?.occupation ??
+                                      "N/A",
                                 ),
-                                 SummaryContainerBlack(
+                                SummaryContainerBlack(
                                   title: "Designation",
-                                  subTitle: provider.profileDetails?.data?.profileInfo?.designation ?? "N/A",
+                                  subTitle: provider.profileDetails?.data
+                                          ?.profileInfo?.designation ??
+                                      "N/A",
                                 ),
-                                 SummaryContainerWhite(
+                                SummaryContainerWhite(
                                   title: "Institution",
-                                    subTitle: provider.profileDetails?.data?.profileInfo?.institution ?? "N/A",
+                                  subTitle: provider.profileDetails?.data
+                                          ?.profileInfo?.institution ??
+                                      "N/A",
                                 ),
                                 SummaryContainerBlack(
                                   title: "NID_No",
-                                  subTitle: provider.profileDetails?.data?.profileInfo?.nid ?? "N/A",
+                                  subTitle: provider.profileDetails?.data
+                                          ?.profileInfo?.nid ??
+                                      "N/A",
                                 ),
                                 SummaryContainerWhite(
                                   title: "Passport_No",
-                                  subTitle: provider.profileDetails?.data?.profileInfo?.passport ?? "N/A",
+                                  subTitle: provider.profileDetails?.data
+                                          ?.profileInfo?.passport ??
+                                      "N/A",
                                 ),
                                 SummaryContainerWhite(
                                   title: "Gender",
-                                  subTitle: provider.profileDetails?.data?.profileInfo?.gender ?? "N/A",
+                                  subTitle: provider.profileDetails?.data
+                                          ?.profileInfo?.gender ??
+                                      "N/A",
                                 ),
                               ],
                             ),
@@ -133,10 +147,12 @@ class ProfileSettingsScreen extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 NavUtil.navigateScreen(
-                                    context,  EditProfileScreen(
-                                    profileData: provider.profileDetails?.data?.profileInfo,
-                                    provider: provider,
-                                ));
+                                    context,
+                                    EditProfileScreen(
+                                      profileData: provider
+                                          .profileDetails?.data?.profileInfo,
+                                      provider: provider,
+                                    ));
                               },
                               child: Image.asset(
                                 'assets/dashboard/edit_float_img.png',
@@ -156,9 +172,5 @@ class ProfileSettingsScreen extends StatelessWidget {
         },
       ),
     );
-
-
-
-
   }
 }

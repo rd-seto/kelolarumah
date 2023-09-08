@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -27,7 +26,7 @@ class LoadingDialog {
   static showLoadingView({Color? color}) {
     return Center(
       child: SpinKitCircle(
-        color: color?? AppColors.colorPrimary,
+        color: color ?? AppColors.colorPrimary,
         size: 40.0,
       ),
     );
@@ -43,5 +42,4 @@ class LoadingDialog {
         textColor: textColor ?? Colors.white,
         fontSize: 16.0);
   }
-
 }

@@ -15,7 +15,6 @@ import 'package:landlord/data/provider/document_provider.dart';
 import 'package:landlord/data/provider/notification_provider.dart';
 import 'package:landlord/data/provider/profile_details_provider.dart';
 import 'package:landlord/data/provider/property_details_edit_provider.dart';
-import 'package:landlord/data/provider/property_details_provider.dart';
 import 'package:landlord/data/provider/property_provider.dart';
 import 'package:landlord/data/provider/tenant_edit_provider.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';

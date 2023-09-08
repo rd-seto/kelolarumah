@@ -15,8 +15,6 @@ class PropertyDetailsProvider extends ChangeNotifier {
 
   PropertyDetailsProvider(context, int? propertyId) {
     propertyDetails(context, propertyId);
-    // propertyData = propertyId;
-    // addGallery(context, propertyId, () {});
   }
 
   void propertyDetails(context, propertyId) async {

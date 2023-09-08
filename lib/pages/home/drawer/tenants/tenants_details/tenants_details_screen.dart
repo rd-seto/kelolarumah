@@ -1,4 +1,4 @@
-  import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
@@ -6,7 +6,6 @@ import 'package:landlord/data/provider/tenants_details_provider.dart';
 import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/accounts/accounts_summary_chart.dart';
 import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/agreements/agreements_summary_chart.dart';
 import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/basic_info/basic_info_summary_cart.dart';
-import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/documents_summary/documents_summary_cart.dart';
 import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/emergency/emergency_summary_cart.dart';
 import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/tenants_profile_details_cart.dart';
 import 'package:landlord/pages/home/drawer/tenants/tenants_details/components/transaction/transaction_summary_chart.dart';
@@ -119,15 +118,16 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                             EmergencySummaryCart(
                               emergencyContact: provider.tenantsDetailsResponse
                                   ?.data?.emergencyContact,
-                              tenantId: provider.tenantsDetailsResponse?.data?.basicInfo?.id ?? 0,
+                              tenantId: provider.tenantsDetailsResponse?.data
+                                      ?.basicInfo?.id ??
+                                  0,
                               tenantDetailsProvider: provider,
                             ),
                             AccountsSummaryCart(
-                              accounts: provider
-                                  .tenantsDetailsResponse?.data?.accounts,
-                              tenantId: widget.tenantsId,
-                                provider : provider
-                            ),
+                                accounts: provider
+                                    .tenantsDetailsResponse?.data?.accounts,
+                                tenantId: widget.tenantsId,
+                                provider: provider),
                             TransactionSummaryCart(
                               tenantTransaction: provider.tenantsDetailsResponse
                                   ?.data?.tenantTransaction,
@@ -137,7 +137,6 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                                   .tenantsDetailsResponse?.data?.agreement,
                               tenantId: widget.tenantsId,
                               provider: provider,
-
                             )
                           ],
                         ),

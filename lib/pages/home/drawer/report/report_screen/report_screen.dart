@@ -6,8 +6,6 @@ import 'package:landlord/components/elevated_button_widget.dart';
 import 'package:landlord/data/model/report_property_list_model.dart';
 import 'package:landlord/data/model/report_tenant_list_model.dart';
 import 'package:landlord/data/provider/report_provider.dart';
-import 'package:landlord/pages/home/drawer/report/report_transaction_details/report_transaction_details.dart';
-import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 

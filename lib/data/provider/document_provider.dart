@@ -31,24 +31,23 @@ class DocumentProvider extends ChangeNotifier {
   }
 
   Future<void> getCachedPdf() async {
-    
     // final cacheManager = await DefaultCacheManager.getInstance();
     final fileInfo = await DefaultCacheManager().getFileFromCache('pdfUrl');
     if (fileInfo != null && await fileInfo.file.exists()) {
       cachePdfPath = fileInfo.file.path;
-   
+
       notifyListeners();
     }
   }
 
   Future getCacheDocuments(context) async {
-     isLoading = true;
+    isLoading = true;
     var listOfMap = await SPUtill.getDocumentList(SPUtill.keyDocumentList);
 
     // print('length ${listOfMap.length}');
 
     cacheList = listOfMap;
-        isLoading = false;
+    isLoading = false;
     notifyListeners();
   }
 
@@ -70,7 +69,7 @@ class DocumentProvider extends ChangeNotifier {
           size: cacheModel.size,
           file: _pdfPath,
         ));
-        print('length ${cacheList.length}');
+        print('length ${cacheList.toList()}');
 
         SPUtill.setDocumentPathList(
             SPUtill.keyDocumentList, cacheList.map((e) => e.toJson()).toList());

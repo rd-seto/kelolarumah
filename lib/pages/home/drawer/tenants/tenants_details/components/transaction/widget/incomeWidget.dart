@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../../../../../data/model/add_transaction_model.dart';
 import '../../../../../../../../data/provider/add_transaction_provider.dart';
 import '../../../../../../../../utils/theme/app_colors.dart';
 import '../transaction_bill_model/transtion_add_bill_model.dart';
@@ -11,7 +9,7 @@ class IncomeWidget extends StatefulWidget {
   final TransactionBillModel item;
   final int itemIndex;
 
-  IncomeWidget({
+  const IncomeWidget({
     super.key,
     required this.item,
     required this.itemIndex,
@@ -119,7 +117,6 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                             child: SizedBox(
                               height: 50.h,
                               child: TextFormField(
-                                // controller: provider.transactionsList[widget.itemIndex].price,
                                 decoration: const InputDecoration(
                                     labelText: 'Price',
                                     border: OutlineInputBorder()),

@@ -81,7 +81,6 @@ class ResetPass extends StatelessWidget {
                           backgroundColor: AppColors.colorWhite),
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          // provider.login(userLogin: userLogin, context: context);
                           provider.resetPass(
                               otp: otpController.text,
                               email: emailController.text,
@@ -97,9 +96,7 @@ class ResetPass extends StatelessWidget {
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w700,
                         ),
-                      ).tr()
-                      
-                      ),
+                      ).tr()),
                 ),
                 SizedBox(
                   height: 20.h,

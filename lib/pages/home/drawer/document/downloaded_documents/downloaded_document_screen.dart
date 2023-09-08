@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
-import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/provider/document_provider.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -56,19 +55,17 @@ class DownloadedDocumentScreen extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-
-                                        Text(e.filename ?? '',style: TextStyle(color: AppColors.titleTextColor,
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.w600,
-                                          height: 1.75,),),
-                                        // CustomText(
-                                        //   text: e.filename ?? '',
-                                        //   color: AppColors.titleTextColor,
-                                        //   fontSize: 13.sp,
-                                        //   fontWeight: FontWeight.w600,
-                                        //   height: 1.75,
-                                        // ),
-                                        Text( '7 Days Ago',
+                                        Text(
+                                          e.filename ?? '',
+                                          style: TextStyle(
+                                            color: AppColors.titleTextColor,
+                                            fontSize: 13.sp,
+                                            fontWeight: FontWeight.w600,
+                                            height: 1.75,
+                                          ),
+                                        ),
+                                        Text(
+                                          '7 Days Ago',
                                           style: TextStyle(
                                             color: AppColors.titleTextColor,
                                             fontSize: 12.sp,
@@ -76,18 +73,11 @@ class DownloadedDocumentScreen extends StatelessWidget {
                                             height: 1.75,
                                           ),
                                         ),
-                                        // CustomText(
-                                        //   text: '7 Days Ago',
-                                        //   color: AppColors.titleTextColor,
-                                        //   fontSize: 12.sp,
-                                        //   fontWeight: FontWeight.w400,
-                                        //   height: 1.75,
-                                        // ),
                                       ],
                                     ),
                                     const Spacer(),
                                     Text(
-                                     e.size ?? '',
+                                      e.size ?? '',
                                       style: TextStyle(
                                         color: AppColors.titleTextColor,
                                         fontSize: 13.sp,
@@ -95,13 +85,6 @@ class DownloadedDocumentScreen extends StatelessWidget {
                                         height: 1.75,
                                       ),
                                     ),
-                                    // CustomText(
-                                    //   text: e.size ?? '',
-                                    //   color: AppColors.titleTextColor,
-                                    //   fontSize: 13.sp,
-                                    //   fontWeight: FontWeight.w400,
-                                    //   height: 1.75,
-                                    // ),
                                   ],
                                 ),
                               ),

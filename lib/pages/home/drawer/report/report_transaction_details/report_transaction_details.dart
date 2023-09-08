@@ -132,71 +132,9 @@ class ReportTransactionDetails extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // Container(
-                  //   color: const Color(0xffE8E8E8),
-                  //   child: Padding(
-                  //     padding: EdgeInsets.symmetric(
-                  //         horizontal: 10.0.w, vertical: 18.h),
-                  //     child: Row(
-                  //       children: [
-                  //         CustomText(
-                  //           text: "Net Cash Flow:",
-                  //           color: AppColors.colorPrimary,
-                  //           fontSize: 20.sp,
-                  //           fontWeight: FontWeight.w700,
-                  //           height: 1.75,
-                  //         ),
-                  //         const Spacer(),
-                  //         CustomText(
-                  //           text: "\$ N/A",
-                  //           color: AppColors.colorPrimary,
-                  //           fontSize: 20.sp,
-                  //           fontWeight: FontWeight.w700,
-                  //           height: 1.75,
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                   SizedBox(
                     height: 20.h,
                   ),
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //       child: SizedBox(
-                  //         height: 52.h,
-                  //         width: double.infinity,
-                  //         child: ElevatedButton(
-                  //             style: ElevatedButton.styleFrom(
-                  //                 shape: RoundedRectangleBorder(
-                  //                     side: const BorderSide(
-                  //                         color: AppColors.mainColorsh1),
-                  //                     borderRadius: BorderRadius.circular(8.0)),
-                  //                 backgroundColor: AppColors.colorWhite),
-                  //             onPressed: () {},
-                  //             child: Text(
-                  //               'Save as Pdf',
-                  //               style: TextStyle(
-                  //                 color: AppColors.mainColorsh1,
-                  //                 letterSpacing: 1.sp,
-                  //                 fontSize: 14.sp,
-                  //                 fontWeight: FontWeight.w700,
-                  //               ),
-                  //             )),
-                  //       ),
-                  //     ),
-                  //     SizedBox(
-                  //       width: 10.w,
-                  //     ),
-                  //     Expanded(
-                  //       child: ElevatedButtonWidget(
-                  //         text: "Download",
-                  //         onPressed: () {},
-                  //       ),
-                  //     ),
-                  //   ],
-                  // )
                 ],
               ),
             ),
