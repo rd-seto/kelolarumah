@@ -172,6 +172,7 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                         decoration:
                             const BoxDecoration(color: AppColors.colorWhite),
                         child: TabBar(
+                          tabAlignment: TabAlignment.start,
                           isScrollable: true,
                           unselectedLabelColor: AppColors.black2Sd,
                           labelColor: AppColors.colorPrimary,

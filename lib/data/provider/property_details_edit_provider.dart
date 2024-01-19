@@ -74,11 +74,17 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
                         backgroundColor: AppColors.colorPrimary),
                     child: const Row(
                       children: [
-                        Icon(Icons.image),
+                        Icon(
+                          Icons.image,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 16,
                         ),
-                        Text('From Gallery'),
+                        Text(
+                          'From Gallery',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ],
                     ),
                   ),
@@ -91,11 +97,15 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
                     },
                     child: const Row(
                       children: [
-                        Icon(Icons.camera),
+                        Icon(
+                          Icons.camera,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 16,
                         ),
-                        Text('From Camera'),
+                        Text('From Camera',
+                            style: TextStyle(color: Colors.white)),
                       ],
                     ),
                   ),

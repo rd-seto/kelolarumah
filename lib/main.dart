@@ -19,6 +19,7 @@ import 'package:landlord/data/provider/property_provider.dart';
 import 'package:landlord/data/provider/tenant_edit_provider.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
 import 'package:landlord/pages/auth/splash/splash_screen.dart';
+import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'data/provider/add_transaction_provider.dart';
@@ -101,6 +102,14 @@ class MyApp extends StatelessWidget {
               Theme.of(context).textTheme,
             ),
             primarySwatch: Colors.deepPurple,
+            elevatedButtonTheme: ElevatedButtonThemeData(
+                style: ButtonStyle(
+              textStyle: MaterialStateProperty.all(
+                  const TextStyle(color: Colors.white)),
+              backgroundColor: MaterialStateProperty.all(
+                AppColors.colorPrimary,
+              ),
+            )),
           ),
           home: const SplashScreen(),
           builder: (ctx, child) {

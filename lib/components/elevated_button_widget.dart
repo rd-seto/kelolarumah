@@ -25,10 +25,10 @@ class ElevatedButtonWidget extends StatelessWidget {
         child: Text(
           '$text',
           style: TextStyle(
-            letterSpacing: 1.sp,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w700,
-          ),
+              letterSpacing: 1.sp,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w700,
+              color: Colors.white),
         ).tr(),
       ),
     );

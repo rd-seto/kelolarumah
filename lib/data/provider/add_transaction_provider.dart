@@ -200,11 +200,17 @@ class AddTransactionProvider extends ChangeNotifier {
                         backgroundColor: AppColors.colorPrimary),
                     child: Row(
                       children: [
-                        const Icon(Icons.image),
+                        const Icon(
+                          Icons.image,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 16.w,
                         ),
-                        const Text('From_Gallery').tr(),
+                        const Text(
+                          'From_Gallery',
+                          style: TextStyle(color: Colors.white),
+                        ).tr(),
                       ],
                     ),
                   ),
@@ -217,11 +223,17 @@ class AddTransactionProvider extends ChangeNotifier {
                     },
                     child: Row(
                       children: [
-                        const Icon(Icons.camera),
+                        const Icon(
+                          Icons.camera,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 16.w,
                         ),
-                        const Text('From_Camera').tr(),
+                        const Text(
+                          'From_Camera',
+                          style: TextStyle(color: Colors.white),
+                        ).tr(),
                       ],
                     ),
                   ),
@@ -234,11 +246,17 @@ class AddTransactionProvider extends ChangeNotifier {
                     },
                     child: Row(
                       children: [
-                        const Icon(Icons.camera),
+                        const Icon(
+                          Icons.camera,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 16.w,
                         ),
-                        const Text('Upload_Pdf_File').tr(),
+                        const Text(
+                          'Upload_Pdf_File',
+                          style: TextStyle(color: Colors.white),
+                        ).tr(),
                       ],
                     ),
                   ),
