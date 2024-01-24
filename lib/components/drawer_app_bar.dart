@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
-import '../pages/home/notification/notification_screen.dart';
+import '../pages/landlord/home/notification/notification_screen.dart';
 
 class HomePageAppBar extends StatelessWidget {
   final String? appbarName;

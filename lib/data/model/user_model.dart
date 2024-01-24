@@ -10,6 +10,7 @@ class UserLogin {
 
   Map<String, dynamic> toJson() => {"email": email, "password": password};
 }
+
 @HiveType(typeId: 0)
 class UserModel extends Equatable {
   @HiveField(0)
@@ -28,6 +29,8 @@ class UserModel extends Equatable {
   final String? nid;
   @HiveField(7)
   final String? passport;
+  @HiveField(8)
+  final int? roleId;
 
   const UserModel(
       {this.name,
@@ -37,10 +40,10 @@ class UserModel extends Equatable {
       this.gender,
       this.nid,
       this.passport,
-      this.dateOfBirth});
+      this.dateOfBirth,
+      this.roleId});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
-
     return UserModel(
       name: json['name'] == null ? null : json["name"],
       email: json['email'],
@@ -50,6 +53,7 @@ class UserModel extends Equatable {
       nid: json['nid'],
       passport: json['passport'],
       dateOfBirth: json['date_of_birth'],
+      roleId: json['role_id'],
     );
   }
 

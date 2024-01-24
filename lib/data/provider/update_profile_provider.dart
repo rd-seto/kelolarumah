@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:landlord/data/model/profile_update_model.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
-import 'package:landlord/pages/home/bottom_navigation_bar/custom_bottom_nav.dart';
+import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import '../network/repository/repository.dart';
 

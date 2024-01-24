@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:landlord/pages/home/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
+import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
-import '../pages/home/notification/notification_screen.dart';
+import '../pages/landlord/home/notification/notification_screen.dart';
 
 class NewMobileAppBar extends StatelessWidget {
   final String? appbarName;

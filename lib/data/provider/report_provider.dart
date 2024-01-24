@@ -3,11 +3,10 @@ import 'package:landlord/data/model/report_details_model.dart';
 import 'package:landlord/data/model/report_property_list_model.dart';
 import 'package:landlord/data/model/report_tenant_list_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
-import 'package:landlord/pages/home/drawer/report/report_transaction_details/report_transaction_details.dart';
+import 'package:landlord/pages/landlord/drawer/report/report_transaction_details/report_transaction_details.dart';
 import 'package:landlord/utils/nav_utail.dart';
 
 class ReportProvider extends ChangeNotifier {
-
   ReportPropertyModel? reportPropertyModel;
   ReportTenantModel? tenantModel;
   ReportDetailsModel? reportDetailsModel;
@@ -16,7 +15,6 @@ class ReportProvider extends ChangeNotifier {
   List<ReportTenants>? tenantList;
   ReportProperty? selectProperty;
   ReportTenants? selectTenant;
-
 
   ReportProvider(context) {
     propertyData(context);
@@ -31,13 +29,13 @@ class ReportProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void tenantsDataByPropertyId(BuildContext context,
-      ReportProperty propertyId) async {
+  void tenantsDataByPropertyId(
+      BuildContext context, ReportProperty propertyId) async {
     tenantList = null;
     selectTenant = null;
     notifyListeners();
-    var apiResponse = await RepositoryImpl(context).getReportTenantList(
-        propertyId.id);
+    var apiResponse =
+        await RepositoryImpl(context).getReportTenantList(propertyId.id);
     if (apiResponse != null) {
       tenantModel = apiResponse;
       tenantList = tenantModel?.data?.properties;
@@ -54,8 +52,12 @@ class ReportProvider extends ChangeNotifier {
     var apiResponse = await RepositoryImpl(context).getReportDetails(data);
     if (apiResponse != null) {
       reportDetailsModel = apiResponse;
-      if(reportDetailsModel?.data?.transactions?.isNotEmpty == true){
-        NavUtil.navigateScreen(context, ReportTransactionDetails(reportDetails: reportDetailsModel!,));
+      if (reportDetailsModel?.data?.transactions?.isNotEmpty == true) {
+        NavUtil.navigateScreen(
+            context,
+            ReportTransactionDetails(
+              reportDetails: reportDetailsModel!,
+            ));
       }
       notifyListeners();
     }

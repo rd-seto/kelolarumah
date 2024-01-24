@@ -2,7 +2,7 @@
   "please_select_your_language": "Please select your language",
   "choose_your_preferred_language": "Choose Your Preferred Language",
   "login_as_landLord": "Login As LandLord",
-  "Login_As_Tenants": "Login As LandLord",
+  "Login_As_Tenants": "Login As Tenant",
   "EMAIL": "EMAIL",
   "PASSWORD": "PASSWORD",
   "Remember_Me": "Remember Me",
@@ -43,7 +43,7 @@
   "You_are_no_your_way_to_better_property_management_Lets_Started": "You are no your way to better \nproperty management. Lets Started",
   "Add_property": "Add property",
   "Save": "Save",
-  "Already_have_any_account?" :"Already have any account?",
+  "Already_have_any_account?": "Already have any account?",
   "Country ": "Country",
   "General_Information": "General Information",
   "Select_your_division": "Select your division",
@@ -215,7 +215,11 @@
   "Confirm_Password": "Confirm Password",
   "Invoice": "Invoice",
   "Payment_Method": "Payment Method",
-  "Report_From": "Report From",
+  "total_order": "Total Order",
+  "my_wishlist": "My Wishlist",
+  "purchase_amount": "Purchase Amount",
+  "product_in_cart": "Product in cart",
+  "coupon_used": "Coupon Used",
+  "completed_order": "Completed order",
   "Payment_Status": "Payment Status"
-  
 }

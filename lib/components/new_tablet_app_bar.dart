@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
-import '../pages/home/notification/notification_screen.dart';
+import '../pages/landlord/home/notification/notification_screen.dart';
 
 class NewTabletAppBar extends StatelessWidget {
   final String? appbarName;
@@ -36,7 +36,11 @@ class NewTabletAppBar extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
           child: InkWell(
             onTap: () {
-              NavUtil.navigateScreen(context, const NotificationScreen(isBottomNav: false,));
+              NavUtil.navigateScreen(
+                  context,
+                  const NotificationScreen(
+                    isBottomNav: false,
+                  ));
             },
             child: Image.asset('assets/dashboard/notification_vector.png'),
           ),

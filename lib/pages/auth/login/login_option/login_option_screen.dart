@@ -54,25 +54,30 @@ class LoginOptionScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              // SizedBox(
-              //   height: 22.h,
-              // ),
-              // Container(
-              //   decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(8.r),
-              //       color: AppColors.colorWhite),
-              //   child: Center(
-              //     child: Padding(
-              //       padding: EdgeInsets.all(16.0.sp),
-              //       child: const CustomText(
-              //         text: "Login_As_Tenants",
-              //         color: AppColors.colorPrimary,
-              //         fontSize: 18,
-              //         fontWeight: FontWeight.w700,
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              SizedBox(
+                height: 22.h,
+              ),
+              InkWell(
+                onTap: () {
+                  NavUtil.navigateScreen(context, const LoginScreen());
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      color: AppColors.colorWhite),
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0.sp),
+                      child: const CustomText(
+                        text: "Login_As_Tenants",
+                        color: AppColors.colorPrimary,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

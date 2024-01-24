@@ -9,9 +9,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:landlord/data/model/add_transaction_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
-import 'package:landlord/pages/home/drawer/transaction/transaction_list/transaction_list_screen.dart';
-import '../../pages/home/drawer/tenants/tenants_details/components/transaction/transaction_bill_model/transtion_add_bill_model.dart';
-import '../../pages/home/drawer/tenants/tenants_details/components/transaction/widget/expense_widget.dart';
+import 'package:landlord/pages/landlord/drawer/transaction/transaction_list/transaction_list_screen.dart';
+import '../../pages/landlord/drawer/tenants/tenants_details/components/transaction/transaction_bill_model/transtion_add_bill_model.dart';
+import '../../pages/landlord/drawer/tenants/tenants_details/components/transaction/widget/expense_widget.dart';
 import '../../utils/nav_utail.dart';
 import '../../utils/theme/app_colors.dart';
 

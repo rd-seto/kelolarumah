@@ -6,12 +6,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:landlord/data/model/add_property_data_model.dart';
 import 'package:landlord/data/model/location_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
-import 'package:landlord/pages/home/drawer/properties/add_property/location/district_screen.dart';
-import 'package:landlord/pages/home/drawer/properties/add_property/location/divisions_screen.dart';
+import 'package:landlord/pages/landlord/drawer/properties/add_property/location/district_screen.dart';
+import 'package:landlord/pages/landlord/drawer/properties/add_property/location/divisions_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
-import '../../pages/home/drawer/properties/properties_screen/properties_screen.dart';
+import '../../pages/landlord/drawer/properties/properties_screen/properties_screen.dart';
 
 class AddPropertyProvider extends ChangeNotifier {
   AddPropertyDataModel? addPropertyDataModel;

@@ -4,7 +4,8 @@ import 'package:landlord/data/model/user_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/pages/auth/login/login_screen.dart';
 import 'package:landlord/pages/auth/reset_pass/reset_pass.dart';
-import 'package:landlord/pages/home/bottom_navigation_bar/custom_bottom_nav.dart';
+import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
+import 'package:landlord/pages/tenants/bottom_nav/tenant_bottom_nav.dart';
 import 'package:landlord/utils/dialog/loading_dialog.dart';
 import 'package:landlord/utils/global_state.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
@@ -25,7 +26,11 @@ class AuthProvider {
         LoadingDialog.showToastNotification("User Login Successfully",
             color: AppColors.successColor);
         context.read<LocalAutProvider>().updateUser(user);
-        NavUtil.pushAndRemoveUntil(context, const CustomBottomNavBar());
+        if (user.roleId == 4) {
+          NavUtil.pushAndRemoveUntil(context, const CustomBottomNavBar());
+        } else {
+          NavUtil.navigateScreen(context, const TenantBottomNavBar());
+        }
       }
     });
   }
