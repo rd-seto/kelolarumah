@@ -7,7 +7,6 @@ import 'package:landlord/extention/device_type_extention.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/pages/landlord/drawer/document/document_list/document_list_screen.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
-import 'package:landlord/pages/landlord/drawer/properties/properties_screen/properties_screen.dart';
 import 'package:landlord/pages/landlord/home/language/language_screen.dart';
 import 'package:landlord/pages/tenants/due_payment/view/due_payment_page.dart';
 import 'package:landlord/pages/tenants/my_wishlist/view/my_wishlist_page.dart';
