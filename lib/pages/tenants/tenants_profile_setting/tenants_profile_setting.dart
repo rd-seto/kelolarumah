@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:landlord/pages/tenants/tenants_profile_setting/edit_profile.dart';
+import 'package:landlord/pages/tenants/tenants_profile_setting/tenant_edit_security.dart';
 
 class TenantsProfileSetting extends StatefulWidget {
   const TenantsProfileSetting({super.key});
@@ -27,7 +29,7 @@ class _TenantsProfileSettingState extends State<TenantsProfileSetting>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('TabBar Sample'),
+        title: const Text('Tenant Profile Edit'),
         bottom: TabBar(
           padding: EdgeInsets.zero,
           isScrollable: true,
@@ -66,12 +68,8 @@ class _TenantsProfileSettingState extends State<TenantsProfileSetting>
       body: TabBarView(
         controller: _tabController,
         children: const <Widget>[
-          Center(
-            child: Text("It's cloudy here"),
-          ),
-          Center(
-            child: Text("It's rainy here"),
-          ),
+          EditProfile(),
+          TenantEditSecurity(),
           Center(
             child: Text("It's sunny here"),
           ),
