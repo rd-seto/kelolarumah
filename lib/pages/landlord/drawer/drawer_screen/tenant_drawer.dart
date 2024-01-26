@@ -11,6 +11,7 @@ import 'package:landlord/pages/landlord/home/language/language_screen.dart';
 import 'package:landlord/pages/tenants/due_payment/view/due_payment_page.dart';
 import 'package:landlord/pages/tenants/my_wishlist/view/my_wishlist_page.dart';
 import 'package:landlord/pages/tenants/purchase_history/view/purchase_history_page.dart';
+import 'package:landlord/pages/tenants/tenants_profile_setting/tenants_profile_setting.dart';
 import 'package:landlord/pages/tenants/tickets/tickets.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
@@ -163,9 +164,7 @@ class TenantAppDrawer extends StatelessWidget {
                           onTap: () {
                             NavUtil.navigateScreen(
                                 context,
-                                const ProfileSettingsScreen(
-                                  isBottomNav: false,
-                                ));
+                                const TenantsProfileSetting());
                           },
                           image: 'assets/drawer/settings_vector.png',
                           title: "Profile Settings",
