@@ -11,6 +11,7 @@ import 'package:landlord/pages/landlord/home/language/language_screen.dart';
 import 'package:landlord/pages/tenants/due_payment/view/due_payment_page.dart';
 import 'package:landlord/pages/tenants/my_wishlist/view/my_wishlist_page.dart';
 import 'package:landlord/pages/tenants/purchase_history/view/purchase_history_page.dart';
+import 'package:landlord/pages/tenants/tickets/tickets.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -131,17 +132,17 @@ class TenantAppDrawer extends StatelessWidget {
                           image: 'assets/drawer/report_vector.png',
                           title: "Due Payment",
                         ),
-                        // SizedBox(
-                        //   height: 20.h,
-                        // ),
-                        // DrawerListContent(
-                        //   onTap: () {
-                        //     NavUtil.navigateScreen(
-                        //         context, const CashManagementDashboardScreen());
-                        //   },
-                        //   image: 'assets/drawer/cash_vector.png',
-                        //   title: "Cash_Management",
-                        // ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        DrawerListContent(
+                          onTap: () {
+                            NavUtil.navigateScreen(
+                                context, const Tickets());
+                          },
+                          image: 'assets/drawer/cash_vector.png',
+                          title: "Tickets",
+                        ),
                       ],
                     ),
                   ),
