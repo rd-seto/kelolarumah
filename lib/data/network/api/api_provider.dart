@@ -39,4 +39,9 @@ class ApiProvider {
   static String documentList = '$baseUrl/documents';
   static String tenantUpdate = '$baseUrl/tenant/update/';
   static String profileDetails = "$baseUrl/user";
+
+// TODO : Tenants part api call ===========================
+  static String tenantDashboard = '$baseUrl/private/v1/tenant/dashboard';
+  static String tenantPurchaseHistory = '$baseUrl/private/v1/tenant/orders';
+
 }

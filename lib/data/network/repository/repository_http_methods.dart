@@ -484,4 +484,26 @@ class RepositoryMethods {
         showLoader: true,
         name: ApiProvider.profileDetails);
   }
+
+  // TODO : Tenants part api call ==========================
+
+  Future<TenantsDashboardModel?> getTenantsDashboardData() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantsDashboardModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.tenantDashboard);
+  }
+
+  Future<TenantPurchaseHistoryModel?> getTenantPurchaseHistory() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantPurchaseHistoryModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.tenantPurchaseHistory);
+  }
 }

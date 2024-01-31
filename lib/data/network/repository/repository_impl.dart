@@ -145,4 +145,13 @@ class RepositoryImpl {
 
   Future<ProfileDetailsModel?> getProfileDetails() =>
       _repositoryMethods.getProfileDetails();
+
+
+  // TODO : Tenants part api call ===========================
+
+  Future<TenantsDashboardModel?> getTenantsDashboardData() =>
+      _repositoryMethods.getTenantsDashboardData();
+
+  Future<TenantPurchaseHistoryModel?> getTenantPurchaseHistoryData() =>
+      _repositoryMethods.getTenantPurchaseHistory();
 }
