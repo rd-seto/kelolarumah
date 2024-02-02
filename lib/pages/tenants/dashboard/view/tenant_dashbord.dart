@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/custom_text.dart';
+import 'package:landlord/components/shimmer/shimmer_placeholders.dart';
 import 'package:landlord/components/tenant_statistics_dashboard.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/data/provider/dashboard_provider.dart';
@@ -67,8 +68,10 @@ class TenantDashboardScreen extends StatelessWidget {
                                         .tr()),
                             IconButton(
                                 onPressed: () {
-                                  NavUtil.navigateScreen(context, const ChatRoom());
-                                }, icon: const Icon(Icons.chat))
+                                  NavUtil.navigateScreen(
+                                      context, const ChatRoom());
+                                },
+                                icon: const Icon(Icons.chat))
                           ],
                         ),
                         SizedBox(
@@ -138,23 +141,34 @@ class TenantDashboardScreen extends StatelessWidget {
                         const SizedBox(
                           height: 16,
                         ),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: provider.tenantsDashboard?.data
-                                  ?.orderHistory?.length ??
-                              0,
-                          itemBuilder: (BuildContext context, int index) {
-                            final data = provider
-                                .tenantsDashboard?.data?.orderHistory?[index];
-                            return PurchaseHistoryTile(
-                                invoice: data?.invoiceNo ?? '',
-                                date:
-                                    '${data?.date?.day}-${data?.date?.month}-${data?.date?.year}',
-                                discountAmount: data?.discountAmount ?? '',
-                                grandTotal: data?.grandTotal ?? '',
-                                paidAmount: data?.paidAmount ?? '',
-                                dueAmount: data?.dueAmount ?? '');
-                            /*Card(
+                        provider.isLoading == true
+                            ? ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: 5,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return const ContentPlaceholder(
+                                      lineType: ContentLineType.threeLines);
+                                })
+                            : ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: provider.tenantsDashboard?.data
+                                        ?.orderHistory?.length ??
+                                    0,
+                                itemBuilder: (BuildContext context, int index) {
+                                  final data = provider.tenantsDashboard?.data
+                                      ?.orderHistory?[index];
+                                  return PurchaseHistoryTile(
+                                      invoice: data?.invoiceNo ?? '',
+                                      date:
+                                          '${data?.date?.day}-${data?.date?.month}-${data?.date?.year}',
+                                      discountAmount:
+                                          data?.discountAmount ?? '',
+                                      grandTotal: data?.grandTotal ?? '',
+                                      paidAmount: data?.paidAmount ?? '',
+                                      dueAmount: data?.dueAmount ?? '');
+                                  /*Card(
                               margin: const EdgeInsets.symmetric(vertical: 2),
                               color: Colors.white,
                               child: Padding(
@@ -285,8 +299,8 @@ class TenantDashboardScreen extends StatelessWidget {
                                 ),
                               ),
                             );*/
-                          },
-                        )
+                                },
+                              )
 
                         /*  Padding(
                           padding: EdgeInsets.zero,
