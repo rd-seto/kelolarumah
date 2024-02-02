@@ -15,6 +15,8 @@ class RepositoryImpl {
   Future<UserModel?> registration(UserRegistration userRegistration) =>
       _repositoryMethods.registration(userLogin: userRegistration);
 
+  Future postSentToken(final data) =>  _repositoryMethods.sentFirebaseToken(data: data);
+
   Future forgetPass(final data) => _repositoryMethods.forgetPass(data: data);
 
   Future resetPass(final data) => _repositoryMethods.resetPass(data: data);
@@ -154,4 +156,7 @@ class RepositoryImpl {
 
   Future<TenantPurchaseHistoryModel?> getTenantPurchaseHistoryData() =>
       _repositoryMethods.getTenantPurchaseHistory();
+
+  Future<TenantWishlistModel?> getTenantWishlists() =>
+      _repositoryMethods.getTenantWishlists();
 }

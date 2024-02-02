@@ -22,6 +22,7 @@ import 'package:landlord/data/model/report_tenant_list_model.dart';
 import 'package:landlord/data/model/tenant_account_edit_body_model.dart';
 import 'package:landlord/data/model/tenant_edit_body_model.dart';
 import 'package:landlord/data/model/tenant_purchase_history_model.dart';
+import 'package:landlord/data/model/tenant_wishlist_model.dart';
 import 'package:landlord/data/model/tenants_dashboard_model.dart';
 import 'package:landlord/data/model/tenants_details_model.dart';
 import 'package:landlord/data/model/user_model.dart';

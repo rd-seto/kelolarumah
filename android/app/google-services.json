@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "286395663857",
+    "project_id": "landlord-41f50",
+    "storage_bucket": "landlord-41f50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286395663857:android:280105f306a36eff713050",
+        "android_client_info": {
+          "package_name": "com.onest.landlord"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0fZflnG-Cug2eIUF4tYZ8q64Pq2zfKio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

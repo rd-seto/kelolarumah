@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:landlord/components/new_mobile_app_bar.dart';
 import 'package:landlord/components/new_tablet_app_bar.dart';
+import 'package:landlord/data/provider/bottom_nav_provider.dart';
 import 'package:landlord/extention/device_type_extention.dart';
 import 'package:landlord/pages/landlord/home/dashboard/dashboard_screen.dart';
 import 'package:landlord/pages/landlord/drawer/drawer_screen/drawer_screen.dart';
@@ -13,6 +14,7 @@ import 'package:landlord/pages/landlord/drawer/tenants/tenants_screen/tenants_sc
 import 'package:landlord/pages/landlord/home/home_screen/home_screen.dart';
 import 'package:landlord/pages/landlord/home/notification/notification_screen.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
+import 'package:provider/provider.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final int? bottomNavigationIndex;
@@ -64,6 +66,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<BottomNavProvider>();
     DateTime timeBackPressed = DateTime.now();
     // ignore: unused_local_variable
     final PageController myPage =

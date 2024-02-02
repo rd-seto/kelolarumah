@@ -3,6 +3,7 @@ class ApiProvider {
 
   static String login = '$baseUrl/login';
   static String registration = '$baseUrl/register';
+  static String firebaseToken = '$baseUrl/user/firebase-token';
   static String forgetPassword = '$baseUrl/email/forgot-password';
   static String resetPassword = '$baseUrl/email/reset-password';
   static String dashboard = '$baseUrl/dashboard';
@@ -43,5 +44,6 @@ class ApiProvider {
 // TODO : Tenants part api call ===========================
   static String tenantDashboard = '$baseUrl/private/v1/tenant/dashboard';
   static String tenantPurchaseHistory = '$baseUrl/private/v1/tenant/orders';
+  static String tenantWishlist = '$baseUrl/private/v1/tenant/wishlist';
 
 }

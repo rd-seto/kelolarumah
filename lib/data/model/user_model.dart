@@ -31,6 +31,8 @@ class UserModel extends Equatable {
   final String? passport;
   @HiveField(8)
   final int? roleId;
+  @HiveField(9)
+  final String? avatar;
 
   const UserModel(
       {this.name,
@@ -41,7 +43,8 @@ class UserModel extends Equatable {
       this.nid,
       this.passport,
       this.dateOfBirth,
-      this.roleId});
+      this.roleId,
+      this.avatar});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
@@ -54,9 +57,23 @@ class UserModel extends Equatable {
       passport: json['passport'],
       dateOfBirth: json['date_of_birth'],
       roleId: json['role_id'],
+      avatar: json['avatar'] == null ? null : json["avatar"],
     );
   }
 
+  Map<String, dynamic> toJson() => {
+    "name": name,
+    "email": email,
+    'access_token': token,
+    'id': id,
+    'gender' : gender,
+    "nid": nid,
+    "passport": passport,
+    "date_of_birth": dateOfBirth,
+    "role_id": roleId,
+    "avatar": avatar,
+  };
+
   @override
-  List<Object?> get props => [name, email, id];
+  List<Object?> get props => [name, email, id, avatar];
 }

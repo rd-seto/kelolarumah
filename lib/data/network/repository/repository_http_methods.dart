@@ -256,6 +256,17 @@ class RepositoryMethods {
         name: "${ApiProvider.transactionDetails}/$id");
   }
 
+  Future sentFirebaseToken({required data}) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        showLoader: true,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        name: ApiProvider.firebaseToken);
+  }
+
   Future forgetPass({required data}) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
@@ -505,5 +516,15 @@ class RepositoryMethods {
         returnDataFun: (data) => data,
         showLoader: true,
         name: ApiProvider.tenantPurchaseHistory);
+  }
+
+  Future<TenantWishlistModel?> getTenantWishlists() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantWishlistModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.tenantWishlist);
   }
 }

@@ -7,11 +7,13 @@ import 'package:landlord/components/tenant_statistics_dashboard.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/data/tenant_provider/tenant_dashboard_provider.dart';
+import 'package:landlord/pages/chat_screen/chat_room.dart';
 import 'package:landlord/pages/landlord/home/dashboard/components/greeting_scetion_cart.dart';
 import 'package:landlord/pages/landlord/home/dashboard/components/grid_dashboard_summary_cart.dart';
 import 'package:landlord/pages/tenants/dashboard/content/header_table_row.dart';
 import 'package:landlord/pages/tenants/dashboard/content/purchase_history_cart.dart';
 import 'package:landlord/pages/tenants/dashboard/content/purchase_history_tile.dart';
+import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -32,13 +34,13 @@ class TenantDashboardScreen extends StatelessWidget {
             backgroundColor: AppColors.backgroundColor,
             appBar: isBottomNav == false
                 ? PreferredSize(
-              preferredSize: Size.fromHeight(60.h),
-              child: CustomAppBar(appBarName: "Dashboard".tr()),
-            )
+                    preferredSize: Size.fromHeight(60.h),
+                    child: CustomAppBar(appBarName: "Dashboard".tr()),
+                  )
                 : const PreferredSize(
-              // ignore: sort_child_properties_last
-                child: SizedBox(),
-                preferredSize: Size.fromHeight(0)),
+                    // ignore: sort_child_properties_last
+                    child: SizedBox(),
+                    preferredSize: Size.fromHeight(0)),
             body: Stack(
               children: [
                 Positioned(
@@ -56,11 +58,19 @@ class TenantDashboardScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        GreetingsSectionCart(
-                            name: "Hi ${userProvider
-                                .getUser()
-                                ?.name ?? 'dd'}"
-                                .tr()),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GreetingsSectionCart(
+                                name:
+                                    "Hi ${userProvider.getUser()?.name ?? 'dd'}"
+                                        .tr()),
+                            IconButton(
+                                onPressed: () {
+                                  NavUtil.navigateScreen(context, const ChatRoom());
+                                }, icon: const Icon(Icons.chat))
+                          ],
+                        ),
                         SizedBox(
                           height: 20.h,
                         ),
@@ -70,7 +80,7 @@ class TenantDashboardScreen extends StatelessWidget {
                               child: TenantStatisticsCard(
                                   title: "Total Order",
                                   value: provider.tenantsDashboard?.data
-                                      ?.statistics?.totalOrder ??
+                                          ?.statistics?.totalOrder ??
                                       ''),
                             ),
                             SizedBox(width: 8.r),
@@ -78,7 +88,7 @@ class TenantDashboardScreen extends StatelessWidget {
                               child: TenantStatisticsCard(
                                   title: "Wishlist",
                                   value: provider.tenantsDashboard?.data
-                                      ?.statistics?.wishlist ??
+                                          ?.statistics?.wishlist ??
                                       ''),
                             ),
                             SizedBox(width: 8.r),
@@ -86,7 +96,7 @@ class TenantDashboardScreen extends StatelessWidget {
                               child: TenantStatisticsCard(
                                   title: "Purchase Amount",
                                   value: provider.tenantsDashboard?.data
-                                      ?.statistics?.purchaseAmount ??
+                                          ?.statistics?.purchaseAmount ??
                                       ''),
                             ),
                           ],
@@ -98,7 +108,7 @@ class TenantDashboardScreen extends StatelessWidget {
                               child: TenantStatisticsCard(
                                   title: "Used Coupons",
                                   value: provider.tenantsDashboard?.data
-                                      ?.statistics?.usedCoupons ??
+                                          ?.statistics?.usedCoupons ??
                                       ''),
                             ),
                             SizedBox(width: 8.r),
@@ -106,7 +116,7 @@ class TenantDashboardScreen extends StatelessWidget {
                               child: TenantStatisticsCard(
                                   title: "Cart",
                                   value: provider.tenantsDashboard?.data
-                                      ?.statistics?.cart ??
+                                          ?.statistics?.cart ??
                                       ''),
                             ),
                             SizedBox(width: 8.r),
@@ -114,7 +124,7 @@ class TenantDashboardScreen extends StatelessWidget {
                               child: TenantStatisticsCard(
                                   title: "Complete Order",
                                   value: provider.tenantsDashboard?.data
-                                      ?.statistics?.completeOrder ??
+                                          ?.statistics?.completeOrder ??
                                       ''),
                             ),
                           ],
@@ -131,13 +141,15 @@ class TenantDashboardScreen extends StatelessWidget {
                         ListView.builder(
                           shrinkWrap: true,
                           itemCount: provider.tenantsDashboard?.data
-                              ?.orderHistory?.length ??
+                                  ?.orderHistory?.length ??
                               0,
                           itemBuilder: (BuildContext context, int index) {
                             final data = provider
                                 .tenantsDashboard?.data?.orderHistory?[index];
-                            return PurchaseHistoryTile(invoice: data?.invoiceNo ?? '',
-                                date: data?.invoiceNo ?? '',
+                            return PurchaseHistoryTile(
+                                invoice: data?.invoiceNo ?? '',
+                                date:
+                                    '${data?.date?.day}-${data?.date?.month}-${data?.date?.year}',
                                 discountAmount: data?.discountAmount ?? '',
                                 grandTotal: data?.grandTotal ?? '',
                                 paidAmount: data?.paidAmount ?? '',

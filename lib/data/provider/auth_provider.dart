@@ -4,10 +4,12 @@ import 'package:landlord/data/model/user_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/pages/auth/login/login_screen.dart';
 import 'package:landlord/pages/auth/reset_pass/reset_pass.dart';
+import 'package:landlord/pages/chat_screen/firebase_service.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/pages/tenants/bottom_nav/tenant_bottom_nav.dart';
 import 'package:landlord/utils/dialog/loading_dialog.dart';
 import 'package:landlord/utils/global_state.dart';
+import 'package:landlord/utils/shared_preferences.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 import '../../utils/nav_utail.dart';
@@ -20,8 +22,14 @@ class AuthProvider {
       {required UserLogin userLogin, required BuildContext context}) async {
     RepositoryImpl(context).login(userLogin).then((user) {
       if (user != null) {
+        SPUtill.setIntValue(SPUtill.keyUserId, user.id);
         ///set token as global variable, so that we can use
         ///anywhere in the application
+        ///
+        /// store user data to firebase for chat
+        FirebaseService().createAndUpdateUserInfo(
+            user.toJson(), '${user.id}');
+
         GlobalState.instance.set('token', user.token);
         LoadingDialog.showToastNotification("User Login Successfully",
             color: AppColors.successColor);
@@ -40,6 +48,7 @@ class AuthProvider {
       required BuildContext context}) async {
     await RepositoryImpl(context).registration(userRegistration).then((user) {
       if (user != null) {
+        SPUtill.setIntValue(SPUtill.keyUserId, user.id);
         context.read<LocalAutProvider>().updateUser(user);
         NavUtil.pushAndRemoveUntil(context, const CustomBottomNavBar());
       }

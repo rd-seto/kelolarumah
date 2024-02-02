@@ -7,7 +7,34 @@ import 'package:remixicon/remixicon.dart';
 class WishlistContent extends StatelessWidget {
   const WishlistContent({
     super.key,
+    required this.thumbnail,
+    required this.title,
+    required this.address,
+    required this.bedrooms,
+    required this.bathrooms,
+    required this.size,
+    required this.price,
+    required this.type,
+    required this.vacant,
+    required this.flatNo,
+    required this.completion,
+    required this.dealType,
+    required this.category,
   });
+
+  final String thumbnail;
+  final String title;
+  final String address;
+  final String bedrooms;
+  final String bathrooms;
+  final String size;
+  final String price;
+  final String type;
+  final String vacant;
+  final String flatNo;
+  final String completion;
+  final String dealType;
+  final String category;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +51,8 @@ class WishlistContent extends StatelessWidget {
                 topLeft: Radius.circular(12), topRight: Radius.circular(12)),
             child: Stack(
               children: [
-                Image.asset(
-                  'assets/drawer/apartment_img.png',
+                Image.network(
+                  thumbnail,
                   fit: BoxFit.cover,
                   height: 200.h,
                   width: double.infinity,
@@ -54,9 +81,9 @@ class WishlistContent extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 6, vertical: 2),
                         color: Colors.orange.shade600,
-                        child: const Text(
-                          "SALE",
-                          style: TextStyle(
+                        child:  Text(
+                          dealType,
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 10,
                               fontWeight: FontWeight.w600),
@@ -82,8 +109,8 @@ class WishlistContent extends StatelessWidget {
               ],
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
+           Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
                 Expanded(
@@ -91,34 +118,34 @@ class WishlistContent extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Remix.map_pin_2_line,
                             color: Color(0xff087c7c),
                             size: 18,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 6,
                           ),
                           CustomText(
-                            text: 'india',
+                            text: address,
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Remix.walk_line,
                             color: Color(0xff087c7c),
                             size: 18,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 6,
                           ),
                           CustomText(
-                            text: '5 bath',
+                            text: '$bathrooms bath',
                           )
                         ],
                       ),
@@ -130,34 +157,34 @@ class WishlistContent extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Remix.hotel_bed_line,
                             color: Color(0xff087c7c),
                             size: 18,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 6,
                           ),
                           CustomText(
-                            text: '4 Bed',
+                            text: '$bedrooms Bed',
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
-                      Row(
+                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Remix.building_line,
                             color: Color(0xff087c7c),
                             size: 18,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 6,
                           ),
                           CustomText(
-                            text: '1400sqft',
+                            text: '$size sqft',
                           )
                         ],
                       ),
@@ -178,7 +205,7 @@ class WishlistContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
-                  text: "Cedar Creek",
+                  text: title,
                   fontSize: 18.r,
                   color: Colors.black,
                   fontWeight: FontWeight.w600,
@@ -187,13 +214,13 @@ class WishlistContent extends StatelessWidget {
                 Row(
                   children: [
                     CustomText(
-                      text: "Apartment",
+                      text: completion,
                       fontSize: 14.r,
                       color: Colors.black,
                     ),
                     const Spacer(),
                     CustomText(
-                      text: "\$55,90",
+                      text: price,
                       fontSize: 14.r,
                       color: const Color(0xff087c7c),
                     ),
