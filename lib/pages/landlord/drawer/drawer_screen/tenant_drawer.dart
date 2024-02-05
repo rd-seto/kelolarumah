@@ -54,17 +54,6 @@ class TenantAppDrawer extends StatelessWidget {
                         DrawerListContent(
                           onTap: () {
                             NavUtil.navigateScreen(
-                                context, const CustomBottomNavBar());
-                          },
-                          image: 'assets/drawer/dashbord_icon.png',
-                          title: "Dashboard",
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        DrawerListContent(
-                          onTap: () {
-                            NavUtil.navigateScreen(
                                 context,
                                 const ProfileSettingsScreen(
                                   isBottomNav: false,
@@ -110,17 +99,6 @@ class TenantAppDrawer extends StatelessWidget {
                           },
                           image: 'assets/drawer/transaction_vector.png',
                           title: "My Wishlist",
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        DrawerListContent(
-                          onTap: () {
-                            NavUtil.navigateScreen(
-                                context, const DocumentListScreen());
-                          },
-                          image: 'assets/drawer/document_vector.png',
-                          title: "My Order",
                         ),
                         SizedBox(
                           height: 20.h,

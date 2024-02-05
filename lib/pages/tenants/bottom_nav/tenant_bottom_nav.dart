@@ -105,7 +105,7 @@ class _TenantBottomNavBarState extends State<TenantBottomNavBar> {
         body: Center(
           child: _widgetOptions.elementAt(selectedIndex),
         ),
-        bottomNavigationBar: Container(
+       /* bottomNavigationBar: Container(
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
@@ -221,7 +221,7 @@ class _TenantBottomNavBarState extends State<TenantBottomNavBar> {
               _onItemTapped(2);
             });
           },
-        ),
+        ),*/
       ),
     );
   }
