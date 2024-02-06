@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
+import 'package:landlord/data/model/tenant_deu_payment_model.dart';
 import 'package:landlord/pages/tenants/purchase_history/content/purchase_history_details.dart';
 import 'package:landlord/utils/nav_utail.dart';
 
 class DuePaymentCart extends StatelessWidget {
-  const DuePaymentCart({
-    super.key,
-  });
+  const DuePaymentCart({super.key, required this.list});
+
+  final DuePaymentListElement list;
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +21,14 @@ class DuePaymentCart extends StatelessWidget {
         },
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(12),
-          child: Image.asset(
-            'assets/drawer/apartment_img.png',
+          child: Image.network(
+            list.property!.image!,
             height: 80,
             width: 80,
           ),
         ),
         title: CustomText(
-          text: "HubSpot's Service Hub",
+          text: list.property!.name,
           color: const Color(0xff087c7c),
           fontSize: 12.h,
         ),
@@ -36,21 +37,22 @@ class DuePaymentCart extends StatelessWidget {
           children: [
             SizedBox(height: 6.h),
             CustomText(
-              text: "\$500",
+              text: "Paid ${list.paidAmount}",
               color: Colors.black,
               fontSize: 12.h,
               fontWeight: FontWeight.w600,
             ),
             SizedBox(height: 6.h),
             CustomText(
-              text: "10 jul 2024",
+              text: "Due ${list.dueAmount}",
               color: Colors.black,
               fontSize: 12.h,
+              fontWeight: FontWeight.w600,
             ),
           ],
         ),
         trailing: CustomText(
-          text: "Pending",
+          text: list.paymentStatus,
           color: Colors.orange,
           fontSize: 12.h,
           fontWeight: FontWeight.w500,

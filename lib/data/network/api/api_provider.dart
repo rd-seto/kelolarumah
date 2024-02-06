@@ -45,5 +45,5 @@ class ApiProvider {
   static String tenantDashboard = '$baseUrl/private/v1/tenant/dashboard';
   static String tenantPurchaseHistory = '$baseUrl/private/v1/tenant/orders';
   static String tenantWishlist = '$baseUrl/private/v1/tenant/wishlist';
-
+  static String tenantDuePayment = '$baseUrl/private/v1/tenant/due-payment';
 }

@@ -10,7 +10,6 @@ class TenantPurchaseHistoryProvider extends ChangeNotifier{
     var apiResponse = await RepositoryImpl(context).getTenantPurchaseHistoryData();
     if (apiResponse != null) {
        return tenantPurchaseHistory = apiResponse;
-
     }
     return null;
   }

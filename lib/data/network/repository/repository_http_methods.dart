@@ -527,4 +527,13 @@ class RepositoryMethods {
         showLoader: true,
         name: ApiProvider.tenantWishlist);
   }
+  Future<DuePaymentModel?> getDuePayments() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => DuePaymentModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.tenantDuePayment);
+  }
 }

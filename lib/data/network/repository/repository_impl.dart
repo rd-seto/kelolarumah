@@ -159,4 +159,7 @@ class RepositoryImpl {
 
   Future<TenantWishlistModel?> getTenantWishlists() =>
       _repositoryMethods.getTenantWishlists();
+
+  Future<DuePaymentModel?> getDuePayment() =>
+      _repositoryMethods.getDuePayments();
 }
