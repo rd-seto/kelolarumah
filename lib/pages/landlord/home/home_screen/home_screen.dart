@@ -83,6 +83,7 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             'Add_property',
                             style: TextStyle(
+                              color: Colors.white,
                               letterSpacing: 1.sp,
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w700,

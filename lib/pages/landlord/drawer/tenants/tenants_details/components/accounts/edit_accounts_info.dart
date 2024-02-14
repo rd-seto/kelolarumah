@@ -138,6 +138,7 @@ class _EditAccountsInfoState extends State<EditAccountsInfo> {
                             Text(
                               'Save',
                               style: TextStyle(
+                                color: Colors.white,
                                 letterSpacing: 1.sp,
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w700,

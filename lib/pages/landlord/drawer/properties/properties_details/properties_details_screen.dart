@@ -50,19 +50,13 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
               children: [
                 Positioned(
                   top: MediaQuery.of(context).size.height / 3.75,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  child: Opacity(
-                    opacity: 0.5,
-                    child: Image.asset(
-                      'assets/dashboard/backgorund_img.png',
-                    ),
+                  left: 0, right: 0, bottom: 0,
+                  child: Opacity(opacity: 0.5,
+                    child: Image.asset('assets/dashboard/backgorund_img.png'),
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 13.h),
+                  padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 13.h),
                   child: Column(
                     children: [
                       Container(
@@ -78,99 +72,38 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                                   ?.property?[0].image ??
                               '',
                           placeholder: (context, url) => Center(
-                            child: Image.asset(
-                                "assets/dashboard/placeholder_image.png"),
-                          ),
+                            child: Image.asset("assets/dashboard/landlord_logo.png")),
                           errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
+                              Image.asset("assets/dashboard/landlord_logo.png")
                         ),
-                        //  image: DecorationImage(
-                        //       image: NetworkImage(
-                        //         provider.propertyDetailsResponse?.data
-                        //                 ?.property?[0].image ??
-                        //             '',
-                        //       ),
-                        //       fit: BoxFit.cover),
                       ),
-                      // Positioned(
-                      //   top: 0,
-                      //   left: 0,
-                      //   right: 0,
-                      //   child: Container(
-                      //     height: 200.h,
-                      //     decoration: BoxDecoration(
-                      //       borderRadius: BorderRadius.circular(8.r),
-                      //       gradient: LinearGradient(
-                      //         colors: [
-                      //           Colors.transparent,
-                      //           Colors.black.withOpacity(0.9),
-                      //         ],
-                      //         stops: const [0.3, 4.0],
-                      //         begin: FractionalOffset.topCenter,
-                      //         end: FractionalOffset.bottomCenter,
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                      Positioned(
-                          bottom: 10,
-                          left: 12,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText(
+                            text: provider.propertyDetailsResponse?.data?.property?[0].name ?? '',
+                            color: AppColors.black2Sd,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600,
+                            height: 2,
+                          ),
+                          Row(
                             children: [
+                              const Icon(Icons.location_on_outlined,color: AppColors.color2Orange, size: 16),
                               CustomText(
-                                text: provider.propertyDetailsResponse?.data
-                                        ?.property?[0].name ??
-                                    '',
-                                color: AppColors.black2Sd,
-                                fontSize: 18.sp,
+                                text: provider.propertyDetailsResponse?.data?.property?[0].address,
+                                color: AppColors.color2Orange,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w600,
-                                height: 2,
+                                height: 1.75,
                               ),
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.location_on_outlined,
-                                    color: AppColors.color2Orange,
-                                    size: 16,
-                                  ),
-                                  // SizedBox(
-                                  //   width: 8.h,
-                                  // ),
-                                  CustomText(
-                                    text: provider.propertyDetailsResponse?.data
-                                        ?.property?[0].address,
-                                    color: AppColors.color2Orange,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.75,
-                                  ),
-                                  SizedBox(
-                                    width: 20.w,
-                                  ),
-                                  //// have to do add spacer
-                                  // Container(
-                                  //   padding: EdgeInsets.all(6.sp),
-                                  //   decoration: BoxDecoration(
-                                  //     color: AppColors.color2Orange,
-                                  //     borderRadius: BorderRadius.circular(30),
-                                  //   ),
-                                  //   child: const Icon(
-                                  //     Icons.edit,
-                                  //     color: AppColors.colorWhite,
-                                  //     size: 15,
-                                  //   ),
-                                  // )
-                                ],
-                              ),
+                              SizedBox(width: 20.w),
                             ],
-                          )),
-                      SizedBox(
-                        height: 10.h,
+                          ),
+                        ],
                       ),
-                      Container(
-                        decoration:
-                            const BoxDecoration(color: AppColors.colorWhite),
+                      SizedBox(height: 10.h),
+                      Container(decoration: const BoxDecoration(color: AppColors.colorWhite),
                         child: TabBar(
                           tabAlignment: TabAlignment.start,
                           isScrollable: true,
@@ -181,21 +114,11 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                             fontWeight: FontWeight.w500,
                           ),
                           tabs: [
-                            Tab(
-                              text: 'Basic_Info'.tr(),
-                            ),
-                            Tab(
-                              text: 'Gallery'.tr(),
-                            ),
-                            Tab(
-                              text: 'Tenants'.tr(),
-                            ),
-                            Tab(
-                              text: 'Facilities'.tr(),
-                            ),
-                            Tab(
-                              text: 'Floor_Plans'.tr(),
-                            ),
+                            Tab(text: 'Basic_Info'.tr()),
+                            Tab(text: 'Gallery'.tr()),
+                            Tab(text: 'Tenants'.tr()),
+                            Tab(text: 'Facilities'.tr()),
+                            Tab(text: 'Floor_Plans'.tr()),
                           ],
                           indicatorColor: AppColors.colorPrimary,
                           controller: _tabController,
@@ -205,7 +128,8 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                       Expanded(
                         child: TabBarView(
                           physics: const NeverScrollableScrollPhysics(),
-                          // ignore: sort_child_properties_last
+                          controller: _tabController,
+
                           children: [
                             //Basic info cart
                             PropertiesBasicInfo(
@@ -240,7 +164,6 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                               pId: widget.propertyId,
                             )
                           ],
-                          controller: _tabController,
                         ),
                       ),
                     ],
