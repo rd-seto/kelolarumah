@@ -230,6 +230,7 @@ class AddPropertyProvider extends ChangeNotifier {
         });
   }
 
+
   //we can upload ~ from camera or from gallery based on parameter
   Future getImage(ImageSource media) async {
     var img = await picker.pickImage(source: media);
