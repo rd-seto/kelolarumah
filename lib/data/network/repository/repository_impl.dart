@@ -15,7 +15,8 @@ class RepositoryImpl {
   Future<UserModel?> registration(UserRegistration userRegistration) =>
       _repositoryMethods.registration(userLogin: userRegistration);
 
-  Future postSentToken(final data) =>  _repositoryMethods.sentFirebaseToken(data: data);
+  Future postSentToken(final data) =>
+      _repositoryMethods.sentFirebaseToken(data: data);
 
   Future forgetPass(final data) => _repositoryMethods.forgetPass(data: data);
 
@@ -27,8 +28,14 @@ class RepositoryImpl {
   Future<PropertyListModel?> getPropertyData() =>
       _repositoryMethods.getPropertyData();
 
+  Future<TenantPropertyModel?> getTenantPropertyData() =>
+      _repositoryMethods.getTenantPropertyData();
+
   Future<PropertyListModel?> searchPropertyData({required String search}) =>
       _repositoryMethods.searchPropertyData(search: search);
+
+  Future<TenantSearchModel?> searchTenantPropertyData(search) =>
+      _repositoryMethods.searchTenantPropertyData(search);
 
   Future<TransactionListModel?> searchTransactionData(
           {required String search}) =>
@@ -122,6 +129,9 @@ class RepositoryImpl {
   Future<PropertyDetailsModel?> getPropertyDetails(id) =>
       _repositoryMethods.getPropertyDetails(id);
 
+  Future<TenantPropertyDetailsModel?> getTenantPropertyDetails(id, slug) =>
+      _repositoryMethods.getTenantPropertyDetails(id, slug);
+
   Future<DocumentListModel?> getDocumentList() =>
       _repositoryMethods.getDocumentListData();
 
@@ -147,7 +157,6 @@ class RepositoryImpl {
 
   Future<ProfileDetailsModel?> getProfileDetails() =>
       _repositoryMethods.getProfileDetails();
-
 
   // TODO : Tenants part api call ===========================
 

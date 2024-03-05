@@ -16,9 +16,9 @@ class DuePaymentCart extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 5),
       color: Colors.white,
       child: ListTile(
-        onTap: () {
-          NavUtil.navigateScreen(context, const PurchaseHistoryDetails());
-        },
+        // onTap: () {
+        //   NavUtil.navigateScreen(context, const PurchaseHistoryDetails());
+        // },
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: Image.network(

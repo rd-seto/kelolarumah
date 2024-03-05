@@ -4,15 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/extention/device_type_extention.dart';
-import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
-import 'package:landlord/pages/landlord/drawer/document/document_list/document_list_screen.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
 import 'package:landlord/pages/landlord/home/language/language_screen.dart';
 import 'package:landlord/pages/tenants/due_payment/view/due_payment_page.dart';
 import 'package:landlord/pages/tenants/my_wishlist/view/my_wishlist_page.dart';
+import 'package:landlord/pages/tenants/properties/view/tenant_properties_screen.dart';
 import 'package:landlord/pages/tenants/purchase_history/view/purchase_history_page.dart';
-import 'package:landlord/pages/tenants/tenants_profile_setting/tenants_profile_setting.dart';
-import 'package:landlord/pages/tenants/tickets/tickets.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -76,6 +73,17 @@ class TenantAppDrawer extends StatelessWidget {
                           image: 'assets/drawer/cash_vector.png',
                           title: "Purchase History",
                         ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        DrawerListContent(
+                          onTap: () {
+                            NavUtil.navigateScreen(
+                                context, const TenantPropertiesScreen());
+                          },
+                          image: 'assets/drawer/propertise_icon1.png',
+                          title: "Properties",
+                        ),
                       ],
                     ),
                   ),
@@ -111,17 +119,14 @@ class TenantAppDrawer extends StatelessWidget {
                           image: 'assets/drawer/report_vector.png',
                           title: "Due Payment",
                         ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        DrawerListContent(
-                          onTap: () {
-                            NavUtil.navigateScreen(
-                                context, const Tickets());
-                          },
-                          image: 'assets/drawer/cash_vector.png',
-                          title: "Tickets",
-                        ),
+
+                        // DrawerListContent(
+                        //   onTap: () {
+                        //     NavUtil.navigateScreen(context, const Tickets());
+                        //   },
+                        //   image: 'assets/drawer/cash_vector.png',
+                        //   title: "Tickets",
+                        // ),
                       ],
                     ),
                   ),
@@ -138,18 +143,17 @@ class TenantAppDrawer extends StatelessWidget {
                         horizontal: 12.0.w, vertical: 16.h),
                     child: Column(
                       children: [
-                        DrawerListContent(
-                          onTap: () {
-                            NavUtil.navigateScreen(
-                                context,
-                                const TenantsProfileSetting());
-                          },
-                          image: 'assets/drawer/settings_vector.png',
-                          title: "Profile Settings",
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
+                        // DrawerListContent(
+                        //   onTap: () {
+                        //     NavUtil.navigateScreen(
+                        //         context, const TenantsProfileSetting());
+                        //   },
+                        //   image: 'assets/drawer/settings_vector.png',
+                        //   title: "Profile Settings",
+                        // ),
+                        // SizedBox(
+                        //   height: 20.h,
+                        // ),
                         DrawerListContent(
                           onTap: () {
                             NavUtil.navigateScreen(

@@ -47,6 +47,16 @@ class RepositoryMethods {
         name: ApiProvider.propertyList);
   }
 
+  Future<TenantPropertyModel?> getTenantPropertyData() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantPropertyModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.tenantProperty);
+  }
+
   Future<PropertyListModel?> searchPropertyData(
       {required String search}) async {
     return await GenericHttp(context).callApi(
@@ -56,6 +66,16 @@ class RepositoryMethods {
         returnDataFun: (data) => data,
         showLoader: true,
         name: '${ApiProvider.propertyList}?search=$search');
+  }
+
+  Future<TenantSearchModel?> searchTenantPropertyData(search) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantSearchModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: '${ApiProvider.search}');
   }
 
   Future<AddPropertyDataModel?> getAddPropertyData() async {
@@ -234,6 +254,16 @@ class RepositoryMethods {
         returnDataFun: (data) => data,
         showLoader: true,
         name: "${ApiProvider.propertyDetails}/$id/details-list");
+  }
+
+  Future<TenantPropertyDetailsModel?> getTenantPropertyDetails(id, slug) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantPropertyDetailsModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: "${ApiProvider.tenantPropertyDetails}$slug?advertise_id=$id");
   }
 
   Future<DocumentListModel?> getDocumentListData() async {
@@ -527,6 +557,7 @@ class RepositoryMethods {
         showLoader: true,
         name: ApiProvider.tenantWishlist);
   }
+
   Future<DuePaymentModel?> getDuePayments() async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,

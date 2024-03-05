@@ -1,5 +1,5 @@
 class ApiProvider {
-  static const String baseUrl = 'https://hubofhomes.onestweb.com/api';
+  static const String baseUrl = 'https://landlord.onesttech.com/api';
 
   static String login = '$baseUrl/login';
   static String registration = '$baseUrl/register';
@@ -46,4 +46,7 @@ class ApiProvider {
   static String tenantPurchaseHistory = '$baseUrl/private/v1/tenant/orders';
   static String tenantWishlist = '$baseUrl/private/v1/tenant/wishlist';
   static String tenantDuePayment = '$baseUrl/private/v1/tenant/due-payment';
+  static String tenantProperty = '$baseUrl/private/v1/category-properties';
+  static String tenantPropertyDetails = '$baseUrl/private/v1/property-details/';
+  static String search = '$baseUrl/private/v1/properties';
 }
