@@ -7,14 +7,12 @@ import 'package:landlord/components/new_mobile_app_bar.dart';
 import 'package:landlord/components/new_tablet_app_bar.dart';
 import 'package:landlord/data/provider/bottom_nav_provider.dart';
 import 'package:landlord/extention/device_type_extention.dart';
-import 'package:landlord/pages/landlord/home/dashboard/dashboard_screen.dart';
 import 'package:landlord/pages/landlord/drawer/drawer_screen/drawer_screen.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_screen/tenants_screen.dart';
 import 'package:landlord/pages/landlord/home/home_screen/home_screen.dart';
 import 'package:landlord/pages/landlord/home/notification/notification_screen.dart';
 import 'package:landlord/pages/tenants/dashboard/view/tenant_dashbord.dart';
-import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class TenantBottomNavBar extends StatefulWidget {
@@ -67,6 +65,7 @@ class _TenantBottomNavBarState extends State<TenantBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     final provider = context.watch<BottomNavProvider>();
     DateTime timeBackPressed = DateTime.now();
     // ignore: unused_local_variable
@@ -105,7 +104,7 @@ class _TenantBottomNavBarState extends State<TenantBottomNavBar> {
         body: Center(
           child: _widgetOptions.elementAt(selectedIndex),
         ),
-       /* bottomNavigationBar: Container(
+        /* bottomNavigationBar: Container(
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(

@@ -66,6 +66,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     final provider = context.watch<BottomNavProvider>();
     DateTime timeBackPressed = DateTime.now();
     // ignore: unused_local_variable

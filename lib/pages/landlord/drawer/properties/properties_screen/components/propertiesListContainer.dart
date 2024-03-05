@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
-import 'package:landlord/data/model/dashboard_model.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
 class PropertiesListContainer extends StatelessWidget {

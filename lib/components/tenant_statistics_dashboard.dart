@@ -6,9 +6,8 @@ import 'package:landlord/utils/theme/app_colors.dart';
 class TenantStatisticsCard extends StatelessWidget {
   final String title;
   final String value;
-  const TenantStatisticsCard({
-    super.key, required this.title, required this.value
-  });
+  const TenantStatisticsCard(
+      {super.key, required this.title, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +20,16 @@ class TenantStatisticsCard extends StatelessWidget {
         decoration: BoxDecoration(
             color: AppColors.backgroundColor,
             borderRadius: BorderRadius.circular(8.r),
-            border:
-            Border.all(color: AppColors.stockColor)),
+            border: Border.all(color: AppColors.stockColor)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-                'assets/dashboard/add_property_img.png',
-                height: 20.h),
+            Image.asset('assets/dashboard/add_property_img.png', height: 20.h),
             const SizedBox(
               height: 6,
             ),
             CustomText(
-              text: value ?? '',
+              text: value,
               color: AppColors.paraTxt1,
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,

@@ -1,7 +1,3 @@
-
-import 'dart:convert';
-
-
 class CashManagementListModel {
   CashManagementListModel({
     this.result,
@@ -15,19 +11,20 @@ class CashManagementListModel {
   String? message;
   Data? data;
 
-  factory CashManagementListModel.fromJson(Map<String, dynamic> json) => CashManagementListModel(
-    result: json["result"],
-    apiEndPoint: json["api_end_point"],
-    message: json["message"],
-    data: json["data"] == null ? null : Data.fromJson(json["data"]),
-  );
+  factory CashManagementListModel.fromJson(Map<String, dynamic> json) =>
+      CashManagementListModel(
+        result: json["result"],
+        apiEndPoint: json["api_end_point"],
+        message: json["message"],
+        data: json["data"] == null ? null : Data.fromJson(json["data"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "result": result,
-    "api_end_point": apiEndPoint,
-    "message": message,
-    "data": data?.toJson(),
-  };
+        "result": result,
+        "api_end_point": apiEndPoint,
+        "message": message,
+        "data": data?.toJson(),
+      };
 }
 
 class Data {
@@ -46,20 +43,20 @@ class Data {
   Items? items;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    messages: json["messages"],
-    expense: json["expense"],
-    income: json["income"],
-    balance: json["balance"],
-    items: json["items"] == null ? null : Items.fromJson(json["items"]),
-  );
+        messages: json["messages"],
+        expense: json["expense"],
+        income: json["income"],
+        balance: json["balance"],
+        items: json["items"] == null ? null : Items.fromJson(json["items"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "messages": messages,
-    "expense": expense,
-    "income": income,
-    "balance": balance,
-    "items": items?.toJson(),
-  };
+        "messages": messages,
+        "expense": expense,
+        "income": income,
+        "balance": balance,
+        "items": items?.toJson(),
+      };
 }
 
 class Items {
@@ -74,16 +71,23 @@ class Items {
   Pagination? pagination;
 
   factory Items.fromJson(Map<String, dynamic> json) => Items(
-    list: json["list"] == null ? [] : List<ListElement>.from(json["list"]!.map((x) => ListElement.fromJson(x))),
-    links: json["links"] == null ? null : Links.fromJson(json["links"]),
-    pagination: json["pagination"] == null ? null : Pagination.fromJson(json["pagination"]),
-  );
+        list: json["list"] == null
+            ? []
+            : List<ListElement>.from(
+                json["list"]!.map((x) => ListElement.fromJson(x))),
+        links: json["links"] == null ? null : Links.fromJson(json["links"]),
+        pagination: json["pagination"] == null
+            ? null
+            : Pagination.fromJson(json["pagination"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "list": list == null ? [] : List<dynamic>.from(list!.map((x) => x.toJson())),
-    "links": links?.toJson(),
-    "pagination": pagination?.toJson(),
-  };
+        "list": list == null
+            ? []
+            : List<dynamic>.from(list!.map((x) => x.toJson())),
+        "links": links?.toJson(),
+        "pagination": pagination?.toJson(),
+      };
 }
 
 class Links {
@@ -100,18 +104,18 @@ class Links {
   dynamic next;
 
   factory Links.fromJson(Map<String, dynamic> json) => Links(
-    first: json["first"],
-    last: json["last"],
-    prev: json["prev"],
-    next: json["next"],
-  );
+        first: json["first"],
+        last: json["last"],
+        prev: json["prev"],
+        next: json["next"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "first": first,
-    "last": last,
-    "prev": prev,
-    "next": next,
-  };
+        "first": first,
+        "last": last,
+        "prev": prev,
+        "next": next,
+      };
 }
 
 class ListElement {
@@ -144,34 +148,40 @@ class ListElement {
   Invoice? invoice;
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
-    id: json["id"],
-    property: json["property"],
-    appDate: json["app_date"],
-    attachment: json["attachment"],
-    tenant: json["tenant"] == null ? null : Tenant.fromJson(json["tenant"]),
-    rentalAgreement: json["rental_agreement"] == null ? null : RentalAgreement.fromJson(json["rental_agreement"]),
-    amount: json["amount"],
-    type: json["type"],
-    date: json["date"] == null ? null : DateTime.parse(json["date"]),
-    note: json["note"],
-    paymentDetails: json["payment_details"] == null ? null : PaymentDetails.fromJson(json["payment_details"]),
-    invoice: json["invoice"] == null ? null : Invoice.fromJson(json["invoice"]),
-  );
+        id: json["id"],
+        property: json["property"],
+        appDate: json["app_date"],
+        attachment: json["attachment"],
+        tenant: json["tenant"] == null ? null : Tenant.fromJson(json["tenant"]),
+        rentalAgreement: json["rental_agreement"] == null
+            ? null
+            : RentalAgreement.fromJson(json["rental_agreement"]),
+        amount: json["amount"],
+        type: json["type"],
+        date: json["date"] == null ? null : DateTime.parse(json["date"]),
+        note: json["note"],
+        paymentDetails: json["payment_details"] == null
+            ? null
+            : PaymentDetails.fromJson(json["payment_details"]),
+        invoice:
+            json["invoice"] == null ? null : Invoice.fromJson(json["invoice"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "property": property,
-    "app_date": appDate,
-    "attachment": attachment,
-    "tenant": tenant?.toJson(),
-    "rental_agreement": rentalAgreement?.toJson(),
-    "amount": amount,
-    "type": type,
-    "date": "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
-    "note": note,
-    "payment_details": paymentDetails?.toJson(),
-    "invoice": invoice?.toJson(),
-  };
+        "id": id,
+        "property": property,
+        "app_date": appDate,
+        "attachment": attachment,
+        "tenant": tenant?.toJson(),
+        "rental_agreement": rentalAgreement?.toJson(),
+        "amount": amount,
+        "type": type,
+        "date":
+            "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
+        "note": note,
+        "payment_details": paymentDetails?.toJson(),
+        "invoice": invoice?.toJson(),
+      };
 }
 
 class Invoice {
@@ -186,16 +196,19 @@ class Invoice {
   String? appInvoiceDate;
 
   factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
-    invoiceNumber: json["invoice_number"],
-    invoiceDate: json["invoice_date"] == null ? null : DateTime.parse(json["invoice_date"]),
-    appInvoiceDate: json["app_invoice_date"],
-  );
+        invoiceNumber: json["invoice_number"],
+        invoiceDate: json["invoice_date"] == null
+            ? null
+            : DateTime.parse(json["invoice_date"]),
+        appInvoiceDate: json["app_invoice_date"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "invoice_number": invoiceNumber,
-    "invoice_date": "${invoiceDate!.year.toString().padLeft(4, '0')}-${invoiceDate!.month.toString().padLeft(2, '0')}-${invoiceDate!.day.toString().padLeft(2, '0')}",
-    "app_invoice_date": appInvoiceDate,
-  };
+        "invoice_number": invoiceNumber,
+        "invoice_date":
+            "${invoiceDate!.year.toString().padLeft(4, '0')}-${invoiceDate!.month.toString().padLeft(2, '0')}-${invoiceDate!.day.toString().padLeft(2, '0')}",
+        "app_invoice_date": appInvoiceDate,
+      };
 }
 
 class PaymentDetails {
@@ -224,30 +237,31 @@ class PaymentDetails {
   String? paymentStatus;
 
   factory PaymentDetails.fromJson(Map<String, dynamic> json) => PaymentDetails(
-    paymentMethod: json["payment_method"],
-    chequeNumber: json["cheque_number"],
-    bankName: json["bank_name"],
-    bankBranch: json["bank_branch"],
-    bankAccountNumber: json["bank_account_number"],
-    bankAccountName: json["bank_account_name"],
-    onlinePaymentMethod: json["online_payment_method"],
-    onlinePaymentTransactionId: json["online_payment_transaction_id"],
-    onlinePaymentTransactionStatus: json["online_payment_transaction_status"],
-    paymentStatus: json["payment_status"],
-  );
+        paymentMethod: json["payment_method"],
+        chequeNumber: json["cheque_number"],
+        bankName: json["bank_name"],
+        bankBranch: json["bank_branch"],
+        bankAccountNumber: json["bank_account_number"],
+        bankAccountName: json["bank_account_name"],
+        onlinePaymentMethod: json["online_payment_method"],
+        onlinePaymentTransactionId: json["online_payment_transaction_id"],
+        onlinePaymentTransactionStatus:
+            json["online_payment_transaction_status"],
+        paymentStatus: json["payment_status"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "payment_method": paymentMethod,
-    "cheque_number": chequeNumber,
-    "bank_name": bankName,
-    "bank_branch": bankBranch,
-    "bank_account_number": bankAccountNumber,
-    "bank_account_name": bankAccountName,
-    "online_payment_method": onlinePaymentMethod,
-    "online_payment_transaction_id": onlinePaymentTransactionId,
-    "online_payment_transaction_status": onlinePaymentTransactionStatus,
-    "payment_status": paymentStatus,
-  };
+        "payment_method": paymentMethod,
+        "cheque_number": chequeNumber,
+        "bank_name": bankName,
+        "bank_branch": bankBranch,
+        "bank_account_number": bankAccountNumber,
+        "bank_account_name": bankAccountName,
+        "online_payment_method": onlinePaymentMethod,
+        "online_payment_transaction_id": onlinePaymentTransactionId,
+        "online_payment_transaction_status": onlinePaymentTransactionStatus,
+        "payment_status": paymentStatus,
+      };
 }
 
 class RentalAgreement {
@@ -265,21 +279,27 @@ class RentalAgreement {
   DateTime? endDate;
   String? note;
 
-  factory RentalAgreement.fromJson(Map<String, dynamic> json) => RentalAgreement(
-    id: json["id"],
-    amount: json["amount"],
-    startDate: json["start_date"] == null ? null : DateTime.parse(json["start_date"]),
-    endDate: json["end_date"] == null ? null : DateTime.parse(json["end_date"]),
-    note: json["note"],
-  );
+  factory RentalAgreement.fromJson(Map<String, dynamic> json) =>
+      RentalAgreement(
+        id: json["id"],
+        amount: json["amount"],
+        startDate: json["start_date"] == null
+            ? null
+            : DateTime.parse(json["start_date"]),
+        endDate:
+            json["end_date"] == null ? null : DateTime.parse(json["end_date"]),
+        note: json["note"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "amount": amount,
-    "start_date": "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
-    "end_date": "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
-    "note": note,
-  };
+        "id": id,
+        "amount": amount,
+        "start_date":
+            "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
+        "end_date":
+            "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
+        "note": note,
+      };
 }
 
 class Tenant {
@@ -296,18 +316,18 @@ class Tenant {
   String? phone;
 
   factory Tenant.fromJson(Map<String, dynamic> json) => Tenant(
-    id: json["id"],
-    name: json["name"],
-    email: json["email"],
-    phone: json["phone"],
-  );
+        id: json["id"],
+        name: json["name"],
+        email: json["email"],
+        phone: json["phone"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "email": email,
-    "phone": phone,
-  };
+        "id": id,
+        "name": name,
+        "email": email,
+        "phone": phone,
+      };
 }
 
 class Pagination {
@@ -326,18 +346,18 @@ class Pagination {
   int? totalPages;
 
   factory Pagination.fromJson(Map<String, dynamic> json) => Pagination(
-    total: json["total"],
-    count: json["count"],
-    perPage: json["per_page"],
-    currentPage: json["current_page"],
-    totalPages: json["total_pages"],
-  );
+        total: json["total"],
+        count: json["count"],
+        perPage: json["per_page"],
+        currentPage: json["current_page"],
+        totalPages: json["total_pages"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "total": total,
-    "count": count,
-    "per_page": perPage,
-    "current_page": currentPage,
-    "total_pages": totalPages,
-  };
+        "total": total,
+        "count": count,
+        "per_page": perPage,
+        "current_page": currentPage,
+        "total_pages": totalPages,
+      };
 }
