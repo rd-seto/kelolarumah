@@ -40,7 +40,6 @@ class _ChatConversationState extends State<ChatConversation> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     FirebaseService database = FirebaseService();
@@ -127,14 +126,16 @@ class _ChatConversationState extends State<ChatConversation> {
                                         imageFile = await ChatCommon.getImage();
                                         //print('image file : ${imageFile.path}');
                                         ///read the file asynchronously as the image can be very large which may cause blocking of main thread
-                                        String? base64Image = base64Encode(await imageFile!.readAsBytes());
+                                        String? base64Image = base64Encode(
+                                            await imageFile!.readAsBytes());
 
                                         Map<String, dynamic> map = {
                                           'type': 'image',
                                           'message': base64Image,
                                           'status': 'not seen',
                                           'from': '${widget.userId}',
-                                          'timestamp': '${Timestamp.now().seconds}'
+                                          'timestamp':
+                                              '${Timestamp.now().seconds}'
                                         };
 
                                         ///create chat room for current user
@@ -209,12 +210,12 @@ class _ChatConversationState extends State<ChatConversation> {
                                       '$chatUser', widget.userId, map);
 
                                   ///update chat friend list for current user
-                                  database.createFriend(widget.userId, '$chatUser',
-                                      _messageController.text);
+                                  database.createFriend(widget.userId,
+                                      '$chatUser', _messageController.text);
 
                                   ///update chat friend list for chat user
-                                  database.createFriend('$chatUser', widget.userId,
-                                      _messageController.text);
+                                  database.createFriend('$chatUser',
+                                      widget.userId, _messageController.text);
                                   if (kDebugMode) {
                                     print(
                                         'current uid ${widget.userId}   chat uid : $chatUser');
@@ -340,7 +341,6 @@ class _ChatConversationState extends State<ChatConversation> {
                                             body: 'Attachment',
                                             map: widget.userId,
                                             status: 'message');
-
                                       },
                                       color: Colors.white,
                                     ),

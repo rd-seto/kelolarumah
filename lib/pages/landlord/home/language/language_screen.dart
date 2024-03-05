@@ -2,9 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
+import 'package:landlord/pages/tenants/bottom_nav/tenant_bottom_nav.dart';
+import 'package:landlord/pages/tenants/dashboard/view/tenant_dashbord.dart';
+import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/shared_preferences.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({Key? key}) : super(key: key);
@@ -66,13 +71,23 @@ class _LanguageScreenState extends State<LanguageScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocalAutProvider>(context, listen: false);
+    final userData = provider.getUser();
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-                builder: (context) =>
-                    const CustomBottomNavBar(bottomNavigationIndex: 2)),
-            (Route<dynamic> route) => true);
+        if (userData?.roleId == 4) {
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                  builder: (context) =>
+                      const CustomBottomNavBar(bottomNavigationIndex: 2)),
+              (Route<dynamic> route) => true);
+        } else {
+          NavUtil.pushAndRemoveUntil(
+              context,
+              const TenantDashboardScreen(
+                isBottomNav: true,
+              ));
+        }
         return true;
       },
       child: Scaffold(
@@ -81,11 +96,16 @@ class _LanguageScreenState extends State<LanguageScreen> {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                          builder: (context) => const CustomBottomNavBar(
-                              bottomNavigationIndex: 2)),
-                      (Route<dynamic> route) => true);
+                  if (userData?.roleId == 4) {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (context) => const CustomBottomNavBar(
+                                bottomNavigationIndex: 2)),
+                        (Route<dynamic> route) => true);
+                  } else {
+                    NavUtil.pushAndRemoveUntil(
+                        context, const TenantBottomNavBar());
+                  }
                 },
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),

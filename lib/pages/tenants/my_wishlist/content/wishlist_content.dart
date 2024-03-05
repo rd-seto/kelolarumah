@@ -81,7 +81,7 @@ class WishlistContent extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 6, vertical: 2),
                         color: Colors.orange.shade600,
-                        child:  Text(
+                        child: Text(
                           dealType,
                           style: const TextStyle(
                               color: Colors.white,
@@ -109,7 +109,7 @@ class WishlistContent extends StatelessWidget {
               ],
             ),
           ),
-           Padding(
+          Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
@@ -173,7 +173,7 @@ class WishlistContent extends StatelessWidget {
                       const SizedBox(
                         height: 8,
                       ),
-                       Row(
+                      Row(
                         children: [
                           const Icon(
                             Remix.building_line,

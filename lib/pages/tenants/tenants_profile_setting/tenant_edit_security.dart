@@ -8,6 +8,7 @@ class TenantEditSecurity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     String dropdownValue = list.first;
     return Padding(
       padding: EdgeInsets.all(12.r),
@@ -47,7 +48,6 @@ class TenantEditSecurity extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12))),
             ),
             const SizedBox(height: 18),
-
             Text(
               "Passwords",
               style: TextStyle(fontSize: 18.r, fontWeight: FontWeight.w600),
@@ -97,10 +97,13 @@ class TenantEditSecurity extends StatelessWidget {
                 style: FilledButton.styleFrom(
                     fixedSize: const Size(400, 50),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)
-                    ),
+                        borderRadius: BorderRadius.circular(12)),
                     backgroundColor: const Color(0xFF007170)),
-                onPressed: (){}, child: const Text("Save & Update", style: TextStyle(color: Colors.white),)),
+                onPressed: () {},
+                child: const Text(
+                  "Save & Update",
+                  style: TextStyle(color: Colors.white),
+                )),
             const SizedBox(height: 28),
           ],
         ),

@@ -4,7 +4,6 @@ import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/pages/auth/login/login_option/login_option_screen.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/pages/tenants/bottom_nav/tenant_bottom_nav.dart';
-import 'package:landlord/pages/tenants/dashboard/view/tenant_dashbord.dart';
 import 'package:landlord/utils/global_state.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/utils.dart';

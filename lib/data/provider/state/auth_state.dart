@@ -1,16 +1,15 @@
 import 'package:equatable/equatable.dart';
 import 'package:landlord/data/model/user_model.dart';
 
-class AuthState extends Equatable{
+// ignore: must_be_immutable
+class AuthState extends Equatable {
   late bool isLoading;
   late UserModel userModel;
 
-  init(){
+  init() {
     isLoading = false;
   }
 
-
-
   @override
-  List<Object?> get props => [isLoading,userModel];
+  List<Object?> get props => [isLoading, userModel];
 }

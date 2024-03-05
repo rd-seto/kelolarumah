@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/tenant_deu_payment_model.dart';
-import 'package:landlord/pages/tenants/purchase_history/content/purchase_history_details.dart';
-import 'package:landlord/utils/nav_utail.dart';
 
 class DuePaymentCart extends StatelessWidget {
   const DuePaymentCart({super.key, required this.list});
@@ -16,9 +14,9 @@ class DuePaymentCart extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 5),
       color: Colors.white,
       child: ListTile(
-        onTap: () {
-          NavUtil.navigateScreen(context, const PurchaseHistoryDetails());
-        },
+        // onTap: () {
+        //   NavUtil.navigateScreen(context, const PurchaseHistoryDetails());
+        // },
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: Image.network(

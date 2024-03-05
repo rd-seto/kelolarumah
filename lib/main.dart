@@ -41,6 +41,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+
   ///initializeFirebaseAtStatingPoint
   await Firebase.initializeApp();
 
@@ -50,8 +51,6 @@ void main() async {
   Hive.init(document.path);
   Hive.registerAdapter(UserModelAdapter());
   await Hive.openBox<UserModel>(userBoxName);
-
-
 
   ///top-level function
   ///to handle background messaging
