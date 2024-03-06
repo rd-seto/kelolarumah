@@ -3,9 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/tenant_property_details.dart';
 import 'package:landlord/data/provider/property_details_provider.dart';
-import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/gallery/add_gallery.dart/add_gallery_screen.dart';
-import 'package:landlord/utils/nav_utail.dart';
-import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class TenantPropertyGalleryCart extends StatelessWidget {
@@ -82,40 +79,40 @@ class TenantPropertyGalleryCart extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: InkWell(
-                onTap: () {
-                  NavUtil.navigateScreen(
-                      context,
-                      AddGalleryScreen(
-                        onSave: () {
-                          provider?.propertyDetails(context, pId);
-                        },
-                        propertyId: pId,
-                      ));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(16.sp),
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: AppColors.colorPrimary),
-                        child: const Icon(
-                          Icons.add,
-                          color: AppColors.colorWhite,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            )
+            // Positioned(
+            //   bottom: 0,
+            //   right: 0,
+            //   child: InkWell(
+            //     onTap: () {
+            //       NavUtil.navigateScreen(
+            //           context,
+            //           AddGalleryScreen(
+            //             onSave: () {
+            //               provider?.propertyDetails(context, pId);
+            //             },
+            //             propertyId: pId,
+            //           ));
+            //     },
+            //     child: Padding(
+            //       padding: const EdgeInsets.only(right: 10.0),
+            //       child: Row(
+            //         mainAxisAlignment: MainAxisAlignment.end,
+            //         children: [
+            //           Container(
+            //             padding: EdgeInsets.all(16.sp),
+            //             decoration: const BoxDecoration(
+            //                 shape: BoxShape.circle,
+            //                 color: AppColors.colorPrimary),
+            //             child: const Icon(
+            //               Icons.add,
+            //               color: AppColors.colorWhite,
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // )
           ],
         );
       },

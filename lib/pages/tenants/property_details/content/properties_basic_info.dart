@@ -3,9 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/tenant_property_details.dart';
 import 'package:landlord/data/provider/property_details_provider.dart';
-import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/basic_info/edit_basic_info/edit_property_basic_info_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/widgets/content_list_tile.dart';
-import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -102,35 +100,35 @@ class TenantPropertiesBasicInfo extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        NavUtil.navigateScreen(
-                            context,
-                            EditPropertyBasicInfo(
-                              propertyId: pID,
-                              onSave: () {
-                                provider?.propertyDetails(context, pID);
-                              },
-                            ));
-                      },
-                      child: Image.asset(
-                        'assets/dashboard/edit_float_img.png',
-                        height: 64.h,
-                        width: 64.w,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
+            // Positioned(
+            //   bottom: 0,
+            //   right: 0,
+            //   child: Padding(
+            //     padding: const EdgeInsets.only(right: 10.0),
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.end,
+            //       children: [
+            //         InkWell(
+            //           onTap: () {
+            //             NavUtil.navigateScreen(
+            //                 context,
+            //                 EditPropertyBasicInfo(
+            //                   propertyId: pID,
+            //                   onSave: () {
+            //                     provider?.propertyDetails(context, pID);
+            //                   },
+            //                 ));
+            //           },
+            //           child: Image.asset(
+            //             'assets/dashboard/edit_float_img.png',
+            //             height: 64.h,
+            //             width: 64.w,
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // )
           ],
         );
       },

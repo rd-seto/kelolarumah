@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:landlord/data/model/dashboard_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
@@ -6,6 +7,7 @@ class DashBoardProvider extends ChangeNotifier {
   DashboardModel? dashboardRespone;
 
   DashBoardProvider(BuildContext context) {
+    FirebaseMessaging.instance.subscribeToTopic('landlord');
     dashboardData(context);
   }
   void dashboardData(BuildContext context) async {
@@ -13,6 +15,7 @@ class DashBoardProvider extends ChangeNotifier {
     if (apiRespone != null) {
       dashboardRespone = apiRespone;
     }
+
     notifyListeners();
   }
 
