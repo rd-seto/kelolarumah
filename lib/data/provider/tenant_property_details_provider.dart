@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:landlord/data/model/tenant_property_details.dart';
 import 'package:landlord/data/model/tenant_wishlist_model.dart';
-import 'package:landlord/data/model/tenants_details_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 
 class TenantPropertyDetailsProvider extends ChangeNotifier {
