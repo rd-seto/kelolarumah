@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -145,7 +146,7 @@ class WishlistContent extends StatelessWidget {
                             width: 6,
                           ),
                           CustomText(
-                            text: '$bathrooms bath',
+                            text: '$bathrooms bath'.tr(),
                           )
                         ],
                       ),
@@ -166,7 +167,7 @@ class WishlistContent extends StatelessWidget {
                             width: 6,
                           ),
                           CustomText(
-                            text: '$bedrooms Bed',
+                            text: '$bedrooms bed'.tr(),
                           )
                         ],
                       ),
@@ -238,9 +239,9 @@ class WishlistContent extends StatelessWidget {
                             ),
                             backgroundColor: const Color(0xff087c7c),
                           ),
-                          child: const Text(
-                            "CALL",
-                            style: TextStyle(color: Colors.white),
+                          child: Text(
+                            "call".tr(),
+                            style: const TextStyle(color: Colors.white),
                           )),
                     ),
                     SizedBox(width: 12.w),
@@ -254,9 +255,9 @@ class WishlistContent extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(6),
                               ),
                               backgroundColor: Colors.white),
-                          child: const Text(
-                            "Email",
-                            style: TextStyle(
+                          child: Text(
+                            "email".tr(),
+                            style: const TextStyle(
                               color: Color(0xff087c7c),
                             ),
                           )),

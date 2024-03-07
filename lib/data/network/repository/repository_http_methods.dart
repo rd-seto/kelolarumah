@@ -514,6 +514,19 @@ class RepositoryMethods {
         name: "${ApiProvider.tenantUpdate}$tenantId/emergency");
   }
 
+  Future<TenantWishlistModel?> addWishlist(
+    data,
+  ) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        toJsonFunc: (json) => TenantWishlistModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.addWishlist);
+  }
+
   ///profile details
   /// Tenants Details API
   Future<ProfileDetailsModel?> getProfileDetails() async {

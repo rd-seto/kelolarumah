@@ -22,7 +22,7 @@ class PurchaseHistoryPage extends StatelessWidget {
         appBar: isBottomNav == false
             ? PreferredSize(
                 preferredSize: Size.fromHeight(60.h),
-                child: CustomAppBar(appBarName: "Purchase History".tr()),
+                child: CustomAppBar(appBarName: "purchase_history".tr()),
               )
             : const PreferredSize(
                 // ignore: sort_child_properties_last

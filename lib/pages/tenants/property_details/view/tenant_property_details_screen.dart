@@ -54,7 +54,7 @@ class _TenantPropertyDetailsScreenState
               backgroundColor: AppColors.backgroundColor,
               appBar: PreferredSize(
                 preferredSize: Size.fromHeight(70.h),
-                child: const CustomAppBar(appBarName: 'Properties_Details'),
+                child: CustomAppBar(appBarName: 'Properties_Details'.tr()),
               ),
               body: Stack(
                 children: [
@@ -103,6 +103,7 @@ class _TenantPropertyDetailsScreenState
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      SizedBox(height: 10.h),
                                       CustomText(
                                         text: provider.tenantPropertyDetailModel
                                                 ?.data?.property?.name ??
@@ -110,7 +111,6 @@ class _TenantPropertyDetailsScreenState
                                         color: AppColors.black2Sd,
                                         fontSize: 18.sp,
                                         fontWeight: FontWeight.w600,
-                                        height: 2,
                                       ),
                                       Row(
                                         children: [
@@ -129,33 +129,39 @@ class _TenantPropertyDetailsScreenState
                                                 ?.address
                                                 ?.address,
                                             color: AppColors.color2Orange,
-                                            fontSize: 12.sp,
+                                            fontSize: 14.sp,
                                             fontWeight: FontWeight.w600,
                                             height: 1.75,
                                           ),
-                                          SizedBox(
-                                            width: 20.w,
-                                          ),
-                                          //// have to do add spacer
-                                          // Container(
-                                          //   padding: EdgeInsets.all(6.sp),
-                                          //   decoration: BoxDecoration(
-                                          //     color: AppColors.color2Orange,
-                                          //     borderRadius: BorderRadius.circular(30),
-                                          //   ),
-                                          //   child: const Icon(
-                                          //     Icons.edit,
-                                          //     color: AppColors.colorWhite,
-                                          //     size: 15,
-                                          //   ),
-                                          // )
+                                          const Spacer(),
+                                          IconButton(
+                                              onPressed: () {
+                                                context
+                                                    .read<
+                                                        TenantPropertyDetailsProvider>()
+                                                    .addWishlist(
+                                                        context,
+                                                        provider
+                                                            .tenantPropertyDetailModel
+                                                            ?.data
+                                                            ?.property
+                                                            ?.id,
+                                                        widget.propertyId,
+                                                        widget.slug);
+                                              },
+                                              icon: provider
+                                                          .tenantPropertyDetailModel
+                                                          ?.data
+                                                          ?.property
+                                                          ?.wishlist ==
+                                                      false
+                                                  ? const Icon(Icons
+                                                      .bookmark_add_outlined)
+                                                  : const Icon(Icons.bookmark))
                                         ],
                                       ),
                                     ],
                                   )),
-                              SizedBox(
-                                height: 10.h,
-                              ),
                               Container(
                                 decoration: const BoxDecoration(
                                     color: AppColors.colorWhite),
@@ -185,7 +191,7 @@ class _TenantPropertyDetailsScreenState
                                       text: 'Floor_Plans'.tr(),
                                     ),
                                     Tab(
-                                      text: 'Owner'.tr(),
+                                      text: 'owner'.tr(),
                                     ),
                                   ],
                                   indicatorColor: AppColors.colorPrimary,

@@ -16,7 +16,7 @@ class PurchaseHistoryDetails extends StatelessWidget {
           backgroundColor: AppColors.backgroundColor,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(60.h),
-            child: CustomAppBar(appBarName: "Purchase History Details".tr()),
+            child: CustomAppBar(appBarName: "purchase_history_details".tr()),
           ),
           body: SingleChildScrollView(
             child: Padding(
@@ -31,23 +31,22 @@ class PurchaseHistoryDetails extends StatelessWidget {
                     ),
                     title: Text(
                       'Cameron Williamson',
-                      style: TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w600),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                   ),
                   Text.rich(
                     TextSpan(
                       style: DefaultTextStyle.of(context).style,
-                      children: const <TextSpan>[
+                      children: <TextSpan>[
                         TextSpan(
-                          text: 'Subject: ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                            height: 1.6
-                          ),
+                          text: 'subject'.tr(),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.0,
+                              height: 1.6),
                         ),
-                        TextSpan(
+                        const TextSpan(
                           text: 'How To Install Laragon In Windows',
                           style: TextStyle(fontSize: 16.0),
                         ),
@@ -61,10 +60,9 @@ class PurchaseHistoryDetails extends StatelessWidget {
                         TextSpan(
                           text: 'Departments: ',
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                            height: 1.6
-                          ),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.0,
+                              height: 1.6),
                         ),
                         TextSpan(
                           text: 'Bug Fix',
@@ -116,7 +114,9 @@ class PurchaseHistoryDetails extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Divider(height: 40,),
+                  const Divider(
+                    height: 40,
+                  ),
                   Text.rich(
                     TextSpan(
                       style: DefaultTextStyle.of(context).style,
@@ -126,8 +126,7 @@ class PurchaseHistoryDetails extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16.0,
-                              height: 1.6
-                          ),
+                              height: 1.6),
                         ),
                         TextSpan(
                           text: 'Documentation.PDF',
@@ -137,17 +136,19 @@ class PurchaseHistoryDetails extends StatelessWidget {
                     ),
                   ),
                   const Divider(height: 40),
-
-                  const Text("Reply Message", style: TextStyle(fontWeight: FontWeight.w600, height: 1.6)),
-                  const SizedBox(height: 18,),
+                  const Text("Reply Message",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, height: 1.6)),
+                  const SizedBox(
+                    height: 18,
+                  ),
                   TextFormField(
                     maxLines: 4,
                     decoration: InputDecoration(
-                      hintText: "Write Here",
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green.shade300)
-                      )
-                    ),
+                        hintText: "Write Here",
+                        border: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.green.shade300))),
                   )
                 ],
               ),

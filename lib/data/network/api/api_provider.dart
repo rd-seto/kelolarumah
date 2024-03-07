@@ -49,4 +49,5 @@ class ApiProvider {
   static String tenantProperty = '$baseUrl/private/v1/category-properties';
   static String tenantPropertyDetails = '$baseUrl/private/v1/property-details/';
   static String search = '$baseUrl/private/v1/properties';
+  static String addWishlist = '$baseUrl/private/v1/wishlists/add';
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -52,7 +53,7 @@ class PurchaseHistoryTile extends StatelessWidget {
                         style: DefaultTextStyle.of(context).style,
                         children: <TextSpan>[
                           TextSpan(
-                            text: 'Grand Total: ',
+                            text: 'grand_total'.tr(),
                             style: TextStyle(
                               fontSize: 12.0.r,
                             ),
@@ -79,7 +80,7 @@ class PurchaseHistoryTile extends StatelessWidget {
                         style: DefaultTextStyle.of(context).style,
                         children: <TextSpan>[
                           TextSpan(
-                            text: 'Discount Amount: ',
+                            text: 'discount_amount'.tr(),
                             style: TextStyle(
                               fontSize: 12.0.r,
                             ),
@@ -99,7 +100,7 @@ class PurchaseHistoryTile extends StatelessWidget {
                         style: DefaultTextStyle.of(context).style,
                         children: <TextSpan>[
                           TextSpan(
-                            text: 'Paid Amount: ',
+                            text: 'paid_amount'.tr(),
                             style: TextStyle(
                               fontSize: 12.0.r,
                             ),
@@ -119,7 +120,7 @@ class PurchaseHistoryTile extends StatelessWidget {
                         style: DefaultTextStyle.of(context).style,
                         children: <TextSpan>[
                           TextSpan(
-                            text: 'Due Amount: ',
+                            text: 'due_amount'.tr(),
                             style: TextStyle(
                               fontSize: 12.0.r,
                             ),

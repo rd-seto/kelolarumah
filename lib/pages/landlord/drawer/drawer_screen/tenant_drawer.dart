@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/extention/device_type_extention.dart';
+import 'package:landlord/pages/chat_screen/chat_room.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
 import 'package:landlord/pages/landlord/home/language/language_screen.dart';
 import 'package:landlord/pages/tenants/due_payment/view/due_payment_page.dart';
@@ -57,7 +58,7 @@ class TenantAppDrawer extends StatelessWidget {
                                 ));
                           },
                           image: 'assets/drawer/propertise_icon1.png',
-                          title: "My Profile",
+                          title: "my_profile".tr(),
                         ),
                         SizedBox(
                           height: 20.h,
@@ -71,7 +72,7 @@ class TenantAppDrawer extends StatelessWidget {
                                 ));
                           },
                           image: 'assets/drawer/cash_vector.png',
-                          title: "Purchase History",
+                          title: "purchase_history".tr(),
                         ),
                         SizedBox(
                           height: 20.h,
@@ -82,7 +83,7 @@ class TenantAppDrawer extends StatelessWidget {
                                 context, const TenantPropertiesScreen());
                           },
                           image: 'assets/drawer/propertise_icon1.png',
-                          title: "Properties",
+                          title: "Properties".tr(),
                         ),
                       ],
                     ),
@@ -102,11 +103,21 @@ class TenantAppDrawer extends StatelessWidget {
                       children: [
                         DrawerListContent(
                           onTap: () {
+                            NavUtil.navigateScreen(context, const ChatRoom());
+                          },
+                          image: 'assets/drawer/chat.png',
+                          title: "chat".tr(),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        DrawerListContent(
+                          onTap: () {
                             NavUtil.navigateScreen(
                                 context, const MyWishlistPage());
                           },
                           image: 'assets/drawer/transaction_vector.png',
-                          title: "My Wishlist",
+                          title: "my_wishlist".tr(),
                         ),
                         SizedBox(
                           height: 20.h,
@@ -117,7 +128,7 @@ class TenantAppDrawer extends StatelessWidget {
                                 context, const DuePaymentPage());
                           },
                           image: 'assets/drawer/report_vector.png',
-                          title: "Due Payment",
+                          title: "due_payment".tr(),
                         ),
 
                         // DrawerListContent(

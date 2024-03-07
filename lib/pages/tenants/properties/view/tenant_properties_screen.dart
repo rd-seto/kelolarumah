@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
@@ -110,7 +111,7 @@ class _TenantPropertiesScreenState extends State<TenantPropertiesScreen> {
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 10),
                                     child: CustomText(
-                                      text: 'Trending Properties',
+                                      text: 'trending_properties'.tr(),
                                       color: AppColors.titleTextColor,
                                       fontSize: 20.sp,
                                       fontWeight: FontWeight.w700,
@@ -173,7 +174,7 @@ class _TenantPropertiesScreenState extends State<TenantPropertiesScreen> {
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 10),
                                     child: CustomText(
-                                      text: 'Recommended Properties',
+                                      text: 'recommended_properties'.tr(),
                                       color: AppColors.titleTextColor,
                                       fontSize: 20.sp,
                                       fontWeight: FontWeight.w700,
@@ -236,7 +237,7 @@ class _TenantPropertiesScreenState extends State<TenantPropertiesScreen> {
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 10),
                                     child: CustomText(
-                                      text: 'Discounted Properties',
+                                      text: 'discounted_properties'.tr(),
                                       color: AppColors.titleTextColor,
                                       fontSize: 20.sp,
                                       fontWeight: FontWeight.w700,

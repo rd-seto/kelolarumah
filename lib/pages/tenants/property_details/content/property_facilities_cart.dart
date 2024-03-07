@@ -41,7 +41,7 @@ class PropertyFacilitiesCart extends StatelessWidget {
                   ),
                   facilities?.isEmpty == true
                       ? CustomText(
-                          text: 'No facilities found',
+                          text: 'no_facilities_found',
                           color: AppColors.titleTextColor,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w700,

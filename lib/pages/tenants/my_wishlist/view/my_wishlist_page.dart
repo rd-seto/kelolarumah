@@ -21,7 +21,7 @@ class MyWishlistPage extends StatelessWidget {
         backgroundColor: AppColors.backgroundColor,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(60.h),
-          child: CustomAppBar(appBarName: "My Wishlist".tr()),
+          child: CustomAppBar(appBarName: "my_wishlist".tr()),
         ),
         body: Consumer<TenantWishlistProvider>(
           builder: (BuildContext context, provider, _) {

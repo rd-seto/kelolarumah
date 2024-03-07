@@ -42,29 +42,29 @@ class _ChatRoomState extends State<ChatRoom> {
                               'No message found',
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
-                            RichText(
-                                overflow: TextOverflow.clip,
-                                textAlign: TextAlign.end,
-                                softWrap: true,
-                                maxLines: 1,
-                                text: TextSpan(
-                                  text: 'Start messaging go to ',
-                                  style: DefaultTextStyle.of(context)
-                                      .style
-                                      .copyWith(color: Colors.black54),
-                                  children: const <TextSpan>[
-                                    TextSpan(
-                                        // recognizer: TapGestureRecognizer()..onTap = () => NavUtil.navigateScreen(context, const PhonebookScreen()),
-                                        text: 'phonebook',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: AppColors.colorPrimary,
-                                            decoration:
-                                                TextDecoration.underline,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.italic)),
-                                  ],
-                                ))
+                            // RichText(
+                            //     overflow: TextOverflow.clip,
+                            //     textAlign: TextAlign.end,
+                            //     softWrap: true,
+                            //     maxLines: 1,
+                            //     text: TextSpan(
+                            //       text: 'Start messaging go to ',
+                            //       style: DefaultTextStyle.of(context)
+                            //           .style
+                            //           .copyWith(color: Colors.black54),
+                            //       children: const <TextSpan>[
+                            //         TextSpan(
+                            //             // recognizer: TapGestureRecognizer()..onTap = () => NavUtil.navigateScreen(context, const PhonebookScreen()),
+                            //             text: 'phonebook',
+                            //             style: TextStyle(
+                            //                 fontSize: 16,
+                            //                 color: AppColors.colorPrimary,
+                            //                 decoration:
+                            //                     TextDecoration.underline,
+                            //                 fontWeight: FontWeight.bold,
+                            //                 fontStyle: FontStyle.italic)),
+                            //       ],
+                            //     ))
                           ],
                         ),
                       );

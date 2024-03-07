@@ -21,7 +21,7 @@ class DuePaymentPage extends StatelessWidget {
           backgroundColor: AppColors.backgroundColor,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(60.h),
-            child: CustomAppBar(appBarName: "Due Payment".tr()),
+            child: CustomAppBar(appBarName: "due_payment".tr()),
           ),
           body: Consumer<DeuPaymentProvider>(
             builder: (BuildContext context, provider, _) {

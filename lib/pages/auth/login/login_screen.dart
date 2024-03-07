@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -61,8 +62,8 @@ class LoginScreen extends StatelessWidget {
                 ),
                 AuthFromField(
                   cursorColor: AppColors.colorWhite,
-                  hintText: "Enter your password",
-                  title: "Password",
+                  hintText: "enter_your_password",
+                  title: "password",
                   onChange: (password) {
                     userLogin.password = password;
                   },
@@ -83,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                       width: 8.w,
                     ),
                     CustomText(
-                      text: 'Remember Me',
+                      text: 'remember_me',
                       color: const Color(0xffEEEEEE),
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
@@ -96,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                             context, const ForgetPassScreen());
                       },
                       child: CustomText(
-                        text: 'Forgot Password',
+                        text: 'forgot_password',
                         color: const Color(0xffEEEEEE),
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,
@@ -123,14 +124,14 @@ class LoginScreen extends StatelessWidget {
                         }
                       },
                       child: Text(
-                        'Sign In',
+                        'sign_in',
                         style: TextStyle(
                           color: AppColors.colorPrimary,
                           letterSpacing: 1.sp,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w700,
                         ),
-                      )),
+                      ).tr()),
                 ),
                 SizedBox(
                   height: 20.h,
@@ -139,7 +140,7 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustomText(
-                      text: 'Don’t have any account?',
+                      text: 'Do_not_have_any_account'.tr(),
                       color: const Color(0xffEEEEEE),
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
@@ -153,7 +154,7 @@ class LoginScreen extends StatelessWidget {
                         NavUtil.navigateScreen(context, const SignUpScreen());
                       },
                       child: CustomText(
-                        text: 'SIGN UP',
+                        text: 'sign_up',
                         color: const Color(0xffEEEEEE),
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w700,

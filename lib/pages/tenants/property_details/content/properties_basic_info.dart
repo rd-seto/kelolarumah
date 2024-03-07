@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -28,7 +29,7 @@ class TenantPropertiesBasicInfo extends StatelessWidget {
                     height: 20.h,
                   ),
                   CustomText(
-                    text: 'Overview',
+                    text: 'overview',
                     color: AppColors.titleTextColor,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w700,
@@ -40,44 +41,44 @@ class TenantPropertiesBasicInfo extends StatelessWidget {
                   ContentListTile(
                     image: 'assets/drawer/size_ic.png',
                     color: AppColors.colorWhite,
-                    title: "Size",
+                    title: "Size".tr(),
                     subTitle: propertyBasicInfo?.size ?? 'N/A',
                   ),
                   ContentListTile(
                     image: 'assets/drawer/beds_ic.png',
                     color: Colors.transparent,
-                    title: "Beds",
+                    title: "beds".tr(),
                     subTitle: "${propertyBasicInfo?.bedroom ?? 'N/A'}",
                   ),
                   ContentListTile(
                     image: 'assets/drawer/bath_ic.png',
                     color: Colors.white,
-                    title: "Bath",
+                    title: "bath".tr(),
                     subTitle: "${propertyBasicInfo?.bathroom ?? 'N/A'}",
                   ),
                   ContentListTile(
                     image: 'assets/drawer/rent_ic.png',
                     color: Colors.transparent,
-                    title: "Rent",
+                    title: "Rent".tr(),
                     subTitle: "${propertyBasicInfo?.totalRent ?? 'N/A'}",
                   ),
                   ContentListTile(
                     image: 'assets/drawer/type-ic.png',
                     color: Colors.white,
-                    title: "Type",
+                    title: "Type".tr(),
                     subTitle: propertyBasicInfo?.type ?? 'N/A',
                   ),
                   ContentListTile(
                     image: 'assets/drawer/completion-ic.png',
                     color: Colors.transparent,
-                    title: "Completion",
+                    title: "Completion".tr(),
                     subTitle: propertyBasicInfo?.completion ?? 'N/A',
                   ),
                   SizedBox(
                     height: 30.h,
                   ),
                   CustomText(
-                    text: "Description",
+                    text: "Description".tr(),
                     color: AppColors.titleTextColor,
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w700,

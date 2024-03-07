@@ -62,12 +62,6 @@ class TenantDashboardScreen extends StatelessWidget {
                                 name:
                                     "Hi ${userProvider.getUser()?.name ?? 'dd'}"
                                         .tr()),
-                            IconButton(
-                                onPressed: () {
-                                  NavUtil.navigateScreen(
-                                      context, const ChatRoom());
-                                },
-                                icon: const Icon(Icons.chat))
                           ],
                         ),
                         SizedBox(
@@ -77,7 +71,7 @@ class TenantDashboardScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               child: TenantStatisticsCard(
-                                  title: "Total Order",
+                                  title: "total_order".tr(),
                                   value: provider.tenantsDashboard?.data
                                           ?.statistics?.totalOrder ??
                                       ''),
@@ -85,7 +79,7 @@ class TenantDashboardScreen extends StatelessWidget {
                             SizedBox(width: 8.r),
                             Expanded(
                               child: TenantStatisticsCard(
-                                  title: "Wishlist",
+                                  title: "wishlist",
                                   value: provider.tenantsDashboard?.data
                                           ?.statistics?.wishlist ??
                                       ''),
@@ -93,7 +87,7 @@ class TenantDashboardScreen extends StatelessWidget {
                             SizedBox(width: 8.r),
                             Expanded(
                               child: TenantStatisticsCard(
-                                  title: "Purchase Amount",
+                                  title: "purchase_amount".tr(),
                                   value: provider.tenantsDashboard?.data
                                           ?.statistics?.purchaseAmount ??
                                       ''),
@@ -105,7 +99,7 @@ class TenantDashboardScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               child: TenantStatisticsCard(
-                                  title: "Used Coupons",
+                                  title: "used_coupons".tr(),
                                   value: provider.tenantsDashboard?.data
                                           ?.statistics?.usedCoupons ??
                                       ''),
@@ -113,7 +107,7 @@ class TenantDashboardScreen extends StatelessWidget {
                             SizedBox(width: 8.r),
                             Expanded(
                               child: TenantStatisticsCard(
-                                  title: "Cart",
+                                  title: "cart".tr(),
                                   value: provider.tenantsDashboard?.data
                                           ?.statistics?.cart ??
                                       ''),
@@ -121,7 +115,7 @@ class TenantDashboardScreen extends StatelessWidget {
                             SizedBox(width: 8.r),
                             Expanded(
                               child: TenantStatisticsCard(
-                                  title: "Complete Order",
+                                  title: "complete_order".tr(),
                                   value: provider.tenantsDashboard?.data
                                           ?.statistics?.completeOrder ??
                                       ''),
@@ -131,8 +125,8 @@ class TenantDashboardScreen extends StatelessWidget {
                         SizedBox(
                           height: 24.h,
                         ),
-                        const Text('Purchase History',
-                            style: TextStyle(
+                        Text('purchase_history'.tr(),
+                            style: const TextStyle(
                                 fontSize: 16.0, fontWeight: FontWeight.w600)),
                         const SizedBox(
                           height: 16,

@@ -143,6 +143,9 @@ class RepositoryImpl {
   Future createEmergencyContact(data, tenantId) =>
       _repositoryMethods.createEmergencyContact(data, tenantId);
 
+  Future<TenantWishlistModel?> addWishlist(data) =>
+      _repositoryMethods.addWishlist(data);
+
   // Future<TenantModel?> searchTenantData({required String search}) =>
   //     _repositoryMethods.searchTenantData(search: search);
 

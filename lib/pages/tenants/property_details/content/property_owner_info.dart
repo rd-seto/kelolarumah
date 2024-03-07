@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -25,7 +26,7 @@ class PropertyOwnerInfo extends StatelessWidget {
                     height: 10.h,
                   ),
                   CustomText(
-                    text: 'Landlord Information',
+                    text: 'landlord_information',
                     color: AppColors.titleTextColor,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w700,
@@ -37,7 +38,7 @@ class PropertyOwnerInfo extends StatelessWidget {
                   ContentListTile(
                     image: 'assets/drawer/size_ic.png',
                     color: AppColors.colorWhite,
-                    title: "Name",
+                    title: "name".tr(),
                     subTitle:
                         provider?.tenantPropertyDetailModel?.data?.user?.name ??
                             'N/A',
@@ -45,7 +46,7 @@ class PropertyOwnerInfo extends StatelessWidget {
                   ContentListTile(
                     image: 'assets/drawer/beds_ic.png',
                     color: Colors.transparent,
-                    title: "Email",
+                    title: "Email".tr(),
                     subTitle: provider
                             ?.tenantPropertyDetailModel?.data?.user?.email ??
                         'N/A',
@@ -53,7 +54,7 @@ class PropertyOwnerInfo extends StatelessWidget {
                   ContentListTile(
                     image: 'assets/drawer/bath_ic.png',
                     color: Colors.white,
-                    title: "Phone",
+                    title: "Phone".tr(),
                     subTitle: provider
                             ?.tenantPropertyDetailModel?.data?.user?.phone ??
                         'N/A',

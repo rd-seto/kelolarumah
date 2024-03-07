@@ -364,6 +364,7 @@ class Property {
   final String? category;
   final String? userEmail;
   final String? userPhone;
+  final bool? wishlist;
 
   Property({
     this.id,
@@ -389,6 +390,7 @@ class Property {
     this.category,
     this.userEmail,
     this.userPhone,
+    this.wishlist,
   });
 
   factory Property.fromJson(Map<String, dynamic> json) => Property(
@@ -415,6 +417,7 @@ class Property {
         category: json["category"],
         userEmail: json["user_email"],
         userPhone: json["user_phone"],
+        wishlist: json["wishlist"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -441,6 +444,7 @@ class Property {
         "category": category,
         "user_email": userEmail,
         "user_phone": userPhone,
+        "wishlist": wishlist,
       };
 }
 
