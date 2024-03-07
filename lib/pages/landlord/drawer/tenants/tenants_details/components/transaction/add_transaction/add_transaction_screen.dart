@@ -410,7 +410,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                       color: Colors.black,
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w700),
-                                ),
+                                ).tr(),
                                 Text(
                                   '*',
                                   style: TextStyle(

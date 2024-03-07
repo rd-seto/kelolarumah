@@ -21,27 +21,27 @@ class DashBoardProvider extends ChangeNotifier {
 
   final List<DashboardDummyData> gridDashboardData = [
     DashboardDummyData(
-      title: 'total_order',
+      title: 'Add_Property',
       assetImage: 'assets/dashboard/add_tennats_icon.png',
     ),
     DashboardDummyData(
-      title: 'my_wishlist',
+      title: 'Tenants',
       assetImage: 'assets/dashboard/add_property_img.png',
     ),
     DashboardDummyData(
-      title: 'purchase_amount',
+      title: 'Add_Transaction',
       assetImage: 'assets/dashboard/add_transaction_icon.png',
     ),
     DashboardDummyData(
-      title: 'product_in_cart',
+      title: 'Add_Document',
       assetImage: 'assets/dashboard/add_document_icon.png',
     ),
     DashboardDummyData(
-      title: 'coupon_used',
+      title: 'Report',
       assetImage: 'assets/dashboard/report_icon.png',
     ),
     DashboardDummyData(
-      title: 'completed_order',
+      title: 'Add_Tenants',
       assetImage: 'assets/dashboard/add_property_img.png',
     ),
   ];
