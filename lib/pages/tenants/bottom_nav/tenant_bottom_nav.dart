@@ -36,12 +36,6 @@ class _TenantBottomNavBarState extends State<TenantBottomNavBar> {
     TenantsScreen(isBottomNav: true),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      selectedIndex = index;
-      appBarName(selectedIndex);
-    });
-  }
 
   void appBarName(int radians) {
     switch (radians) {
@@ -90,7 +84,7 @@ class _TenantBottomNavBarState extends State<TenantBottomNavBar> {
       },
       child: Scaffold(
         drawer: const AppDrawer(),
-        appBar: context.deviceType() == DeviceType.phone
+        appBar: context.deviceType() == DeviceTypeUtils.phone
             ? PreferredSize(
                 preferredSize: Size.fromHeight(60.h),
                 child: NewMobileAppBar(

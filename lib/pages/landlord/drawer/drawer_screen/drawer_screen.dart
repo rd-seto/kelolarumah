@@ -15,7 +15,7 @@ class AppDrawer extends StatelessWidget {
     final provider = Provider.of<LocalAutProvider>(context, listen: false);
     final userData = provider.getUser();
     print('device type ${context.deviceType()}');
-    if (context.deviceType() == DeviceType.tablet) {
+    if (context.deviceType() == DeviceTypeUtils.tablet) {
       return const TabletAppDrawer();
     }
     if (userData?.roleId == 4) {

@@ -91,7 +91,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       },
       child: Scaffold(
         drawer: const AppDrawer(),
-        appBar: context.deviceType() == DeviceType.phone
+        appBar: context.deviceType() == DeviceTypeUtils.phone
             ? PreferredSize(
                 preferredSize: Size.fromHeight(60.h),
                 child: NewMobileAppBar(
