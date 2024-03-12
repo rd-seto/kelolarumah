@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-enum DeviceType { phone, tablet }
+enum DeviceTypeUtils { phone, tablet }
 
 extension GetDeviceType on BuildContext {
-  DeviceType deviceType() {
+  DeviceTypeUtils deviceType() {
     // ignore: deprecated_member_use
     final size = MediaQueryData.fromView(WidgetsBinding.instance.window);
 
     if (size.size.shortestSide < 500) {
-      return DeviceType.phone;
+      return DeviceTypeUtils.phone;
     }
-    return DeviceType.tablet;
+    return DeviceTypeUtils.tablet;
   }
 }

@@ -35,6 +35,8 @@ import 'package:provider/provider.dart';
 import 'data/provider/add_transaction_provider.dart';
 import 'data/provider/transaction_list_provider.dart';
 import 'data/provider/update_profile_provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 

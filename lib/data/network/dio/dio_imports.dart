@@ -7,6 +7,6 @@ import 'package:landlord/data/network/api/api_provider.dart';
 import 'package:landlord/utils/dio_utils.dart';
 import 'package:landlord/utils/global_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tf_dio_cache/dio_http_cache.dart';
+import 'package:tf_dio_cache/tf_dio_cache.dart';
 import '../../../utils/dialog/loading_dialog.dart';
 part 'dio_helper.dart';
