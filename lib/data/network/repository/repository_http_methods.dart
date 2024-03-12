@@ -246,14 +246,14 @@ class RepositoryMethods {
         name: ApiProvider.notification);
   }
 
-  Future<PropertyDetailsModel?> getPropertyDetails(id) async {
+  Future<TenantPropertyDetailsModel?> getPropertyDetails(id) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
         methodType: MethodType.get,
-        toJsonFunc: (json) => PropertyDetailsModel.fromJson(json),
+        toJsonFunc: (json) => TenantPropertyDetailsModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: "${ApiProvider.propertyDetails}/$id/details-list");
+        name: "${ApiProvider.propertyDetails}/$id/details-list/");
   }
 
   Future<TenantPropertyDetailsModel?> getTenantPropertyDetails(id, slug) async {

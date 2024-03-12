@@ -5,12 +5,9 @@ import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/shimmer/shimmer_placeholders.dart';
 import 'package:landlord/components/tenant_statistics_dashboard.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
-import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/data/tenant_provider/tenant_dashboard_provider.dart';
-import 'package:landlord/pages/chat_screen/chat_room.dart';
 import 'package:landlord/pages/landlord/home/dashboard/components/greeting_scetion_cart.dart';
 import 'package:landlord/pages/tenants/dashboard/content/purchase_history_tile.dart';
-import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +18,6 @@ class TenantDashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dashboardProvider = Provider.of<DashBoardProvider>(context);
     final userProvider = Provider.of<LocalAutProvider>(context, listen: false);
     return ChangeNotifierProvider(
       create: (BuildContext context) => TenantDashboardProvider(context),

@@ -43,28 +43,25 @@ class Data {
   final FloorPlans? floorPlans;
   final User? user;
   final List<Tenant>? tenants;
+  final List<CurrentTenant>? currentTenant;
   final List<dynamic>? facilities;
   final Category? category;
   final dynamic document;
   final List<dynamic>? propertyReviews;
-  final Map<String, int>? ratting;
-  final int? agvRating;
 
-  Data({
-    this.advertisement,
-    this.property,
-    this.address,
-    this.galleries,
-    this.floorPlans,
-    this.user,
-    this.tenants,
-    this.facilities,
-    this.category,
-    this.document,
-    this.propertyReviews,
-    this.ratting,
-    this.agvRating,
-  });
+  Data(
+      {this.advertisement,
+      this.property,
+      this.address,
+      this.galleries,
+      this.floorPlans,
+      this.user,
+      this.tenants,
+      this.facilities,
+      this.category,
+      this.document,
+      this.propertyReviews,
+      this.currentTenant});
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         advertisement: json["advertisement"] == null
@@ -87,6 +84,10 @@ class Data {
             ? []
             : List<Tenant>.from(
                 json["tenants"]!.map((x) => Tenant.fromJson(x))),
+        currentTenant: json["current_tenant"] == null
+            ? []
+            : List<CurrentTenant>.from(
+                json["current_tenant"]!.map((x) => CurrentTenant.fromJson(x))),
         facilities: json["facilities"] == null
             ? []
             : List<dynamic>.from(json["facilities"]!.map((x) => x)),
@@ -97,9 +98,7 @@ class Data {
         propertyReviews: json["property_reviews"] == null
             ? []
             : List<dynamic>.from(json["property_reviews"]!.map((x) => x)),
-        ratting: Map.from(json["ratting"]!)
-            .map((k, v) => MapEntry<String, int>(k, v)),
-        agvRating: json["agvRating"],
+
       );
 
   Map<String, dynamic> toJson() => {
@@ -122,9 +121,7 @@ class Data {
         "property_reviews": propertyReviews == null
             ? []
             : List<dynamic>.from(propertyReviews!.map((x) => x)),
-        "ratting":
-            Map.from(ratting!).map((k, v) => MapEntry<String, dynamic>(k, v)),
-        "agvRating": agvRating,
+
       };
 }
 
@@ -364,6 +361,7 @@ class Property {
   final String? category;
   final String? userEmail;
   final String? userPhone;
+  final String? address;
   final bool? wishlist;
 
   Property({
@@ -391,6 +389,7 @@ class Property {
     this.userEmail,
     this.userPhone,
     this.wishlist,
+    this.address,
   });
 
   factory Property.fromJson(Map<String, dynamic> json) => Property(
@@ -418,6 +417,7 @@ class Property {
         userEmail: json["user_email"],
         userPhone: json["user_phone"],
         wishlist: json["wishlist"],
+        address: json["address"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -445,6 +445,7 @@ class Property {
         "user_email": userEmail,
         "user_phone": userPhone,
         "wishlist": wishlist,
+        "address": address,
       };
 }
 
@@ -487,6 +488,48 @@ class Tenant {
         "photo": photo,
         "created_at": createdAt?.toIso8601String(),
         "address": address,
+      };
+}
+
+class CurrentTenant {
+  final int? id;
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? photo;
+  final DateTime? createdAt;
+  final String? presentAddress;
+
+  CurrentTenant({
+    this.id,
+    this.name,
+    this.email,
+    this.phone,
+    this.photo,
+    this.createdAt,
+    this.presentAddress,
+  });
+
+  factory CurrentTenant.fromJson(Map<String, dynamic> json) => CurrentTenant(
+        id: json["id"],
+        name: json["name"],
+        email: json["email"],
+        phone: json["phone"],
+        photo: json["image"],
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        presentAddress: json["present_address"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "image": photo,
+        "created_at": createdAt?.toIso8601String(),
+        "present_address": presentAddress,
       };
 }
 

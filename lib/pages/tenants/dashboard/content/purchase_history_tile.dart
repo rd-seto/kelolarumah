@@ -138,10 +138,10 @@ class PurchaseHistoryTile extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(
-                Icons.arrow_forward_ios,
-                size: 18,
-              )
+              // const Icon(
+              //   Icons.arrow_forward_ios,
+              //   size: 18,
+              // )
             ],
           ),
         ),

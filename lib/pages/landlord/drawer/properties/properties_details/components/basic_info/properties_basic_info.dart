@@ -20,6 +20,7 @@ class PropertiesBasicInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, __, _) {
+        final data = provider?.propertyDetailsResponse?.data?.property;
         return Stack(
           children: [
             SingleChildScrollView(
@@ -43,37 +44,37 @@ class PropertiesBasicInfo extends StatelessWidget {
                     image: 'assets/drawer/size_ic.png',
                     color: AppColors.colorWhite,
                     title: "Size",
-                    subTitle: propertyBasicInfo?.size ?? 'N/A',
+                    subTitle: data?.size ?? 'N/A',
                   ),
                   ContentListTile(
                     image: 'assets/drawer/beds_ic.png',
                     color: Colors.transparent,
                     title: "Beds",
-                    subTitle: "${propertyBasicInfo?.bedroom ?? 'N/A'}",
+                    subTitle: "${data?.bedroom ?? 'N/A'}",
                   ),
                   ContentListTile(
                     image: 'assets/drawer/bath_ic.png',
                     color: Colors.white,
                     title: "Bath",
-                    subTitle: "${propertyBasicInfo?.bathroom ?? 'N/A'}",
+                    subTitle: "${data?.bathroom ?? 'N/A'}",
                   ),
                   ContentListTile(
                     image: 'assets/drawer/rent_ic.png',
                     color: Colors.transparent,
                     title: "Rent",
-                    subTitle: "${propertyBasicInfo?.rentAmount ?? 'N/A'}",
+                    subTitle: "${data?.totalRent ?? 'N/A'}",
                   ),
                   ContentListTile(
                     image: 'assets/drawer/type-ic.png',
                     color: Colors.white,
                     title: "Type",
-                    subTitle: propertyBasicInfo?.type ?? 'N/A',
+                    subTitle: data?.type ?? 'N/A',
                   ),
                   ContentListTile(
                     image: 'assets/drawer/completion-ic.png',
                     color: Colors.transparent,
                     title: "Completion",
-                    subTitle: propertyBasicInfo?.completion ?? 'N/A',
+                    subTitle: data?.completion ?? 'N/A',
                   ),
                   SizedBox(
                     height: 30.h,
@@ -89,7 +90,7 @@ class PropertiesBasicInfo extends StatelessWidget {
                     height: 14.h,
                   ),
                   CustomText(
-                    text: propertyBasicInfo?.description ?? '',
+                    text: data?.description ?? '',
                     color: AppColors.black2Sd,
                     textAlign: TextAlign.justify,
                     fontSize: 14.sp,

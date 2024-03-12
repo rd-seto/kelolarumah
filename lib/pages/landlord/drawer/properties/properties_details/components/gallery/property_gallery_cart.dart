@@ -27,7 +27,7 @@ class PropertyGalleryCart extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  propertyGalleries == null
+                  provider?.propertyDetailsResponse?.data?.galleries == null
                       ? Padding(
                           padding: const EdgeInsets.only(top: 20.0),
                           child: CustomText(
@@ -41,7 +41,9 @@ class PropertyGalleryCart extends StatelessWidget {
                       : GridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: propertyGalleries?.length ?? 0,
+                          itemCount: provider?.propertyDetailsResponse?.data
+                                  ?.galleries?.length ??
+                              0,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                                   mainAxisExtent: 150,
@@ -49,8 +51,9 @@ class PropertyGalleryCart extends StatelessWidget {
                                   crossAxisSpacing: 20.0,
                                   mainAxisSpacing: 4.0),
                           itemBuilder: (BuildContext context, int index) {
-                            final data = propertyGalleries?[index];
-                            return Image.network(data!.path!);
+                            final data = provider?.propertyDetailsResponse?.data
+                                ?.galleries?[index];
+                            return Image.network(data!.image!);
                           },
                         ),
                   // SizedBox(

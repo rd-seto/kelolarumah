@@ -1,7 +1,7 @@
 class ApiProvider {
   static const String baseUrl = 'https://landlord.onesttech.com/api';
 
-  static String login = '$baseUrl/login';
+  static String login = '$baseUrl/public/v1/login';
   static String registration = '$baseUrl/register';
   static String firebaseToken = '$baseUrl/user/firebase-token';
   static String forgetPassword = '$baseUrl/email/forgot-password';
@@ -14,7 +14,7 @@ class ApiProvider {
   static String editpropertyBasic = '$baseUrl/property/update';
   static String propertiesTenant = '$baseUrl/tenant/create';
   static String facilityData = '$baseUrl/property/facility/edit/1';
-  static String propertyList = '$baseUrl/property/list';
+  static String propertyList = '$baseUrl/private/v1/property/list';
   static String addPropertyData = '$baseUrl/property/create';
   static String getCountryData = '$baseUrl/countries';
   static String getDivisionData = '$baseUrl/divisions';
@@ -24,7 +24,7 @@ class ApiProvider {
   static String postImage = '$baseUrl/property/gallery-floorplan/store';
   static String addfacilities = '$baseUrl/property/facility/update';
   static String createTransactionData = '$baseUrl/transaction/store';
-  static String propertyDetails = '$baseUrl/property';
+  static String propertyDetails = '$baseUrl/private/v1/property';
   static String getReportPropertyListData = '$baseUrl/reports/properties';
   static String getReportTenantListData =
       '$baseUrl/reports/property-wise-tenants';

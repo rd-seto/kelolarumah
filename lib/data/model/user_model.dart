@@ -57,22 +57,20 @@ class UserModel extends Equatable {
       passport: json['passport'],
       dateOfBirth: json['date_of_birth'],
       roleId: json['role_id'],
-      avatar: json['avatar'] == null ? null : json["avatar"],
     );
   }
 
   Map<String, dynamic> toJson() => {
-    "name": name,
-    "email": email,
-    'access_token': token,
-    'id': id,
-    'gender' : gender,
-    "nid": nid,
-    "passport": passport,
-    "date_of_birth": dateOfBirth,
-    "role_id": roleId,
-    "avatar": avatar,
-  };
+        "name": name,
+        "email": email,
+        'access_token': token,
+        'id': id,
+        'gender': gender,
+        "nid": nid,
+        "passport": passport,
+        "date_of_birth": dateOfBirth,
+        "role_id": roleId,
+      };
 
   @override
   List<Object?> get props => [name, email, id, avatar];

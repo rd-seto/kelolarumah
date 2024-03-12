@@ -26,11 +26,15 @@ class DioHelper {
   }
 
   Options _buildCacheOptions() {
+    String? token = GlobalState.instance.get("token");
     return buildCacheOptions(
       const Duration(days: 3),
       maxStale: const Duration(days: 7),
       forceRefresh: forceRefresh,
-      options: Options(extra: {}),
+      options: Options(extra: {}, headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      }),
     );
   }
 
@@ -90,7 +94,8 @@ class DioHelper {
     //create multipart request for POST or PATCH method
 
     try {
-      var response = await _dio.post(url, data: haveFile ? formData : body);
+      var response = await _dio.post(url,
+          data: haveFile ? formData : body, options: _buildCacheOptions());
       debugPrint("response ${response.statusCode}");
       if (showLoader) DioUtils.dismissDialog();
       if (response.statusCode == 200 || response.statusCode == 201) {

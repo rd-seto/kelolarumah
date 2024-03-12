@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:landlord/data/model/property_details_model.dart';
 import 'package:landlord/data/model/tenant_property_details.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 
 class PropertyDetailsProvider extends ChangeNotifier {
-  PropertyDetailsModel? propertyDetailsResponse;
+  TenantPropertyDetailsModel? propertyDetailsResponse;
   TenantPropertyDetailsModel? tenantPropertyDetailModel;
   TextEditingController sizeController = TextEditingController();
   TextEditingController rentAmountController = TextEditingController();

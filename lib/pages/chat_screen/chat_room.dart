@@ -20,8 +20,11 @@ class _ChatRoomState extends State<ChatRoom> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.white,
+        backgroundColor: AppColors.colorPrimary,
         title: const Text(
           'Chat Room',
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: FutureBuilder<int?>(
@@ -109,15 +112,10 @@ class _ChatRoomState extends State<ChatRoom> {
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 16, vertical: 8),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(6.0)),
-                                          border: Border.all(
-                                              color: AppColors.colorPrimary)),
+                                        horizontal: 16, vertical: 0),
+                                    child: Card(
+                                      // width: double.infinity,
+
                                       child: ListTile(
                                         leading: SizedBox(
                                           height: 50,

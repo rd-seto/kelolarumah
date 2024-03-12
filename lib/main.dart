@@ -60,7 +60,9 @@ void main() async {
       supportedLocales: const [
         Locale('en', 'US'),
         Locale('bn', 'BN'),
-        Locale('ar', 'AR')
+        Locale('ar', 'AR'),
+        Locale('es', 'ES'),
+        Locale('en', 'IN'),
       ],
       path: 'assets/translations',
       saveLocale: true,

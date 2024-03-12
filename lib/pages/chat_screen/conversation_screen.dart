@@ -46,6 +46,7 @@ class _ChatConversationState extends State<ChatConversation> {
     final chatUser = widget.friend?.id;
 
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Row(
             children: [
@@ -84,7 +85,7 @@ class _ChatConversationState extends State<ChatConversation> {
                   ///By default chat screen view
                   ///where show all messages
                   return Scaffold(
-                    backgroundColor: AppColors.colorPrimary,
+                    backgroundColor: Colors.white,
                     body: Column(
                       children: [
                         Expanded(
@@ -238,10 +239,10 @@ class _ChatConversationState extends State<ChatConversation> {
                                   padding: EdgeInsets.all(2.0),
                                   child: CircleAvatar(
                                       radius: 25.0,
-                                      backgroundColor: AppColors.colorPrimary,
+                                      backgroundColor: Colors.white,
                                       child: Icon(
                                         Icons.send,
-                                        color: Colors.white,
+                                        color: AppColors.colorPrimary,
                                       )),
                                 ),
                               ),

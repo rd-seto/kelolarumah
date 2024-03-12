@@ -36,6 +36,16 @@ class _LanguageScreenState extends State<LanguageScreen> {
       'name': 'Arabic',
       'image':
           'https://cdn.britannica.com/79/5779-004-DC479508/Flag-Saudi-Arabia.jpg',
+    },
+    {
+      'name': 'Spanish',
+      'image':
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLsWHAAWo4c5g6x6kf9gbnjHprZ_IREhR4707Zc48KGg&s',
+    },
+    {
+      'name': 'Hindi',
+      'image':
+          'https://i.pinimg.com/originals/ea/14/0a/ea140a9f6e4681b64b35262cf873f026.png',
     }
   ];
 
@@ -165,6 +175,10 @@ class _LanguageScreenState extends State<LanguageScreen> {
                                   context.setLocale(const Locale('bn', 'BN'));
                                 } else if (selectedIndex == 2) {
                                   context.setLocale(const Locale('ar', 'AR'));
+                                } else if (selectedIndex == 3) {
+                                  context.setLocale(const Locale('es', 'ES'));
+                                } else if (selectedIndex == 4) {
+                                  context.setLocale(const Locale('en', 'IN'));
                                 }
                                 getSelectedLanguage();
                               });

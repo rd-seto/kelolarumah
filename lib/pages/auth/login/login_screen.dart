@@ -73,23 +73,23 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Container(
-                      height: 18.h,
-                      width: 18.w,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: AppColors.stockColor)),
-                    ),
-                    SizedBox(
-                      width: 8.w,
-                    ),
-                    CustomText(
-                      text: 'remember_me',
-                      color: const Color(0xffEEEEEE),
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w500,
-                      height: 1.75,
-                    ),
+                    // Container(
+                    //   height: 18.h,
+                    //   width: 18.w,
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(4),
+                    //       border: Border.all(color: AppColors.stockColor)),
+                    // ),
+                    // SizedBox(
+                    //   width: 8.w,
+                    // ),
+                    // CustomText(
+                    //   text: 'remember_me',
+                    //   color: const Color(0xffEEEEEE),
+                    //   fontSize: 12.sp,
+                    //   fontWeight: FontWeight.w500,
+                    //   height: 1.75,
+                    // ),
                     const Spacer(),
                     InkWell(
                       onTap: () {

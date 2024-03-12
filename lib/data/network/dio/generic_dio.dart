@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'dio_imports.dart';
 
 enum ReturnType { model, list, type }
+
 enum MethodType { get, post, put, patch, delete }
 
-class GenericHttp<T>{
+class GenericHttp<T> {
   final BuildContext context;
 
   GenericHttp(this.context);
 
   Future<dynamic> callApi(
       {required ReturnType returnType,
-        required MethodType methodType,
-        required String name,
-        Function(dynamic data)? returnDataFun,
-        Map<String, dynamic>? json,
-        bool? showLoader,
-        Function(dynamic data)? toJsonFunc,
-        bool refresh = true}) async {
-    var dataJson = json??{};
+      required MethodType methodType,
+      required String name,
+      Function(dynamic data)? returnDataFun,
+      Map<String, dynamic>? json,
+      bool? showLoader,
+      Function(dynamic data)? toJsonFunc,
+      bool refresh = true}) async {
+    var dataJson = json ?? {};
 
     switch (methodType) {
       case MethodType.get:
@@ -70,8 +71,10 @@ class GenericHttp<T>{
     bool refresh = true,
     Function(dynamic data)? toJsonFunc,
   }) async {
-    var data = await DioHelper(context: context, forceRefresh: refresh).get(url: name);
-    return _returnDataFromType(data, returnType, toJsonFunc ?? (val) {},dataKeyFun);
+    var data =
+        await DioHelper(context: context, forceRefresh: refresh).get(url: name);
+    return _returnDataFromType(
+        data, returnType, toJsonFunc ?? (val) {}, dataKeyFun);
   }
 
   Future<dynamic> _postData({
@@ -84,9 +87,13 @@ class GenericHttp<T>{
   }) async {
     var data = await DioHelper(
       context: context,
-    ).post(url: name, body: json, showLoader: showLoader ?? true);
+    ).post(
+      url: name,
+      body: json,
+      showLoader: showLoader ?? true,
+    );
     return _returnDataFromType(
-        data, returnType, toJsonFunc ?? (val) {},dataKeyFun);
+        data, returnType, toJsonFunc ?? (val) {}, dataKeyFun);
   }
 
   Future<dynamic> _putData({
@@ -101,7 +108,7 @@ class GenericHttp<T>{
       context: context,
     ).put(url: name, body: json, showLoader: showLoader ?? true);
     return _returnDataFromType(
-        data, returnType, toJsonFunc ?? (val) {},dataKeyFun);
+        data, returnType, toJsonFunc ?? (val) {}, dataKeyFun);
   }
 
   Future<dynamic> _patchData({
@@ -116,7 +123,7 @@ class GenericHttp<T>{
       context: context,
     ).patch(url: name, body: json, showLoader: showLoader ?? true);
     return _returnDataFromType(
-        data, returnType, toJsonFunc ?? (val) {},dataKeyFun);
+        data, returnType, toJsonFunc ?? (val) {}, dataKeyFun);
   }
 
   Future<dynamic> _deleteData({
@@ -131,27 +138,29 @@ class GenericHttp<T>{
       context: context,
     ).delete(url: name, body: json, showLoader: showLoader ?? true);
     return _returnDataFromType(
-        data, returnType, toJsonFunc ?? (val) {},dataKeyFun);
+        data, returnType, toJsonFunc ?? (val) {}, dataKeyFun);
   }
 
   dynamic _returnDataFromType(
-      dynamic data,
-      ReturnType returnType,
-      Function(dynamic data) toJsonFunc,
-      Function(dynamic data)? dataKeyFun,
-      ) async {
+    dynamic data,
+    ReturnType returnType,
+    Function(dynamic data) toJsonFunc,
+    Function(dynamic data)? dataKeyFun,
+  ) async {
     switch (returnType) {
       case ReturnType.type:
         return dataKeyFun == null ? data : Function.apply(dataKeyFun, [data]);
       case ReturnType.model:
-        return  Function.apply(toJsonFunc, [dataKeyFun==null?data:
-        Function.apply(dataKeyFun, [data])
+        return Function.apply(toJsonFunc, [
+          dataKeyFun == null ? data : Function.apply(dataKeyFun, [data])
         ]);
       case ReturnType.list:
         return List<T>.from(
-          dataKeyFun==null?data: Function.apply(dataKeyFun, [data]).map(
-                (e) => Function.apply(toJsonFunc, [e]),
-          ),
+          dataKeyFun == null
+              ? data
+              : Function.apply(dataKeyFun, [data]).map(
+                  (e) => Function.apply(toJsonFunc, [e]),
+                ),
         );
     }
   }

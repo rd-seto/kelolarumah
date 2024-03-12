@@ -126,7 +126,7 @@ class RepositoryImpl {
   Future<CashManagementListModel?> getCashManagementListData() =>
       _repositoryMethods.getCashManagementListData();
 
-  Future<PropertyDetailsModel?> getPropertyDetails(id) =>
+  Future<TenantPropertyDetailsModel?> getPropertyDetails(id) =>
       _repositoryMethods.getPropertyDetails(id);
 
   Future<TenantPropertyDetailsModel?> getTenantPropertyDetails(id, slug) =>

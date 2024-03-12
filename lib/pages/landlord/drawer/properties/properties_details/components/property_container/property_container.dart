@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/property_details_model.dart';
+import 'package:landlord/data/provider/property_details_provider.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/components/tenants_list_container.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
 class PropertyTenantsContainer extends StatelessWidget {
-  const PropertyTenantsContainer({
-    super.key,
-    this.propertyDetails,
-  });
+  const PropertyTenantsContainer({super.key, this.provider});
 
-  final PropertyDetailsModel? propertyDetails;
+  final PropertyDetailsProvider? provider;
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +26,12 @@ class PropertyTenantsContainer extends StatelessWidget {
             fontSize: 20.sp,
             fontWeight: FontWeight.w700,
           ),
-          SizedBox(
-            height: 30.h,
-          ),
-          TenantsListContainer(
-            currentTenant: propertyDetails?.data?.currentTenant,
-          ),
+          // SizedBox(
+          //   height: 30.h,
+          // ),
+          // TenantsListContainer(
+          //   currentTenant: propertyDetails?.data?.currentTenant,
+          // ),
           SizedBox(
             height: 30.h,
           ),
@@ -117,14 +115,16 @@ class PropertyTenantsContainer extends StatelessWidget {
               ],
             ),
           ),
-          propertyDetails?.data?.previousTenants?.isNotEmpty == true
+          provider?.propertyDetailsResponse?.data?.currentTenant == true
               ? ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount:
-                      propertyDetails?.data?.previousTenants?.length ?? 0,
+                  itemCount: provider?.propertyDetailsResponse?.data
+                          ?.currentTenant?.length ??
+                      0,
                   itemBuilder: (context, index) {
-                    final data = propertyDetails?.data?.previousTenants?[index];
+                    final data = provider
+                        ?.propertyDetailsResponse?.data?.currentTenant?[index];
                     return Container(
                       margin: const EdgeInsets.only(bottom: 12.0),
                       decoration: BoxDecoration(
@@ -136,7 +136,7 @@ class PropertyTenantsContainer extends StatelessWidget {
                         child: Row(
                           children: [
                             Image.network(
-                              data?.image ?? '',
+                              data?.photo ?? '',
                               height: 54.h,
                               width: 54.w,
                             ),

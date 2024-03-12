@@ -121,11 +121,11 @@ class _PropertiesScreenState extends State<PropertiesScreen> {
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemCount: provider.propertyListResponse?.data
-                                        ?.properties?.length ??
+                                        ?.properties?.list?.length ??
                                     0,
                                 itemBuilder: (context, index) {
                                   final data = provider.propertyListResponse
-                                      ?.data?.properties?[index];
+                                      ?.data?.properties?.list?[index];
                                   return Padding(
                                     padding:
                                         EdgeInsets.symmetric(vertical: 8.0.h),
@@ -149,15 +149,16 @@ class _PropertiesScreenState extends State<PropertiesScreen> {
                             : ListView.builder(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
-                                itemCount: 2,
+                                itemCount: 6,
                                 itemBuilder: (context, index) {
                                   return Padding(
-                                    padding: const EdgeInsets.all(16.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 0.0, vertical: 8),
                                     child: Shimmer.fromColors(
                                       baseColor: const Color(0xFFE8E8E8),
                                       highlightColor: Colors.white,
                                       child: Container(
-                                        height: 120,
+                                        height: 60,
                                         decoration: BoxDecoration(
                                           color: const Color(0xFFE8E8E8),
                                           borderRadius:
