@@ -30,82 +30,84 @@ class AddFloorPlanScreen extends StatelessWidget {
             ),
             body: Padding(
               padding: EdgeInsets.all(20.0.sp),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: InkWell(
-                      onTap: () {
-                        provider.imgagePicker(context);
-                      },
-                      child: DottedBorder(
-                        dashPattern: const [8, 4],
-                        borderType: BorderType.RRect,
-                        radius: const Radius.circular(8),
-                        color: AppColors.colorPrimary,
-                        strokeWidth: 1,
-                        child: provider.image != null
-                            ? ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.file(
-                                  //to show image, you type like this.
-                                  File(provider.image!.path),
-                                  fit: BoxFit.cover,
-                                  width: MediaQuery.of(context).size.height / 6,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          provider.imgagePicker(context);
+                        },
+                        child: DottedBorder(
+                          dashPattern: const [8, 4],
+                          borderType: BorderType.RRect,
+                          radius: const Radius.circular(8),
+                          color: AppColors.colorPrimary,
+                          strokeWidth: 1,
+                          child: provider.image != null
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.file(
+                                    //to show image, you type like this.
+                                    File(provider.image!.path),
+                                    fit: BoxFit.cover,
+                                    width: MediaQuery.of(context).size.height / 6,
+                                    height: 93.h,
+                                  ),
+                                )
+                              : Container(
                                   height: 93.h,
-                                ),
-                              )
-                            : Container(
-                                height: 93.h,
-                                width: MediaQuery.of(context).size.height / 6,
-                                decoration: BoxDecoration(
-                                    color: AppColors.colorWhite,
-                                    borderRadius: BorderRadius.circular(4.r)),
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.add,
-                                    color: AppColors.colorPrimary,
-                                    size: 36,
+                                  width: MediaQuery.of(context).size.height / 6,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.colorWhite,
+                                      borderRadius: BorderRadius.circular(4.r)),
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.add,
+                                      color: AppColors.colorPrimary,
+                                      size: 36,
+                                    ),
                                   ),
                                 ),
-                              ),
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  CustomText(
-                    text: 'Floor_Plans',
-                    color: AppColors.titleTextColor,
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w700,
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: NewTextFromField(
-                      title: "Title",
-                      hintText: "Bedroom",
-                      controller: provider.titleController,
+                    SizedBox(
+                      height: 20.h,
                     ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  ElevatedButtonWidget(
-                    text: "SAVE",
-                    onPressed: () {
-                      provider.addImage(context, propertyId, () {
-                        onSave();
-                      }, 'floor_plan');
-                    },
-                  )
-                ],
+                    CustomText(
+                      text: 'Floor_Plans',
+                      color: AppColors.titleTextColor,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: NewTextFromField(
+                        title: "Title",
+                        hintText: "Bedroom",
+                        controller: provider.titleController,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    ElevatedButtonWidget(
+                      text: "SAVE",
+                      onPressed: () {
+                        provider.addImage(context, propertyId, () {
+                          onSave();
+                        }, 'floor_plan');
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
           );
