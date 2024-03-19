@@ -31,7 +31,6 @@ class _TenantsScreenState extends State<TenantsScreen> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<TenantProvider>(context);
-
     return RefreshIndicator(
       onRefresh: () async {
         provider.tenantData(context);
@@ -70,7 +69,7 @@ class _TenantsScreenState extends State<TenantsScreen> {
                   //   tenantModel: provider.tenantModel,
                   // ),
                   SizedBox(
-                    height: 30.h,
+                    height: 0.h,
                   ),
                   CustomText(
                     text: 'Tenants_List',
@@ -78,9 +77,9 @@ class _TenantsScreenState extends State<TenantsScreen> {
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w700,
                   ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
+                  // SizedBox(
+                  //   height: 20.h,
+                  // ),
                   // Row(
                   //   children: [
                   //     Expanded(
