@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -242,11 +243,13 @@ class DrawerListContent extends StatelessWidget {
           SizedBox(
             width: 12.w,
           ),
-          CustomText(
-            text: title,
-            color: AppColors.black2Sd,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w700,
+          Expanded(
+            child: CustomText(
+              text: title,
+              color: AppColors.black2Sd,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ],
       ),

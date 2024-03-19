@@ -80,7 +80,7 @@ class AddGalleryScreen extends StatelessWidget {
                     child: NewTextFromField(
                       controller: provider.titleController,
                       title: "Title",
-                      hintText: "Bedroom",
+                      hintText: "Enter your title",
                     ),
                   ),
                   SizedBox(
