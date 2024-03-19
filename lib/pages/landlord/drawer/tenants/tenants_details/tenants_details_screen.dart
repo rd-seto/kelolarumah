@@ -4,9 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/data/provider/tenants_details_provider.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/accounts/accounts_summary_chart.dart';
-import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/agreements/agreements_summary_chart.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/basic_info/basic_info_summary_cart.dart';
-import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/emergency/emergency_summary_cart.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/tenants_profile_details_cart.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/transaction/transaction_summary_chart.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
@@ -96,9 +94,6 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                             Tab(
                               text: 'Transaction'.tr(),
                             ),
-                            // Tab(
-                            //   text: 'Agreements'.tr(),
-                            // ),
                           ],
                           indicatorColor: AppColors.colorPrimary,
                           controller: _tabController,
