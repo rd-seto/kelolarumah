@@ -136,7 +136,7 @@ class PropertyTenantsContainer extends StatelessWidget {
                         child: Row(
                           children: [
                             Image.network(
-                              data?.photo ?? '',
+                              data?.image ?? '',
                               height: 54.h,
                               width: 54.w,
                             ),

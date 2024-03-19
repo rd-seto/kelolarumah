@@ -142,6 +142,10 @@ class _PropertiesScreenState extends State<PropertiesScreen> {
                                               propertyId: data!.id!,
                                             ));
                                       },
+                                      onSave: () {
+                                        provider.propertyData(context);
+                                      },
+                                      id: data?.id,
                                     ),
                                   );
                                 },

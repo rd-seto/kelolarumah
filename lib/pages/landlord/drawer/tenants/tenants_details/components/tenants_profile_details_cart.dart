@@ -26,7 +26,7 @@ class TenantsRowItem extends StatelessWidget {
                 height: 86.h,
                 width: 86.w,
                 fit: BoxFit.cover,
-                imageUrl: basicInfo?.image ??
+                imageUrl: provider?.tenantsDetailsResponse?.data?.avater ??
                     "https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg",
                 placeholder: (context, url) => Center(
                   child: Image.asset("assets/drawer/app_logo.png"),
@@ -42,28 +42,31 @@ class TenantsRowItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomText(
-                    text: basicInfo?.name ?? "N/A",
+                    text: provider?.tenantsDetailsResponse?.data?.name ?? "N/A",
                     color: AppColors.titleTextColor,
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w600,
                     height: 1.5,
                   ),
                   CustomText(
-                    text: 'Contact No: ${basicInfo?.phone ?? "N/A"}',
+                    text:
+                        'Contact No: ${provider?.tenantsDetailsResponse?.data?.phone.toString()}',
                     color: AppColors.titleTextColor,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
                     height: 1.75,
                   ),
                   CustomText(
-                    text: 'Email: ${basicInfo?.email ?? "N/A"}',
+                    text:
+                        'Email: ${provider?.tenantsDetailsResponse?.data?.email ?? "N/A"}',
                     color: AppColors.titleTextColor,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
                     height: 1.75,
                   ),
                   CustomText(
-                    text: 'Address: ${basicInfo?.presentAddress ?? "N/A"}',
+                    text:
+                        'Address: ${provider?.tenantsDetailsResponse?.data?.presentAddress?.address ?? "N/A"}',
                     color: AppColors.titleTextColor,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
@@ -78,7 +81,7 @@ class TenantsRowItem extends StatelessWidget {
                   ),
                   CustomText(
                     text:
-                        'Nationality - ${basicInfo?.nationality ?? "N/A"}',
+                        'Nationality - ${provider?.tenantsDetailsResponse?.data?.nationality ?? "N/A"}',
                     color: AppColors.titleTextColor,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,

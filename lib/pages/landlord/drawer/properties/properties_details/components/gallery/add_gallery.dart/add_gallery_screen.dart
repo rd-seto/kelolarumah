@@ -89,9 +89,9 @@ class AddGalleryScreen extends StatelessWidget {
                   ElevatedButtonWidget(
                     text: "Save",
                     onPressed: () {
-                      provider.addImage(context, propertyId, () {
+                      provider.addGalleryImage(context, propertyId, () {
                         onSave();
-                      }, 'gallery');
+                      });
                     },
                   )
                 ],

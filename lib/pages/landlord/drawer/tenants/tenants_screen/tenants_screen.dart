@@ -66,9 +66,9 @@ class _TenantsScreenState extends State<TenantsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TenantsSummaryChart(
-                    tenantModel: provider.tenantModel,
-                  ),
+                  // TenantsSummaryChart(
+                  //   tenantModel: provider.tenantModel,
+                  // ),
                   SizedBox(
                     height: 30.h,
                   ),
@@ -81,59 +81,59 @@ class _TenantsScreenState extends State<TenantsScreen> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: AppColors.colorWhite,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: AppColors.stockColor)),
-                          child: TextFormField(
-                            onChanged: (val) {
-                              provider.searchTenantData(context, val);
-                            },
-                            decoration: const InputDecoration(
-                                prefixIcon: Icon(
-                                  Icons.search,
-                                  color: Color(0xffBEBEBE),
-                                ),
-                                border: InputBorder.none),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.r),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15.0.w, vertical: 15.h),
-                          child: const Icon(
-                            Icons.filter_list,
-                            color: AppColors.colorPrimary,
-                            size: 20,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     Expanded(
+                  //       child: Container(
+                  //         decoration: BoxDecoration(
+                  //             color: AppColors.colorWhite,
+                  //             borderRadius: BorderRadius.circular(8),
+                  //             border: Border.all(color: AppColors.stockColor)),
+                  //         child: TextFormField(
+                  //           onChanged: (val) {
+                  //             provider.searchTenantData(context, val);
+                  //           },
+                  //           decoration: const InputDecoration(
+                  //               prefixIcon: Icon(
+                  //                 Icons.search,
+                  //                 color: Color(0xffBEBEBE),
+                  //               ),
+                  //               border: InputBorder.none),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     SizedBox(
+                  //       width: 10.w,
+                  //     ),
+                  //     Container(
+                  //       decoration: BoxDecoration(
+                  //         color: Colors.white,
+                  //         borderRadius: BorderRadius.circular(8.r),
+                  //       ),
+                  //       child: Padding(
+                  //         padding: EdgeInsets.symmetric(
+                  //             horizontal: 15.0.w, vertical: 15.h),
+                  //         child: const Icon(
+                  //           Icons.filter_list,
+                  //           color: AppColors.colorPrimary,
+                  //           size: 20,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   SizedBox(
                     height: 8.h,
                   ),
-                  provider.tenantModel?.tenants != null
+                  provider.tenantModel?.data?.list != null
                       ? Expanded(
                           child: ListView.builder(
                             shrinkWrap: true,
                             itemCount:
-                                provider.tenantModel?.tenants?.length ?? 0,
+                                provider.tenantModel?.data?.list?.length ?? 0,
                             itemBuilder: (context, index) {
                               final tenant =
-                                  provider.tenantModel?.tenants?[index];
+                                  provider.tenantModel?.data?.list?[index];
 
                               return Padding(
                                 padding: EdgeInsets.symmetric(vertical: 8.0.h),

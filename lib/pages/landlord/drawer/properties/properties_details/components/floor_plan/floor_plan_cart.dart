@@ -37,7 +37,8 @@ class FloorPlanCart extends StatelessWidget {
               SizedBox(
                 height: 20.h,
               ),
-              propertyFlorPlans?.isEmpty == true
+              provider?.propertyDetailsResponse?.data?.floorPlans?.isEmpty ==
+                      true
                   ? Padding(
                       padding: const EdgeInsets.only(top: 20.0),
                       child: CustomText(
@@ -51,7 +52,9 @@ class FloorPlanCart extends StatelessWidget {
                   : GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: propertyFlorPlans?.length ?? 0,
+                      itemCount: provider?.propertyDetailsResponse?.data
+                              ?.floorPlans?.length ??
+                          0,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               mainAxisExtent: 150,
@@ -59,7 +62,8 @@ class FloorPlanCart extends StatelessWidget {
                               crossAxisSpacing: 20.0,
                               mainAxisSpacing: 4.0),
                       itemBuilder: (BuildContext context, int index) {
-                        final data = propertyFlorPlans?[index];
+                        final data = provider
+                            ?.propertyDetailsResponse?.data?.floorPlans?[index];
                         return Image.network(data?.path ?? '');
                       },
                     ),

@@ -44,7 +44,7 @@ class BasicInfoSummaryCart extends StatelessWidget {
                       ),
                       SummaryContainerBlack(
                         title: "Join_Date",
-                        subTitle: basicInfo?.joinDate ?? "N/A",
+                        subTitle: basicInfo?.joinDate.toString() ?? "N/A",
                       ),
                       SummaryContainerWhite(
                         title: "Occupation",
@@ -84,10 +84,13 @@ class BasicInfoSummaryCart extends StatelessWidget {
                     context,
                     EditBasicInfo(
                       basicInfo: basicInfo,
-                      tenantsId: basicInfo?.id,
+                      tenantsId: provider?.tenantsDetailsResponse?.data?.id,
                       onSave: () {
-                        provider?.tenantsDetailsData(context, basicInfo?.id);
+                        provider?.tenantsDetailsData(context,
+                            provider?.tenantsDetailsResponse?.data?.id);
                       },
+                      provider: provider,
+                      tenantsDetailsResponse: provider?.tenantsDetailsResponse,
                     ));
               },
               child: Container(

@@ -11,10 +11,10 @@ String propertyDetailsModelToJson(PropertyDetailsModel data) =>
     json.encode(data.toJson());
 
 class PropertyDetailsModel {
-  bool? result;
-  String? apiEndPoint;
-  String? message;
-  Data? data;
+  final bool? result;
+  final String? apiEndPoint;
+  final String? message;
+  final Data? data;
 
   PropertyDetailsModel({
     this.result,
@@ -40,29 +40,29 @@ class PropertyDetailsModel {
 }
 
 class Data {
-  String? title;
-  List<Property>? property;
-  List<CurrentTenant>? currentTenant;
-  List<dynamic>? previousTenants;
-  List<Facility>? facilities;
-  List<FloorPlan>? floorPlans;
-  List<Gallery>? gallery;
+  final String? title;
+  final Property? property;
+  final List<CurrentTenant>? currentTenant;
+  final List<dynamic>? previousTenants;
+  final List<dynamic>? facilities;
+  final List<FloorPlan>? gallery;
+  final List<FloorPlan>? floorPlans;
 
-  Data(
-      {this.title,
-      this.property,
-      this.currentTenant,
-      this.previousTenants,
-      this.facilities,
-      this.floorPlans,
-      this.gallery});
+  Data({
+    this.title,
+    this.property,
+    this.currentTenant,
+    this.previousTenants,
+    this.facilities,
+    this.gallery,
+    this.floorPlans,
+  });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         title: json["title"],
         property: json["property"] == null
-            ? []
-            : List<Property>.from(
-                json["property"]!.map((x) => Property.fromJson(x))),
+            ? null
+            : Property.fromJson(json["property"]),
         currentTenant: json["current_tenant"] == null
             ? []
             : List<CurrentTenant>.from(
@@ -72,23 +72,20 @@ class Data {
             : List<dynamic>.from(json["previous_tenants"]!.map((x) => x)),
         facilities: json["facilities"] == null
             ? []
-            : List<Facility>.from(
-                json["facilities"]!.map((x) => Facility.fromJson(x))),
+            : List<dynamic>.from(json["facilities"]!.map((x) => x)),
+        gallery: json["gallery"] == null
+            ? []
+            : List<FloorPlan>.from(
+                json["gallery"]!.map((x) => FloorPlan.fromJson(x))),
         floorPlans: json["floor_plans"] == null
             ? []
             : List<FloorPlan>.from(
                 json["floor_plans"]!.map((x) => FloorPlan.fromJson(x))),
-        gallery: json["gallery"] == null
-            ? []
-            : List<Gallery>.from(
-                json["gallery"]!.map((x) => Gallery.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "title": title,
-        "property": property == null
-            ? []
-            : List<dynamic>.from(property!.map((x) => x.toJson())),
+        "property": property?.toJson(),
         "current_tenant": currentTenant == null
             ? []
             : List<dynamic>.from(currentTenant!.map((x) => x.toJson())),
@@ -97,24 +94,24 @@ class Data {
             : List<dynamic>.from(previousTenants!.map((x) => x)),
         "facilities": facilities == null
             ? []
-            : List<dynamic>.from(facilities!.map((x) => x.toJson())),
-        "floor_plans": floorPlans == null
-            ? []
-            : List<dynamic>.from(floorPlans!.map((x) => x.toJson())),
+            : List<dynamic>.from(facilities!.map((x) => x)),
         "gallery": gallery == null
             ? []
             : List<dynamic>.from(gallery!.map((x) => x.toJson())),
+        "floor_plans": floorPlans == null
+            ? []
+            : List<dynamic>.from(floorPlans!.map((x) => x.toJson())),
       };
 }
 
 class CurrentTenant {
-  int? id;
-  String? name;
-  String? presentAddress;
-  String? propertiesName;
-  String? image;
-  String? comment;
-  String? rating;
+  final int? id;
+  final String? name;
+  final String? presentAddress;
+  final String? propertiesName;
+  final String? image;
+  final String? comment;
+  final String? rating;
 
   CurrentTenant({
     this.id,
@@ -147,67 +144,11 @@ class CurrentTenant {
       };
 }
 
-class Facility {
-  int? id;
-  String? name;
-  String? content;
-  String? image;
-
-  Facility({
-    this.id,
-    this.name,
-    this.content,
-    this.image,
-  });
-
-  factory Facility.fromJson(Map<String, dynamic> json) => Facility(
-        id: json["id"],
-        name: json["name"],
-        content: json["content"],
-        image: json["image"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "content": content,
-        "image": image,
-      };
-}
-
-class Gallery {
-  int? id;
-  String? title;
-  String? path;
-  String? originalPath;
-
-  Gallery({
-    this.id,
-    this.title,
-    this.path,
-    this.originalPath,
-  });
-
-  factory Gallery.fromJson(Map<String, dynamic> json) => Gallery(
-        id: json["id"],
-        title: json["title"],
-        path: json["path"],
-        originalPath: json["original_path"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "title": title,
-        "path": path,
-        "original_path": originalPath,
-      };
-}
-
 class FloorPlan {
-  int? id;
-  String? title;
-  String? path;
-  String? originalPath;
+  final int? id;
+  final String? title;
+  final String? path;
+  final String? originalPath;
 
   FloorPlan({
     this.id,
@@ -232,27 +173,27 @@ class FloorPlan {
 }
 
 class Property {
-  int? id;
-  String? name;
-  String? image;
-  String? dealType;
-  String? type;
-  String? completion;
-  int? totalUnit;
-  int? totalOccupied;
-  int? totalRent;
-  int? totalSell;
-  String? address;
-  String? city;
-  String? country;
-  String? zipCode;
-  String? size;
-  String? diningCombined;
-  int? bedroom;
-  int? bathroom;
-  int? rentAmount;
-  String? flatNo;
-  String? description;
+  final int? id;
+  final String? name;
+  final String? image;
+  final String? dealType;
+  final String? type;
+  final String? completion;
+  final int? totalUnit;
+  final int? totalOccupied;
+  final int? totalRent;
+  final int? totalSell;
+  final String? address;
+  final String? city;
+  final String? country;
+  final String? zipCode;
+  final String? size;
+  final String? diningCombined;
+  final int? bedroom;
+  final int? bathroom;
+  final int? rentAmount;
+  final String? flatNo;
+  final String? description;
 
   Property({
     this.id,

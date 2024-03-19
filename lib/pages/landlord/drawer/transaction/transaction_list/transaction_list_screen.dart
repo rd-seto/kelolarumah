@@ -72,16 +72,16 @@ class TransactionListScreen extends StatelessWidget {
                   SizedBox(
                     height: 30.h,
                   ),
-                  provider.transactionListResponse?.data?.items != null
+                  provider.transactionListResponse?.data?.list != null
                       ? ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: provider.transactionListResponse?.data
-                                  ?.items?.list?.length ??
+                                  ?.list?.length ??
                               0,
                           itemBuilder: (context, index) {
-                            final data = provider.transactionListResponse?.data
-                                ?.items?.list?[index];
+                            final data = provider
+                                .transactionListResponse?.data?.list?[index];
                             if (kDebugMode) {
                               print(data);
                             }
@@ -93,9 +93,9 @@ class TransactionListScreen extends StatelessWidget {
                                       transactionId: data?.id,
                                     ));
                               },
-                              tittle: data?.property,
-                              propertyName: data?.tenant?.name,
-                              date: data?.appDate,
+                              tittle: data?.paymentMethod,
+                              propertyName: data?.type,
+                              date: data?.date.toString(),
                               amount: "${data?.amount}",
                             );
                           })

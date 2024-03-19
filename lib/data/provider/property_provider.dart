@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:landlord/data/model/property_list_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
@@ -24,6 +25,19 @@ class PropertyProvider extends ChangeNotifier {
           await RepositoryImpl(context).searchPropertyData(search: searchKey);
       notifyListeners();
     });
+    notifyListeners();
+  }
+
+  void propertyDelete(context, propertyId, VoidCallback onDone) async {
+    await RepositoryImpl(context).propertyDeleteApi(propertyId).then((success) {
+      if (success = true) {
+        Fluttertoast.showToast(msg: 'Successfully Updated');
+        onDone();
+      } else {
+        Fluttertoast.showToast(msg: 'Something Went Wrong');
+      }
+    });
+
     notifyListeners();
   }
 }

@@ -4,9 +4,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:landlord/data/model/location_model.dart';
 import 'package:landlord/data/model/tenant_body_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
+import 'package:landlord/pages/landlord/drawer/tenants/components/Landlord_location/district_screen.dart';
+import 'package:landlord/pages/landlord/drawer/tenants/components/Landlord_location/divisions_screen.dart';
+import 'package:landlord/utils/nav_utail.dart';
 import '../../utils/theme/app_colors.dart';
 import '../model/tenant_model.dart';
 
@@ -24,9 +29,87 @@ class TenantProvider extends ChangeNotifier {
   TenantBodyModel tenantBodyModel = TenantBodyModel();
   String now = DateFormat('yyyy-MM-dd').format(DateTime.now());
   final debounce = Debounce(milliseconds: 500);
+  TextEditingController countryController = TextEditingController();
+  TextEditingController divisionsController = TextEditingController();
+  TextEditingController districtController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+  TextEditingController confirmPassController = TextEditingController();
+  Datum? countryData;
+  Datum? divisionData;
+  Datum? districtData;
+  Datum? areaData;
+  LocationModel? locationModel;
+  bool isLoading = false;
 
   TenantProvider(BuildContext context) {
     tenantData(context);
+    getCountryData(context);
+  }
+
+  void getCountryData(BuildContext context) async {
+    isLoading = true;
+    locationModel = null;
+    notifyListeners();
+    var apiResponse = await RepositoryImpl(context).getCountryData();
+    if (apiResponse != null) {
+      locationModel = apiResponse;
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  void setCountry(value, context) {
+    countryData = value;
+    countryController = TextEditingController(text: countryData?.name);
+    getDivisionsData(context);
+    NavUtil.replaceScreen(context, const DivisionsScreen());
+    notifyListeners();
+  }
+
+  void setDivisions(value, context) {
+    divisionData = value;
+    divisionsController = TextEditingController(text: divisionData?.name);
+    getDistrictData(context);
+    NavUtil.replaceScreen(context, const DistrictScreen());
+    notifyListeners();
+  }
+
+  void setDistricts(value, context) {
+    districtData = value;
+    districtController = TextEditingController(text: districtData?.name);
+    getAreaData(context);
+    Navigator.pop(context);
+    notifyListeners();
+  }
+
+  void getDivisionsData(BuildContext context) async {
+    final data = {'country_id': countryData?.id};
+    var apiResponse = await RepositoryImpl(context).getDivisionsData(data);
+    if (apiResponse != null) {
+      locationModel = apiResponse;
+      notifyListeners();
+    }
+  }
+
+  void getDistrictData(BuildContext context) async {
+    final data = {'division_id': divisionData?.id};
+    var apiResponse = await RepositoryImpl(context).getDistrictData(data);
+    if (apiResponse != null) {
+      locationModel = apiResponse;
+      notifyListeners();
+    }
+  }
+
+  void getAreaData(BuildContext context) async {
+    final data = {'district_id': districtData?.id};
+    var apiResponse = await RepositoryImpl(context).getAresData(data);
+    if (apiResponse != null) {
+      locationModel = apiResponse;
+      notifyListeners();
+    }
   }
 
   void tenantData(BuildContext context) async {
@@ -35,16 +118,45 @@ class TenantProvider extends ChangeNotifier {
   }
 
   void addTenant(BuildContext context) async {
-    RepositoryImpl(context)
-        .addTenantData(model: tenantBodyModel)
-        .then((success) {
+    final data = {
+      "name": nameController.text,
+      "email": emailController.text,
+      "phone": phoneController.text,
+      "country_id": countryData?.id,
+      "city_id": divisionData?.id,
+      "state_id": districtData?.id,
+      "password": passController.text,
+      "password_confirmation": passController.text,
+    };
+    RepositoryImpl(context).addTenantData(data).then((success) {
       if (success) {
+        Fluttertoast.showToast(msg: "Successfully Created");
         tenantData(context);
+        clearDate();
         debounce.run(() {
           Navigator.pop(context);
         });
+      } else {
+        Fluttertoast.showToast(msg: "Something Went Wrong");
       }
     });
+  }
+
+  clearDate() {
+    nameController.text = "";
+    emailController.text = '';
+    image = null;
+    phoneController.text = "";
+    passController.text = "";
+    confirmPassController.text = "";
+    countryController.text = "";
+    districtController.text = "";
+    divisionsController.text = "";
+    countryData?.id = null;
+    divisionData?.id = null;
+    districtData?.id = null;
+    areaData?.id = null;
+    // categoryValue?.id = null;
   }
 
   void getTenantProperties({required BuildContext context}) async {
@@ -112,11 +224,17 @@ class TenantProvider extends ChangeNotifier {
                         backgroundColor: AppColors.colorPrimary),
                     child: Row(
                       children: [
-                        const Icon(Icons.image,color: Colors.white,),
+                        const Icon(
+                          Icons.image,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 16.w,
                         ),
-                        const Text('From_Gallery',style: TextStyle(color: Colors.white),).tr(),
+                        const Text(
+                          'From_Gallery',
+                          style: TextStyle(color: Colors.white),
+                        ).tr(),
                       ],
                     ),
                   ),
@@ -129,11 +247,17 @@ class TenantProvider extends ChangeNotifier {
                     },
                     child: Row(
                       children: [
-                        const Icon(Icons.camera,color: Colors.white,),
+                        const Icon(
+                          Icons.camera,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 16.w,
                         ),
-                        const Text('From_Camera',style: TextStyle(color: Colors.white),).tr(),
+                        const Text(
+                          'From_Camera',
+                          style: TextStyle(color: Colors.white),
+                        ).tr(),
                       ],
                     ),
                   ),
@@ -146,11 +270,17 @@ class TenantProvider extends ChangeNotifier {
                     },
                     child: Row(
                       children: [
-                        const Icon(Icons.camera,color: Colors.white,),
+                        const Icon(
+                          Icons.camera,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 16.w,
                         ),
-                        const Text('Upload_Pdf_File',style: TextStyle(color: Colors.white),).tr(),
+                        const Text(
+                          'Upload_Pdf_File',
+                          style: TextStyle(color: Colors.white),
+                        ).tr(),
                       ],
                     ),
                   ),

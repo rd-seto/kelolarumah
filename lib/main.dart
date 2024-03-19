@@ -37,7 +37,6 @@ import 'data/provider/transaction_list_provider.dart';
 import 'data/provider/update_profile_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
@@ -131,8 +130,6 @@ class MyApp extends StatelessWidget {
             create: (context) => ProfileDetailsProvider(context)),
         ChangeNotifierProvider<PropertyDetailsEditProvider>(
             create: (context) => PropertyDetailsEditProvider(context)),
-        ChangeNotifierProvider<TenantEditProvider>(
-            create: (context) => TenantEditProvider()),
         ChangeNotifierProvider<DocumentProvider>(
             create: (context) => DocumentProvider(context))
       ],

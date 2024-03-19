@@ -9,12 +9,10 @@ import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
 class AccountsSummaryCart extends StatelessWidget {
-  final Account? accounts;
   final int tenantId;
   final TenantsDetailsProvider? provider;
 
-  const AccountsSummaryCart(
-      {super.key, this.accounts, required this.tenantId, this.provider});
+  const AccountsSummaryCart({super.key, required this.tenantId, this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -27,39 +25,49 @@ class AccountsSummaryCart extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: AppColors.colorWhite,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 18.0.w,
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 28.h,
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount:
+                    provider?.tenantsDetailsResponse?.data?.accounts?.length ??
+                        0,
+                itemBuilder: (context, index) {
+                  final data =
+                      provider?.tenantsDetailsResponse?.data?.accounts?[index];
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.colorWhite,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 18.0.w,
                       ),
-                      SummaryContainerBlack(
-                        title: "Account_No",
-                        subTitle: accounts?.accountNumber ?? "N/A",
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 28.h,
+                          ),
+                          SummaryContainerBlack(
+                            title: "Account_No",
+                            subTitle: data?.accountNumber ?? "N/A",
+                          ),
+                          SummaryContainerWhite(
+                            title: "Account Category",
+                            subTitle: data?.accountCategory ?? "N/A",
+                          ),
+                          SummaryContainerBlack(
+                            title: "Branch_Name",
+                            subTitle: data?.bankBranch ?? "N/A",
+                          ),
+                          // SummaryContainerWhite(
+                          //   title: "Branch_Name",
+                          //   subTitle: accounts?.branch ?? "N/A",
+                          // ),
+                        ],
                       ),
-                      SummaryContainerWhite(
-                        title: "Account_Holder_Name",
-                        subTitle: accounts?.accountName ?? "N/A",
-                      ),
-                      SummaryContainerBlack(
-                        title: "Bank_Name",
-                        subTitle: accounts?.name ?? "N/A",
-                      ),
-                      SummaryContainerWhite(
-                        title: "Branch_Name",
-                        subTitle: accounts?.branch ?? "N/A",
-                      ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                },
               ),
               SizedBox(
                 height: 30.h,
@@ -79,7 +87,7 @@ class AccountsSummaryCart extends StatelessWidget {
                       context,
                       EditAccountsInfo(
                         tenantId: tenantId,
-                        accounts: accounts,
+                        // accounts: accounts,
                         onSave: () {
                           provider?.tenantsDetailsData(context, tenantId);
                         },

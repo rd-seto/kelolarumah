@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
-import 'package:landlord/data/model/property_details_model.dart';
+import 'package:landlord/data/model/tenant_property_details.dart';
 import 'package:landlord/data/provider/property_details_provider.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/gallery/add_gallery.dart/add_gallery_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
@@ -10,10 +10,10 @@ import 'package:provider/provider.dart';
 
 class PropertyGalleryCart extends StatelessWidget {
   final PropertyDetailsProvider? provider;
-  final List<Gallery>? propertyGalleries;
+
   final int? pId;
   const PropertyGalleryCart(
-      {super.key, this.propertyGalleries, this.pId, this.provider});
+      {super.key,  this.pId, this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class PropertyGalleryCart extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  provider?.propertyDetailsResponse?.data?.galleries == null
+                  provider?.propertyDetailsResponse?.data?.gallery == null
                       ? Padding(
                           padding: const EdgeInsets.only(top: 20.0),
                           child: CustomText(
@@ -42,7 +42,7 @@ class PropertyGalleryCart extends StatelessWidget {
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: provider?.propertyDetailsResponse?.data
-                                  ?.galleries?.length ??
+                                  ?.gallery?.length ??
                               0,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
@@ -52,8 +52,8 @@ class PropertyGalleryCart extends StatelessWidget {
                                   mainAxisSpacing: 4.0),
                           itemBuilder: (BuildContext context, int index) {
                             final data = provider?.propertyDetailsResponse?.data
-                                ?.galleries?[index];
-                            return Image.network(data!.image!);
+                                ?.gallery?[index];
+                            return Image.network(data!.path!);
                           },
                         ),
                   // SizedBox(

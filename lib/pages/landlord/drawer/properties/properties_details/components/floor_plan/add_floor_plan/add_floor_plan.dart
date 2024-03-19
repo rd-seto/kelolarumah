@@ -100,9 +100,9 @@ class AddFloorPlanScreen extends StatelessWidget {
                   ElevatedButtonWidget(
                     text: "SAVE",
                     onPressed: () {
-                      provider.addImage(context, propertyId, () {
+                      provider.floorPlanImageAdd(context, propertyId, () {
                         onSave();
-                      }, 'floor_plan');
+                      });
                     },
                   )
                 ],

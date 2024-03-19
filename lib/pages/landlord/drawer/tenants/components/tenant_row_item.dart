@@ -9,7 +9,7 @@ import '../../../../../utils/nav_utail.dart';
 import '../tenants_details/tenants_details_screen.dart';
 
 class TenantRowItem extends StatelessWidget {
-  final Tenant tenant;
+  final ListElement? tenant;
 
   const TenantRowItem({Key? key, required this.tenant}) : super(key: key);
 
@@ -20,7 +20,7 @@ class TenantRowItem extends StatelessWidget {
         NavUtil.navigateScreen(
             context,
             TenantsDetailsScreen(
-              tenantsId: tenant.id!,
+              tenantsId: tenant!.id!,
             ));
       },
       child: Container(
@@ -43,7 +43,7 @@ class TenantRowItem extends StatelessWidget {
                   height: 54.h,
                   width: 54.w,
                   fit: BoxFit.cover,
-                  imageUrl: tenant.image ??
+                  imageUrl: tenant?.avater ??
                       "https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg",
                   placeholder: (context, url) => Center(
                     child: Image.asset("assets/drawer/app_logo.png"),
@@ -63,7 +63,7 @@ class TenantRowItem extends StatelessWidget {
                         children: [
                           CustomText(
                             height: 1,
-                            text: tenant.name ?? 'N/A',
+                            text: tenant?.name ?? 'N/A',
                             color: AppColors.titleTextColor,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w700,
@@ -83,7 +83,7 @@ class TenantRowItem extends StatelessWidget {
                               ),
                               Expanded(
                                 child: CustomText(
-                                  text: tenant.propertyName ?? 'N/A',
+                                  text: tenant?.email ?? 'N/A',
                                   color: const Color(0xff828282),
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w700,
@@ -108,7 +108,7 @@ class TenantRowItem extends StatelessWidget {
                                 child: CustomText(
                                   height: 1,
                                   maxLine: 3,
-                                  text: tenant.propertyAddress ?? 'N/A',
+                                  text: tenant?.address ?? 'N/A',
                                   color: const Color(0xff828282),
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w700,

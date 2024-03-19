@@ -78,14 +78,24 @@ class RepositoryMethods {
         name: '${ApiProvider.search}');
   }
 
-  Future<AddPropertyDataModel?> getAddPropertyData() async {
+  Future<AllDropDownModel?> getAddPropertyData() async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
         methodType: MethodType.get,
-        toJsonFunc: (json) => AddPropertyDataModel.fromJson(json),
+        toJsonFunc: (json) => AllDropDownModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
         name: ApiProvider.addPropertyData);
+  }
+
+  Future<AccountCategoryModel?> getAccountsCategoryData() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => AccountCategoryModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.addCategoryData);
   }
 
   /// Get country data from add property
@@ -155,7 +165,28 @@ class RepositoryMethods {
         toJsonFunc: (json) => json,
         returnDataFun: (data) => data,
         showLoader: true,
-        name: ApiProvider.postImage);
+        name: ApiProvider.galleryImageAdd);
+  }
+
+  Future postImage2(data) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.floorPlan);
+  }
+
+  Future propertyDeleteApi(data) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.type,
+        methodType: MethodType.delete,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: "${ApiProvider.propertyDelete}$data");
   }
 
   // Future<bool> addFacilities(
@@ -233,7 +264,7 @@ class RepositoryMethods {
         toJsonFunc: (json) => TenantsDetailsModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: "${ApiProvider.tenantDetails}/$tenantId/details-list");
+        name: "${ApiProvider.tenantDetails}$tenantId");
   }
 
   Future<NotificationModel?> getNotification() async {
@@ -246,11 +277,11 @@ class RepositoryMethods {
         name: ApiProvider.notification);
   }
 
-  Future<TenantPropertyDetailsModel?> getPropertyDetails(id) async {
+  Future<PropertyDetailsModel?> getPropertyDetails(id) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
         methodType: MethodType.get,
-        toJsonFunc: (json) => TenantPropertyDetailsModel.fromJson(json),
+        toJsonFunc: (json) => PropertyDetailsModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
         name: "${ApiProvider.propertyDetails}/$id/details-list/");
@@ -327,7 +358,7 @@ class RepositoryMethods {
         toJsonFunc: (json) => TenantModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: ApiProvider.searchTenant);
+        name: ApiProvider.tenantList);
   }
 
   Future<List<TenantProperty>> getTenantPropertiesData() async {
@@ -350,25 +381,24 @@ class RepositoryMethods {
         name: ApiProvider.facilityData) as List<FacilityType>;
   }
 
-  Future<bool> addTenantData({required TenantBodyModel model}) async {
+  Future<bool> addTenantData(data) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.type,
-        json: model.toJson(),
+        json: data,
         methodType: MethodType.post,
         returnDataFun: (data) => data != null,
         showLoader: true,
         name: ApiProvider.createTenant);
   }
 
-  Future<bool> tenantsEditBasicInfo(
-      {required TenantEditBodyModel model, int? tenantId}) async {
+  Future<bool> tenantsEditBasicInfo(data, int? tenantId) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.type,
-        json: model.toJson(),
+        json: data,
         methodType: MethodType.post,
         returnDataFun: (data) => data != null,
         showLoader: true,
-        name: "${ApiProvider.editTenant}/$tenantId/basicinfo");
+        name: "${ApiProvider.editTenant}$tenantId");
   }
 
   Future<bool> propertyEditBasicInfo(
@@ -379,25 +409,23 @@ class RepositoryMethods {
         methodType: MethodType.post,
         returnDataFun: (data) => data != null,
         showLoader: true,
-        name: "${ApiProvider.editpropertyBasic}/$propertyId/basicinfo");
+        name: "${ApiProvider.editPropertyBasic}/$propertyId/basicinfo");
   }
 
-  Future<bool> tenantDetailsEditAccount(
-      {required TenantAccountEditBodyModel model, int? tenantId}) async {
+  Future<bool> tenantDetailsEditAccount(data, int? tenantId) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.type,
-        json: model.toJson(),
+        json: data,
         methodType: MethodType.post,
         returnDataFun: (data) => data != null,
         showLoader: true,
-        name: "${ApiProvider.editTenant}/$tenantId/accounts");
+        name: "${ApiProvider.addAccount}$tenantId");
   }
 
-  Future<bool> tenantDetailsEditAgreement(
-      {required AgreementUpdateModel model, int? tenantId}) async {
+  Future<bool> tenantDetailsEditAgreement(data, int? tenantId) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.type,
-        json: model.toJson(),
+        json: data,
         methodType: MethodType.post,
         returnDataFun: (data) => data != null,
         showLoader: true,

@@ -23,16 +23,39 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
   String? typeId;
 
   PropertyDetailsEditProvider(context) {
-    getTenantProperties(context: context);
+    // getTenantProperties(context: context);
   }
-  void addImage(context, propertyData, VoidCallback onDone, String type) async {
+  void addGalleryImage(context, propertyData, VoidCallback onDone) async {
     final data = {
       "title": titleController.text,
-      "type": type,
       "property_id": propertyData,
-      "image_id": File(image?.path ?? ""),
+      "image": File(image?.path ?? ""),
     };
     await RepositoryImpl(context).postGalleryImage(data).then((success) {
+      if (success = true) {
+        Fluttertoast.showToast(msg: 'Successfully Updated');
+        onDone();
+        debounce.run(() {
+          Navigator.pop(context);
+        });
+      } else {
+        Fluttertoast.showToast(msg: 'Something Went Wrong');
+        debounce.run(() {
+          Navigator.pop(context);
+        });
+      }
+    });
+
+    notifyListeners();
+  }
+
+  void floorPlanImageAdd(context, propertyData, VoidCallback onDone) async {
+    final data = {
+      "title": titleController.text,
+      "property_id": propertyData,
+      "image": File(image?.path ?? ""),
+    };
+    await RepositoryImpl(context).floorPlanImageAdd(data).then((success) {
       if (success = true) {
         Fluttertoast.showToast(msg: 'Successfully Updated');
         onDone();

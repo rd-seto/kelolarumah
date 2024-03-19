@@ -98,7 +98,6 @@ class Data {
         propertyReviews: json["property_reviews"] == null
             ? []
             : List<dynamic>.from(json["property_reviews"]!.map((x) => x)),
-
       );
 
   Map<String, dynamic> toJson() => {
@@ -121,7 +120,6 @@ class Data {
         "property_reviews": propertyReviews == null
             ? []
             : List<dynamic>.from(propertyReviews!.map((x) => x)),
-
       };
 }
 
@@ -317,23 +315,27 @@ class Gallery {
   final int? id;
   final String? name;
   final String? image;
+  final String? path;
 
   Gallery({
     this.id,
     this.name,
     this.image,
+    this.path,
   });
 
   factory Gallery.fromJson(Map<String, dynamic> json) => Gallery(
         id: json["id"],
         name: json["name"],
         image: json["image"],
+        path: json["path"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
         "image": image,
+        "path": path,
       };
 }
 

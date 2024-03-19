@@ -111,35 +111,35 @@ class MobileAppDrawer extends StatelessWidget {
                         SizedBox(
                           height: 20.h,
                         ),
-                        DrawerListContent(
-                          onTap: () {
-                            NavUtil.navigateScreen(
-                                context, const DocumentListScreen());
-                          },
-                          image: 'assets/drawer/document_vector.png',
-                          title: "Document",
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        DrawerListContent(
-                          onTap: () {
-                            NavUtil.navigateScreen(
-                                context, const ReportScreen());
-                          },
-                          image: 'assets/drawer/report_vector.png',
-                          title: "Report",
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
+                        // DrawerListContent(
+                        //   onTap: () {
+                        //     NavUtil.navigateScreen(
+                        //         context, const DocumentListScreen());
+                        //   },
+                        //   image: 'assets/drawer/document_vector.png',
+                        //   title: "Document",
+                        // ),
+                        // SizedBox(
+                        //   height: 20.h,
+                        // ),
+                        // DrawerListContent(
+                        //   onTap: () {
+                        //     NavUtil.navigateScreen(
+                        //         context, const ReportScreen());
+                        //   },
+                        //   image: 'assets/drawer/report_vector.png',
+                        //   title: "Report",
+                        // ),
+                        // SizedBox(
+                        //   height: 20.h,
+                        // ),
                         DrawerListContent(
                           onTap: () {
                             NavUtil.navigateScreen(
                                 context, const CashManagementDashboardScreen());
                           },
                           image: 'assets/drawer/cash_vector.png',
-                          title: "Cash_Management",
+                          title: "Bill Management",
                         ),
                       ],
                     ),

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
-import 'package:landlord/data/model/tenants_details_model.dart';
+import 'package:landlord/data/provider/tenants_details_provider.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/transaction/add_transaction/add_transaction_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/transaction_details/transaction_details_screen.dart';
+import 'package:landlord/pages/landlord/drawer/transaction/transaction_list/transaction_history_list_container.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
 class TransactionSummaryCart extends StatelessWidget {
-  final List<TenantTransaction>? tenantTransaction;
+  final TenantsDetailsProvider? provider;
 
-  const TransactionSummaryCart({super.key, this.tenantTransaction});
+  const TransactionSummaryCart({super.key, this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -33,120 +34,30 @@ class TransactionSummaryCart extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-              ListView.separated(
+              ListView.builder(
                 shrinkWrap: true,
-                itemCount: tenantTransaction?.length ?? 0,
+                itemCount: provider
+                        ?.tenantsDetailsResponse?.data?.transactions?.length ??
+                    0,
                 itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      NavUtil.navigateScreen(
-                          context,
-                          TransactionsDetailsScreen(
-                            transactionId: tenantTransaction?[index].id,
-                          ));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.colorWhite,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 12.0.w, vertical: 16.h),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CustomText(
-                                  text: tenantTransaction?[index].property ??
-                                      'N/A',
-                                  color: AppColors.titleTextColor,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600,
-                                  height: 1.75,
-                                ),
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                        'assets/dashboard/file_vector.png',
-                                        height: 16.h),
-                                    SizedBox(
-                                      width: 8.w,
-                                    ),
-                                    CustomText(
-                                      text: tenantTransaction?[index]
-                                              .attachmentCount
-                                              .toString() ??
-                                          "N/A",
-                                      color: AppColors.black2Sd,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w500,
-                                      height: 1.75,
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                        'assets/dashboard/propertise_vector.png',
-                                        height: 16.h),
-                                    SizedBox(
-                                      width: 8.w,
-                                    ),
-                                    CustomText(
-                                      text:
-                                          tenantTransaction?[index].property ??
-                                              'N/A',
-                                      color: AppColors.black2Sd,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w500,
-                                      height: 1.75,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            const Spacer(),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                CustomText(
-                                  text: tenantTransaction?[index]
-                                          .amount
-                                          .toString() ??
-                                      "N/A",
-                                  color: const Color(0xff00BF08),
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.75,
-                                ),
-                                SizedBox(
-                                  height: 6.h,
-                                ),
-                                CustomText(
-                                  text: tenantTransaction?[index]
-                                          .date
-                                          .toString() ??
-                                      "N/A",
-                                  color: AppColors.black2Sd,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  height: 1.75,
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
+                  final data = provider
+                      ?.tenantsDetailsResponse?.data?.transactions?[index];
+                  return Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0.h),
+                    child: TransactionHistoryListContainer(
+                      containerColor: AppColors.backgroundColor,
+                      onTap: () {
+                        NavUtil.navigateScreen(
+                            context,
+                            TransactionsDetailsScreen(
+                              transactionId: data?.id,
+                            ));
+                      },
+                      tittle: data?.paymentMethod ?? "",
+                      propertyName: data?.type ?? "",
+                      date: data?.date.toString() ?? "",
+                      amount: "${data?.amount}",
                     ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const Divider(
-                    thickness: 0,
-                    color: Colors.transparent,
                   );
                 },
               ),

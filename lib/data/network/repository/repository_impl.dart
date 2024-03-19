@@ -41,8 +41,11 @@ class RepositoryImpl {
           {required String search}) =>
       _repositoryMethods.searchTransactionData(search: search);
 
-  Future<AddPropertyDataModel?> getAddPropertiesData() =>
+  Future<AllDropDownModel?> getAddPropertiesData() =>
       _repositoryMethods.getAddPropertyData();
+
+  Future<AccountCategoryModel?> getAccountsCategoryData() =>
+      _repositoryMethods.getAccountsCategoryData();
 
   Future<LocationModel?> getCountryData() =>
       _repositoryMethods.getCountryData();
@@ -58,6 +61,8 @@ class RepositoryImpl {
 
   Future createProperty(data) => _repositoryMethods.createProperty(data);
   Future postGalleryImage(data) => _repositoryMethods.postImage(data);
+  Future floorPlanImageAdd(data) => _repositoryMethods.postImage2(data);
+  Future propertyDeleteApi(data) => _repositoryMethods.propertyDeleteApi(data);
   // Future<bool> addFacilitiesData(
   //       {required PropertyFacilitiesModel model, int? propertyId}) =>
   //   _repositoryMethods.addFacilities(
@@ -80,8 +85,7 @@ class RepositoryImpl {
   Future<TenantsDetailsModel?> getTenantsDetails(tenantsId) =>
       _repositoryMethods.getTenantsDetails(tenantsId);
 
-  Future<bool> addTenantData({required TenantBodyModel model}) =>
-      _repositoryMethods.addTenantData(model: model);
+  Future<bool> addTenantData(data) => _repositoryMethods.addTenantData(data);
 
   Future<TenantModel?> searchTenantData({required String search}) =>
       _repositoryMethods.searchTenantData(search: search);
@@ -92,24 +96,19 @@ class RepositoryImpl {
   Future<List<FacilityType>> getFacilitiesData() =>
       _repositoryMethods.getFacilitiesData();
 
-  Future<bool> tenantsEditBasicInfo(
-          {required TenantEditBodyModel model, int? tenantId}) =>
-      _repositoryMethods.tenantsEditBasicInfo(model: model, tenantId: tenantId);
+  Future<bool> tenantsEditBasicInfo(data, int? tenantId) =>
+      _repositoryMethods.tenantsEditBasicInfo(data, tenantId);
 
   Future<bool> propertyEditBasicInfo(
           {required PropertyBasicInfoModel model, int? propertyId}) =>
       _repositoryMethods.propertyEditBasicInfo(
           model: model, propertyId: propertyId);
 
-  Future<bool> tenantDetailsEditAccount(
-          {required TenantAccountEditBodyModel model, int? tenantId}) =>
-      _repositoryMethods.tenantDetailsEditAccount(
-          model: model, tenantId: tenantId);
+  Future<bool> tenantDetailsEditAccount(data, int? tenantId) =>
+      _repositoryMethods.tenantDetailsEditAccount(data, tenantId);
 
-  Future<bool> tenantDetailsEditAgreement(
-          {required AgreementUpdateModel model, int? tenantId}) =>
-      _repositoryMethods.tenantDetailsEditAgreement(
-          model: model, tenantId: tenantId);
+  Future<bool> tenantDetailsEditAgreement(data, int? tenantId) =>
+      _repositoryMethods.tenantDetailsEditAgreement(data, tenantId);
 
   Future updateProfile({required ProfileBasicInfoUpdateModel model}) =>
       _repositoryMethods.updateProfile(model: model);
@@ -126,7 +125,7 @@ class RepositoryImpl {
   Future<CashManagementListModel?> getCashManagementListData() =>
       _repositoryMethods.getCashManagementListData();
 
-  Future<TenantPropertyDetailsModel?> getPropertyDetails(id) =>
+  Future<PropertyDetailsModel?> getPropertyDetails(id) =>
       _repositoryMethods.getPropertyDetails(id);
 
   Future<TenantPropertyDetailsModel?> getTenantPropertyDetails(id, slug) =>

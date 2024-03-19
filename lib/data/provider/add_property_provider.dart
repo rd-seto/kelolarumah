@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:landlord/data/model/add_property_data_model.dart';
+import 'package:landlord/data/model/all_drop_down_model.dart';
 import 'package:landlord/data/model/location_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/pages/landlord/drawer/properties/add_property/location/district_screen.dart';
@@ -14,7 +14,7 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import '../../pages/landlord/drawer/properties/properties_screen/properties_screen.dart';
 
 class AddPropertyProvider extends ChangeNotifier {
-  AddPropertyDataModel? addPropertyDataModel;
+  AllDropDownModel? addPropertyDataModel;
   final propertyController = TextEditingController();
   final addressController = TextEditingController();
   TextEditingController countryController = TextEditingController();
@@ -25,7 +25,9 @@ class AddPropertyProvider extends ChangeNotifier {
   bool isLoading = false;
 
   XFile? image;
+  XFile? propertyDeadImg;
   final ImagePicker picker = ImagePicker();
+  final ImagePicker picker2 = ImagePicker();
 
   List<String>? type;
   List<Category>? categories;
@@ -150,8 +152,10 @@ class AddPropertyProvider extends ChangeNotifier {
         "district_id": districtData?.id,
         "upazila_id": areaData?.id,
         "property_category_id": categoryValue?.id,
+        "property_deed": File(propertyDeadImg?.path ?? ""),
         "post_code": "", //todo
       };
+      print(data);
       var apiResponse = await RepositoryImpl(context).createProperty(data);
       if (apiResponse['result'] == true) {
         Fluttertoast.showToast(msg: apiResponse['message']);
@@ -171,7 +175,7 @@ class AddPropertyProvider extends ChangeNotifier {
     divisionData?.id = null;
     districtData?.id = null;
     areaData?.id = null;
-    categoryValue?.id = null;
+    // categoryValue?.id = null;
   }
 
   void myAlert(context) {
@@ -198,11 +202,17 @@ class AddPropertyProvider extends ChangeNotifier {
                         backgroundColor: AppColors.colorPrimary),
                     child: const Row(
                       children: [
-                        Icon(Icons.image,color: Colors.white,),
+                        Icon(
+                          Icons.image,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 16,
                         ),
-                        Text('From Gallery',style: TextStyle(color: Colors.white),),
+                        Text(
+                          'From Gallery',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ],
                     ),
                   ),
@@ -215,11 +225,17 @@ class AddPropertyProvider extends ChangeNotifier {
                     },
                     child: const Row(
                       children: [
-                        Icon(Icons.camera,color: Colors.white,),
+                        Icon(
+                          Icons.camera,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 16,
                         ),
-                        Text('From Camera',style: TextStyle(color: Colors.white),),
+                        Text(
+                          'From Camera',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ],
                     ),
                   ),
@@ -230,11 +246,84 @@ class AddPropertyProvider extends ChangeNotifier {
         });
   }
 
-
   //we can upload ~ from camera or from gallery based on parameter
   Future getImage(ImageSource media) async {
     var img = await picker.pickImage(source: media);
     image = img;
+    notifyListeners();
+  }
+
+  void propertyDeedImagePicker(context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            title: const Center(
+                child: Text('Please choose media to select',
+                    textAlign: TextAlign.center)),
+            content: SizedBox(
+              height: MediaQuery.of(context).size.height / 6,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      getImage2(ImageSource.gallery);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.colorPrimary),
+                    child: const Row(
+                      children: [
+                        Icon(
+                          Icons.image,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        Text(
+                          'From Gallery',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.colorPrimary),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      getImage2(ImageSource.camera);
+                    },
+                    child: const Row(
+                      children: [
+                        Icon(
+                          Icons.camera,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        Text(
+                          'From Camera',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  Future getImage2(ImageSource media) async {
+    var img = await picker2.pickImage(source: media);
+    propertyDeadImg = img;
     notifyListeners();
   }
 }

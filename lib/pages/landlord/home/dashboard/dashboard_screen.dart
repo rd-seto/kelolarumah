@@ -70,9 +70,9 @@ class DashboardScreen extends StatelessWidget {
                       ),
                       DashboardInfoListCart(
                         title: "Total_Property".tr(),
-                        subTitle: provider.dashboardRespone?.totalProperties
-                                .toString() ??
-                            '',
+                        subTitle: provider
+                            .dashboardRespone?.data?.totalProperties
+                            .toString(),
                         containerColor: const Color(0xff00B3DA),
                       ),
                       SizedBox(
@@ -80,9 +80,8 @@ class DashboardScreen extends StatelessWidget {
                       ),
                       DashboardInfoListCart(
                         title: "Occupied",
-                        subTitle: provider.dashboardRespone?.totalOccupied
-                                .toString() ??
-                            '',
+                        subTitle: provider.dashboardRespone?.data?.totalOccupied
+                            .toString(),
                         containerColor: AppColors.colorPrimary,
                       ),
                       SizedBox(
@@ -90,9 +89,8 @@ class DashboardScreen extends StatelessWidget {
                       ),
                       DashboardInfoListCart(
                         title: "Vacant",
-                        subTitle: provider.dashboardRespone?.totalProperties
-                                .toString() ??
-                            '',
+                        subTitle: provider.dashboardRespone?.data?.totalVacant
+                            .toString(),
                         containerColor: AppColors.color2Sd,
                       ),
                       SizedBox(
@@ -116,12 +114,12 @@ class DashboardScreen extends StatelessWidget {
                             ListView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: provider
-                                      .dashboardRespone?.properties?.length ??
+                              itemCount: provider.dashboardRespone?.data
+                                      ?.properties?.length ??
                                   0,
                               itemBuilder: (context, index) {
                                 final data = provider
-                                    .dashboardRespone?.properties?[index];
+                                    .dashboardRespone?.data?.properties?[index];
                                 return Padding(
                                   padding:
                                       EdgeInsets.symmetric(vertical: 8.0.h),
@@ -137,11 +135,12 @@ class DashboardScreen extends StatelessWidget {
                                     child: PropertiesListContainer(
                                       image: data?.image,
                                       title: data?.name,
-                                      tenanted:
-                                          data?.totalRent.toString() ?? "",
-                                      vacant:
-                                          data?.totalOccupied.toString() ?? "",
+                                      tenanted: data?.dealType ?? "",
+                                      vacant: data?.type ?? "",
                                       containerColor: AppColors.backgroundColor,
+                                      onSave: () {
+                                        provider.dashboardData(context);
+                                      },
                                     ),
                                   ),
                                 );
@@ -171,12 +170,12 @@ class DashboardScreen extends StatelessWidget {
                             ListView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: provider.dashboardRespone?.transactions
-                                      ?.list?.length ??
+                              itemCount: provider.dashboardRespone?.data
+                                      ?.transactions?.length ??
                                   0,
                               itemBuilder: (context, index) {
-                                final data = provider.dashboardRespone
-                                    ?.transactions?.list?[index];
+                                final data = provider.dashboardRespone?.data
+                                    ?.transactions?[index];
                                 return Padding(
                                   padding:
                                       EdgeInsets.symmetric(vertical: 8.0.h),
@@ -189,9 +188,9 @@ class DashboardScreen extends StatelessWidget {
                                             transactionId: data?.id,
                                           ));
                                     },
-                                    tittle: data?.tenant?.name ?? "",
-                                    propertyName: data?.property ?? "",
-                                    date: data?.appDate ?? "",
+                                    tittle: data?.paymentMethod ?? "",
+                                    propertyName: data?.type ?? "",
+                                    date: data?.date ?? "",
                                     amount: "${data?.amount}",
                                   ),
                                 );

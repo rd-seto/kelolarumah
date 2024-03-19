@@ -27,7 +27,7 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
 
   @override
   void initState() {
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -75,6 +75,7 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                         decoration:
                             const BoxDecoration(color: AppColors.colorWhite),
                         child: TabBar(
+                          tabAlignment: TabAlignment.start,
                           isScrollable: true,
                           unselectedLabelColor: AppColors.black2Sd,
                           labelColor: AppColors.colorPrimary,
@@ -86,18 +87,18 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                             Tab(
                               text: 'Basic_Info'.tr(),
                             ),
-                            Tab(
-                              text: 'Emergency'.tr(),
-                            ),
+                            // Tab(
+                            //   text: 'Emergency'.tr(),
+                            // ),
                             Tab(
                               text: 'Accounts'.tr(),
                             ),
                             Tab(
                               text: 'Transaction'.tr(),
                             ),
-                            Tab(
-                              text: 'Agreements'.tr(),
-                            ),
+                            // Tab(
+                            //   text: 'Agreements'.tr(),
+                            // ),
                           ],
                           indicatorColor: AppColors.colorPrimary,
                           controller: _tabController,
@@ -115,29 +116,25 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                               tenantsId: widget.tenantsId,
                               provider: provider,
                             ),
-                            EmergencySummaryCart(
-                              emergencyContact: provider.tenantsDetailsResponse
-                                  ?.data?.emergencyContact,
-                              tenantId: provider.tenantsDetailsResponse?.data
-                                      ?.basicInfo?.id ??
-                                  0,
-                              tenantDetailsProvider: provider,
-                            ),
+                            // EmergencySummaryCart(
+                            //   emergencyContact: provider.tenantsDetailsResponse
+                            //       ?.data?.emergencyContact,
+                            //   tenantId: provider.tenantsDetailsResponse?.data
+                            //           ?.basicInfo?.id ??
+                            //       0,
+                            //   tenantDetailsProvider: provider,
+                            // ),
                             AccountsSummaryCart(
-                                accounts: provider
-                                    .tenantsDetailsResponse?.data?.accounts,
-                                tenantId: widget.tenantsId,
-                                provider: provider),
+                                tenantId: widget.tenantsId, provider: provider),
                             TransactionSummaryCart(
-                              tenantTransaction: provider.tenantsDetailsResponse
-                                  ?.data?.tenantTransaction,
-                            ),
-                            AgreementsSummaryCart(
-                              agreement: provider
-                                  .tenantsDetailsResponse?.data?.agreement,
-                              tenantId: widget.tenantsId,
                               provider: provider,
-                            )
+                            ),
+                            // AgreementsSummaryCart(
+                            //   agreement: provider
+                            //       .tenantsDetailsResponse?.data?.agreement,
+                            //   tenantId: widget.tenantsId,
+                            //   provider: provider,
+                            // )
                           ],
                         ),
                       ),

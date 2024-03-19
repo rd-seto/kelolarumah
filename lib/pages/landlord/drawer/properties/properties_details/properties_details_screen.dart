@@ -149,8 +149,9 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                                   ),
                                   //Gallery Cart
                                   PropertyGalleryCart(
-                                    provider: provider,
-                                  ),
+                                      provider: provider,
+                                      pId: provider.propertyDetailsResponse
+                                          ?.data?.property?.id),
                                   //tenants cart
                                   PropertyTenantsContainer(
                                     provider: provider,

@@ -1,232 +1,296 @@
+// To parse this JSON data, do
+//
+//     final tenantsDetailsModel = tenantsDetailsModelFromJson(jsonString);
 
 import 'dart:convert';
 
-TenantsDetailsModel tenantsDetailsModelFromJson(String str) => TenantsDetailsModel.fromJson(json.decode(str));
+TenantsDetailsModel tenantsDetailsModelFromJson(String str) =>
+    TenantsDetailsModel.fromJson(json.decode(str));
+
+String tenantsDetailsModelToJson(TenantsDetailsModel data) =>
+    json.encode(data.toJson());
 
 class TenantsDetailsModel {
-  bool? result;
-  String? apiEndPoint;
-  String? message;
-  Data? data;
+  final bool? status;
+  final String? message;
+  final Data? data;
 
   TenantsDetailsModel({
-    this.result,
-    this.apiEndPoint,
+    this.status,
     this.message,
     this.data,
   });
 
-  factory TenantsDetailsModel.fromJson(Map<String, dynamic> json) => TenantsDetailsModel(
-    result: json["result"],
-    apiEndPoint: json["api_end_point"],
-    message: json["message"],
-    data: json["data"] == null ? null : Data.fromJson(json["data"]),
-  );
+  factory TenantsDetailsModel.fromJson(Map<String, dynamic> json) =>
+      TenantsDetailsModel(
+        status: json["status"],
+        message: json["message"],
+        data: json["data"] == null ? null : Data.fromJson(json["data"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "status": status,
+        "message": message,
+        "data": data?.toJson(),
+      };
 }
 
 class Data {
-  BasicInfo? basicInfo;
-  List<dynamic>? document;
-  List<EmergencyContact>? emergencyContact;
-  Account? accounts;
-  List<TenantTransaction>? tenantTransaction;
-  Agreement? agreement;
-  String? messages;
+  final int? id;
+  final String? name;
+  final String? email;
+  final String? dateOfBirth;
+  final dynamic gender;
+  final String? phone;
+  final String? altPhone;
+  final String? bloodGroup;
+  final String? avater;
+  final String? socialSecurityNumber;
+  final String? nationality;
+  final String? taxCertificate;
+  final dynamic tinNumber;
+  final dynamic maritalStatus;
+  final dynamic religion;
+  final BasicInfo? basicInfo;
+  final List<Account>? accounts;
+  final List<Transaction>? transactions;
+  final EntAddress? presentAddress;
+  final EntAddress? permanentAddress;
 
   Data({
+    this.id,
+    this.name,
+    this.email,
+    this.dateOfBirth,
+    this.gender,
+    this.phone,
+    this.altPhone,
+    this.bloodGroup,
+    this.avater,
+    this.socialSecurityNumber,
+    this.nationality,
+    this.taxCertificate,
+    this.tinNumber,
+    this.maritalStatus,
+    this.religion,
     this.basicInfo,
-    this.document,
-    this.emergencyContact,
     this.accounts,
-    this.tenantTransaction,
-    this.agreement,
-    this.messages,
+    this.transactions,
+    this.presentAddress,
+    this.permanentAddress,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    basicInfo: json["basicInfo"] == null ? null : BasicInfo.fromJson(json["basicInfo"]),
-    document: json["document"] == null ? [] : List<dynamic>.from(json["document"]!.map((x) => x)),
-    emergencyContact: json["emergencyContact"] == null ? [] : List<EmergencyContact>.from(json["emergencyContact"]!.map((x) => EmergencyContact.fromJson(x))),
-    accounts: json["accounts"] == null ? null : Account.fromJson(json["accounts"]),
-    tenantTransaction: json["tenantTransaction"] == null ? [] : List<TenantTransaction>.from(json["tenantTransaction"]!.map((x) => TenantTransaction.fromJson(x))),
-    agreement: json["agreement"] == null ? null : Agreement.fromJson(json["agreement"]),
-    messages: json["messages"],
-  );
+        id: json["id"],
+        name: json["name"],
+        email: json["email"],
+        dateOfBirth: json["date_of_birth"],
+        gender: json["gender"],
+        phone: json["phone"],
+        altPhone: json["alt_phone"],
+        bloodGroup: json["blood_group"],
+        avater: json["avater"],
+        socialSecurityNumber: json["social_security_number"],
+        nationality: json["nationality"],
+        taxCertificate: json["tax_certificate"],
+        tinNumber: json["tin_number"],
+        maritalStatus: json["marital_status"],
+        religion: json["religion"],
+        basicInfo: json["basic_info"] == null
+            ? null
+            : BasicInfo.fromJson(json["basic_info"]),
+        accounts: json["accounts"] == null
+            ? []
+            : List<Account>.from(
+                json["accounts"]!.map((x) => Account.fromJson(x))),
+        transactions: json["transactions"] == null
+            ? []
+            : List<Transaction>.from(
+                json["transactions"]!.map((x) => Transaction.fromJson(x))),
+        presentAddress: json["present_address"] == null
+            ? null
+            : EntAddress.fromJson(json["present_address"]),
+        permanentAddress: json["permanent_address"] == null
+            ? null
+            : EntAddress.fromJson(json["permanent_address"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "email": email,
+        "date_of_birth": dateOfBirth,
+        "gender": gender,
+        "phone": phone,
+        "alt_phone": altPhone,
+        "blood_group": bloodGroup,
+        "avater": avater,
+        "social_security_number": socialSecurityNumber,
+        "nationality": nationality,
+        "tax_certificate": taxCertificate,
+        "tin_number": tinNumber,
+        "marital_status": maritalStatus,
+        "religion": religion,
+        "basic_info": basicInfo?.toJson(),
+        "accounts": accounts == null
+            ? []
+            : List<dynamic>.from(accounts!.map((x) => x.toJson())),
+        "transactions": transactions == null
+            ? []
+            : List<dynamic>.from(transactions!.map((x) => x.toJson())),
+        "present_address": presentAddress?.toJson(),
+        "permanent_address": permanentAddress?.toJson(),
+      };
 }
 
 class Account {
-  int? id;
-  String? name;
-  String? branch;
-  String? accountNumber;
-  String? accountName;
+  final int? id;
+  final String? accountNumber;
+  final String? accountName;
+  final String? accountCategory;
+  final dynamic bankBranch;
+  final int? isDefault;
 
   Account({
     this.id,
-    this.name,
-    this.branch,
     this.accountNumber,
     this.accountName,
+    this.accountCategory,
+    this.bankBranch,
+    this.isDefault,
   });
 
   factory Account.fromJson(Map<String, dynamic> json) => Account(
-    id: json["id"],
-    name: json["name"],
-    branch: json["branch"],
-    accountNumber: json["account_number"],
-    accountName: json["account_name"],
-  );
-}
+        id: json["id"],
+        accountNumber: json["account_number"],
+        accountName: json["account_name"],
+        accountCategory: json["account_category"],
+        bankBranch: json["bank_branch"],
+        isDefault: json["is_default"],
+      );
 
-class Agreement {
-  int? id;
-  String? property;
-  String? moveIn;
-  String? moveOut;
-  String? rentAmount;
-  String? rentType;
-  dynamic reminderDate;
-  dynamic note;
-  String? advanceAmount;
-  int? status;
-  dynamic rentFor;
-
-  Agreement({
-    this.id,
-    this.property,
-    this.moveIn,
-    this.moveOut,
-    this.rentAmount,
-    this.rentType,
-    this.reminderDate,
-    this.note,
-    this.advanceAmount,
-    this.status,
-    this.rentFor,
-  });
-
-  factory Agreement.fromJson(Map<String, dynamic> json) => Agreement(
-    id: json["id"],
-    property: json["property"],
-    moveIn: json["move_in"] ,
-    moveOut: json["move_out"],
-    rentAmount: json["rent_amount"],
-    rentType: json["rent_type"],
-    reminderDate: json["reminder_date"],
-    note: json["note"],
-    advanceAmount: json["advance_amount"],
-    status: json["status"],
-    rentFor: json["rent_for"],
-  );
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "account_number": accountNumber,
+        "account_name": accountName,
+        "account_category": accountCategory,
+        "bank_branch": bankBranch,
+        "is_default": isDefault,
+      };
 }
 
 class BasicInfo {
-  int? id;
-  String? name;
-  String? email;
-  String? phone;
-  String? occupation;
-  String? joinDate;
-  String? institution;
-  String? nid;
-  String? passport;
-  String? presentAddress;
-  String? nationality;
-  String? image;
+  final DateTime? joinDate;
+  final String? occupation;
+  final String? institution;
+  final String? nid;
+  final String? passport;
 
   BasicInfo({
-    this.id,
-    this.name,
-    this.email,
-    this.phone,
-    this.occupation,
     this.joinDate,
+    this.occupation,
     this.institution,
     this.nid,
     this.passport,
-    this.presentAddress,
-    this.nationality,
-    this.image,
   });
 
   factory BasicInfo.fromJson(Map<String, dynamic> json) => BasicInfo(
-    id: json["id"],
-    name: json["name"],
-    email: json["email"],
-    phone: json["phone"],
-    occupation: json["occupation"],
-    joinDate: json["join_date"],
-    institution: json["institution"],
-    nid: json["nid"],
-    passport: json["passport"],
-    presentAddress: json["present_address"],
-    nationality: json["nationality"],
-    image: json["image"],
-  );
+        joinDate: json["join_date"] == null
+            ? null
+            : DateTime.parse(json["join_date"]),
+        occupation: json["occupation"],
+        institution: json["institution"],
+        nid: json["nid"],
+        passport: json["passport"],
+      );
 
+  Map<String, dynamic> toJson() => {
+        "join_date":
+            "${joinDate!.year.toString().padLeft(4, '0')}-${joinDate!.month.toString().padLeft(2, '0')}-${joinDate!.day.toString().padLeft(2, '0')}",
+        "occupation": occupation,
+        "institution": institution,
+        "nid": nid,
+        "passport": passport,
+      };
 }
 
-class EmergencyContact {
-  int? id;
-  String? name;
-  String? relation;
-  String? phone;
-  String? email;
-  String? type;
-  String? occupied;
-  String? image;
+class EntAddress {
+  final String? country;
+  final String? state;
+  final String? city;
+  final dynamic address;
 
-  EmergencyContact({
-    this.id,
-    this.name,
-    this.relation,
-    this.phone,
-    this.email,
-    this.type,
-    this.occupied,
-    this.image,
+  EntAddress({
+    this.country,
+    this.state,
+    this.city,
+    this.address,
   });
 
-  factory EmergencyContact.fromJson(Map<String, dynamic> json) => EmergencyContact(
-    id: json["id"],
-    name: json["name"],
-    relation: json["relation"],
-    phone: json["phone"],
-    email: json["email"],
-    type: json["type"],
-    occupied: json["occupied"],
-    image: json["image"],
-  );
+  factory EntAddress.fromJson(Map<String, dynamic> json) => EntAddress(
+        country: json["country"],
+        state: json["state"],
+        city: json["city"],
+        address: json["address"],
+      );
 
+  Map<String, dynamic> toJson() => {
+        "country": country,
+        "state": state,
+        "city": city,
+        "address": address,
+      };
 }
 
-class TenantTransaction {
-  int? id;
-  String? property;
-  int? amount;
-  String? type;
-  DateTime? date;
-  int? attachmentCount;
-  String? attachmentFile;
+class Transaction {
+  final int? id;
+  final DateTime? date;
+  final String? type;
+  final String? accountName;
+  final String? accountNumber;
+  final String? referenceNo;
+  final String? paymentMethod;
+  final dynamic trxNo;
+  final String? amount;
+  final dynamic bankInfo;
 
-  TenantTransaction({
+  Transaction({
     this.id,
-    this.property,
-    this.amount,
-    this.type,
     this.date,
-    this.attachmentCount,
-    this.attachmentFile,
+    this.type,
+    this.accountName,
+    this.accountNumber,
+    this.referenceNo,
+    this.paymentMethod,
+    this.trxNo,
+    this.amount,
+    this.bankInfo,
   });
 
-  factory TenantTransaction.fromJson(Map<String, dynamic> json) => TenantTransaction(
-    id: json["id"],
-    property: json["property"],
-    amount: json["amount"],
-    type: json["type"],
-    date: json["date"] == null ? null : DateTime.parse(json["date"]),
-    attachmentCount: json["attachment_count"],
-    attachmentFile: json["attachment_file"],
-  );
+  factory Transaction.fromJson(Map<String, dynamic> json) => Transaction(
+        id: json["id"],
+        date: json["date"] == null ? null : DateTime.parse(json["date"]),
+        type: json["type"],
+        accountName: json["account_name"],
+        accountNumber: json["account_number"],
+        referenceNo: json["reference_no"],
+        paymentMethod: json["payment_method"],
+        trxNo: json["trx_no"],
+        amount: json["amount"],
+        bankInfo: json["bank_info"],
+      );
 
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "date":
+            "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
+        "type": type,
+        "account_name": accountName,
+        "account_number": accountNumber,
+        "reference_no": referenceNo,
+        "payment_method": paymentMethod,
+        "trx_no": trxNo,
+        "amount": amount,
+        "bank_info": bankInfo,
+      };
 }
