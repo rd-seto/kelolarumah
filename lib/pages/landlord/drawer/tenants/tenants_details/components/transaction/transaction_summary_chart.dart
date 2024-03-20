@@ -67,25 +67,25 @@ class TransactionSummaryCart extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              InkWell(
-                onTap: () {
-                  NavUtil.navigateScreen(context, const AddTransactionScreen());
-                },
-                child: Image.asset(
-                  'assets/dashboard/add_float_button.png',
-                  height: 64.h,
-                  width: 64.w,
-                ),
-              ),
-            ],
-          ),
-        ),
+        // Positioned(
+        //   bottom: 0,
+        //   right: 0,
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.end,
+        //     children: [
+        //       InkWell(
+        //         onTap: () {
+        //           NavUtil.navigateScreen(context, const AddTransactionScreen());
+        //         },
+        //         child: Image.asset(
+        //           'assets/dashboard/add_float_button.png',
+        //           height: 64.h,
+        //           width: 64.w,
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }
