@@ -122,16 +122,14 @@ class _TenantPropertyDetailsScreenState
                                           // SizedBox(
                                           //   width: 8.h,
                                           // ),
-                                          CustomText(
-                                            text: provider
-                                                .tenantPropertyDetailModel
-                                                ?.data
-                                                ?.address
-                                                ?.address,
-                                            color: AppColors.color2Orange,
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w600,
-                                            height: 1.75,
+                                          Expanded(
+                                            child: CustomText(
+                                              text: provider.tenantPropertyDetailModel?.data?.address?.address,
+                                              color: AppColors.color2Orange,
+                                              fontSize: 14.sp,
+                                              fontWeight: FontWeight.w600,
+                                              height: 1.75,
+                                            ),
                                           ),
                                           const Spacer(),
                                           IconButton(

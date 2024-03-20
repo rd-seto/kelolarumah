@@ -128,18 +128,23 @@ class TenantProvider extends ChangeNotifier {
       "password": passController.text,
       "password_confirmation": passController.text,
     };
-    RepositoryImpl(context).addTenantData(data).then((success) {
-      if (success) {
-        Fluttertoast.showToast(msg: "Successfully Created");
-        tenantData(context);
-        clearDate();
-        debounce.run(() {
-          Navigator.pop(context);
-        });
-      } else {
-        Fluttertoast.showToast(msg: "Something Went Wrong");
-      }
-    });
+    if(passController.text != confirmPassController.text){
+      Fluttertoast.showToast(msg: "Passwords are not same", backgroundColor: AppColors.colorRed);
+    } else {
+      RepositoryImpl(context).addTenantData(data).then((success) {
+        if (success) {
+          Fluttertoast.showToast(msg: "Successfully Created");
+          tenantData(context);
+          clearDate();
+          debounce.run(() {
+            Navigator.pop(context);
+          });
+        } else {
+          Fluttertoast.showToast(msg: "Something Went Wrong");
+        }
+      });
+    }
+
   }
 
   clearDate() {

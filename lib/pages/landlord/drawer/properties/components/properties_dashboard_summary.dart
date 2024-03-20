@@ -15,6 +15,7 @@ class PropertiesDashboardSummary extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
             height: 100.h,
             decoration: BoxDecoration(
                 color: const Color(0xff00B3DA),
@@ -54,6 +55,7 @@ class PropertiesDashboardSummary extends StatelessWidget {
         ),
         Expanded(
           child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
             height: 100.h,
             decoration: BoxDecoration(
                 color: AppColors.mainColorsh1,
@@ -93,6 +95,7 @@ class PropertiesDashboardSummary extends StatelessWidget {
         ),
         Expanded(
           child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
             height: 100.h,
             decoration: BoxDecoration(
                 color: AppColors.color2Orange,

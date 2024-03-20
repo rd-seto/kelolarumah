@@ -43,7 +43,7 @@ class FloorPlanCart extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 20.0),
                       child: CustomText(
                         height: 1,
-                        text: 'No Gallery Found Please add some',
+                        text: 'No image Found Please add some',
                         color: Colors.black,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w700,
@@ -89,9 +89,6 @@ class FloorPlanCart extends StatelessWidget {
               //     ),
               //   ),
               // ),
-              SizedBox(
-                height: 20.h,
-              ),
               SizedBox(
                 height: 20.h,
               ),

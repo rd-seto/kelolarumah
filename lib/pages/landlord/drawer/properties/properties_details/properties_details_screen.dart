@@ -157,11 +157,7 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                                     provider: provider,
                                   ),
 
-                                  ///facilites cart
-                                  // PropertyFacilitiesCart(
-                                  //   provider: provider,
-                                  //   pId: widget.propertyId,
-                                  // ),
+
                                   FloorPlanCart(
                                     provider: provider,
                                     pId: widget.propertyId,
