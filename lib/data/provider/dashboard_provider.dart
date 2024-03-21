@@ -4,16 +4,16 @@ import 'package:landlord/data/model/dashboard_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 
 class DashBoardProvider extends ChangeNotifier {
-  DashboardModel? dashboardRespone;
+  DashboardModel? dashboardResponse;
 
   DashBoardProvider(BuildContext context) {
     FirebaseMessaging.instance.subscribeToTopic('landlord');
     dashboardData(context);
   }
   void dashboardData(BuildContext context) async {
-    var apiRespone = await RepositoryImpl(context).getDashboardData();
-    if (apiRespone != null) {
-      dashboardRespone = apiRespone;
+    var apiResponse = await RepositoryImpl(context).getDashboardData();
+    if (apiResponse != null) {
+      dashboardResponse = apiResponse;
     }
 
     notifyListeners();

@@ -19,6 +19,7 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 import '../../../auth/login/login_option/login_option_screen.dart';
+import '../../../chat_screen/chat_room.dart';
 
 class MobileAppDrawer extends StatelessWidget {
   const MobileAppDrawer({super.key});
@@ -108,6 +109,16 @@ class MobileAppDrawer extends StatelessWidget {
                           },
                           image: 'assets/drawer/transaction_vector.png',
                           title: "Transaction",
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        DrawerListContent(
+                          onTap: () {
+                            NavUtil.navigateScreen(context, const ChatRoom());
+                          },
+                          image: 'assets/drawer/chat.png',
+                          title: "chat".tr(),
                         ),
                         SizedBox(
                           height: 20.h,

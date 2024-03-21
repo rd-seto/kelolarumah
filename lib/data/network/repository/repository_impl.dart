@@ -25,8 +25,8 @@ class RepositoryImpl {
   Future<DashboardModel?> getDashboardData() =>
       _repositoryMethods.getDashboardData();
 
-  Future<PropertyListModel?> getPropertyData() =>
-      _repositoryMethods.getPropertyData();
+  Future<PropertyListModel?> getPropertyData(page) =>
+      _repositoryMethods.getPropertyData(page);
 
   Future<TenantPropertyModel?> getTenantPropertyData() =>
       _repositoryMethods.getTenantPropertyData();
@@ -137,7 +137,7 @@ class RepositoryImpl {
   Future<TransactionDetailsModel?> getTransactionDetails(id) =>
       _repositoryMethods.getTransactionDetails(id);
 
-  Future<TenantModel?> getTenantData() => _repositoryMethods.getTenantData();
+  Future<TenantModel?> getTenantData(page) => _repositoryMethods.getTenantData(page);
 
   Future createEmergencyContact(data, tenantId) =>
       _repositoryMethods.createEmergencyContact(data, tenantId);

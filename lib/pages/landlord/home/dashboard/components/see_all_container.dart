@@ -30,15 +30,18 @@ class SeeAllContainer extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
             const Spacer(),
-            InkWell(
-              onTap: onTap,
-              child: CustomText(
-                text: subTitle,
-                color: AppColors.titleTextColor,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
+            IconButton(
+                onPressed: onTap,
+                icon: const Icon(Icons.arrow_forward_ios_outlined))
+            // InkWell(
+            //   onTap: onTap,
+            //   child: CustomText(
+            //     text: subTitle,
+            //     color: AppColors.titleTextColor,
+            //     fontSize: 14.sp,
+            //     fontWeight: FontWeight.w700,
+            //   ),
+            // ),
           ],
         ),
       ),
