@@ -7,7 +7,7 @@ import '../pages/landlord/home/notification/notification_screen.dart';
 
 class NewTabletAppBar extends StatelessWidget {
   final String? appbarName;
-  const NewTabletAppBar({Key? key, this.appbarName}) : super(key: key);
+  const NewTabletAppBar({super.key, this.appbarName});
 
   @override
   Widget build(BuildContext context) {

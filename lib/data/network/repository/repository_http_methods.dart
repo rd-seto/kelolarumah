@@ -75,7 +75,7 @@ class RepositoryMethods {
         toJsonFunc: (json) => TenantSearchModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: '${ApiProvider.search}');
+        name: ApiProvider.search);
   }
 
   Future<AllDropDownModel?> getAddPropertyData() async {

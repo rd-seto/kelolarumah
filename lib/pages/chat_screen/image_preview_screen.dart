@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:photo_view/photo_view.dart';
 
 class ImagePreviewScreen extends StatefulWidget {
-  const ImagePreviewScreen({Key? key, required this.message}) : super(key: key);
+  const ImagePreviewScreen({super.key, required this.message});
   final String message;
 
   @override

@@ -18,8 +18,7 @@ import 'package:provider/provider.dart';
 class TenantBottomNavBar extends StatefulWidget {
   final int? bottomNavigationIndex;
 
-  const TenantBottomNavBar({Key? key, this.bottomNavigationIndex})
-      : super(key: key);
+  const TenantBottomNavBar({super.key, this.bottomNavigationIndex});
 
   @override
   State<TenantBottomNavBar> createState() => _TenantBottomNavBarState();
@@ -35,7 +34,6 @@ class _TenantBottomNavBarState extends State<TenantBottomNavBar> {
     NotificationScreen(isBottomNav: true),
     TenantsScreen(isBottomNav: true),
   ];
-
 
   void appBarName(int radians) {
     switch (radians) {
@@ -66,6 +64,7 @@ class _TenantBottomNavBarState extends State<TenantBottomNavBar> {
     final PageController myPage =
         PageController(initialPage: widget.bottomNavigationIndex ?? 0);
 
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
         final differences = DateTime.now().difference(timeBackPressed);

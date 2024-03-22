@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/data/provider/notification_provider.dart';
-import 'package:landlord/pages/landlord/home/notification/components/notificationListCart.dart';
+import 'package:landlord/pages/landlord/home/notification/components/notification_list_cart.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 

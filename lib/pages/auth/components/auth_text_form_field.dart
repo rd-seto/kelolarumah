@@ -14,16 +14,15 @@ class AuthFromField extends StatelessWidget {
   final Color? cursorColor;
 
   const AuthFromField(
-      {Key? key,
+      {super.key,
       this.hintText,
       this.title,
       this.suffixIcon,
       this.controller,
       this.prefixIcon,
       this.onChange,
-        this.cursorColor,
-      this.onTap})
-      : super(key: key);
+      this.cursorColor,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +65,7 @@ class AuthFromField extends StatelessWidget {
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
                 borderSide:
-                BorderSide(color: AppColors.errorColor.withOpacity(0.5)),
+                    BorderSide(color: AppColors.errorColor.withOpacity(0.5)),
               ),
               suffixIcon: suffixIcon,
               prefixIcon: prefixIcon,

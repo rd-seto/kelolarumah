@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
-import 'package:landlord/data/model/property_details_model.dart';
 import 'package:landlord/data/provider/property_details_provider.dart';
-import 'package:landlord/pages/landlord/drawer/tenants/components/tenants_list_container.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
 class PropertyTenantsContainer extends StatelessWidget {

@@ -149,7 +149,9 @@ class AddTransactionProvider extends ChangeNotifier {
   ///dropdown for income type
   selectIncome(Expense incomeValue) {
     incomeValueData = incomeValue;
-    print(incomeValue);
+    if (kDebugMode) {
+      print(incomeValue);
+    }
     notifyListeners();
   }
 

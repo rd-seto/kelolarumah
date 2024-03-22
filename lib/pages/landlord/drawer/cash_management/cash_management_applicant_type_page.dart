@@ -98,7 +98,7 @@ class _CashManagementApplicantTypePageState
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 SizedBox(
                   height: 52.h,
                   width: double.infinity,

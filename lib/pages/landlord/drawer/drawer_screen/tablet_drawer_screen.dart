@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
-import 'package:landlord/extention/device_type_extention.dart';
 import 'package:landlord/pages/landlord/home/dashboard/dashboard_screen.dart';
 import 'package:landlord/pages/landlord/drawer/cash_management/cash_management_applicant_type_page.dart';
 import 'package:landlord/pages/landlord/drawer/document/document_list/document_list_screen.dart';
@@ -22,7 +21,7 @@ class TabletAppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('device type ${context.deviceType()}');
+    // print('device type ${context.deviceType()}');
     return SizedBox(
       width: 220.w,
       child: Drawer(

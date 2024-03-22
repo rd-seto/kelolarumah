@@ -16,7 +16,7 @@ class PropertiesListContainer extends StatelessWidget {
   final Color? containerColor;
   final Function()? onTap;
   const PropertiesListContainer(
-      {Key? key,
+      {super.key,
       this.containerColor,
       this.title,
       this.id,
@@ -24,8 +24,7 @@ class PropertiesListContainer extends StatelessWidget {
       this.vacant,
       this.onTap,
       required this.onSave,
-      this.image})
-      : super(key: key);
+      this.image});
 
   @override
   Widget build(BuildContext context) {

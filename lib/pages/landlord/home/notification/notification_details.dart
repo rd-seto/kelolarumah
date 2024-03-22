@@ -9,8 +9,7 @@ class NotificationDetails extends StatelessWidget {
   final bool? isBottomNav;
   final Item? item;
 
-  const NotificationDetails({Key? key, this.isBottomNav, this.item})
-      : super(key: key);
+  const NotificationDetails({super.key, this.isBottomNav, this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +49,12 @@ class NotificationDetails extends StatelessWidget {
               height: 10,
             ),
             Text(
-                item?.description ?? "",
-              style: TextStyle(color: Colors.black54,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.bold,
-                height: 1.6),
+              item?.description ?? "",
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.bold,
+                  height: 1.6),
             ),
           ],
         ),

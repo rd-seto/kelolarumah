@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class BannerPlaceholder extends StatelessWidget {
-  const BannerPlaceholder({Key? key}) : super(key: key);
+  const BannerPlaceholder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class TitlePlaceholder extends StatelessWidget {
   final double? width;
 
   const TitlePlaceholder({
-    Key? key,
+    super.key,
     required this.width,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +65,9 @@ class ContentPlaceholder extends StatelessWidget {
   final ContentLineType lineType;
 
   const ContentPlaceholder({
-    Key? key,
+    super.key,
     required this.lineType,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -75,9 +75,7 @@ class ContentPlaceholder extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.0),
-        color: Colors.white
-      ),
+          borderRadius: BorderRadius.circular(12.0), color: Colors.white),
       child: Shimmer.fromColors(
         baseColor: Colors.grey.shade300,
         highlightColor: Colors.grey.shade100,

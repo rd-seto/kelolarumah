@@ -7,7 +7,7 @@ import '../pages/landlord/home/notification/notification_screen.dart';
 
 class HomePageAppBar extends StatelessWidget {
   final String? appbarName;
-  const HomePageAppBar({Key? key, this.appbarName}) : super(key: key);
+  const HomePageAppBar({super.key, this.appbarName});
 
   @override
   Widget build(BuildContext context) {

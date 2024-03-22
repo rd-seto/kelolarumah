@@ -20,39 +20,33 @@ class TenantList extends StatelessWidget {
       enablePullUp: true,
       header: const WaterDropHeader(),
       footer: CustomFooter(
-        builder: ( context, mode){
-          Widget body ;
-          if(mode==LoadStatus.idle){
-            body =  const Text("Pull up load");
-          }
-          else if(mode==LoadStatus.loading){
-            body =  const CupertinoActivityIndicator();
-          }
-          else if(mode == LoadStatus.failed){
+        builder: (context, mode) {
+          Widget body;
+          if (mode == LoadStatus.idle) {
+            body = const Text("Pull up load");
+          } else if (mode == LoadStatus.loading) {
+            body = const CupertinoActivityIndicator();
+          } else if (mode == LoadStatus.failed) {
             body = const Text("Load Failed!Click retry!");
-          }
-          else if(mode == LoadStatus.canLoading){
+          } else if (mode == LoadStatus.canLoading) {
             body = const Text("release to load more");
-          }
-          else{
+          } else {
             body = const Text("No more Data");
           }
           return SizedBox(
             height: 55.0,
-            child: Center(child:body),
+            child: Center(child: body),
           );
         },
       ),
       controller: provider.refreshController,
-      onRefresh: ()=> provider.loadItems(context),
-      onLoading: ()=>provider.loadMoreItems(context),
+      onRefresh: () => provider.loadItems(context),
+      onLoading: () => provider.loadMoreItems(context),
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount:
-        provider.listOfTenants.length ?? 0,
+        itemCount: provider.listOfTenants.length,
         itemBuilder: (context, index) {
-          final tenant =
-          provider.listOfTenants[index];
+          final tenant = provider.listOfTenants[index];
           return Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0.h),
             child: TenantRowItem(

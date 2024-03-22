@@ -1,16 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
-import 'package:landlord/extention/device_type_extention.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/pages/landlord/drawer/cash_management/cash_management_dashboard/cash_management_screen.dart';
-import 'package:landlord/pages/landlord/drawer/document/document_list/document_list_screen.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_screen/properties_screen.dart';
-import 'package:landlord/pages/landlord/drawer/report/report_screen/report_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_screen/tenants_screen.dart';
 import 'package:landlord/pages/landlord/drawer/transaction/transaction_list/transaction_list_screen.dart';
 import 'package:landlord/pages/landlord/home/language/language_screen.dart';
@@ -26,7 +22,7 @@ class MobileAppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('device type ${context.deviceType()}');
+    // print('device type ${context.deviceType()}');
     return Drawer(
       backgroundColor: AppColors.backgroundColor,
       child: SafeArea(

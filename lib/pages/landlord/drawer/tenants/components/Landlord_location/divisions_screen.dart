@@ -6,7 +6,7 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class DivisionsScreen extends StatelessWidget {
-  const DivisionsScreen({Key? key}) : super(key: key);
+  const DivisionsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

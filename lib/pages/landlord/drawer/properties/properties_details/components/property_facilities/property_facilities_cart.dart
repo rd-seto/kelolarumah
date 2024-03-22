@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/add_property_data_model.dart';
-import 'package:landlord/data/model/property_details_model.dart';
 import 'package:landlord/data/provider/property_details_provider.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/property_facilities/edit_facilities/edit_facilities_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/widgets/content_list_tile.dart';

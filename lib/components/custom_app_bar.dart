@@ -9,8 +9,11 @@ class CustomAppBar extends StatelessWidget {
   final bool? isBackButton;
   final List<Widget>? actions;
   const CustomAppBar(
-      {Key? key, this.appBarName, this.onTap, this.isBackButton, this.actions})
-      : super(key: key);
+      {super.key,
+      this.appBarName,
+      this.onTap,
+      this.isBackButton,
+      this.actions});
 
   @override
   Widget build(BuildContext context) {

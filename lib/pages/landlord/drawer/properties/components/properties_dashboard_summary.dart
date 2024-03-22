@@ -7,7 +7,7 @@ import 'package:shimmer/shimmer.dart';
 
 class PropertiesDashboardSummary extends StatelessWidget {
   final PropertyListModel? data;
-  const PropertiesDashboardSummary({Key? key, this.data}) : super(key: key);
+  const PropertiesDashboardSummary({super.key, this.data});
 
   @override
   Widget build(BuildContext context) {

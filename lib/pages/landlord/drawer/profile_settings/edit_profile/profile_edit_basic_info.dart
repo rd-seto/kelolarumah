@@ -11,8 +11,8 @@ class ProfileEditBasicInfo extends StatefulWidget {
   final ProfileInfo? profileData;
   final VoidCallback onSave;
 
-  const ProfileEditBasicInfo({Key? key, this.profileData, required this.onSave})
-      : super(key: key);
+  const ProfileEditBasicInfo(
+      {super.key, this.profileData, required this.onSave});
 
   @override
   State<ProfileEditBasicInfo> createState() => _ProfileEditBasicInfoState();

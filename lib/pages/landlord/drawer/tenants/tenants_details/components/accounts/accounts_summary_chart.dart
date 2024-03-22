@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:landlord/data/model/tenants_details_model.dart';
 import 'package:landlord/data/provider/tenants_details_provider.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/components/summary_container_black.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/components/summary_container_white.dart';

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
@@ -6,13 +5,9 @@ import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/provider/property_provider.dart';
 import 'package:landlord/pages/landlord/drawer/properties/add_property/add_property_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/components/properties_dashboard_summary.dart';
-import 'package:landlord/pages/landlord/drawer/properties/properties_details/properties_details_screen.dart';
-import 'package:landlord/pages/landlord/drawer/properties/properties_screen/components/propertiesListContainer.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'components/property_list_screen.dart';
 
@@ -81,8 +76,8 @@ class _PropertiesScreenState extends State<PropertiesScreen> {
                               decoration: BoxDecoration(
                                   color: AppColors.colorWhite,
                                   borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(
-                                      color: AppColors.stockColor)),
+                                  border:
+                                      Border.all(color: AppColors.stockColor)),
                               child: TextFormField(
                                 onChanged: (val) {
                                   provider.searchPropertyData(context, val);
@@ -119,7 +114,10 @@ class _PropertiesScreenState extends State<PropertiesScreen> {
                       SizedBox(
                         height: 20.h,
                       ),
-                      Expanded(child: PropertyListScreen(provider: provider,)),
+                      Expanded(
+                          child: PropertyListScreen(
+                        provider: provider,
+                      )),
                     ],
                   ),
                 ),

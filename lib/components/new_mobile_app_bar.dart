@@ -9,7 +9,7 @@ import '../pages/landlord/home/notification/notification_screen.dart';
 
 class NewMobileAppBar extends StatelessWidget {
   final String? appbarName;
-  const NewMobileAppBar({Key? key, this.appbarName}) : super(key: key);
+  const NewMobileAppBar({super.key, this.appbarName});
 
   @override
   Widget build(BuildContext context) {
