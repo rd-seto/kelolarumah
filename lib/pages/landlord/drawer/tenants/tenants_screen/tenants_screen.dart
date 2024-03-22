@@ -11,6 +11,8 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../components/tenant_list.dart';
+
 class TenantsScreen extends StatefulWidget {
   final bool? isBottomNav;
 
@@ -77,93 +79,80 @@ class _TenantsScreenState extends State<TenantsScreen> {
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w700,
                   ),
-                  // SizedBox(
-                  //   height: 20.h,
-                  // ),
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //       child: Container(
-                  //         decoration: BoxDecoration(
-                  //             color: AppColors.colorWhite,
-                  //             borderRadius: BorderRadius.circular(8),
-                  //             border: Border.all(color: AppColors.stockColor)),
-                  //         child: TextFormField(
-                  //           onChanged: (val) {
-                  //             provider.searchTenantData(context, val);
-                  //           },
-                  //           decoration: const InputDecoration(
-                  //               prefixIcon: Icon(
-                  //                 Icons.search,
-                  //                 color: Color(0xffBEBEBE),
-                  //               ),
-                  //               border: InputBorder.none),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     SizedBox(
-                  //       width: 10.w,
-                  //     ),
-                  //     Container(
-                  //       decoration: BoxDecoration(
-                  //         color: Colors.white,
-                  //         borderRadius: BorderRadius.circular(8.r),
-                  //       ),
-                  //       child: Padding(
-                  //         padding: EdgeInsets.symmetric(
-                  //             horizontal: 15.0.w, vertical: 15.h),
-                  //         child: const Icon(
-                  //           Icons.filter_list,
-                  //           color: AppColors.colorPrimary,
-                  //           size: 20,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: AppColors.colorWhite,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: AppColors.stockColor)),
+                          child: TextFormField(
+                            onChanged: (val) {
+                              provider.searchTenantData(context, val);
+                            },
+                            decoration: const InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.search,
+                                  color: Color(0xffBEBEBE),
+                                ),
+                                border: InputBorder.none),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 15.0.w, vertical: 15.h),
+                          child: const Icon(
+                            Icons.filter_list,
+                            color: AppColors.colorPrimary,
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
                   SizedBox(
                     height: 8.h,
                   ),
-                  provider.tenantModel?.data?.list != null
-                      ? Expanded(
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount:
-                                provider.tenantModel?.data?.list?.length ?? 0,
-                            itemBuilder: (context, index) {
-                              final tenant =
-                                  provider.tenantModel?.data?.list?[index];
-
-                              return Padding(
-                                padding: EdgeInsets.symmetric(vertical: 8.0.h),
-                                child: TenantRowItem(
-                                  tenant: tenant!,
-                                ),
-                              );
-                            },
-                          ),
-                        )
-                      : ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 2,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Shimmer.fromColors(
-                                baseColor: const Color(0xFFE8E8E8),
-                                highlightColor: Colors.white,
-                                child: Container(
-                                  height: 120,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFE8E8E8),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
+                  // provider.tenantModel?.data?.list != null
+                  //     ?
+                  Expanded(
+                          child: TenantList(provider: provider),
                         ),
+                      // : ListView.builder(
+                      //     shrinkWrap: true,
+                      //     physics: const NeverScrollableScrollPhysics(),
+                      //     itemCount: 2,
+                      //     itemBuilder: (context, index) {
+                      //       return Padding(
+                      //         padding: const EdgeInsets.all(16.0),
+                      //         child: Shimmer.fromColors(
+                      //           baseColor: const Color(0xFFE8E8E8),
+                      //           highlightColor: Colors.white,
+                      //           child: Container(
+                      //             height: 120,
+                      //             decoration: BoxDecoration(
+                      //               color: const Color(0xFFE8E8E8),
+                      //               borderRadius: BorderRadius.circular(8),
+                      //             ),
+                      //           ),
+                      //         ),
+                      //       );
+                      //     },
+                      //   ),
                 ],
               ),
             ),
@@ -183,3 +172,4 @@ class _TenantsScreenState extends State<TenantsScreen> {
     );
   }
 }
+

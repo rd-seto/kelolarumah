@@ -52,7 +52,7 @@ class PropertyProvider extends ChangeNotifier {
 
 
   void propertyData(BuildContext context) async {
-    var apiResponse = await RepositoryImpl(context).getPropertyData();
+    var apiResponse = await RepositoryImpl(context).getPropertyData(page);
     if (apiResponse?.result == true) {
       if(apiResponse?.data?.properties?.list?.isNotEmpty == true){
         if(page == 1){

@@ -37,14 +37,14 @@ class RepositoryMethods {
         name: ApiProvider.dashboard);
   }
 
-  Future<PropertyListModel?> getPropertyData() async {
+  Future<PropertyListModel?> getPropertyData(page) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
         methodType: MethodType.get,
         toJsonFunc: (json) => PropertyListModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: ApiProvider.propertyList);
+        name: "${ApiProvider.propertyList}?page=$page");
   }
 
   Future<TenantPropertyModel?> getTenantPropertyData() async {
@@ -351,14 +351,14 @@ class RepositoryMethods {
   }
 
   /// Tenants List API
-  Future<TenantModel?> getTenantData() async {
+  Future<TenantModel?> getTenantData(page) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
         methodType: MethodType.get,
         toJsonFunc: (json) => TenantModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: ApiProvider.tenantList);
+        name: "${ApiProvider.tenantList}?page=$page");
   }
 
   Future<List<TenantProperty>> getTenantPropertiesData() async {
