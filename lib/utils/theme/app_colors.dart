@@ -16,6 +16,7 @@ class AppColors {
   static const Color successColor = Colors.green;
 
   static const Color colorWhite = Colors.white;
+  static const Color colorRed = Colors.red;
   static const Color hintTextColor = Color(0xff9DA8B5);
   static const LinearGradient themeGradient =
       LinearGradient(tileMode: TileMode.repeated, colors: [

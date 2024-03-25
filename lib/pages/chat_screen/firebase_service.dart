@@ -13,8 +13,8 @@ class FirebaseService {
   }
 
   Future<UserModel> getUserData(String uid) async {
-
-    final data = await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    final data =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
 
     return UserModel.fromJson(data.data() as Map<String, dynamic>);
   }
@@ -143,10 +143,11 @@ class FirebaseService {
         },
       ),
     );
-    print('notification ${response.body}');
+    if (kDebugMode) {
+      print('notification ${response.body}');
+    }
     return response;
   }
-
 
   Future<http.Response> sendNotificationWithTopic(
       {topic, title, body, map, status = 'call'}) async {
@@ -157,7 +158,7 @@ class FirebaseService {
       headers: <String, String>{
         'Content-Type': 'application/json',
         'Authorization':
-        'key=AAAAaHOqun0:APA91bGQzkW17oSI1wIzNjm69Xzxq_zFrBDYzXdFDGkla45q8T3tKGjZZoH1GNSPIojEYmjquplT17qCG2w2UoIxc9e5gmKMRrKSuVHE1eueZ6G00NH_4iHDr23GmdNvKwrPauc_U2KR',
+            'key=AAAAaHOqun0:APA91bGQzkW17oSI1wIzNjm69Xzxq_zFrBDYzXdFDGkla45q8T3tKGjZZoH1GNSPIojEYmjquplT17qCG2w2UoIxc9e5gmKMRrKSuVHE1eueZ6G00NH_4iHDr23GmdNvKwrPauc_U2KR',
       },
       body: jsonEncode(
         <String, dynamic>{
@@ -174,7 +175,9 @@ class FirebaseService {
         },
       ),
     );
-    print('notification ${response.body}');
+    if (kDebugMode) {
+      print('notification ${response.body}');
+    }
     return response;
   }
 }

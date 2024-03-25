@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/provider/tenants_details_provider.dart';
-import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/transaction/add_transaction/add_transaction_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/transaction_details/transaction_details_screen.dart';
 import 'package:landlord/pages/landlord/drawer/transaction/transaction_list/transaction_history_list_container.dart';
 import 'package:landlord/utils/nav_utail.dart';
@@ -67,25 +66,25 @@ class TransactionSummaryCart extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              InkWell(
-                onTap: () {
-                  NavUtil.navigateScreen(context, const AddTransactionScreen());
-                },
-                child: Image.asset(
-                  'assets/dashboard/add_float_button.png',
-                  height: 64.h,
-                  width: 64.w,
-                ),
-              ),
-            ],
-          ),
-        ),
+        // Positioned(
+        //   bottom: 0,
+        //   right: 0,
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.end,
+        //     children: [
+        //       InkWell(
+        //         onTap: () {
+        //           NavUtil.navigateScreen(context, const AddTransactionScreen());
+        //         },
+        //         child: Image.asset(
+        //           'assets/dashboard/add_float_button.png',
+        //           height: 64.h,
+        //           width: 64.w,
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }

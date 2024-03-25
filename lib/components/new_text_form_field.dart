@@ -12,15 +12,14 @@ class NewTextFromField extends StatelessWidget {
   final IconButton? suffixIcon;
   final Icon? prefixIcon;
   const NewTextFromField(
-      {Key? key,
+      {super.key,
       this.hintText,
       this.onChange,
       this.title,
       this.suffixIcon,
       this.controller,
       this.prefixIcon,
-      this.onTap})
-      : super(key: key);
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {

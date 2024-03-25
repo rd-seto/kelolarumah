@@ -12,7 +12,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class LanguageScreen extends StatefulWidget {
-  const LanguageScreen({Key? key}) : super(key: key);
+  const LanguageScreen({super.key});
 
   @override
   State<LanguageScreen> createState() => _LanguageScreenState();
@@ -83,6 +83,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
   Widget build(BuildContext context) {
     final provider = Provider.of<LocalAutProvider>(context, listen: false);
     final userData = provider.getUser();
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
         if (userData?.roleId == 4) {

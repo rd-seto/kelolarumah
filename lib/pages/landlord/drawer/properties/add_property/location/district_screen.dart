@@ -6,7 +6,7 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class DistrictScreen extends StatelessWidget {
-  const DistrictScreen({Key? key}) : super(key: key);
+  const DistrictScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,28 +25,28 @@ class DistrictScreen extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final countryName = provider.locationModel?.data?[index];
                 return InkWell(
-                    onTap: (){
-                      provider.setDistricts(countryName, context);
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 5.0),
-                      decoration: BoxDecoration(
-                        color: AppColors.colorWhite,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Padding(
-                        padding:
-                        EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 10.h),
-                        child: Text(
-                          countryName?.name ?? '',
-                          style: TextStyle(
-                              color: AppColors.black2Sd,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.bold,
-                              height: 1.75),
-                        ),
+                  onTap: () {
+                    provider.setDistricts(countryName, context);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 5.0),
+                    decoration: BoxDecoration(
+                      color: AppColors.colorWhite,
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.0.w, vertical: 10.h),
+                      child: Text(
+                        countryName?.name ?? '',
+                        style: TextStyle(
+                            color: AppColors.black2Sd,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.bold,
+                            height: 1.75),
                       ),
                     ),
+                  ),
                 );
               },
             ),

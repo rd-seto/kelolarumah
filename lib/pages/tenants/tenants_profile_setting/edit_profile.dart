@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/pages/tenants/tickets/create_new_ticket.dart';
@@ -63,8 +62,7 @@ class EditProfile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
                   border: Border.all(),
-                  borderRadius: BorderRadius.circular(12)
-              ),
+                  borderRadius: BorderRadius.circular(12)),
               child: DropdownButton<String>(
                 isExpanded: true,
                 value: dropdownValue,
@@ -96,8 +94,7 @@ class EditProfile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
                   border: Border.all(),
-                  borderRadius: BorderRadius.circular(12)
-              ),
+                  borderRadius: BorderRadius.circular(12)),
               child: DropdownButton<String>(
                 isExpanded: true,
                 value: dropdownValue,
@@ -138,10 +135,13 @@ class EditProfile extends StatelessWidget {
                 style: FilledButton.styleFrom(
                     fixedSize: const Size(400, 50),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)
-                    ),
+                        borderRadius: BorderRadius.circular(12)),
                     backgroundColor: const Color(0xFF007170)),
-                onPressed: (){}, child: const Text("Create Ticket", style: TextStyle(color: Colors.white),)),
+                onPressed: () {},
+                child: const Text(
+                  "Create Ticket",
+                  style: TextStyle(color: Colors.white),
+                )),
             const SizedBox(height: 28),
           ],
         ),

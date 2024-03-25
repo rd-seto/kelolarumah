@@ -7,6 +7,7 @@ import 'package:landlord/data/tenant_provider/tenant_wishlist_provider.dart';
 import 'package:landlord/pages/tenants/my_wishlist/content/wishlist_content.dart';
 import 'package:landlord/pages/tenants/property_details/view/tenant_property_details_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
+import 'package:landlord/utils/no_data_found_widget.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -31,41 +32,43 @@ class MyWishlistPage extends StatelessWidget {
                 future: provider.getTenantWishlist(context),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return ListView.builder(
-                      itemCount: snapshot.data?.data?.list?.length ?? 0,
-                      itemBuilder: (BuildContext context, int index) {
-                        final data = snapshot.data?.data?.list?[index];
-                        final property = data?.property;
-                        return InkWell(
-                          onTap: () {
-                            NavUtil.navigateScreen(
-                                context,
-                                TenantPropertyDetailsScreen(
-                                  propertyId: property!.id!,
-                                  slug: property.slug,
-                                ));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: WishlistContent(
-                              thumbnail: property?.image ?? '',
-                              title: property?.name ?? '',
-                              address: property?.address ?? '',
-                              bedrooms: property?.bedrooms ?? '',
-                              bathrooms: property?.bathrooms ?? '',
-                              size: property?.size ?? '',
-                              price: property?.price ?? '',
-                              type: property?.type ?? '',
-                              vacant: property?.vacant ?? '',
-                              flatNo: property?.flatNo ?? '',
-                              completion: property?.completion ?? '',
-                              dealType: property?.dealType ?? '',
-                              category: property?.category ?? '',
-                            ),
-                          ),
-                        );
-                      },
-                    );
+                    return snapshot.data?.data?.list?.isEmpty == false
+                        ? ListView.builder(
+                            itemCount: snapshot.data?.data?.list?.length ?? 0,
+                            itemBuilder: (BuildContext context, int index) {
+                              final data = snapshot.data?.data?.list?[index];
+                              final property = data?.property;
+                              return InkWell(
+                                onTap: () {
+                                  NavUtil.navigateScreen(
+                                      context,
+                                      TenantPropertyDetailsScreen(
+                                        propertyId: property!.id!,
+                                        slug: property.slug,
+                                      ));
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: WishlistContent(
+                                    thumbnail: property?.image ?? '',
+                                    title: property?.name ?? '',
+                                    address: property?.address ?? '',
+                                    bedrooms: property?.bedrooms ?? '',
+                                    bathrooms: property?.bathrooms ?? '',
+                                    size: property?.size ?? '',
+                                    price: property?.price ?? '',
+                                    type: property?.type ?? '',
+                                    vacant: property?.vacant ?? '',
+                                    flatNo: property?.flatNo ?? '',
+                                    completion: property?.completion ?? '',
+                                    dealType: property?.dealType ?? '',
+                                    category: property?.category ?? '',
+                                  ),
+                                ),
+                              );
+                            },
+                          )
+                        : const NoDataFoundWidget();
                   }
                   return const Center(child: CircularProgressIndicator());
                 },

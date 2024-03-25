@@ -7,9 +7,9 @@ class ApiProvider {
   static String forgetPassword = '$baseUrl/email/forgot-password';
   static String resetPassword = '$baseUrl/email/reset-password';
   static String dashboard = '$baseUrl/private/v1/dashboard';
-  static String tenant = '$baseUrl/tenant';
+  static String tenantSearch = '$baseUrl/tenant';
   static String tenantList = '$baseUrl/private/v1/tenant/list';
-  static String searchTenant = '$baseUrl/tenant';
+  static String searchTenant = '$baseUrl/private/v1/tenant/list?name=';
   static String createTenant = '$baseUrl/private/v1/tenant/store';
   static String editTenant = '$baseUrl/private/v1/tenant/update/';
   static String addAccount = '$baseUrl/private/v1/accounts/store/';

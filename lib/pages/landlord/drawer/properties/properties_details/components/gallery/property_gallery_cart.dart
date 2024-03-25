@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
-import 'package:landlord/data/model/tenant_property_details.dart';
 import 'package:landlord/data/provider/property_details_provider.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/gallery/add_gallery.dart/add_gallery_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
@@ -12,8 +11,7 @@ class PropertyGalleryCart extends StatelessWidget {
   final PropertyDetailsProvider? provider;
 
   final int? pId;
-  const PropertyGalleryCart(
-      {super.key,  this.pId, this.provider});
+  const PropertyGalleryCart({super.key, this.pId, this.provider});
 
   @override
   Widget build(BuildContext context) {

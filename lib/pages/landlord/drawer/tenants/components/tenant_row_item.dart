@@ -2,8 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
+import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/data/model/tenant_model.dart';
+import 'package:landlord/data/model/user_model.dart';
+import 'package:landlord/pages/chat_screen/conversation_screen.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../utils/nav_utail.dart';
 import '../tenants_details/tenants_details_screen.dart';
@@ -15,6 +19,8 @@ class TenantRowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocalAutProvider>(context, listen: false);
+    final userData = provider.getUser();
     return InkWell(
       onTap: () {
         NavUtil.navigateScreen(
@@ -119,33 +125,23 @@ class TenantRowItem extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Column(
-                      children: [
-                        Image.asset(
-                          'assets/dashboard/call_vector.png',
-                          height: 20.h,
-                          width: 20.w,
-                        ),
-                        SizedBox(
-                          height: 2.h,
-                        ),
-                        Image.asset(
-                          'assets/dashboard/message_vector.png',
-                          height: 20.h,
-                          width: 20.w,
-                        ),
-                        SizedBox(
-                          height: 2.h,
-                        ),
-                        Image.asset(
-                          'assets/dashboard/more_vector.png',
-                          height: 20.h,
-                          width: 20.w,
-                        ),
-                        SizedBox(
-                          height: 2.h,
-                        ),
-                      ],
+                    InkWell(
+                      onTap: () {
+                        NavUtil.navigateScreen(
+                            context,
+                            ChatConversation(
+                              userId: userData?.id,
+                              friend: UserModel(
+                                  id: tenant?.id,
+                                  name: tenant?.name,
+                                  email: tenant?.email),
+                            ));
+                      },
+                      child: Image.asset(
+                        'assets/dashboard/message_vector.png',
+                        height: 30.h,
+                        width: 40.w,
+                      ),
                     )
                   ],
                 ),

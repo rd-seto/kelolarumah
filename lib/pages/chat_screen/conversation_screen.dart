@@ -257,7 +257,7 @@ class _ChatConversationState extends State<ChatConversation> {
                   );
                 } else {
                   return ColoredBox(
-                    color: AppColors.colorPrimary,
+                    color: AppColors.colorWhite,
                     child: Column(
                       children: [
                         Expanded(

@@ -6,7 +6,7 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class DistrictScreen extends StatelessWidget {
-  const DistrictScreen({Key? key}) : super(key: key);
+  const DistrictScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -24,7 +24,6 @@ import 'package:landlord/data/provider/notification_provider.dart';
 import 'package:landlord/data/provider/profile_details_provider.dart';
 import 'package:landlord/data/provider/property_details_edit_provider.dart';
 import 'package:landlord/data/provider/property_provider.dart';
-import 'package:landlord/data/provider/tenant_edit_provider.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
 import 'package:landlord/pages/auth/splash/splash_screen.dart';
 import 'package:landlord/utils/notification_service.dart';
@@ -35,7 +34,6 @@ import 'package:provider/provider.dart';
 import 'data/provider/add_transaction_provider.dart';
 import 'data/provider/transaction_list_provider.dart';
 import 'data/provider/update_profile_provider.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 

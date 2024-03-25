@@ -12,6 +12,7 @@ import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/components/Landlord_location/district_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/components/Landlord_location/divisions_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../utils/theme/app_colors.dart';
 import '../model/tenant_model.dart';
 
@@ -44,9 +45,41 @@ class TenantProvider extends ChangeNotifier {
   LocationModel? locationModel;
   bool isLoading = false;
 
+  List<ListElement> listOfTenants = <ListElement>[];
+  int page = 1;
+  bool isError = false;
+  late RefreshController refreshController;
+
   TenantProvider(BuildContext context) {
-    tenantData(context);
+    refreshController = RefreshController(initialRefresh: true);
     getCountryData(context);
+  }
+
+  loadItems(BuildContext context) {
+    refreshController.requestRefresh();
+    page = 1;
+    tenantData(context);
+    notifyListeners();
+  }
+
+  loadMoreItems(BuildContext context) {
+    page = page + 1;
+    tenantData(context);
+    notifyListeners();
+  }
+
+  void setItems(List<ListElement> item) {
+    listOfTenants.clear();
+    listOfTenants = item;
+    refreshController.refreshCompleted();
+    isError = false;
+    notifyListeners();
+  }
+
+  void setMoreItems(List<ListElement> item) {
+    listOfTenants.addAll(item);
+    refreshController.loadComplete();
+    notifyListeners();
   }
 
   void getCountryData(BuildContext context) async {
@@ -113,8 +146,36 @@ class TenantProvider extends ChangeNotifier {
   }
 
   void tenantData(BuildContext context) async {
-    tenantModel = await RepositoryImpl(context).getTenantData();
+    var apiResponse = await RepositoryImpl(context).getTenantData(page);
+    if (apiResponse?.status == true) {
+      if (apiResponse?.data?.list?.isNotEmpty == true) {
+        if (page == 1) {
+          setItems(apiResponse!.data!.list!);
+          refreshController.loadComplete();
+          notifyListeners();
+        } else {
+          setMoreItems(apiResponse!.data!.list!);
+          notifyListeners();
+        }
+      } else {
+        refreshController.loadNoData();
+        notifyListeners();
+      }
+    } else {
+      setFetchError();
+    }
     notifyListeners();
+  }
+
+  setFetchError() {
+    if (page == 0) {
+      isError = true;
+      refreshController.refreshFailed();
+      notifyListeners();
+    } else {
+      refreshController.loadFailed();
+      notifyListeners();
+    }
   }
 
   void addTenant(BuildContext context) async {
@@ -127,19 +188,25 @@ class TenantProvider extends ChangeNotifier {
       "state_id": districtData?.id,
       "password": passController.text,
       "password_confirmation": passController.text,
+      "image": File(image?.path ?? "")
     };
-    RepositoryImpl(context).addTenantData(data).then((success) {
-      if (success) {
-        Fluttertoast.showToast(msg: "Successfully Created");
-        tenantData(context);
-        clearDate();
-        debounce.run(() {
-          Navigator.pop(context);
-        });
-      } else {
-        Fluttertoast.showToast(msg: "Something Went Wrong");
-      }
-    });
+    if (passController.text != confirmPassController.text) {
+      Fluttertoast.showToast(
+          msg: "Passwords are not same", backgroundColor: AppColors.colorRed);
+    } else {
+      RepositoryImpl(context).addTenantData(data).then((success) {
+        if (success) {
+          Fluttertoast.showToast(msg: "Successfully Created");
+          tenantData(context);
+          clearDate();
+          debounce.run(() {
+            Navigator.pop(context);
+          });
+        } else {
+          Fluttertoast.showToast(msg: "Something Went Wrong");
+        }
+      });
+    }
   }
 
   clearDate() {

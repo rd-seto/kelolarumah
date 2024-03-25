@@ -15,7 +15,7 @@ import '../../../../../utils/nav_utail.dart';
 import '../../transaction/transaction_list/transaction_history_list_container.dart';
 
 class CashManagementDashboardScreen extends StatelessWidget {
-  const CashManagementDashboardScreen({Key? key}) : super(key: key);
+  const CashManagementDashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

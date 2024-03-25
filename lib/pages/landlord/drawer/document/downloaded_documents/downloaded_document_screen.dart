@@ -6,7 +6,7 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class DownloadedDocumentScreen extends StatelessWidget {
-  const DownloadedDocumentScreen({Key? key}) : super(key: key);
+  const DownloadedDocumentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +92,7 @@ class DownloadedDocumentScreen extends StatelessWidget {
                           ),
                         ),
                       )
+                      // ignore: unnecessary_to_list_in_spreads
                       .toList()
                 ],
               ),

@@ -8,6 +8,7 @@ import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/data/tenant_provider/tenant_dashboard_provider.dart';
 import 'package:landlord/pages/landlord/home/dashboard/components/greeting_scetion_cart.dart';
 import 'package:landlord/pages/tenants/dashboard/content/purchase_history_tile.dart';
+import 'package:landlord/utils/no_data_found_widget.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -136,25 +137,30 @@ class TenantDashboardScreen extends StatelessWidget {
                                   return const ContentPlaceholder(
                                       lineType: ContentLineType.threeLines);
                                 })
-                            : ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: provider.tenantsDashboard?.data
-                                        ?.orderHistory?.length ??
-                                    0,
-                                itemBuilder: (BuildContext context, int index) {
-                                  final data = provider.tenantsDashboard?.data
-                                      ?.orderHistory?[index];
-                                  return PurchaseHistoryTile(
-                                      invoice: data?.invoiceNo ?? '',
-                                      date:
-                                          '${data?.date?.day}-${data?.date?.month}-${data?.date?.year}',
-                                      discountAmount:
-                                          data?.discountAmount ?? '',
-                                      grandTotal: data?.grandTotal ?? '',
-                                      paidAmount: data?.paidAmount ?? '',
-                                      dueAmount: data?.dueAmount ?? '');
-                                  /*Card(
+                            : provider.tenantsDashboard?.data?.orderHistory
+                                        ?.isEmpty ==
+                                    false
+                                ? ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount: provider.tenantsDashboard?.data
+                                            ?.orderHistory?.length ??
+                                        0,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      final data = provider.tenantsDashboard
+                                          ?.data?.orderHistory?[index];
+                                      return PurchaseHistoryTile(
+                                          invoice: data?.invoiceNo ?? '',
+                                          date:
+                                              '${data?.date?.day}-${data?.date?.month}-${data?.date?.year}',
+                                          discountAmount:
+                                              data?.discountAmount ?? '',
+                                          grandTotal: data?.grandTotal ?? '',
+                                          paidAmount: data?.paidAmount ?? '',
+                                          dueAmount: data?.dueAmount ?? '');
+                                      /*Card(
                               margin: const EdgeInsets.symmetric(vertical: 2),
                               color: Colors.white,
                               child: Padding(
@@ -285,8 +291,9 @@ class TenantDashboardScreen extends StatelessWidget {
                                 ),
                               ),
                             );*/
-                                },
-                              )
+                                    },
+                                  )
+                                : const NoDataFoundWidget(),
 
                         /*  Padding(
                           padding: EdgeInsets.zero,

@@ -32,6 +32,7 @@ class _AddTenantsScreenState extends State<AddTenantsScreen> {
   Widget build(BuildContext context) {
     final provider = Provider.of<TenantProvider>(context);
 
+    // ignore: unused_local_variable
     String dropdownValue = 'Monthly';
 
     return Scaffold(

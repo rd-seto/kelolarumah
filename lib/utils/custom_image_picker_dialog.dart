@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -7,13 +6,11 @@ class CustomDialogImagePicker extends StatelessWidget {
   final Function? onGalleryClick;
 
   const CustomDialogImagePicker(
-      {Key? key, this.onCameraClick, this.onGalleryClick})
-      : super(key: key);
+      {super.key, this.onCameraClick, this.onGalleryClick});
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.30,
@@ -25,7 +22,7 @@ class CustomDialogImagePicker extends StatelessWidget {
               height: 20,
             ),
             const Center(
-              child:  Text(
+              child: Text(
                 "Select Options",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
@@ -43,7 +40,8 @@ class CustomDialogImagePicker extends StatelessWidget {
                   },
                   child: Column(
                     children: [
-                      Lottie.asset("assets/images/ic_camera.json",height: 50,width: 50),
+                      Lottie.asset("assets/images/ic_camera.json",
+                          height: 50, width: 50),
                       const SizedBox(
                         height: 8,
                       ),
@@ -69,7 +67,8 @@ class CustomDialogImagePicker extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 5.0),
                     child: Column(
                       children: [
-                        Lottie.asset("assets/images/ic_gallery.json",height: 50,width: 50),
+                        Lottie.asset("assets/images/ic_gallery.json",
+                            height: 50, width: 50),
                         const SizedBox(
                           height: 3,
                         ),
@@ -94,7 +93,7 @@ class CustomDialogImagePicker extends StatelessWidget {
                 Navigator.pop(context);
               },
               child: const Padding(
-                padding: EdgeInsets.symmetric( horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Align(
                     alignment: Alignment.bottomRight,
                     child: Text(

@@ -271,130 +271,58 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
               SizedBox(
                 height: 16.h,
               ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8)),
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 16.h),
-                  child: Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText(
-                            text: 'Property Image',
-                            color: AppColors.black2Sd,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          SizedBox(
-                            height: 8.h,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              provider.myAlert(context);
-                            },
-                            child: DottedBorder(
-                              dashPattern: const [8, 4],
-                              borderType: BorderType.RRect,
-                              radius: const Radius.circular(8),
-                              color: AppColors.colorPrimary,
-                              strokeWidth: 1,
-                              child: provider.image != null
-                                  ? ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.file(
-                                        //to show image, you type like this.
-                                        File(provider.image!.path),
-                                        fit: BoxFit.cover,
-                                        width:
-                                            MediaQuery.of(context).size.height /
-                                                6,
-                                        height: 93.h,
-                                      ),
-                                    )
-                                  : Container(
-                                      height: 93.h,
-                                      width:
-                                          MediaQuery.of(context).size.height /
-                                              6,
-                                      decoration: BoxDecoration(
-                                          color: AppColors.colorWhite,
-                                          borderRadius:
-                                              BorderRadius.circular(4.r)),
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.add,
-                                          color: AppColors.colorPrimary,
-                                          size: 36,
-                                        ),
-                                      ),
-                                    ),
-                            ),
-                          ),
-                        ],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 0.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      text: 'Property Image',
+                      color: AppColors.black2Sd,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        provider.myAlert(context);
+                      },
+                      child: DottedBorder(
+                        dashPattern: const [8, 4],
+                        borderType: BorderType.RRect,
+                        radius: const Radius.circular(8),
+                        color: AppColors.colorPrimary,
+                        strokeWidth: 1,
+                        child: provider.image != null
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.file(
+                                  //to show image, you type like this.
+                                  File(provider.image!.path),
+                                  fit: BoxFit.cover,
+                                  width: MediaQuery.of(context).size.height / 6,
+                                  height: 93.h,
+                                ),
+                              )
+                            : Container(
+                                height: 93.h,
+                                width: MediaQuery.of(context).size.height / 6,
+                                decoration: BoxDecoration(
+                                    color: AppColors.colorWhite,
+                                    borderRadius: BorderRadius.circular(4.r)),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.add,
+                                    color: AppColors.colorPrimary,
+                                    size: 36,
+                                  ),
+                                ),
+                              ),
                       ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText(
-                            text: 'Property Deed Image',
-                            color: AppColors.black2Sd,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          SizedBox(
-                            height: 8.h,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              provider.propertyDeedImagePicker(context);
-                            },
-                            child: DottedBorder(
-                              dashPattern: const [8, 4],
-                              borderType: BorderType.RRect,
-                              radius: const Radius.circular(8),
-                              color: AppColors.colorPrimary,
-                              strokeWidth: 1,
-                              child: provider.propertyDeadImg != null
-                                  ? ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.file(
-                                        //to show image, you type like this.
-                                        File(provider.propertyDeadImg!.path),
-                                        fit: BoxFit.cover,
-                                        width:
-                                            MediaQuery.of(context).size.height /
-                                                6,
-                                        height: 93.h,
-                                      ),
-                                    )
-                                  : Container(
-                                      height: 93.h,
-                                      width:
-                                          MediaQuery.of(context).size.height /
-                                              6,
-                                      decoration: BoxDecoration(
-                                          color: AppColors.colorWhite,
-                                          borderRadius:
-                                              BorderRadius.circular(4.r)),
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.add,
-                                          color: AppColors.colorPrimary,
-                                          size: 36,
-                                        ),
-                                      ),
-                                    ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(

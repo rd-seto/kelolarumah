@@ -29,72 +29,74 @@ class AddGalleryScreen extends StatelessWidget {
             ),
             body: Padding(
               padding: EdgeInsets.all(20.0.sp),
-              child: Column(
-                children: [
-                  Center(
-                    child: InkWell(
-                      onTap: () {
-                        provider.imgagePicker(context);
-                      },
-                      child: DottedBorder(
-                        dashPattern: const [8, 4],
-                        borderType: BorderType.RRect,
-                        radius: const Radius.circular(8),
-                        color: AppColors.colorPrimary,
-                        strokeWidth: 1,
-                        child: provider.image != null
-                            ? ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.file(
-                                  //to show image, you type like this.
-                                  File(provider.image!.path),
-                                  fit: BoxFit.cover,
-                                  width: MediaQuery.of(context).size.height / 6,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          provider.imgagePicker(context);
+                        },
+                        child: DottedBorder(
+                          dashPattern: const [8, 4],
+                          borderType: BorderType.RRect,
+                          radius: const Radius.circular(8),
+                          color: AppColors.colorPrimary,
+                          strokeWidth: 1,
+                          child: provider.image != null
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.file(
+                                    //to show image, you type like this.
+                                    File(provider.image!.path),
+                                    fit: BoxFit.cover,
+                                    width: MediaQuery.of(context).size.height / 6,
+                                    height: 93.h,
+                                  ),
+                                )
+                              : Container(
                                   height: 93.h,
-                                ),
-                              )
-                            : Container(
-                                height: 93.h,
-                                width: MediaQuery.of(context).size.height / 6,
-                                decoration: BoxDecoration(
-                                    color: AppColors.colorWhite,
-                                    borderRadius: BorderRadius.circular(4.r)),
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.add,
-                                    color: AppColors.colorPrimary,
-                                    size: 36,
+                                  width: MediaQuery.of(context).size.height / 6,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.colorWhite,
+                                      borderRadius: BorderRadius.circular(4.r)),
+                                  child: const Center(
+                                    child: Icon(
+                                      Icons.add,
+                                      color: AppColors.colorPrimary,
+                                      size: 36,
+                                    ),
                                   ),
                                 ),
-                              ),
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: NewTextFromField(
-                      controller: provider.titleController,
-                      title: "Title",
-                      hintText: "Enter your title",
+                    SizedBox(
+                      height: 20.h,
                     ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  ElevatedButtonWidget(
-                    text: "Save",
-                    onPressed: () {
-                      provider.addGalleryImage(context, propertyId, () {
-                        onSave();
-                      });
-                    },
-                  )
-                ],
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: NewTextFromField(
+                        controller: provider.titleController,
+                        title: "Title",
+                        hintText: "Enter Gallery Title",
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    ElevatedButtonWidget(
+                      text: "Save",
+                      onPressed: () {
+                        provider.addGalleryImage(context, propertyId, () {
+                          onSave();
+                        });
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
           );

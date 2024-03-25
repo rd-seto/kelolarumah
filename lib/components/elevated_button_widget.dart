@@ -8,8 +8,7 @@ class ElevatedButtonWidget extends StatelessWidget {
   final String? text;
   final Function()? onPressed;
 
-  const ElevatedButtonWidget({Key? key, this.text, this.onPressed})
-      : super(key: key);
+  const ElevatedButtonWidget({super.key, this.text, this.onPressed});
 
   @override
   Widget build(BuildContext context) {

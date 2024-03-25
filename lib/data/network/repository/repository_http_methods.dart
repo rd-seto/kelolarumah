@@ -37,14 +37,14 @@ class RepositoryMethods {
         name: ApiProvider.dashboard);
   }
 
-  Future<PropertyListModel?> getPropertyData() async {
+  Future<PropertyListModel?> getPropertyData(page) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
         methodType: MethodType.get,
         toJsonFunc: (json) => PropertyListModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: ApiProvider.propertyList);
+        name: "${ApiProvider.propertyList}?page=$page");
   }
 
   Future<TenantPropertyModel?> getTenantPropertyData() async {
@@ -75,7 +75,7 @@ class RepositoryMethods {
         toJsonFunc: (json) => TenantSearchModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: '${ApiProvider.search}');
+        name: ApiProvider.search);
   }
 
   Future<AllDropDownModel?> getAddPropertyData() async {
@@ -351,14 +351,14 @@ class RepositoryMethods {
   }
 
   /// Tenants List API
-  Future<TenantModel?> getTenantData() async {
+  Future<TenantModel?> getTenantData(page) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
         methodType: MethodType.get,
         toJsonFunc: (json) => TenantModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: ApiProvider.tenantList);
+        name: "${ApiProvider.tenantList}?page=$page");
   }
 
   Future<List<TenantProperty>> getTenantPropertiesData() async {
@@ -439,10 +439,11 @@ class RepositoryMethods {
         toJsonFunc: (json) => TenantModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: '${ApiProvider.tenant}?search=$search');
+        name: '${ApiProvider.searchTenant}$search');
   }
 
   // Future updateProfile(data) async {
+
   //   return await GenericHttp(context).callApi(
   //       returnType: ReturnType.model,
   //       methodType: MethodType.post,

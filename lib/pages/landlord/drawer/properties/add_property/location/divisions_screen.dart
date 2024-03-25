@@ -6,7 +6,7 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class DivisionsScreen extends StatelessWidget {
-  const DivisionsScreen({Key? key}) : super(key: key);
+  const DivisionsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class DivisionsScreen extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final countryName = provider.locationModel?.data?[index];
                 return InkWell(
-                    onTap: (){
+                    onTap: () {
                       provider.setDivisions(countryName, context);
                     },
                     child: Container(
@@ -35,8 +35,8 @@ class DivisionsScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: Padding(
-                        padding:
-                        EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 10.h),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 16.0.w, vertical: 10.h),
                         child: Text(
                           countryName?.name ?? '',
                           style: TextStyle(
@@ -46,8 +46,7 @@ class DivisionsScreen extends StatelessWidget {
                               height: 1.75),
                         ),
                       ),
-                    )
-                );
+                    ));
               },
             ),
           ),

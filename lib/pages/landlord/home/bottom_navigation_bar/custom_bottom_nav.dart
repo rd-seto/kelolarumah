@@ -19,8 +19,7 @@ import 'package:provider/provider.dart';
 class CustomBottomNavBar extends StatefulWidget {
   final int? bottomNavigationIndex;
 
-  const CustomBottomNavBar({Key? key, this.bottomNavigationIndex})
-      : super(key: key);
+  const CustomBottomNavBar({super.key, this.bottomNavigationIndex});
 
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
@@ -73,6 +72,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     final PageController myPage =
         PageController(initialPage: widget.bottomNavigationIndex ?? 0);
 
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
         final differences = DateTime.now().difference(timeBackPressed);

@@ -6,26 +6,25 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class CountryScreen extends StatefulWidget {
-  const CountryScreen({Key? key}) : super(key: key);
-
+  const CountryScreen({super.key});
 
   @override
   State<CountryScreen> createState() => _CountryScreenState();
 }
 
 class _CountryScreenState extends State<CountryScreen> {
-
   @override
   void initState() {
     context.read<AddPropertyProvider>().getCountryData(context);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<AddPropertyProvider>(context);
     return Consumer(
       builder: (context, __, _) {
-        return  Scaffold(
+        return Scaffold(
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(70.h),
             child: const CustomAppBar(appBarName: 'Country'),
@@ -39,7 +38,7 @@ class _CountryScreenState extends State<CountryScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   final countryName = provider.locationModel?.data?[index];
                   return InkWell(
-                      onTap: (){
+                      onTap: () {
                         provider.setCountry(countryName, context);
                       },
                       child: Container(
@@ -49,8 +48,8 @@ class _CountryScreenState extends State<CountryScreen> {
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: Padding(
-                          padding:
-                          EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 10.h),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16.0.w, vertical: 10.h),
                           child: Text(
                             countryName?.name ?? '',
                             style: TextStyle(
@@ -60,8 +59,7 @@ class _CountryScreenState extends State<CountryScreen> {
                                 height: 1.75),
                           ),
                         ),
-                      )
-                  );
+                      ));
                 },
               ),
               child: const Center(child: CircularProgressIndicator()),

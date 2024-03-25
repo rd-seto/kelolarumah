@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
+import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/pages/landlord/home/dashboard/components/dashbaord_info_list_cart.dart';
@@ -13,6 +14,7 @@ import 'package:landlord/pages/landlord/drawer/properties/properties_screen/prop
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/transaction_details/transaction_details_screen.dart';
 import 'package:landlord/pages/landlord/drawer/transaction/transaction_list/transaction_list_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
+import 'package:landlord/utils/no_data_found_widget.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 import '../../drawer/properties/properties_screen/components/propertiesListContainer.dart';
@@ -71,7 +73,7 @@ class DashboardScreen extends StatelessWidget {
                       DashboardInfoListCart(
                         title: "Total_Property".tr(),
                         subTitle: provider
-                            .dashboardRespone?.data?.totalProperties
+                            .dashboardResponse?.data?.totalProperties
                             .toString(),
                         containerColor: const Color(0xff00B3DA),
                       ),
@@ -80,7 +82,8 @@ class DashboardScreen extends StatelessWidget {
                       ),
                       DashboardInfoListCart(
                         title: "Occupied",
-                        subTitle: provider.dashboardRespone?.data?.totalOccupied
+                        subTitle: provider
+                            .dashboardResponse?.data?.totalOccupied
                             .toString(),
                         containerColor: AppColors.colorPrimary,
                       ),
@@ -89,7 +92,7 @@ class DashboardScreen extends StatelessWidget {
                       ),
                       DashboardInfoListCart(
                         title: "Vacant",
-                        subTitle: provider.dashboardRespone?.data?.totalVacant
+                        subTitle: provider.dashboardResponse?.data?.totalVacant
                             .toString(),
                         containerColor: AppColors.color2Sd,
                       ),
@@ -97,58 +100,64 @@ class DashboardScreen extends StatelessWidget {
                         height: 16.h,
                       ),
                       SeeAllContainer(
-                          onTap: () {
-                            NavUtil.navigateScreen(
-                                context, const PropertiesScreen());
-                          },
-                          title: "Properties",
-                          subTitle: "See_All"),
+                        onTap: () {
+                          NavUtil.navigateScreen(
+                              context, const PropertiesScreen());
+                        },
+                        title: "Properties",
+                      ),
                       SizedBox(
                         height: 8.h,
                       ),
-                      Container(
-                        padding: EdgeInsets.all(10.sp),
-                        color: AppColors.colorWhite,
-                        child: Column(
-                          children: [
-                            ListView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: provider.dashboardRespone?.data
-                                      ?.properties?.length ??
-                                  0,
-                              itemBuilder: (context, index) {
-                                final data = provider
-                                    .dashboardRespone?.data?.properties?[index];
-                                return Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(vertical: 8.0.h),
-                                  child: InkWell(
-                                    onTap: () {
-                                      NavUtil.navigateScreen(
-                                        context,
-                                        PropertiesDetailsScreen(
-                                          propertyId: data!.id!,
+                      provider.dashboardResponse?.data?.properties
+                                  ?.isNotEmpty ==
+                              true
+                          ? Container(
+                              padding: EdgeInsets.all(10.sp),
+                              color: AppColors.colorWhite,
+                              child: Column(
+                                children: [
+                                  ListView.builder(
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemCount: provider.dashboardResponse?.data
+                                            ?.properties?.length ??
+                                        0,
+                                    itemBuilder: (context, index) {
+                                      final data = provider.dashboardResponse
+                                          ?.data?.properties?[index];
+                                      return Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 8.0.h),
+                                        child: InkWell(
+                                          onTap: () {
+                                            NavUtil.navigateScreen(
+                                              context,
+                                              PropertiesDetailsScreen(
+                                                propertyId: data!.id!,
+                                              ),
+                                            );
+                                          },
+                                          child: PropertiesListContainer(
+                                            image: data?.image,
+                                            title: data?.name,
+                                            tenanted: data?.dealType ?? "",
+                                            vacant: data?.type ?? "",
+                                            containerColor:
+                                                AppColors.backgroundColor,
+                                            onSave: () {
+                                              provider.dashboardData(context);
+                                            },
+                                          ),
                                         ),
                                       );
                                     },
-                                    child: PropertiesListContainer(
-                                      image: data?.image,
-                                      title: data?.name,
-                                      tenanted: data?.dealType ?? "",
-                                      vacant: data?.type ?? "",
-                                      containerColor: AppColors.backgroundColor,
-                                      onSave: () {
-                                        provider.dashboardData(context);
-                                      },
-                                    ),
                                   ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
+                                ],
+                              ),
+                            )
+                          : const NoDataFoundWidget(),
                       SizedBox(
                         height: 20.h,
                       ),
@@ -162,43 +171,48 @@ class DashboardScreen extends StatelessWidget {
                       SizedBox(
                         height: 8.h,
                       ),
-                      Container(
-                        padding: EdgeInsets.all(10.sp),
-                        color: AppColors.colorWhite,
-                        child: Column(
-                          children: [
-                            ListView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: provider.dashboardRespone?.data
-                                      ?.transactions?.length ??
-                                  0,
-                              itemBuilder: (context, index) {
-                                final data = provider.dashboardRespone?.data
-                                    ?.transactions?[index];
-                                return Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(vertical: 8.0.h),
-                                  child: TransactionHistoryListContainer(
-                                    containerColor: AppColors.backgroundColor,
-                                    onTap: () {
-                                      NavUtil.navigateScreen(
-                                          context,
-                                          TransactionsDetailsScreen(
-                                            transactionId: data?.id,
-                                          ));
+                      provider.dashboardResponse?.data?.transactions?.isEmpty ==
+                              false
+                          ? Container(
+                              padding: EdgeInsets.all(10.sp),
+                              color: AppColors.colorWhite,
+                              child: Column(
+                                children: [
+                                  ListView.builder(
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemCount: provider.dashboardResponse?.data
+                                            ?.transactions?.length ??
+                                        0,
+                                    itemBuilder: (context, index) {
+                                      final data = provider.dashboardResponse
+                                          ?.data?.transactions?[index];
+                                      return Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 8.0.h),
+                                        child: TransactionHistoryListContainer(
+                                          containerColor:
+                                              AppColors.backgroundColor,
+                                          onTap: () {
+                                            NavUtil.navigateScreen(
+                                                context,
+                                                TransactionsDetailsScreen(
+                                                  transactionId: data?.id,
+                                                ));
+                                          },
+                                          tittle: data?.paymentMethod ?? "",
+                                          propertyName: data?.type ?? "",
+                                          date: data?.date ?? "",
+                                          amount: "${data?.amount}",
+                                        ),
+                                      );
                                     },
-                                    tittle: data?.paymentMethod ?? "",
-                                    propertyName: data?.type ?? "",
-                                    date: data?.date ?? "",
-                                    amount: "${data?.amount}",
                                   ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
+                                ],
+                              ),
+                            )
+                          : const NoDataFoundWidget()
                     ],
                   ),
                 ),
