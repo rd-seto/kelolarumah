@@ -39,7 +39,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
   @override
   Widget build(BuildContext context) {
     final user =
-        Provider.of<LocalAutProvider>(context, listen: false).getUser();
+    Provider.of<LocalAutProvider>(context, listen: false).getUser();
 
     Provider.of<UpdateProfileProvider>(context, listen: false);
 
@@ -93,14 +93,14 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                         ],
                       ),
                       CustomText(
-                        text: user?.name ?? '',
+                        text: widget.profileData?.name,
                         color: AppColors.titleTextColor,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w700,
                         height: 1.75,
                       ),
                       CustomText(
-                        text: user?.email ?? '',
+                        text: widget.profileData?.email,
                         color: AppColors.black2Sd,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
@@ -191,7 +191,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                                 } else {
                                   Fluttertoast.showToast(
                                     msg:
-                                        'Password and confirm password not matched',
+                                    'Password and confirm password not matched',
                                   );
                                 }
                               },
