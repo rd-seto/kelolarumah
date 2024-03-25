@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -9,6 +11,7 @@ import 'package:landlord/pages/tenants/my_wishlist/content/wishlist_content.dart
 import 'package:landlord/pages/tenants/properties/content/search_property.dart';
 import 'package:landlord/pages/tenants/property_details/view/tenant_property_details_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
+import 'package:landlord/utils/no_data_found_widget.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -117,184 +120,279 @@ class _TenantPropertiesScreenState extends State<TenantPropertiesScreen> {
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
-                                  ListView.builder(
-                                    shrinkWrap: true,
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    itemCount: provider
-                                            .tenantPropertyModel
-                                            ?.data
-                                            ?.trendingProperties
-                                            ?.list
-                                            ?.length ??
-                                        0,
-                                    itemBuilder: (context, index) {
-                                      final data = provider
-                                          .tenantPropertyModel
-                                          ?.data
-                                          ?.trendingProperties
-                                          ?.list?[index];
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 10),
-                                        child: InkWell(
-                                          onTap: () {
-                                            NavUtil.navigateScreen(
-                                                context,
-                                                TenantPropertyDetailsScreen(
-                                                  propertyId:
-                                                      data!.advertiseId!,
-                                                  slug: data.slug,
-                                                ));
+                                  provider
+                                              .tenantPropertyModel
+                                              ?.data
+                                              ?.trendingProperties
+                                              ?.list
+                                              ?.isEmpty ==
+                                          false
+                                      ? ListView.builder(
+                                          shrinkWrap: true,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          itemCount: provider
+                                                  .tenantPropertyModel
+                                                  ?.data
+                                                  ?.trendingProperties
+                                                  ?.list
+                                                  ?.length ??
+                                              0,
+                                          itemBuilder: (context, index) {
+                                            final data = provider
+                                                .tenantPropertyModel
+                                                ?.data
+                                                ?.trendingProperties
+                                                ?.list?[index];
+                                            return Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10),
+                                              child: InkWell(
+                                                onTap: () {
+                                                  NavUtil.navigateScreen(
+                                                      context,
+                                                      TenantPropertyDetailsScreen(
+                                                        propertyId:
+                                                            data!.advertiseId!,
+                                                        slug: data.slug,
+                                                      ));
+                                                },
+                                                child: WishlistContent(
+                                                  thumbnail: data?.image ?? '',
+                                                  title: data?.name ?? "",
+                                                  address: data?.address ?? "",
+                                                  bedrooms: data?.bathrooms
+                                                          .toString() ??
+                                                      '',
+                                                  bathrooms: data?.bathrooms
+                                                          .toString() ??
+                                                      '',
+                                                  size: data?.size ?? '',
+                                                  price: data?.price ?? '',
+                                                  type: data?.type.toString() ??
+                                                      '',
+                                                  vacant: data?.vacant ?? '',
+                                                  flatNo: data?.flatNo ?? '',
+                                                  completion:
+                                                      data?.completion ?? '',
+                                                  dealType:
+                                                      data?.dealType ?? '',
+                                                  category:
+                                                      data?.category ?? '',
+                                                ),
+                                              ),
+                                            );
                                           },
-                                          child: WishlistContent(
-                                            thumbnail: data?.image ?? '',
-                                            title: data?.name ?? "",
-                                            address: data?.address ?? "",
-                                            bedrooms:
-                                                data?.bathrooms.toString() ??
-                                                    '',
-                                            bathrooms:
-                                                data?.bathrooms.toString() ??
-                                                    '',
-                                            size: data?.size ?? '',
-                                            price: data?.price ?? '',
-                                            type: data?.type.toString() ?? '',
-                                            vacant: data?.vacant ?? '',
-                                            flatNo: data?.flatNo ?? '',
-                                            completion: data?.completion ?? '',
-                                            dealType: data?.dealType ?? '',
-                                            category: data?.category ?? '',
+                                        )
+                                      : const NoDataFoundWidget(),
+                                  Visibility(
+                                    visible: provider
+                                                .tenantPropertyModel
+                                                ?.data
+                                                ?.recommendedProperties
+                                                ?.list
+                                                ?.isEmpty ==
+                                            true
+                                        ? false
+                                        : true,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 10),
+                                          child: CustomText(
+                                            text: 'recommended_properties'.tr(),
+                                            color: AppColors.titleTextColor,
+                                            fontSize: 20.sp,
+                                            fontWeight: FontWeight.w700,
                                           ),
                                         ),
-                                      );
-                                    },
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    child: CustomText(
-                                      text: 'recommended_properties'.tr(),
-                                      color: AppColors.titleTextColor,
-                                      fontSize: 20.sp,
-                                      fontWeight: FontWeight.w700,
+                                        provider
+                                                    .tenantPropertyModel
+                                                    ?.data
+                                                    ?.recommendedProperties
+                                                    ?.list
+                                                    ?.isEmpty ==
+                                                false
+                                            ? ListView.builder(
+                                                shrinkWrap: true,
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
+                                                itemCount: provider
+                                                        .tenantPropertyModel
+                                                        ?.data
+                                                        ?.recommendedProperties
+                                                        ?.list
+                                                        ?.length ??
+                                                    0,
+                                                itemBuilder: (context, index) {
+                                                  final data = provider
+                                                      .tenantPropertyModel
+                                                      ?.data
+                                                      ?.recommendedProperties
+                                                      ?.list?[index];
+                                                  return Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        vertical: 10),
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        NavUtil.navigateScreen(
+                                                            context,
+                                                            TenantPropertyDetailsScreen(
+                                                              propertyId: data!
+                                                                  .advertiseId!,
+                                                              slug: data.slug,
+                                                            ));
+                                                      },
+                                                      child: WishlistContent(
+                                                        thumbnail:
+                                                            data?.image ?? '',
+                                                        title: data?.name ?? "",
+                                                        address:
+                                                            data?.address ?? "",
+                                                        bedrooms: data
+                                                                ?.bathrooms
+                                                                .toString() ??
+                                                            '',
+                                                        bathrooms: data
+                                                                ?.bathrooms
+                                                                .toString() ??
+                                                            '',
+                                                        size: data?.size ?? '',
+                                                        price:
+                                                            data?.price ?? '',
+                                                        type: data?.type
+                                                                .toString() ??
+                                                            '',
+                                                        vacant:
+                                                            data?.vacant ?? '',
+                                                        flatNo:
+                                                            data?.flatNo ?? '',
+                                                        completion:
+                                                            data?.completion ??
+                                                                '',
+                                                        dealType:
+                                                            data?.dealType ??
+                                                                '',
+                                                        category:
+                                                            data?.category ??
+                                                                '',
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              )
+                                            : const NoDataFoundWidget(),
+                                      ],
                                     ),
                                   ),
-                                  ListView.builder(
-                                    shrinkWrap: true,
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    itemCount: provider
-                                            .tenantPropertyModel
-                                            ?.data
-                                            ?.recommendedProperties
-                                            ?.list
-                                            ?.length ??
-                                        0,
-                                    itemBuilder: (context, index) {
-                                      final data = provider
-                                          .tenantPropertyModel
-                                          ?.data
-                                          ?.recommendedProperties
-                                          ?.list?[index];
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 10),
-                                        child: InkWell(
-                                          onTap: () {
-                                            NavUtil.navigateScreen(
-                                                context,
-                                                TenantPropertyDetailsScreen(
-                                                  propertyId:
-                                                      data!.advertiseId!,
-                                                  slug: data.slug,
-                                                ));
-                                          },
-                                          child: WishlistContent(
-                                            thumbnail: data?.image ?? '',
-                                            title: data?.name ?? "",
-                                            address: data?.address ?? "",
-                                            bedrooms:
-                                                data?.bathrooms.toString() ??
-                                                    '',
-                                            bathrooms:
-                                                data?.bathrooms.toString() ??
-                                                    '',
-                                            size: data?.size ?? '',
-                                            price: data?.price ?? '',
-                                            type: data?.type.toString() ?? '',
-                                            vacant: data?.vacant ?? '',
-                                            flatNo: data?.flatNo ?? '',
-                                            completion: data?.completion ?? '',
-                                            dealType: data?.dealType ?? '',
-                                            category: data?.category ?? '',
+                                  Visibility(
+                                    visible: provider
+                                                .tenantPropertyModel
+                                                ?.data
+                                                ?.discountedProperties
+                                                ?.list
+                                                ?.isEmpty ==
+                                            true
+                                        ? false
+                                        : true,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 10),
+                                          child: CustomText(
+                                            text: 'discounted_properties'.tr(),
+                                            color: AppColors.titleTextColor,
+                                            fontSize: 20.sp,
+                                            fontWeight: FontWeight.w700,
                                           ),
                                         ),
-                                      );
-                                    },
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    child: CustomText(
-                                      text: 'discounted_properties'.tr(),
-                                      color: AppColors.titleTextColor,
-                                      fontSize: 20.sp,
-                                      fontWeight: FontWeight.w700,
+                                        provider
+                                                    .tenantPropertyModel
+                                                    ?.data
+                                                    ?.discountedProperties
+                                                    ?.list
+                                                    ?.isEmpty ==
+                                                false
+                                            ? ListView.builder(
+                                                shrinkWrap: true,
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
+                                                itemCount: provider
+                                                        .tenantPropertyModel
+                                                        ?.data
+                                                        ?.discountedProperties
+                                                        ?.list
+                                                        ?.length ??
+                                                    0,
+                                                itemBuilder: (context, index) {
+                                                  final data = provider
+                                                      .tenantPropertyModel
+                                                      ?.data
+                                                      ?.discountedProperties
+                                                      ?.list?[index];
+                                                  return Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        vertical: 10),
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        NavUtil.navigateScreen(
+                                                            context,
+                                                            TenantPropertyDetailsScreen(
+                                                              propertyId: data!
+                                                                  .advertiseId!,
+                                                              slug: data.slug,
+                                                            ));
+                                                      },
+                                                      child: WishlistContent(
+                                                        thumbnail:
+                                                            data?.image ?? '',
+                                                        title: data?.name ?? "",
+                                                        address:
+                                                            data?.address ?? "",
+                                                        bedrooms: data
+                                                                ?.bathrooms
+                                                                .toString() ??
+                                                            '',
+                                                        bathrooms: data
+                                                                ?.bathrooms
+                                                                .toString() ??
+                                                            '',
+                                                        size: data?.size ?? '',
+                                                        price:
+                                                            data?.price ?? '',
+                                                        type: data?.type
+                                                                .toString() ??
+                                                            '',
+                                                        vacant:
+                                                            data?.vacant ?? '',
+                                                        flatNo:
+                                                            data?.flatNo ?? '',
+                                                        completion:
+                                                            data?.completion ??
+                                                                '',
+                                                        dealType:
+                                                            data?.dealType ??
+                                                                '',
+                                                        category:
+                                                            data?.category ??
+                                                                '',
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              )
+                                            : const NoDataFoundWidget(),
+                                      ],
                                     ),
-                                  ),
-                                  ListView.builder(
-                                    shrinkWrap: true,
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    itemCount: provider
-                                            .tenantPropertyModel
-                                            ?.data
-                                            ?.discountedProperties
-                                            ?.list
-                                            ?.length ??
-                                        0,
-                                    itemBuilder: (context, index) {
-                                      final data = provider
-                                          .tenantPropertyModel
-                                          ?.data
-                                          ?.discountedProperties
-                                          ?.list?[index];
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 10),
-                                        child: InkWell(
-                                          onTap: () {
-                                            NavUtil.navigateScreen(
-                                                context,
-                                                TenantPropertyDetailsScreen(
-                                                  propertyId:
-                                                      data!.advertiseId!,
-                                                  slug: data.slug,
-                                                ));
-                                          },
-                                          child: WishlistContent(
-                                            thumbnail: data?.image ?? '',
-                                            title: data?.name ?? "",
-                                            address: data?.address ?? "",
-                                            bedrooms:
-                                                data?.bathrooms.toString() ??
-                                                    '',
-                                            bathrooms:
-                                                data?.bathrooms.toString() ??
-                                                    '',
-                                            size: data?.size ?? '',
-                                            price: data?.price ?? '',
-                                            type: data?.type.toString() ?? '',
-                                            vacant: data?.vacant ?? '',
-                                            flatNo: data?.flatNo ?? '',
-                                            completion: data?.completion ?? '',
-                                            dealType: data?.dealType ?? '',
-                                            category: data?.category ?? '',
-                                          ),
-                                        ),
-                                      );
-                                    },
                                   ),
                                 ],
                               )

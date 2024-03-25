@@ -45,18 +45,15 @@ class TenantProvider extends ChangeNotifier {
   LocationModel? locationModel;
   bool isLoading = false;
 
-
   List<ListElement> listOfTenants = <ListElement>[];
   int page = 1;
   bool isError = false;
-  late RefreshController refreshController ;
-
+  late RefreshController refreshController;
 
   TenantProvider(BuildContext context) {
     refreshController = RefreshController(initialRefresh: true);
     getCountryData(context);
   }
-
 
   loadItems(BuildContext context) {
     refreshController.requestRefresh();
@@ -84,7 +81,6 @@ class TenantProvider extends ChangeNotifier {
     refreshController.loadComplete();
     notifyListeners();
   }
-
 
   void getCountryData(BuildContext context) async {
     isLoading = true;
@@ -152,8 +148,8 @@ class TenantProvider extends ChangeNotifier {
   void tenantData(BuildContext context) async {
     var apiResponse = await RepositoryImpl(context).getTenantData(page);
     if (apiResponse?.status == true) {
-      if(apiResponse?.data?.list?.isNotEmpty == true){
-        if(page == 1){
+      if (apiResponse?.data?.list?.isNotEmpty == true) {
+        if (page == 1) {
           setItems(apiResponse!.data!.list!);
           refreshController.loadComplete();
           notifyListeners();
@@ -161,11 +157,10 @@ class TenantProvider extends ChangeNotifier {
           setMoreItems(apiResponse!.data!.list!);
           notifyListeners();
         }
-      } else{
+      } else {
         refreshController.loadNoData();
         notifyListeners();
       }
-
     } else {
       setFetchError();
     }
@@ -183,7 +178,6 @@ class TenantProvider extends ChangeNotifier {
     }
   }
 
-
   void addTenant(BuildContext context) async {
     final data = {
       "name": nameController.text,
@@ -194,9 +188,11 @@ class TenantProvider extends ChangeNotifier {
       "state_id": districtData?.id,
       "password": passController.text,
       "password_confirmation": passController.text,
+      "image": File(image?.path ?? "")
     };
-    if(passController.text != confirmPassController.text){
-      Fluttertoast.showToast(msg: "Passwords are not same", backgroundColor: AppColors.colorRed);
+    if (passController.text != confirmPassController.text) {
+      Fluttertoast.showToast(
+          msg: "Passwords are not same", backgroundColor: AppColors.colorRed);
     } else {
       RepositoryImpl(context).addTenantData(data).then((success) {
         if (success) {
@@ -211,7 +207,6 @@ class TenantProvider extends ChangeNotifier {
         }
       });
     }
-
   }
 
   clearDate() {

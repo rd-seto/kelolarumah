@@ -14,6 +14,7 @@ import 'package:landlord/pages/landlord/drawer/properties/properties_screen/prop
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/transaction_details/transaction_details_screen.dart';
 import 'package:landlord/pages/landlord/drawer/transaction/transaction_list/transaction_list_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
+import 'package:landlord/utils/no_data_found_widget.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 import '../../drawer/properties/properties_screen/components/propertiesListContainer.dart';
@@ -156,9 +157,7 @@ class DashboardScreen extends StatelessWidget {
                                 ],
                               ),
                             )
-                          : const CustomText(
-                              text: "No Properties Found",
-                            ),
+                          : const NoDataFoundWidget(),
                       SizedBox(
                         height: 20.h,
                       ),
@@ -213,9 +212,7 @@ class DashboardScreen extends StatelessWidget {
                                 ],
                               ),
                             )
-                          : const CustomText(
-                              text: "No Transaction Found",
-                            ),
+                          : const NoDataFoundWidget()
                     ],
                   ),
                 ),

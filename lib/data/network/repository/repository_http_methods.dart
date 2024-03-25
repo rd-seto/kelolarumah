@@ -439,10 +439,11 @@ class RepositoryMethods {
         toJsonFunc: (json) => TenantModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: '${ApiProvider.tenant}?search=$search');
+        name: '${ApiProvider.searchTenant}$search');
   }
 
   // Future updateProfile(data) async {
+
   //   return await GenericHttp(context).callApi(
   //       returnType: ReturnType.model,
   //       methodType: MethodType.post,

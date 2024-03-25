@@ -4,6 +4,8 @@ import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/add_tenants/add_tenants_screen.dart';
+import 'package:landlord/pages/landlord/drawer/tenants/components/search_tenant_list.dart';
+import 'package:landlord/pages/landlord/drawer/tenants/tenant_search/tenant_search_page.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -82,22 +84,37 @@ class _TenantsScreenState extends State<TenantsScreen> {
                   Row(
                     children: [
                       Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: AppColors.colorWhite,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: AppColors.stockColor)),
-                          child: TextFormField(
-                            onChanged: (val) {
-                              provider.searchTenantData(context, val);
-                            },
-                            decoration: const InputDecoration(
-                                prefixIcon: Icon(
-                                  Icons.search,
-                                  color: Color(0xffBEBEBE),
+                        child: InkWell(
+                          onTap: () {
+                            NavUtil.navigateScreen(
+                                context, const TenantsSearchScreen());
+                          },
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: AppColors.colorWhite,
+                                  borderRadius: BorderRadius.circular(8),
+                                  border:
+                                      Border.all(color: AppColors.stockColor)),
+                              child: Container(
+                                padding: EdgeInsets.only(left: 12.w),
+                                height: 45,
+                                child: Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.search,
+                                      color: Colors.grey,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      'Search here',
+                                      style: TextStyle(
+                                          color: Colors.grey, fontSize: 16.r),
+                                    )
+                                  ],
                                 ),
-                                border: InputBorder.none),
-                          ),
+                              )),
                         ),
                       ),
                       SizedBox(
@@ -124,8 +141,6 @@ class _TenantsScreenState extends State<TenantsScreen> {
                   SizedBox(
                     height: 8.h,
                   ),
-                  // provider.tenantModel?.data?.list != null
-                  //     ?
                   Expanded(
                     child: TenantList(provider: provider),
                   ),
