@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
-import 'package:landlord/pages/landlord/drawer/cash_management/cash_management_dashboard/cash_management_screen.dart';
+import 'package:landlord/pages/landlord/drawer/cash_management/bill_management_dashboard/bill_management_screen.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_screen/properties_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_screen/tenants_screen.dart';
@@ -145,7 +145,7 @@ class MobileAppDrawer extends StatelessWidget {
                         DrawerListContent(
                           onTap: () {
                             NavUtil.navigateScreen(
-                                context, const CashManagementDashboardScreen());
+                                context, const BillManagementScreen());
                           },
                           image: 'assets/drawer/cash_vector.png',
                           title: "Bill Management",

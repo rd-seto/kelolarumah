@@ -23,7 +23,9 @@ class _EditFacilitiesScreenState extends State<EditFacilitiesScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => PropertyDetailsEditProvider(context),
+      create: (context) => PropertyDetailsEditProvider(
+        context,
+      ),
       child: Consumer<PropertyDetailsEditProvider>(
         builder: (context, provider, _) {
           return Scaffold(

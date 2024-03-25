@@ -17,7 +17,7 @@ import 'package:landlord/data/provider/add_emergency_contact_provider.dart';
 import 'package:landlord/data/provider/add_property_provider.dart';
 import 'package:landlord/data/provider/auth_provider.dart';
 import 'package:landlord/data/provider/bottom_nav_provider.dart';
-import 'package:landlord/data/provider/cash_management_provider.dart';
+import 'package:landlord/data/provider/bill_management_provider.dart';
 import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/data/provider/document_provider.dart';
 import 'package:landlord/data/provider/notification_provider.dart';
@@ -114,8 +114,8 @@ class MyApp extends StatelessWidget {
             create: (context) => AddTransactionProvider(context)),
         ChangeNotifierProvider<AddEmergencyContractProvider>(
             create: (context) => AddEmergencyContractProvider(context)),
-        ChangeNotifierProvider<CashManagementListProvider>(
-            create: (context) => CashManagementListProvider(context)),
+        ChangeNotifierProvider<BillManagementListProvider>(
+            create: (context) => BillManagementListProvider(context)),
         ChangeNotifierProvider<NotificationProvider>(
             create: (context) => NotificationProvider(context)),
         ChangeNotifierProvider<TenantProvider>(

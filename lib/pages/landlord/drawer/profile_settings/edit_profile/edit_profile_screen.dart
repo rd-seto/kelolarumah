@@ -7,7 +7,9 @@ import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/components/elevated_button_widget.dart';
 import 'package:landlord/components/text_form_field.dart';
 import 'package:landlord/data/model/update_profile_model.dart';
+import 'package:landlord/pages/auth/login/login_option/login_option_screen.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/edit_profile/profile_edit_basic_info.dart';
+import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +41,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
   @override
   Widget build(BuildContext context) {
     final user =
-    Provider.of<LocalAutProvider>(context, listen: false).getUser();
+        Provider.of<LocalAutProvider>(context, listen: false).getUser();
 
     Provider.of<UpdateProfileProvider>(context, listen: false);
 
@@ -191,7 +193,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                                 } else {
                                   Fluttertoast.showToast(
                                     msg:
-                                    'Password and confirm password not matched',
+                                        'Password and confirm password not matched',
                                   );
                                 }
                               },

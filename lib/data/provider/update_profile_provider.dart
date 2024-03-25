@@ -41,6 +41,7 @@ class UpdateProfileProvider extends ChangeNotifier {
       oldPasswordController.clear();
       newPasswordController.clear();
       confirmPasswordController.clear();
+
       notifyListeners();
     } else {
       Fluttertoast.showToast(msg: apiResponse['message']);

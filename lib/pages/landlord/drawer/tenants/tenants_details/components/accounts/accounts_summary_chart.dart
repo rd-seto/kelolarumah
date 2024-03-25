@@ -58,6 +58,9 @@ class AccountsSummaryCart extends StatelessWidget {
                             title: "Branch_Name",
                             subTitle: data?.bankBranch ?? "N/A",
                           ),
+                          SizedBox(
+                            height: 28.h,
+                          ),
                           // SummaryContainerWhite(
                           //   title: "Branch_Name",
                           //   subTitle: accounts?.branch ?? "N/A",

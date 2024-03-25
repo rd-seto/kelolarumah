@@ -47,13 +47,14 @@ class Data {
   final String? avater;
   final String? socialSecurityNumber;
   final String? nationality;
-  final String? taxCertificate;
+  final dynamic taxCertificate;
   final dynamic tinNumber;
   final dynamic maritalStatus;
   final dynamic religion;
   final BasicInfo? basicInfo;
   final List<Account>? accounts;
   final List<Transaction>? transactions;
+  final List<Document>? documents;
   final EntAddress? presentAddress;
   final EntAddress? permanentAddress;
 
@@ -76,6 +77,7 @@ class Data {
     this.basicInfo,
     this.accounts,
     this.transactions,
+    this.documents,
     this.presentAddress,
     this.permanentAddress,
   });
@@ -107,6 +109,10 @@ class Data {
             ? []
             : List<Transaction>.from(
                 json["transactions"]!.map((x) => Transaction.fromJson(x))),
+        documents: json["documents"] == null
+            ? []
+            : List<Document>.from(
+                json["documents"]!.map((x) => Document.fromJson(x))),
         presentAddress: json["present_address"] == null
             ? null
             : EntAddress.fromJson(json["present_address"]),
@@ -138,6 +144,9 @@ class Data {
         "transactions": transactions == null
             ? []
             : List<dynamic>.from(transactions!.map((x) => x.toJson())),
+        "documents": documents == null
+            ? []
+            : List<dynamic>.from(documents!.map((x) => x.toJson())),
         "present_address": presentAddress?.toJson(),
         "permanent_address": permanentAddress?.toJson(),
       };
@@ -214,11 +223,39 @@ class BasicInfo {
       };
 }
 
+class Document {
+  final int? id;
+  final String? filename;
+  final String? attachmentType;
+  final String? attachment;
+
+  Document({
+    this.id,
+    this.filename,
+    this.attachmentType,
+    this.attachment,
+  });
+
+  factory Document.fromJson(Map<String, dynamic> json) => Document(
+        id: json["id"],
+        filename: json["filename"],
+        attachmentType: json["attachment_type"],
+        attachment: json["attachment"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "filename": filename,
+        "attachment_type": attachmentType,
+        "attachment": attachment,
+      };
+}
+
 class EntAddress {
   final String? country;
   final String? state;
   final String? city;
-  final dynamic address;
+  final String? address;
 
   EntAddress({
     this.country,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:landlord/data/model/property_basic_info_body_model.dart';
+import 'package:landlord/data/model/property_details_model.dart';
 import 'package:landlord/data/model/property_facelities_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
@@ -22,7 +23,19 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
   final debounce = Debounce(milliseconds: 500);
   String? typeId;
 
-  PropertyDetailsEditProvider(context) {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController sizeController = TextEditingController();
+  TextEditingController bedroomController = TextEditingController();
+  TextEditingController bathroomController = TextEditingController();
+  TextEditingController rentAmountController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController flatNumberController = TextEditingController();
+
+  PropertyDetailsEditProvider(
+    context,
+  ) {
+    // setBasicInfoControllerData(propertyData);
     // getTenantProperties(context: context);
   }
   void addGalleryImage(context, propertyData, VoidCallback onDone) async {
@@ -148,9 +161,21 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
 
   void editPropertyBasicInfo(
       BuildContext context, int? propertyId, VoidCallback onDone) async {
+    final data = {
+      "size": sizeController.text,
+      "rent_amount": rentAmountController.text,
+      "bedroom": bedroomController.text,
+      "bathroom": bathroomController.text,
+      "flat_no": flatNumberController.text,
+      "type": '1',
+      "property_category_id": '1',
+      "description": descriptionController.text,
+      "name": nameController.text,
+      "country_id": '1',
+      "address": addressController.text
+    };
     RepositoryImpl(context)
-        .propertyEditBasicInfo(
-            model: propertyEditBodyModel, propertyId: propertyId)
+        .propertyEditBasicInfo(data, propertyId)
         .then((success) {
       if (success) {
         Fluttertoast.showToast(msg: "Successfully updated");
@@ -163,6 +188,17 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
         Fluttertoast.showToast(msg: "Something went wrong");
       }
     });
+  }
+
+  setBasicInfoControllerData(PropertyDetailsModel propertyData) {
+    nameController.text = propertyData.data?.property?.name ?? '';
+    rentAmountController.text = propertyData.data?.property?.name ?? '';
+    bedroomController.text = propertyData.data?.property?.name ?? '';
+    bathroomController.text = propertyData.data?.property?.name ?? '';
+    flatNumberController.text = propertyData.data?.property?.name ?? '';
+    addressController.text = propertyData.data?.property?.name ?? '';
+    sizeController.text = propertyData.data?.property?.name ?? '';
+    descriptionController.text = propertyData.data?.property?.name ?? '';
   }
 
   void getTenantProperties({required BuildContext context}) async {

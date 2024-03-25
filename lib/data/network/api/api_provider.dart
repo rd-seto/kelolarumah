@@ -13,7 +13,7 @@ class ApiProvider {
   static String createTenant = '$baseUrl/private/v1/tenant/store';
   static String editTenant = '$baseUrl/private/v1/tenant/update/';
   static String addAccount = '$baseUrl/private/v1/accounts/store/';
-  static String editPropertyBasic = '$baseUrl/property/update';
+  static String editPropertyBasic = '$baseUrl/private/v1/property/update/';
   static String propertiesTenant = '$baseUrl/tenant/create';
   static String facilityData = '$baseUrl/property/facility/edit/1';
   static String propertyList = '$baseUrl/private/v1/property/list';
@@ -35,12 +35,12 @@ class ApiProvider {
       '$baseUrl/reports/property-wise-tenants';
   static String getReportDetails = '$baseUrl/reports/search';
   static String profileUpdate = '$baseUrl/profile-update';
-  static String passwordUpdate = '$baseUrl/change-password';
+  static String passwordUpdate = '$baseUrl/private/v1/user/change-password';
   static String transactionList =
       '$baseUrl/private/v1/transactions/landlord-transactions';
   static String transactionDetails = "$baseUrl/transaction/details";
   static String addTransaction = '$baseUrl/transaction/create';
-  static String cashManagementList = '$baseUrl/cash-management/list';
+  static String billManagementList = '$baseUrl/private/v1/bill/list';
   static String notification = '$baseUrl/notifications';
   static String tenantDetails = '$baseUrl/private/v1/tenant/show/';
   static String documentList = '$baseUrl/documents';
