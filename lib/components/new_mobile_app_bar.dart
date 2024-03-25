@@ -1,9 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
+import 'package:provider/provider.dart';
 
 import '../pages/landlord/home/notification/notification_screen.dart';
 
@@ -13,6 +16,7 @@ class NewMobileAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<LocalAutProvider>(context, listen: false);
     return AppBar(
       centerTitle: true,
       leading: Padding(
@@ -57,11 +61,20 @@ class NewMobileAppBar extends StatelessWidget {
                     isBottomNav: false,
                   ));
             },
-            child: Image.asset(
-              'assets/dashboard/profile_vector.png',
+            child: ClipOval(
+              child: CachedNetworkImage(
+                height: 30,
+                width: 30,
+                fit: BoxFit.cover,
+                imageUrl: userProvider.getUser()?.avatar ?? '',
+                placeholder: (context, url) => Center(
+                  child: Image.asset("assets/dashboard/placeholder_image.png"),
+                ),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
             ),
           ),
-        ),
+        )
       ],
     );
   }

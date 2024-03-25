@@ -57,6 +57,7 @@ class UserModel extends Equatable {
       passport: json['passport'],
       dateOfBirth: json['date_of_birth'],
       roleId: json['role_id'],
+      avatar: json['avatar'],
     );
   }
 
@@ -70,6 +71,7 @@ class UserModel extends Equatable {
         "passport": passport,
         "date_of_birth": dateOfBirth,
         "role_id": roleId,
+        "avatar": avatar,
       };
 
   @override
