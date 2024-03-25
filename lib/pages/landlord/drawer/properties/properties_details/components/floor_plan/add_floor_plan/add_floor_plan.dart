@@ -52,7 +52,8 @@ class AddFloorPlanScreen extends StatelessWidget {
                                     //to show image, you type like this.
                                     File(provider.image!.path),
                                     fit: BoxFit.cover,
-                                    width: MediaQuery.of(context).size.height / 6,
+                                    width:
+                                        MediaQuery.of(context).size.height / 6,
                                     height: 93.h,
                                   ),
                                 )

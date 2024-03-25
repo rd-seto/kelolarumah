@@ -34,6 +34,7 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
 
   PropertyDetailsEditProvider(
     context,
+    // PropertyDetailsModel propertyData
   ) {
     // setBasicInfoControllerData(propertyData);
     // getTenantProperties(context: context);
