@@ -50,7 +50,10 @@ class UpdateProfileProvider extends ChangeNotifier {
       confirmPasswordController.clear();
 
       notifyListeners();
-    } else {
+    } else if(apiResponse["message"] == "Current password is incorrect") {
+      Fluttertoast.showToast(msg: apiResponse['message']);
+    }
+    else{
       Fluttertoast.showToast(msg: apiResponse['message']);
     }
   }
