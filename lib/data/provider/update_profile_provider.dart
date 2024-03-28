@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,13 +51,14 @@ class UpdateProfileProvider extends ChangeNotifier {
       oldPasswordController.clear();
       newPasswordController.clear();
       confirmPasswordController.clear();
-
       notifyListeners();
     } else if(apiResponse["message"] == "Current password is incorrect") {
       Fluttertoast.showToast(msg: apiResponse['message']);
+      notifyListeners();
     }
     else{
       Fluttertoast.showToast(msg: apiResponse['message']);
+      notifyListeners();
     }
   }
 

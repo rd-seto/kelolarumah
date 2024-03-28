@@ -20,7 +20,7 @@ class UpdateProfile {
 }
 
   class UpdatePassword{
-   String? oldPassword;
+   String?  oldPassword;
    String? password;
    String? confirmPassword;
 
