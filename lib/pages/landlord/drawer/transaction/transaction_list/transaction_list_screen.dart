@@ -45,26 +45,26 @@ class TransactionListScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: ListView(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: AppColors.colorWhite,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: AppColors.stockColor)),
-                      child: TextFormField(
-                        onChanged: (val) {
-                          provider.searchTransactionData(context, val);
-                        },
-                        decoration: const InputDecoration(
-                            prefixIcon: Icon(
-                              Icons.search,
-                              color: Color(0xffBEBEBE),
-                            ),
-                            border: InputBorder.none),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
+                    // Container(
+                    //   decoration: BoxDecoration(
+                    //       color: AppColors.colorWhite,
+                    //       borderRadius: BorderRadius.circular(8),
+                    //       border: Border.all(color: AppColors.stockColor)),
+                    //   child: TextFormField(
+                    //     onChanged: (val) {
+                    //       provider.searchTransactionData(context, val);
+                    //     },
+                    //     decoration: const InputDecoration(
+                    //         prefixIcon: Icon(
+                    //           Icons.search,
+                    //           color: Color(0xffBEBEBE),
+                    //         ),
+                    //         border: InputBorder.none),
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: 20.h,
+                    // ),
                     CustomText(
                       text: 'Transaction_History',
                       color: AppColors.titleTextColor,
@@ -72,9 +72,9 @@ class TransactionListScreen extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       height: 1.75,
                     ),
-                    SizedBox(
-                      height: 30.h,
-                    ),
+                    // SizedBox(
+                    //   height: 30.h,
+                    // ),
                     provider.transactionListResponse?.data?.list != null
                         ? provider.transactionListResponse?.data?.list
                                     ?.isEmpty ==

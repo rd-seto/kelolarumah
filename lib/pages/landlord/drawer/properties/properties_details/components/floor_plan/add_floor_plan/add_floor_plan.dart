@@ -7,6 +7,7 @@ import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/components/elevated_button_widget.dart';
 import 'package:landlord/components/new_text_form_field.dart';
+import 'package:landlord/data/model/property_details_model.dart';
 import 'package:landlord/data/provider/property_details_edit_provider.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -14,12 +15,16 @@ import 'package:provider/provider.dart';
 class AddFloorPlanScreen extends StatelessWidget {
   final int? propertyId;
   final VoidCallback onSave;
-  const AddFloorPlanScreen({super.key, required this.onSave, this.propertyId});
+  const AddFloorPlanScreen({
+    super.key,
+    required this.onSave,
+    this.propertyId,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => PropertyDetailsEditProvider(context),
+      create: (context) => PropertyDetailsEditProvider(context: context),
       child: Consumer<PropertyDetailsEditProvider>(
         builder: (context, provider, _) {
           return Scaffold(

@@ -112,24 +112,27 @@ class PropertiesBasicInfo extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     InkWell(
-                      onTap: () {
-                        NavUtil.navigateScreen(
-                            context,
-                            EditPropertyBasicInfo(
-                              propertyId: data?.id,
-                              onSave: () {
-                                provider?.propertyDetails(context, data?.id);
-                              },
-                            ));
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(18.r),
-                        decoration: const BoxDecoration(color: AppColors.colorPrimary,
-                        shape: BoxShape.circle
-                        ),
-                        child: const Icon(Icons.edit, color: AppColors.colorWhite,),
-                      )
-                    ),
+                        onTap: () {
+                          NavUtil.navigateScreen(
+                              context,
+                              EditPropertyBasicInfo(
+                                propertyId: data?.id,
+                                onSave: () {
+                                  provider?.propertyDetails(context, data?.id);
+                                },
+                                property: provider?.propertyDetailsResponse,
+                              ));
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(18.r),
+                          decoration: const BoxDecoration(
+                              color: AppColors.colorPrimary,
+                              shape: BoxShape.circle),
+                          child: const Icon(
+                            Icons.edit,
+                            color: AppColors.colorWhite,
+                          ),
+                        )),
                   ],
                 ),
               ),

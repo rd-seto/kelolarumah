@@ -5,6 +5,7 @@ import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/provider/property_provider.dart';
 import 'package:landlord/pages/landlord/drawer/properties/add_property/add_property_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/components/properties_dashboard_summary.dart';
+import 'package:landlord/pages/landlord/drawer/properties/properties_screen/properties_list_search.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +28,6 @@ class _PropertiesScreenState extends State<PropertiesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final provider = Provider.of<PropertyProvider>(context);
     return ChangeNotifierProvider(
       create: (context) => PropertyProvider(context),
       child: Consumer<PropertyProvider>(
@@ -72,23 +72,38 @@ class _PropertiesScreenState extends State<PropertiesScreen> {
                       Row(
                         children: [
                           Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: AppColors.colorWhite,
-                                  borderRadius: BorderRadius.circular(8),
-                                  border:
-                                      Border.all(color: AppColors.stockColor)),
-                              child: TextFormField(
-                                onChanged: (val) {
-                                  provider.searchPropertyData(context, val);
-                                },
-                                decoration: const InputDecoration(
-                                    prefixIcon: Icon(
-                                      Icons.search,
-                                      color: Color(0xffBEBEBE),
+                            child: InkWell(
+                              onTap: () {
+                                NavUtil.navigateScreen(
+                                    context, const PropertiesListSearch());
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color: AppColors.colorWhite,
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          color: AppColors.stockColor)),
+                                  child: Container(
+                                    padding: EdgeInsets.only(left: 12.w),
+                                    height: 45,
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.search,
+                                          color: Colors.grey,
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          'Search here',
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 16.r),
+                                        )
+                                      ],
                                     ),
-                                    border: InputBorder.none),
-                              ),
+                                  )),
                             ),
                           ),
                           SizedBox(

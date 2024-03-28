@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/components/elevated_button_widget.dart';
+import 'package:landlord/data/model/property_details_model.dart';
 import 'package:landlord/data/model/property_facelities_model.dart';
 import 'package:landlord/data/provider/property_details_edit_provider.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
@@ -11,8 +12,11 @@ import 'package:provider/provider.dart';
 class EditFacilitiesScreen extends StatefulWidget {
   final VoidCallback onSave;
   final int? propertyId;
-  const EditFacilitiesScreen(
-      {super.key, required this.onSave, this.propertyId});
+  const EditFacilitiesScreen({
+    super.key,
+    required this.onSave,
+    this.propertyId,
+  });
 
   @override
   State<EditFacilitiesScreen> createState() => _EditFacilitiesScreenState();
@@ -23,9 +27,7 @@ class _EditFacilitiesScreenState extends State<EditFacilitiesScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => PropertyDetailsEditProvider(
-        context,
-      ),
+      create: (context) => PropertyDetailsEditProvider(context: context),
       child: Consumer<PropertyDetailsEditProvider>(
         builder: (context, provider, _) {
           return Scaffold(

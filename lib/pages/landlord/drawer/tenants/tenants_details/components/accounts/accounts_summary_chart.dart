@@ -5,6 +5,7 @@ import 'package:landlord/pages/landlord/drawer/tenants/components/summary_contai
 import 'package:landlord/pages/landlord/drawer/tenants/components/summary_container_white.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/accounts/edit_accounts_info.dart';
 import 'package:landlord/utils/nav_utail.dart';
+import 'package:landlord/utils/no_data_found_widget.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 
 class AccountsSummaryCart extends StatelessWidget {
@@ -24,53 +25,55 @@ class AccountsSummaryCart extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount:
-                    provider?.tenantsDetailsResponse?.data?.accounts?.length ??
-                        0,
-                itemBuilder: (context, index) {
-                  final data =
-                      provider?.tenantsDetailsResponse?.data?.accounts?[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.colorWhite,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 18.0.w,
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 28.h,
+              provider?.tenantsDetailsResponse?.data?.accounts?.isEmpty == false
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: provider?.tenantsDetailsResponse?.data
+                              ?.accounts?.length ??
+                          0,
+                      itemBuilder: (context, index) {
+                        final data = provider
+                            ?.tenantsDetailsResponse?.data?.accounts?[index];
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.colorWhite,
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          SummaryContainerBlack(
-                            title: "Account_No",
-                            subTitle: data?.accountNumber ?? "N/A",
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 18.0.w,
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 28.h,
+                                ),
+                                SummaryContainerBlack(
+                                  title: "Account_No",
+                                  subTitle: data?.accountNumber ?? "N/A",
+                                ),
+                                SummaryContainerWhite(
+                                  title: "Account Category",
+                                  subTitle: data?.accountCategory ?? "N/A",
+                                ),
+                                SummaryContainerBlack(
+                                  title: "Branch_Name",
+                                  subTitle: data?.bankBranch ?? "N/A",
+                                ),
+                                SizedBox(
+                                  height: 28.h,
+                                ),
+                                // SummaryContainerWhite(
+                                //   title: "Branch_Name",
+                                //   subTitle: accounts?.branch ?? "N/A",
+                                // ),
+                              ],
+                            ),
                           ),
-                          SummaryContainerWhite(
-                            title: "Account Category",
-                            subTitle: data?.accountCategory ?? "N/A",
-                          ),
-                          SummaryContainerBlack(
-                            title: "Branch_Name",
-                            subTitle: data?.bankBranch ?? "N/A",
-                          ),
-                          SizedBox(
-                            height: 28.h,
-                          ),
-                          // SummaryContainerWhite(
-                          //   title: "Branch_Name",
-                          //   subTitle: accounts?.branch ?? "N/A",
-                          // ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
+                        );
+                      },
+                    )
+                  : const NoDataFoundWidget(),
               SizedBox(
                 height: 30.h,
               ),

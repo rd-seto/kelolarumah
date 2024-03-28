@@ -22,6 +22,9 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
   final ImagePicker picker = ImagePicker();
   final debounce = Debounce(milliseconds: 500);
   String? typeId;
+  String? typeValue;
+
+  String? completionId;
 
   TextEditingController nameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
@@ -32,11 +35,8 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController flatNumberController = TextEditingController();
 
-  PropertyDetailsEditProvider(
-    context,
-    // PropertyDetailsModel propertyData
-  ) {
-    // setBasicInfoControllerData(propertyData);
+  PropertyDetailsEditProvider({context, PropertyDetailsModel? propertyData}) {
+    setBasicInfoControllerData(propertyData);
     // getTenantProperties(context: context);
   }
   void addGalleryImage(context, propertyData, VoidCallback onDone) async {
@@ -168,8 +168,8 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
       "bedroom": bedroomController.text,
       "bathroom": bathroomController.text,
       "flat_no": flatNumberController.text,
-      "type": '1',
-      "property_category_id": '1',
+      "type": completionId,
+      "property_category_id": typeValue,
       "description": descriptionController.text,
       "name": nameController.text,
       "country_id": '1',
@@ -191,15 +191,35 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
     });
   }
 
-  setBasicInfoControllerData(PropertyDetailsModel propertyData) {
-    nameController.text = propertyData.data?.property?.name ?? '';
-    rentAmountController.text = propertyData.data?.property?.name ?? '';
-    bedroomController.text = propertyData.data?.property?.name ?? '';
-    bathroomController.text = propertyData.data?.property?.name ?? '';
-    flatNumberController.text = propertyData.data?.property?.name ?? '';
-    addressController.text = propertyData.data?.property?.name ?? '';
-    sizeController.text = propertyData.data?.property?.name ?? '';
-    descriptionController.text = propertyData.data?.property?.name ?? '';
+  setPropertyId(String? typeName) {
+    if (typeName == 'Residential') {
+      typeValue = '0';
+    } else {
+      typeValue = '1';
+    }
+  }
+
+  setCompletionId(String? completionName) {
+    if (completionName == 'Complete') {
+      completionId = '0';
+    } else {
+      completionId = '1';
+    }
+  }
+
+  setBasicInfoControllerData(PropertyDetailsModel? propertyData) {
+    nameController.text = propertyData?.data?.property?.name ?? '';
+    rentAmountController.text =
+        propertyData?.data?.property?.rentAmount.toString() ?? '';
+    bedroomController.text =
+        propertyData?.data?.property?.bedroom.toString() ?? '';
+    bathroomController.text =
+        propertyData?.data?.property?.bathroom.toString() ?? '';
+    flatNumberController.text = propertyData?.data?.property?.flatNo ?? '';
+    addressController.text = propertyData?.data?.property?.address ?? '';
+    sizeController.text = propertyData?.data?.property?.size ?? '';
+    descriptionController.text =
+        propertyData?.data?.property?.description ?? '';
   }
 
   void getTenantProperties({required BuildContext context}) async {

@@ -126,8 +126,6 @@ class MyApp extends StatelessWidget {
             create: (context) => TenantProvider(context)),
         ChangeNotifierProvider<ProfileDetailsProvider>(
             create: (context) => ProfileDetailsProvider(context)),
-        ChangeNotifierProvider<PropertyDetailsEditProvider>(
-            create: (context) => PropertyDetailsEditProvider(context)),
         ChangeNotifierProvider<DocumentProvider>(
             create: (context) => DocumentProvider(context))
       ],
