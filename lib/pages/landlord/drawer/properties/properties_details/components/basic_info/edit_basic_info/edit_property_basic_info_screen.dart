@@ -56,23 +56,32 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8)),
+                    child: NewTextFromField(
+                      title: "Property Name",
+                      hintText: "Description",
+                      controller: provider.nameController,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8)),
                     child: Row(
                       children: [
                         Expanded(
                             child: NewTextFromField(
                           title: "Size_of_property",
                           hintText: "2566",
-                          onChange: (val) {
-                            provider.propertyEditBodyModel.size = val;
-                          },
+                          controller: provider.sizeController,
                         )),
                         Expanded(
                             child: NewTextFromField(
                           title: "Rent_Price",
                           hintText: "\$2566",
-                          onChange: (val) {
-                            provider.propertyEditBodyModel.rentAmount = val;
-                          },
+                          controller: provider.rentAmountController,
                         )),
                       ],
                     ),
@@ -90,17 +99,13 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                             child: NewTextFromField(
                           title: "Bedroom",
                           hintText: "2",
-                          onChange: (val) {
-                            provider.propertyEditBodyModel.bedroom = val;
-                          },
+                          controller: provider.bedroomController,
                         )),
                         Expanded(
                             child: NewTextFromField(
                           title: "bathrooms",
                           hintText: "1",
-                          onChange: (val) {
-                            provider.propertyEditBodyModel.bathroom = val;
-                          },
+                          controller: provider.bathroomController,
                         )),
                       ],
                     ),
@@ -114,21 +119,17 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                         borderRadius: BorderRadius.circular(8)),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                             child: NewTextFromField(
                           title: "Parking",
                           hintText: "2",
-                          onChange: (val) {
-                            provider.propertyEditBodyModel.size = val;
-                          },
+                          // controller: provider.p,
                         )),
                         Expanded(
                             child: NewTextFromField(
                           title: "Flat_Number",
                           hintText: "A1",
-                          onChange: (val) {
-                            provider.propertyEditBodyModel.flatNo = val;
-                          },
+                          controller: provider.flatNumberController,
                         )),
                       ],
                     ),
@@ -269,9 +270,20 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                     child: NewTextFromField(
                       title: "Description",
                       hintText: "Description",
-                      onChange: (val) {
-                        provider.propertyEditBodyModel.description = val;
-                      },
+                      controller: provider.descriptionController,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8)),
+                    child: NewTextFromField(
+                      title: "Address",
+                      hintText: "Description",
+                      controller: provider.addressController,
                     ),
                   ),
                   SizedBox(

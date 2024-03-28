@@ -3,6 +3,7 @@ import 'package:landlord/data/model/TransactionDetailsModel.dart';
 import 'package:landlord/data/model/account_category_model.dart';
 import 'package:landlord/data/model/add_transaction_model.dart';
 import 'package:landlord/data/model/all_drop_down_model.dart';
+import 'package:landlord/data/model/bill_management_model.dart';
 import 'package:landlord/data/model/cashmanagement_list_model.dart';
 import 'package:landlord/data/model/dashboard_model.dart';
 import 'package:landlord/data/model/document_list_model.dart';

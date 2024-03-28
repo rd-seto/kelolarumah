@@ -7,7 +7,9 @@ import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/components/elevated_button_widget.dart';
 import 'package:landlord/components/text_form_field.dart';
 import 'package:landlord/data/model/update_profile_model.dart';
+import 'package:landlord/pages/auth/login/login_option/login_option_screen.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/edit_profile/profile_edit_basic_info.dart';
+import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 

@@ -401,15 +401,14 @@ class RepositoryMethods {
         name: "${ApiProvider.editTenant}$tenantId");
   }
 
-  Future<bool> propertyEditBasicInfo(
-      {required PropertyBasicInfoModel model, int? propertyId}) async {
+  Future<bool> propertyEditBasicInfo(data, propertyId) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.type,
-        json: model.toJson(),
+        json: data,
         methodType: MethodType.post,
         returnDataFun: (data) => data != null,
         showLoader: true,
-        name: "${ApiProvider.editPropertyBasic}/$propertyId/basicinfo");
+        name: "${ApiProvider.editPropertyBasic}$propertyId");
   }
 
   Future<bool> tenantDetailsEditAccount(data, int? tenantId) async {
@@ -521,14 +520,14 @@ class RepositoryMethods {
   }
 
   ///cashManagementList
-  Future<CashManagementListModel?> getCashManagementListData() async {
+  Future<BillManagementModel?> getBillManagementListData() async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
         methodType: MethodType.get,
-        toJsonFunc: (json) => CashManagementListModel.fromJson(json),
+        toJsonFunc: (json) => BillManagementModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
-        name: ApiProvider.cashManagementList);
+        name: ApiProvider.billManagementList);
   }
 
   /// Get Area data from add property

@@ -116,9 +116,9 @@ class PropertiesBasicInfo extends StatelessWidget {
                         NavUtil.navigateScreen(
                             context,
                             EditPropertyBasicInfo(
-                              propertyId: pID,
+                              propertyId: data?.id,
                               onSave: () {
-                                provider?.propertyDetails(context, pID);
+                                provider?.propertyDetails(context, data?.id);
                               },
                             ));
                       },

@@ -99,10 +99,8 @@ class RepositoryImpl {
   Future<bool> tenantsEditBasicInfo(data, int? tenantId) =>
       _repositoryMethods.tenantsEditBasicInfo(data, tenantId);
 
-  Future<bool> propertyEditBasicInfo(
-          {required PropertyBasicInfoModel model, int? propertyId}) =>
-      _repositoryMethods.propertyEditBasicInfo(
-          model: model, propertyId: propertyId);
+  Future<bool> propertyEditBasicInfo(data, propertyId) =>
+      _repositoryMethods.propertyEditBasicInfo(data, propertyId);
 
   Future<bool> tenantDetailsEditAccount(data, int? tenantId) =>
       _repositoryMethods.tenantDetailsEditAccount(data, tenantId);
@@ -122,8 +120,8 @@ class RepositoryImpl {
   Future<AddTransactionModel?> getAddTransactionData() =>
       _repositoryMethods.getAddTransactionData();
 
-  Future<CashManagementListModel?> getCashManagementListData() =>
-      _repositoryMethods.getCashManagementListData();
+  Future<BillManagementModel?> getBillManagementListData() =>
+      _repositoryMethods.getBillManagementListData();
 
   Future<PropertyDetailsModel?> getPropertyDetails(id) =>
       _repositoryMethods.getPropertyDetails(id);
@@ -137,7 +135,8 @@ class RepositoryImpl {
   Future<TransactionDetailsModel?> getTransactionDetails(id) =>
       _repositoryMethods.getTransactionDetails(id);
 
-  Future<TenantModel?> getTenantData(page) => _repositoryMethods.getTenantData(page);
+  Future<TenantModel?> getTenantData(page) =>
+      _repositoryMethods.getTenantData(page);
 
   Future createEmergencyContact(data, tenantId) =>
       _repositoryMethods.createEmergencyContact(data, tenantId);
