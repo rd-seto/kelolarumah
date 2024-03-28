@@ -31,7 +31,7 @@ class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
   late TextEditingController gender;
   late TextEditingController nid;
   late TextEditingController passport;
-  late File? userImage;
+  //late File? userImage;
 
 
   @override
@@ -44,7 +44,7 @@ class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
     gender = TextEditingController(text: widget.profileData?.gender);
     nid = TextEditingController(text: widget.profileData?.nid);
     passport = TextEditingController(text: widget.profileData?.passport);
-    //userImage =  MultipartFile.fromFile(widget.imagePath!.path) as File;
+    //userImage =   File(widget.imagePath?.path ?? "");
     super.initState();
   }
 

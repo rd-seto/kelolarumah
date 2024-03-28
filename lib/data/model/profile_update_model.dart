@@ -1,3 +1,5 @@
+import 'dart:io';
+
 class ProfileBasicInfoUpdateModel{
 
   ProfileBasicInfoUpdateModel({
@@ -10,6 +12,7 @@ class ProfileBasicInfoUpdateModel{
     this.occupation,
     this.institution,
     this.gender,
+    this.userImage,
   });
 
 
@@ -22,6 +25,7 @@ class ProfileBasicInfoUpdateModel{
   String? occupation;
   String? institution;
   String? gender;
+  File? userImage;
 
 
   Map<String, dynamic> toJson() => {
@@ -33,6 +37,7 @@ class ProfileBasicInfoUpdateModel{
   "occupation": occupation,
   "institution": institution,
   "gender": gender,
+   "image":userImage
   };
 }
 

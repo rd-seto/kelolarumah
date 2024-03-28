@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/data/model/profile_update_model.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/utils/nav_utail.dart';
+import 'package:provider/provider.dart';
 import '../../utils/custom_image_picker_dialog.dart';
 import '../network/repository/repository.dart';
 
@@ -19,9 +21,11 @@ class UpdateProfileProvider extends ChangeNotifier {
   TextEditingController confirmPasswordController = TextEditingController();
   File? imagePath;
 
+
   final debounce = Debounce(milliseconds: 500);
 
   void postProfileData(BuildContext context, VoidCallback onDone) async {
+    profileBasicInfo.userImage = imagePath;
     RepositoryImpl(context)
         .updateProfile(model: profileBasicInfo)
         .then((success) {
