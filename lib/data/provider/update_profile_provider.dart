@@ -1,9 +1,15 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:landlord/data/model/profile_update_model.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/utils/nav_utail.dart';
+import '../../utils/custom_image_picker_dialog.dart';
 import '../network/repository/repository.dart';
 
 class UpdateProfileProvider extends ChangeNotifier {
@@ -11,6 +17,7 @@ class UpdateProfileProvider extends ChangeNotifier {
   TextEditingController oldPasswordController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  File? imagePath;
 
   final debounce = Debounce(milliseconds: 500);
 
@@ -46,4 +53,43 @@ class UpdateProfileProvider extends ChangeNotifier {
       Fluttertoast.showToast(msg: apiResponse['message']);
     }
   }
+
+  ///Pick image from Camera and Gallery
+  Future<dynamic> pickImage(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CustomDialogImagePicker(
+          onCameraClick: () async {
+            final ImagePicker picker = ImagePicker();
+            final XFile? image = await picker.pickImage(
+                source: ImageSource.camera,
+                maxHeight: 300.h,
+                maxWidth: 300.w,
+                imageQuality: 90);
+            imagePath = File(image!.path);
+            notifyListeners();
+            if (kDebugMode) {
+              print(File(image.path));
+            }
+          },
+          onGalleryClick: () async {
+            final ImagePicker pickerGallery = ImagePicker();
+            final XFile? imageGallery = await pickerGallery.pickImage(
+                source: ImageSource.gallery,
+                maxHeight: 300.h,
+                maxWidth: 300.w,
+                imageQuality: 90);
+            imagePath = File(imageGallery!.path);
+            if (kDebugMode) {
+              print(File(imageGallery.path));
+            }
+            notifyListeners();
+          },
+        );
+      },
+    );
+    notifyListeners();
+  }
+
 }

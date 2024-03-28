@@ -105,6 +105,7 @@ flutter:
   assets:
     - assets/dashboard/
     - assets/drawer/
+    - assets/images/
     - assets/navicon/
     - assets/translations/
   #   - images/a_dot_ham.jpeg

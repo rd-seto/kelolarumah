@@ -39,7 +39,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
   @override
   Widget build(BuildContext context) {
     final user =
-    Provider.of<LocalAutProvider>(context, listen: false).getUser();
+        Provider.of<LocalAutProvider>(context, listen: false).getUser();
 
     Provider.of<UpdateProfileProvider>(context, listen: false);
 
@@ -76,20 +76,93 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                       Stack(
                         clipBehavior: Clip.none,
                         children: [
-                          Image.asset(
-                            'assets/drawer/profile_edit_img.png',
-                            height: 80.h,
-                          ),
-                          Positioned(
-                            left: 48.w,
-                            right: 0.w,
-                            bottom: -5.h,
-                            child: Image.asset(
-                              'assets/dashboard/edit_float_img.png',
-                              height: 36.h,
-                              width: 36.w,
+                          InkWell(
+                            onTap: () {
+                              provider.pickImage(context);
+                            },
+                            child: Center(
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    height: 110,
+                                    width: 110,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            color: const Color(0xFFE4E4E4),
+                                            width: 8)),
+                                    child: provider.imagePath == null
+                                        ? ClipOval(
+                                            child: Image.network(
+                                                widget.profileData?.avatar ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUefeN8m3w2jrqlb2CaPONb1XVKRTDXpyALbIlnpI-7A&s',
+                                                fit: BoxFit.cover),
+                                          )
+                                        : ClipOval(
+                                            child: Image.file(
+                                            provider.imagePath!,
+                                            height: 100,
+                                            width: 100,
+                                            fit: BoxFit.cover,
+                                          )),
+                                  ),
+                                  widget.profileData?.avatar == null
+                                      ? Positioned(
+                                          bottom: 6,
+                                          right: 6,
+                                          child: Container(
+                                            padding: const EdgeInsets.all(4),
+                                            decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: AppColors.colorPrimary),
+                                            child: const Icon(
+                                              size: 18.0,
+                                              Icons.add,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        )
+                                      : Positioned(
+                                          bottom: 6,
+                                          right: 6,
+                                          child: Container(
+                                            padding: const EdgeInsets.all(4),
+                                            decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: AppColors.colorPrimary),
+                                            child: const Icon(
+                                              size: 18.0,
+                                              Icons.edit,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        )
+                                ],
+                              ),
                             ),
                           ),
+                          // Container(
+                          //   height: 80.h,
+                          //   width: 80.w,
+                          //   decoration: BoxDecoration(
+                          //     shape: BoxShape.circle,
+                          //     image: DecorationImage(
+                          //         image: NetworkImage(
+                          //           widget.profileData?.avatar ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUefeN8m3w2jrqlb2CaPONb1XVKRTDXpyALbIlnpI-7A&s"
+                          //         ),
+                          //         fit: BoxFit.fill),
+                          //   ),
+                          // ),
+                          // Positioned(
+                          //   left: 48.w,
+                          //   right: 0.w,
+                          //   bottom: -5.h,
+                          //   child: Image.asset(
+                          //     'assets/dashboard/edit_float_img.png',
+                          //     height: 30.h,
+                          //     width: 30.w,
+                          //   ),
+                          // ),
                         ],
                       ),
                       CustomText(
@@ -138,6 +211,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                     children: [
                       ProfileEditBasicInfo(
                         profileData: widget.profileData,
+                        imagePath : provider.imagePath,
                         onSave: () {
                           widget.provider?.profileDetailsData(context);
                         },
@@ -183,6 +257,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                               height: 20.h,
                             ),
                             ElevatedButtonWidget(
+
                               text: "Save",
                               onPressed: () {
                                 if (provider.newPasswordController.text ==
@@ -191,7 +266,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                                 } else {
                                   Fluttertoast.showToast(
                                     msg:
-                                    'Password and confirm password not matched',
+                                        'Password and confirm password not matched',
                                   );
                                 }
                               },

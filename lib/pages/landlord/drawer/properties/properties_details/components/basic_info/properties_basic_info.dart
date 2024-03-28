@@ -122,11 +122,13 @@ class PropertiesBasicInfo extends StatelessWidget {
                               },
                             ));
                       },
-                      child: Image.asset(
-                        'assets/dashboard/edit_float_img.png',
-                        height: 64.h,
-                        width: 64.w,
-                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(18.r),
+                        decoration: const BoxDecoration(color: AppColors.colorPrimary,
+                        shape: BoxShape.circle
+                        ),
+                        child: const Icon(Icons.edit, color: AppColors.colorWhite,),
+                      )
                     ),
                   ],
                 ),

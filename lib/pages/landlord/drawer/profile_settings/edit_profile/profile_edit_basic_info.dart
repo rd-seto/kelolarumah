@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/data/provider/update_profile_provider.dart';
@@ -9,10 +12,11 @@ import '../../../../../data/model/profile_details_model.dart';
 
 class ProfileEditBasicInfo extends StatefulWidget {
   final ProfileInfo? profileData;
+  final File? imagePath;
   final VoidCallback onSave;
 
   const ProfileEditBasicInfo(
-      {super.key, this.profileData, required this.onSave});
+      {super.key, this.profileData, required this.onSave, this.imagePath});
 
   @override
   State<ProfileEditBasicInfo> createState() => _ProfileEditBasicInfoState();
@@ -27,6 +31,8 @@ class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
   late TextEditingController gender;
   late TextEditingController nid;
   late TextEditingController passport;
+  late File? userImage;
+
 
   @override
   void initState() {
@@ -38,7 +44,7 @@ class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
     gender = TextEditingController(text: widget.profileData?.gender);
     nid = TextEditingController(text: widget.profileData?.nid);
     passport = TextEditingController(text: widget.profileData?.passport);
-
+    //userImage =  MultipartFile.fromFile(widget.imagePath!.path) as File;
     super.initState();
   }
 
@@ -118,17 +124,17 @@ class _ProfileEditBasicInfoState extends State<ProfileEditBasicInfo> {
           SizedBox(
             height: 16.h,
           ),
-          FromField(
-            title: "Gender",
-            controller: gender,
-            onChange: (gender) {
-              provider.profileBasicInfo.gender = gender;
-            },
-            hintText: "",
-          ),
-          SizedBox(
-            height: 16.h,
-          ),
+          // FromField(
+          //   title: "Gender",
+          //   controller: gender,
+          //   onChange: (gender) {
+          //     provider.profileBasicInfo.gender = gender;
+          //   },
+          //   hintText: "",
+          // ),
+          // SizedBox(
+          //   height: 16.h,
+          // ),
           ElevatedButtonWidget(
             text: "Save",
             onPressed: () {

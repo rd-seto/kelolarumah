@@ -65,6 +65,7 @@ class ProfileInfo {
   String? designation;
   dynamic gender;
   int? roleId;
+  String? avatar;
 
   ProfileInfo({
     this.id,
@@ -80,6 +81,7 @@ class ProfileInfo {
     this.designation,
     this.gender,
     this.roleId,
+    this.avatar
   });
 
   factory ProfileInfo.fromJson(Map<String, dynamic> json) => ProfileInfo(
@@ -96,6 +98,7 @@ class ProfileInfo {
     designation: json["designation"],
     gender: json["gender"],
     roleId: json["role_id"],
+    avatar: json["avatar"]
   );
 
   Map<String, dynamic> toJson() => {
@@ -112,5 +115,6 @@ class ProfileInfo {
     "designation": designation,
     "gender": gender,
     "role_id": roleId,
+    "avatar" : avatar
   };
 }
