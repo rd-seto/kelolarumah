@@ -4,20 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/custom_text.dart';
-import 'package:landlord/components/shimmer/shimmers.dart';
 import 'package:landlord/data/provider/property_details_provider.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/basic_info/properties_basic_info.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/floor_plan/floor_plan_cart.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/gallery/property_gallery_cart.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/property_container/property_container.dart';
+import 'package:landlord/pages/landlord/drawer/properties/properties_details/components/widgets/property_details_shimmer.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class PropertiesDetailsScreen extends StatefulWidget {
   const PropertiesDetailsScreen({super.key, required this.propertyId});
-
   final int propertyId;
-
   @override
   State<PropertiesDetailsScreen> createState() =>
       _PropertiesDetailsScreenState();
@@ -157,7 +155,6 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                                     provider: provider,
                                   ),
 
-
                                   FloorPlanCart(
                                     provider: provider,
                                     pId: widget.propertyId,
@@ -168,71 +165,7 @@ class _PropertiesDetailsScreenState extends State<PropertiesDetailsScreen>
                           ],
                         ),
                       )
-                    : const SingleChildScrollView(
-                        child: Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 10,
-                              ),
-                              RectangularCardShimmer(
-                                height: 250,
-                                width: double.infinity,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              RectangularCardShimmer(
-                                height: 30,
-                                width: double.infinity,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              RectangularCardShimmer(
-                                height: 30,
-                                width: double.infinity,
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              RectangularCardShimmer(
-                                height: 50,
-                                width: double.infinity,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              RectangularCardShimmer(
-                                height: 50,
-                                width: double.infinity,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              RectangularCardShimmer(
-                                height: 50,
-                                width: double.infinity,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              RectangularCardShimmer(
-                                height: 50,
-                                width: double.infinity,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              RectangularCardShimmer(
-                                height: 50,
-                                width: double.infinity,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    : const PropertyDetailsShimmer(),
               ],
             ),
           );
