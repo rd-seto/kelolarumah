@@ -193,17 +193,17 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
 
   setPropertyId(String? typeName) {
     if (typeName == 'Residential') {
-      typeValue = '0';
-    } else {
       typeValue = '1';
+    } else {
+      typeValue = '0';
     }
   }
 
   setCompletionId(String? completionName) {
     if (completionName == 'Complete') {
-      completionId = '0';
-    } else {
       completionId = '1';
+    } else {
+      completionId = '0';
     }
   }
 
