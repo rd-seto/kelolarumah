@@ -9,7 +9,7 @@ import 'package:landlord/data/provider/bottom_nav_provider.dart';
 import 'package:landlord/extention/device_type_extention.dart';
 import 'package:landlord/pages/landlord/home/dashboard/dashboard_screen.dart';
 import 'package:landlord/pages/landlord/drawer/drawer_screen/drawer_screen.dart';
-import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
+import 'package:landlord/pages/landlord/drawer/profile_settings/profile_details_screen/profile_details_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_screen/tenants_screen.dart';
 import 'package:landlord/pages/landlord/home/home_screen/home_screen.dart';
 import 'package:landlord/pages/landlord/home/notification/notification_screen.dart';
@@ -30,7 +30,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   String? barName = "Dashboard".tr();
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    ProfileSettingsScreen(isBottomNav: true),
+    ProfileDetailsScreen(isBottomNav: true),
     DashboardScreen(isBottomNav: true),
     NotificationScreen(isBottomNav: true),
     TenantsScreen(isBottomNav: true),

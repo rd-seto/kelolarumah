@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
-import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
+import 'package:landlord/pages/landlord/drawer/profile_settings/profile_details_screen/profile_details_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -57,7 +57,7 @@ class NewMobileAppBar extends StatelessWidget {
             onTap: () {
               NavUtil.navigateScreen(
                   context,
-                  const ProfileSettingsScreen(
+                  const ProfileDetailsScreen(
                     isBottomNav: false,
                   ));
             },

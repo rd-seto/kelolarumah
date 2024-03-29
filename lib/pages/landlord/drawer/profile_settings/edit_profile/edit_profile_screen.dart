@@ -1,18 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:landlord/components/custom_app_bar.dart';
-import 'package:landlord/components/custom_text.dart';
-import 'package:landlord/components/elevated_button_widget.dart';
-import 'package:landlord/components/text_form_field.dart';
 import 'package:landlord/data/model/update_profile_model.dart';
-import 'package:landlord/pages/auth/login/login_option/login_option_screen.dart';
+import 'package:landlord/pages/landlord/drawer/profile_settings/edit_profile/change_password_content.dart';
+import 'package:landlord/pages/landlord/drawer/profile_settings/edit_profile/edit_profile_info_content.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/edit_profile/profile_edit_basic_info.dart';
-import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../../data/local/local_auth_provider.dart';
 import '../../../../../data/model/profile_details_model.dart';
 import '../../../../../data/provider/profile_details_provider.dart';
@@ -72,118 +67,8 @@ class _EditProfileScreenState extends State<EditProfileScreen>
             padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 13.h),
             child: Column(
               children: [
-                Center(
-                  child: Column(
-                    children: [
-                      Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              provider.pickImage(context);
-                            },
-                            child: Center(
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    height: 110,
-                                    width: 110,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            color: const Color(0xFFE4E4E4),
-                                            width: 8)),
-                                    child: provider.imagePath == null
-                                        ? ClipOval(
-                                            child: Image.network(
-                                                widget.profileData?.avatar ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUefeN8m3w2jrqlb2CaPONb1XVKRTDXpyALbIlnpI-7A&s',
-                                                fit: BoxFit.cover),
-                                          )
-                                        : ClipOval(
-                                            child: Image.file(
-                                            provider.imagePath!,
-                                            height: 100,
-                                            width: 100,
-                                            fit: BoxFit.cover,
-                                          )),
-                                  ),
-                                  widget.profileData?.avatar == null
-                                      ? Positioned(
-                                          bottom: 6,
-                                          right: 6,
-                                          child: Container(
-                                            padding: const EdgeInsets.all(4),
-                                            decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: AppColors.colorPrimary),
-                                            child: const Icon(
-                                              size: 18.0,
-                                              Icons.add,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        )
-                                      : Positioned(
-                                          bottom: 6,
-                                          right: 6,
-                                          child: Container(
-                                            padding: const EdgeInsets.all(4),
-                                            decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: AppColors.colorPrimary),
-                                            child: const Icon(
-                                              size: 18.0,
-                                              Icons.edit,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        )
-                                ],
-                              ),
-                            ),
-                          ),
-                          // Container(
-                          //   height: 80.h,
-                          //   width: 80.w,
-                          //   decoration: BoxDecoration(
-                          //     shape: BoxShape.circle,
-                          //     image: DecorationImage(
-                          //         image: NetworkImage(
-                          //           widget.profileData?.avatar ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUefeN8m3w2jrqlb2CaPONb1XVKRTDXpyALbIlnpI-7A&s"
-                          //         ),
-                          //         fit: BoxFit.fill),
-                          //   ),
-                          // ),
-                          // Positioned(
-                          //   left: 48.w,
-                          //   right: 0.w,
-                          //   bottom: -5.h,
-                          //   child: Image.asset(
-                          //     'assets/dashboard/edit_float_img.png',
-                          //     height: 30.h,
-                          //     width: 30.w,
-                          //   ),
-                          // ),
-                        ],
-                      ),
-                      CustomText(
-                        text: widget.profileData?.name,
-                        color: AppColors.titleTextColor,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w700,
-                        height: 1.75,
-                      ),
-                      CustomText(
-                        text: widget.profileData?.email,
-                        color: AppColors.black2Sd,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                        height: 1.75,
-                      ),
-                    ],
-                  ),
-                ),
+                // Edit profile info content
+                EditProfileInfoContent(provider: provider, widget: widget),
                 SizedBox(
                   height: 10.h,
                 ),
@@ -213,69 +98,13 @@ class _EditProfileScreenState extends State<EditProfileScreen>
                     children: [
                       ProfileEditBasicInfo(
                         profileData: widget.profileData,
-                        imagePath : provider.imagePath,
+                        imagePath: provider.imagePath,
                         onSave: () {
                           widget.provider?.profileDetailsData(context);
                         },
                       ),
-                      SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            FromField(
-                              title: "Current_Password",
-                              controller: provider.oldPasswordController,
-                              onChange: (currentPassword) {
-                                updatePassword.oldPassword = currentPassword;
-                              },
-                              hintText: "xxxxxxxx",
-                            ),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            FromField(
-                              title: "New_Password",
-                              controller: provider.newPasswordController,
-                              onChange: (newPassword) {
-                                updatePassword.password = newPassword;
-                              },
-                              hintText: "xxxxxxxxx",
-                            ),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            FromField(
-                              title: "Confirm_Password",
-                              controller: provider.confirmPasswordController,
-                              onChange: (confirmPassword) {
-                                updatePassword.confirmPassword =
-                                    confirmPassword;
-                              },
-                              hintText: "xxxxxxxxx",
-                            ),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            ElevatedButtonWidget(
-
-                              text: "Save",
-                              onPressed: () {
-                                if (provider.newPasswordController.text ==
-                                    provider.confirmPasswordController.text) {
-                                  provider.passwordUpdate(context);
-                                } else {
-                                  Fluttertoast.showToast(
-                                    msg:
-                                        'Password and confirm password not matched',
-                                  );
-                                }
-                              },
-                            )
-                          ],
-                        ),
-                      )
+                      ChangePasswordContent(
+                          provider: provider, updatePassword: updatePassword)
                     ],
                     controller: _tabController,
                   ),

@@ -6,11 +6,11 @@ import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/pages/landlord/drawer/cash_management/bill_management_dashboard/bill_management_screen.dart';
-import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
+import 'package:landlord/pages/landlord/drawer/profile_settings/profile_details_screen/profile_details_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_screen/properties_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_screen/tenants_screen.dart';
 import 'package:landlord/pages/landlord/drawer/transaction/transaction_list/transaction_list_screen.dart';
-import 'package:landlord/pages/landlord/home/language/language_screen.dart';
+import 'package:landlord/pages/language/language_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -170,7 +170,7 @@ class MobileAppDrawer extends StatelessWidget {
                           onTap: () {
                             NavUtil.navigateScreen(
                                 context,
-                                const ProfileSettingsScreen(
+                                const ProfileDetailsScreen(
                                   isBottomNav: false,
                                 ));
                           },

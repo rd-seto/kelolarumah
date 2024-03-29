@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,7 +21,6 @@ import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/data/provider/document_provider.dart';
 import 'package:landlord/data/provider/notification_provider.dart';
 import 'package:landlord/data/provider/profile_details_provider.dart';
-import 'package:landlord/data/provider/property_details_edit_provider.dart';
 import 'package:landlord/data/provider/property_provider.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
 import 'package:landlord/pages/auth/splash/splash_screen.dart';

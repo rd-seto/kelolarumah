@@ -4,7 +4,6 @@ import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/add_tenants/add_tenants_screen.dart';
-import 'package:landlord/pages/landlord/drawer/tenants/components/search_tenant_list.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenant_search/tenant_search_page.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
@@ -144,27 +143,6 @@ class _TenantsScreenState extends State<TenantsScreen> {
                   Expanded(
                     child: TenantList(provider: provider),
                   ),
-                  // : ListView.builder(
-                  //     shrinkWrap: true,
-                  //     physics: const NeverScrollableScrollPhysics(),
-                  //     itemCount: 2,
-                  //     itemBuilder: (context, index) {
-                  //       return Padding(
-                  //         padding: const EdgeInsets.all(16.0),
-                  //         child: Shimmer.fromColors(
-                  //           baseColor: const Color(0xFFE8E8E8),
-                  //           highlightColor: Colors.white,
-                  //           child: Container(
-                  //             height: 120,
-                  //             decoration: BoxDecoration(
-                  //               color: const Color(0xFFE8E8E8),
-                  //               borderRadius: BorderRadius.circular(8),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       );
-                  //     },
-                  //   ),
                 ],
               ),
             ),

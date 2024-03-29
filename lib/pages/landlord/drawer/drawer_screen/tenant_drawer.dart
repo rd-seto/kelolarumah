@@ -5,8 +5,8 @@ import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/extention/device_type_extention.dart';
 import 'package:landlord/pages/chat_screen/chat_room.dart';
-import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
-import 'package:landlord/pages/landlord/home/language/language_screen.dart';
+import 'package:landlord/pages/landlord/drawer/profile_settings/profile_details_screen/profile_details_screen.dart';
+import 'package:landlord/pages/language/language_screen.dart';
 import 'package:landlord/pages/tenants/due_payment/view/due_payment_page.dart';
 import 'package:landlord/pages/tenants/my_wishlist/view/my_wishlist_page.dart';
 import 'package:landlord/pages/tenants/properties/view/tenant_properties_screen.dart';
@@ -53,7 +53,7 @@ class TenantAppDrawer extends StatelessWidget {
                           onTap: () {
                             NavUtil.navigateScreen(
                                 context,
-                                const ProfileSettingsScreen(
+                                const ProfileDetailsScreen(
                                   isBottomNav: false,
                                 ));
                           },

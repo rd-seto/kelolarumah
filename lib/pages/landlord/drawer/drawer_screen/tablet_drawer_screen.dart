@@ -5,7 +5,7 @@ import 'package:landlord/data/local/local_auth_provider.dart';
 import 'package:landlord/pages/landlord/home/dashboard/dashboard_screen.dart';
 import 'package:landlord/pages/landlord/drawer/cash_management/cash_management_applicant_type_page.dart';
 import 'package:landlord/pages/landlord/drawer/document/document_list/document_list_screen.dart';
-import 'package:landlord/pages/landlord/drawer/profile_settings/profile_settings_screen/profile_settings_screen.dart';
+import 'package:landlord/pages/landlord/drawer/profile_settings/profile_details_screen/profile_details_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_screen/properties_screen.dart';
 import 'package:landlord/pages/landlord/drawer/report/report_screen/report_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_screen/tenants_screen.dart';
@@ -163,7 +163,7 @@ class TabletAppDrawer extends StatelessWidget {
                             onTap: () {
                               NavUtil.navigateScreen(
                                   context,
-                                  const ProfileSettingsScreen(
+                                  const ProfileDetailsScreen(
                                     isBottomNav: false,
                                   ));
                             },
