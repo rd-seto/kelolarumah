@@ -88,17 +88,7 @@ class TransactionListScreen extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   final data = provider.transactionListResponse
                                       ?.data?.list?[index];
-                                  if (kDebugMode) {
-                                    print(data);
-                                  }
                                   return TransactionHistoryListContainer(
-                                    onTap: () {
-                                      NavUtil.navigateScreen(
-                                          context,
-                                          TransactionsDetailsScreen(
-                                            transactionId: data?.id,
-                                          ));
-                                    },
                                     tittle: data?.paymentMethod,
                                     propertyName: data?.type,
                                     date: data?.date.toString(),
@@ -132,16 +122,16 @@ class TransactionListScreen extends StatelessWidget {
               ),
             ],
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              NavUtil.navigateScreen(context, const AddTransactionScreen());
-            },
-            child: Image.asset(
-              'assets/dashboard/add_float_button.png',
-              height: 64.h,
-              width: 64.w,
-            ),
-          ),
+          // floatingActionButton: FloatingActionButton(
+          //   onPressed: () {
+          //     NavUtil.navigateScreen(context, const AddTransactionScreen());
+          //   },
+          //   child: Image.asset(
+          //     'assets/dashboard/add_float_button.png',
+          //     height: 64.h,
+          //     width: 64.w,
+          //   ),
+          // ),
         );
       }),
     );

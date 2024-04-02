@@ -34,7 +34,7 @@ class ApiProvider {
   static String getReportTenantListData =
       '$baseUrl/reports/property-wise-tenants';
   static String getReportDetails = '$baseUrl/reports/search';
-  static String profileUpdate = '$baseUrl/profile-update';
+  static String profileUpdate = '$baseUrl/private/v1/user/profile-update';
   static String passwordUpdate = '$baseUrl/private/v1/user/change-password';
   static String transactionList =
       '$baseUrl/private/v1/transactions/landlord-transactions';
@@ -45,7 +45,7 @@ class ApiProvider {
   static String tenantDetails = '$baseUrl/private/v1/tenant/show/';
   static String documentList = '$baseUrl/documents';
   static String tenantUpdate = '$baseUrl/tenant/update/';
-  static String profileDetails = "$baseUrl/user";
+  static String profileDetails = "$baseUrl/private/v1/user/profile";
 
 // TODO : Tenants part api call ===========================
   static String tenantDashboard = '$baseUrl/private/v1/tenant/dashboard';

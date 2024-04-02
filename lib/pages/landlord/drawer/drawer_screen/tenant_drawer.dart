@@ -108,17 +108,17 @@ class TenantAppDrawer extends StatelessWidget {
                           image: 'assets/drawer/chat.png',
                           title: "chat".tr(),
                         ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        DrawerListContent(
-                          onTap: () {
-                            NavUtil.navigateScreen(
-                                context, const MyWishlistPage());
-                          },
-                          image: 'assets/drawer/transaction_vector.png',
-                          title: "my_wishlist".tr(),
-                        ),
+                        // SizedBox(
+                        //   height: 20.h,
+                        // ),
+                        // DrawerListContent(
+                        //   onTap: () {
+                        //     NavUtil.navigateScreen(
+                        //         context, const MyWishlistPage());
+                        //   },
+                        //   image: 'assets/drawer/transaction_vector.png',
+                        //   title: "my_wishlist".tr(),
+                        // ),
                         SizedBox(
                           height: 20.h,
                         ),

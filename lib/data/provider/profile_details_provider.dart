@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:landlord/data/model/profile_details_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
+import 'package:provider/provider.dart';
+
+import '../local/local_auth_provider.dart';
 
 class ProfileDetailsProvider extends ChangeNotifier {
   ProfileDetailsModel? profileDetails;
