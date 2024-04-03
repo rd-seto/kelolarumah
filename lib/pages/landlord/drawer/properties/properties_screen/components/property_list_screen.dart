@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:landlord/pages/landlord/drawer/properties/properties_screen/components/propertiesListContainer.dart';
+import 'package:landlord/pages/landlord/drawer/properties/properties_screen/components/properties_list_container.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../../../../data/provider/property_provider.dart';
 import '../../../../../../utils/nav_utail.dart';

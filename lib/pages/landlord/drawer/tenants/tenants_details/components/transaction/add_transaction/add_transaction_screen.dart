@@ -11,7 +11,7 @@ import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/component
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../../../data/provider/add_transaction_provider.dart';
-import '../widget/incomeWidget.dart';
+import '../widget/income_widget.dart';
 
 class AddTransactionScreen extends StatefulWidget {
   const AddTransactionScreen({super.key});
