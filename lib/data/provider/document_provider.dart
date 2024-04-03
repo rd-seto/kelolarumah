@@ -69,7 +69,7 @@ class DocumentProvider extends ChangeNotifier {
           size: cacheModel.size,
           file: _pdfPath,
         ));
-        print('length ${cacheList.toList()}');
+        debugPrint('length ${cacheList.toList()}');
 
         SPUtill.setDocumentPathList(
             SPUtill.keyDocumentList, cacheList.map((e) => e.toJson()).toList());
@@ -81,7 +81,7 @@ class DocumentProvider extends ChangeNotifier {
 
   Future<void> openPdf(path) async {
     if (path != null) {
-      print(_pdfPath.toString());
+      debugPrint(_pdfPath.toString());
       await OpenFilex.open(path);
     }
   }

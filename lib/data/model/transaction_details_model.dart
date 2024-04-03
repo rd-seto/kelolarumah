@@ -1,5 +1,4 @@
 
-
 class TransactionDetailsModel {
   TransactionDetailsModel({
     this.lists,

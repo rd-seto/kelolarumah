@@ -158,7 +158,6 @@ class AddTransactionProvider extends ChangeNotifier {
   ///dropdown for expense type
   selectExpense(Expense expenseValue) {
     expenseValueData = expenseValue;
-    print(expenseValue);
     notifyListeners();
   }
 

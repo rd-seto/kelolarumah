@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
 
-import '../model/transactionListModel.dart';
+import '../model/transaction_list_model.dart';
 
 class TransactionListProvider extends ChangeNotifier {
   TransactionListModel? transactionListResponse;

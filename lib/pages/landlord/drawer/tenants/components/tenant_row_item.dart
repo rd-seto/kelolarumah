@@ -15,7 +15,7 @@ import '../tenants_details/tenants_details_screen.dart';
 class TenantRowItem extends StatelessWidget {
   final ListElement? tenant;
 
-  const TenantRowItem({Key? key, required this.tenant}) : super(key: key);
+  const TenantRowItem({super.key, required this.tenant});
 
   @override
   Widget build(BuildContext context) {

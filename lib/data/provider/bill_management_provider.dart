@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:landlord/data/model/bill_management_model.dart';
-import 'package:landlord/data/model/cashmanagement_list_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 
 class BillManagementListProvider extends ChangeNotifier {

@@ -155,7 +155,6 @@ class AddPropertyProvider extends ChangeNotifier {
         "property_deed": File(propertyDeadImg?.path ?? ""),
         "post_code": "", //todo
       };
-      print(data);
       var apiResponse = await RepositoryImpl(context).createProperty(data);
       if (apiResponse['result'] == true) {
         Fluttertoast.showToast(msg: apiResponse['message']);
