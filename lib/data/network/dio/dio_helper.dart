@@ -293,9 +293,9 @@ class DioHelper {
             debugPrint("response errors $errors");
             errors.forEach((key, value) {
               List<String> lst = List<String>.from(value.map((e) => e));
-              lst.forEach((e) {
+              for (var e in lst) {
                 LoadingDialog.showToastNotification(e);
-              });
+              }
             });
           } else {
             LoadingDialog.showToastNotification(data["msg"].toString());
@@ -304,8 +304,7 @@ class DioHelper {
         case 401:
         case 301:
         case 302:
-          LoadingDialog.showToastNotification(data.toString(),
-              color: Colors.red);
+          LoadingDialog.showToastNotification(data['message'], color: Colors.red);
           tokenExpired();
           break;
       }
