@@ -10,6 +10,8 @@ import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/component
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
+import '../../properties/properties_details/components/widgets/property_details_shimmer.dart';
+
 class TenantsDetailsScreen extends StatefulWidget {
   final int tenantsId;
 
@@ -56,7 +58,8 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                     ),
                   ),
                 ),
-                Padding(
+                provider.tenantsDetailsResponse?.data != null
+                ? Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 13.h),
                   child: Column(
@@ -85,9 +88,6 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                             Tab(
                               text: 'Basic_Info'.tr(),
                             ),
-                            // Tab(
-                            //   text: 'Emergency'.tr(),
-                            // ),
                             Tab(
                               text: 'Accounts'.tr(),
                             ),
@@ -135,7 +135,8 @@ class _TenantsDetailsScreenState extends State<TenantsDetailsScreen>
                       ),
                     ],
                   ),
-                ),
+                )
+                          : const PropertyDetailsShimmer(),
               ],
             ),
           );

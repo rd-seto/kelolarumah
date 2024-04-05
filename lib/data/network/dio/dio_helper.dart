@@ -302,6 +302,7 @@ class DioHelper {
           }
           break;
         case 401:
+        case 422:
         case 301:
         case 302:
           LoadingDialog.showToastNotification(data['message'], color: Colors.red);

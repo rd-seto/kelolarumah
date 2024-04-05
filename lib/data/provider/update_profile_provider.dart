@@ -40,9 +40,9 @@ class UpdateProfileProvider extends ChangeNotifier {
 
   void passwordUpdate(context) async {
     final data = {
-      "password": oldPasswordController.text,
-      "new_password": newPasswordController.text,
-      "confirm_password": confirmPasswordController.text
+      "current_password": oldPasswordController.text,
+      "password": newPasswordController.text,
+      "password_confirmation": confirmPasswordController.text
     };
     var apiResponse = await RepositoryImpl(context).postPasswordUpdate(data);
     if (apiResponse["message"] == "Password changed successfully") {

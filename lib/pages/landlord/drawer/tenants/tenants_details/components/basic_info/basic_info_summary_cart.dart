@@ -14,6 +14,7 @@ class BasicInfoSummaryCart extends StatelessWidget {
   final int? tenantsId;
   final TenantsDetailsProvider? provider;
 
+
   const BasicInfoSummaryCart(
       {super.key, this.basicInfo, this.tenantsId, this.provider});
 
@@ -44,7 +45,7 @@ class BasicInfoSummaryCart extends StatelessWidget {
                       ),
                       SummaryContainerBlack(
                         title: "Join_Date",
-                        subTitle: basicInfo?.joinDate.toString() ?? "N/A",
+                        subTitle: basicInfo?.joinDate == null ? "N/A" : basicInfo?.joinDate.toString(),
                       ),
                       SummaryContainerWhite(
                         title: "Occupation",

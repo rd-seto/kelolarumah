@@ -49,8 +49,7 @@ class TenantsRowItem extends StatelessWidget {
                     height: 1.5,
                   ),
                   CustomText(
-                    text:
-                        'Contact No: ${provider?.tenantsDetailsResponse?.data?.phone.toString()}',
+                    text: 'Contact No: ${provider?.tenantsDetailsResponse?.data?.phone == null ? "N/A" : provider?.tenantsDetailsResponse?.data?.phone.toString()} ',
                     color: AppColors.titleTextColor,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,

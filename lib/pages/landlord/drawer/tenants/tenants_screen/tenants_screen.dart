@@ -65,12 +65,6 @@ class _TenantsScreenState extends State<TenantsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // TenantsSummaryChart(
-                  //   tenantModel: provider.tenantModel,
-                  // ),
-                  SizedBox(
-                    height: 0.h,
-                  ),
                   CustomText(
                     text: 'Tenants_List',
                     color: AppColors.titleTextColor,
