@@ -80,13 +80,13 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                             Expanded(
                                 child: NewTextFromField(
                               title: "Size_of_property",
-                              hintText: "2566",
+                              hintText: "Property size",
                               controller: provider.sizeController,
                             )),
                             Expanded(
                                 child: NewTextFromField(
                               title: "Rent_Price",
-                              hintText: "\$2566",
+                              hintText: "property rent",
                               controller: provider.rentAmountController,
                             )),
                           ],
@@ -104,13 +104,13 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                             Expanded(
                                 child: NewTextFromField(
                               title: "Bedroom",
-                              hintText: "2",
+                              hintText: "Enter quantity of bedroom",
                               controller: provider.bedroomController,
                             )),
                             Expanded(
                                 child: NewTextFromField(
                               title: "bathrooms",
-                              hintText: "1",
+                              hintText: "Enter quantity of bathroom",
                               controller: provider.bathroomController,
                             )),
                           ],
@@ -125,16 +125,16 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                             borderRadius: BorderRadius.circular(8)),
                         child: Row(
                           children: [
-                            const Expanded(
-                                child: NewTextFromField(
-                              title: "Parking",
-                              hintText: "2",
-                              // controller: provider.p,
-                            )),
+                            // const Expanded(
+                            //     child: NewTextFromField(
+                            //   title: "Parking",
+                            //   hintText: "",
+                            //   // controller: provider.p,
+                            // )),
                             Expanded(
                                 child: NewTextFromField(
                               title: "Flat_Number",
-                              hintText: "A1",
+                              hintText: "Enter Flat no",
                               controller: provider.flatNumberController,
                             )),
                           ],
@@ -276,7 +276,7 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                             borderRadius: BorderRadius.circular(8)),
                         child: NewTextFromField(
                           title: "Description",
-                          hintText: "Description",
+                          hintText: "Enter Description",
                           controller: provider.descriptionController,
                         ),
                       ),
@@ -289,7 +289,7 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                             borderRadius: BorderRadius.circular(8)),
                         child: NewTextFromField(
                           title: "Address",
-                          hintText: "Description",
+                          hintText: "Enter Address",
                           controller: provider.addressController,
                         ),
                       ),
