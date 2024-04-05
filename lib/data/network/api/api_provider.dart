@@ -13,7 +13,7 @@ class ApiProvider {
   static String createTenant = '$baseUrl/private/v1/tenant/store';
   static String editTenant = '$baseUrl/private/v1/tenant/update/';
   static String addAccount = '$baseUrl/private/v1/accounts/store/';
-  static String editPropertyBasic = '$baseUrl/private/v1/property/update/';
+  static String editPropertyBasic = '$baseUrl/private/v1/property/update-basic-info/';
   static String propertiesTenant = '$baseUrl/tenant/create';
   static String facilityData = '$baseUrl/property/facility/edit/1';
   static String propertyList = '$baseUrl/private/v1/property/list';

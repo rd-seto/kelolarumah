@@ -62,7 +62,7 @@ class PropertiesBasicInfo extends StatelessWidget {
                     image: 'assets/drawer/rent_ic.png',
                     color: Colors.transparent,
                     title: "Rent",
-                    subTitle: "${data?.totalRent ?? 'N/A'}",
+                    subTitle: "${data?.rentAmount ?? 'N/A'}",
                   ),
                   ContentListTile(
                     image: 'assets/drawer/type-ic.png',

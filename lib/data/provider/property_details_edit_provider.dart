@@ -163,16 +163,18 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
   void editPropertyBasicInfo(
       BuildContext context, int? propertyId, VoidCallback onDone) async {
     final data = {
+      "name": nameController.text,
       "size": sizeController.text,
-      "rent_amount": rentAmountController.text,
       "bedroom": bedroomController.text,
       "bathroom": bathroomController.text,
+      "rent_amount": rentAmountController.text,
       "flat_no": flatNumberController.text,
-      "type": completionId,
-      "property_category_id": typeValue,
+      "type": typeValue,
+      "completion": completionId,
       "description": descriptionController.text,
-      "name": nameController.text,
-      "country_id": '1',
+
+      // "property_category_id": typeValue,
+      // "country_id": '1',
       "address": addressController.text
     };
     RepositoryImpl(context)
@@ -208,13 +210,13 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
   }
 
   setBasicInfoControllerData(PropertyDetailsModel? propertyData) {
-    nameController.text = propertyData?.data?.property?.name ?? '';
+    nameController.text = propertyData?.data?.property?.name == null ? "" : propertyData?.data?.property?.name ?? '';
     rentAmountController.text =
-        propertyData?.data?.property?.rentAmount.toString() ?? '';
+        propertyData?.data?.property?.rentAmount == null ? "" : propertyData?.data?.property?.rentAmount.toString() ?? "";
     bedroomController.text =
-        propertyData?.data?.property?.bedroom.toString() ?? '';
+        propertyData?.data?.property?.bedroom == null ? "" : propertyData?.data?.property?.bedroom.toString() ?? '';
     bathroomController.text =
-        propertyData?.data?.property?.bathroom.toString() ?? '';
+        propertyData?.data?.property?.bathroom == null ? "" : propertyData?.data?.property?.bathroom.toString() ?? '';
     flatNumberController.text = propertyData?.data?.property?.flatNo ?? '';
     addressController.text = propertyData?.data?.property?.address ?? '';
     sizeController.text = propertyData?.data?.property?.size ?? '';

@@ -64,7 +64,7 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                             borderRadius: BorderRadius.circular(8)),
                         child: NewTextFromField(
                           title: "Property Name",
-                          hintText: "Description",
+                          hintText: "Property Name",
                           controller: provider.nameController,
                         ),
                       ),
@@ -297,7 +297,7 @@ class _EditPropertyBasicInfoState extends State<EditPropertyBasicInfo> {
                         height: 20.h,
                       ),
                       ElevatedButtonWidget(
-                        text: "Save",
+                        text: "Update",
                         onPressed: () {
                           provider.editPropertyBasicInfo(
                               context, widget.propertyId, () {
