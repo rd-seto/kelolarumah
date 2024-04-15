@@ -7,7 +7,7 @@ import 'package:landlord/utils/theme/app_colors.dart';
 
 class NotificationDetails extends StatelessWidget {
   final bool? isBottomNav;
-  final Item? item;
+  final Datum? item;
 
   const NotificationDetails({super.key, this.isBottomNav, this.item});
 
@@ -37,25 +37,25 @@ class NotificationDetails extends StatelessWidget {
               fontWeight: FontWeight.bold,
               height: 1.6,
             ),
-            CustomText(
-              text: item?.createdAt ?? "",
-              color: AppColors.colorPrimary,
-              fontSize: 12.sp,
-              maxLine: 1,
-              fontWeight: FontWeight.bold,
-              height: 1.6,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              item?.description ?? "",
-              style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.bold,
-                  height: 1.6),
-            ),
+            // CustomText(
+            //   text: item?.createdAt ?? "",
+            //   color: AppColors.colorPrimary,
+            //   fontSize: 12.sp,
+            //   maxLine: 1,
+            //   fontWeight: FontWeight.bold,
+            //   height: 1.6,
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            // Text(
+            //   item?.description ?? "",
+            //   style: TextStyle(
+            //       color: Colors.black54,
+            //       fontSize: 14.sp,
+            //       fontWeight: FontWeight.bold,
+            //       height: 1.6),
+            // ),
           ],
         ),
       ),

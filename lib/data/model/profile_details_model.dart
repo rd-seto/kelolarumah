@@ -1,87 +1,82 @@
+// To parse this JSON data, do
+//
+//     final profileDetailsModel = profileDetailsModelFromJson(jsonString);
+
 import 'dart:convert';
 
 ProfileDetailsModel profileDetailsModelFromJson(String str) => ProfileDetailsModel.fromJson(json.decode(str));
 
+String profileDetailsModelToJson(ProfileDetailsModel data) => json.encode(data.toJson());
 
 class ProfileDetailsModel {
-  bool? result;
-  String? apiEndPoint;
-  String? message;
-  Data? data;
+  final bool status;
+  final String message;
+  final Data data;
 
   ProfileDetailsModel({
-    this.result,
-    this.apiEndPoint,
-    this.message,
-    this.data,
+    required this.status,
+    required this.message,
+    required this.data,
   });
 
   factory ProfileDetailsModel.fromJson(Map<String, dynamic> json) => ProfileDetailsModel(
-    result: json["result"],
-    apiEndPoint: json["api_end_point"],
+    status: json["status"],
     message: json["message"],
-    data: json["data"] == null ? null : Data.fromJson(json["data"]),
+    data: Data.fromJson(json["data"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "result": result,
-    "api_end_point": apiEndPoint,
+    "status": status,
     "message": message,
-    "data": data?.toJson(),
+    "data": data.toJson(),
   };
 }
 
 class Data {
-  String? messages;
-  ProfileInfo? profileInfo;
+  final ProfileInfo profileInfo;
 
   Data({
-    this.messages,
-    this.profileInfo,
+    required this.profileInfo,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    messages: json["messages"],
-    profileInfo: json["profile_info"] == null ? null : ProfileInfo.fromJson(json["profile_info"]),
+    profileInfo: ProfileInfo.fromJson(json["profile_info"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "messages": messages,
-    "profile_info": profileInfo?.toJson(),
+    "profile_info": profileInfo.toJson(),
   };
 }
 
 class ProfileInfo {
-  int? id;
-  String? name;
-  String? email;
-  String? phone;
-  String? dateOfBirth;
-  String? joinDate;
-  String? nid;
-  String? passport;
-  String? occupation;
-  String? institution;
-  String? designation;
-  dynamic gender;
-  int? roleId;
-  String? avatar;
+  final int id;
+  final String name;
+  final String email;
+  final String phone;
+  final String occupation;
+  final String designation;
+  final String institution;
+  final String nid;
+  final DateTime dateOfBirth;
+  final String passport;
+  final dynamic gender;
+  final int roleId;
+  final String avatar;
 
   ProfileInfo({
-    this.id,
-    this.name,
-    this.email,
-    this.phone,
-    this.dateOfBirth,
-    this.joinDate,
-    this.nid,
-    this.passport,
-    this.occupation,
-    this.institution,
-    this.designation,
-    this.gender,
-    this.roleId,
-    this.avatar
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.phone,
+    required this.occupation,
+    required this.designation,
+    required this.institution,
+    required this.nid,
+    required this.dateOfBirth,
+    required this.passport,
+    required this.gender,
+    required this.roleId,
+    required this.avatar,
   });
 
   factory ProfileInfo.fromJson(Map<String, dynamic> json) => ProfileInfo(
@@ -89,16 +84,15 @@ class ProfileInfo {
     name: json["name"],
     email: json["email"],
     phone: json["phone"],
-    dateOfBirth: json["date_of_birth"],
-    joinDate: json["join_date"] ,
-    nid: json["nid"],
-    passport: json["passport"],
     occupation: json["occupation"],
-    institution: json["institution"],
     designation: json["designation"],
+    institution: json["institution"],
+    nid: json["nid"],
+    dateOfBirth: DateTime.parse(json["date_of_birth"]),
+    passport: json["passport"],
     gender: json["gender"],
     roleId: json["role_id"],
-    avatar: json["avatar"]
+    avatar: json["avatar"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -106,15 +100,14 @@ class ProfileInfo {
     "name": name,
     "email": email,
     "phone": phone,
-    "date_of_birth": dateOfBirth,
-    "join_date": joinDate,
-    "nid": nid,
-    "passport": passport,
     "occupation": occupation,
-    "institution": institution,
     "designation": designation,
+    "institution": institution,
+    "nid": nid,
+    "date_of_birth": "${dateOfBirth.year.toString().padLeft(4, '0')}-${dateOfBirth.month.toString().padLeft(2, '0')}-${dateOfBirth.day.toString().padLeft(2, '0')}",
+    "passport": passport,
     "gender": gender,
     "role_id": roleId,
-    "avatar" : avatar
+    "avatar": avatar,
   };
 }

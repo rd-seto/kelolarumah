@@ -20,7 +20,7 @@ class ProfileInfoContent extends StatelessWidget {
               shape: BoxShape.circle,
               image: DecorationImage(
                   image: NetworkImage(
-                    provider?.profileDetails?.data?.profileInfo?.avatar ??
+                    provider?.profileDetails?.data.profileInfo.avatar ??
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUefeN8m3w2jrqlb2CaPONb1XVKRTDXpyALbIlnpI-7A&s',
                   ),
                   fit: BoxFit.fill),

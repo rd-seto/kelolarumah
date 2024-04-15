@@ -43,7 +43,7 @@ class ProfileDetailsScreen extends StatelessWidget {
                 SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: provider.profileDetails?.data?.profileInfo?.email !=
+                    child: provider.profileDetails?.data.profileInfo.email !=
                             null
                         ? Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +77,7 @@ class ProfileDetailsScreen extends StatelessWidget {
                                           context,
                                           EditProfileScreen(
                                             profileData: provider.profileDetails
-                                                ?.data?.profileInfo,
+                                                ?.data.profileInfo,
                                             provider: provider,
                                           ));
                                     },

@@ -19,12 +19,12 @@ class NotificationListCart extends StatelessWidget {
       color: containerBackgroundColor,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 12.0.w, vertical: 16.h),
-        child: notificationResponse?.data?.items != null
+        child: notificationResponse?.data != null
             ? ListView.separated(
                 shrinkWrap: true,
-                itemCount: notificationResponse?.data?.items?.length ?? 0,
+                itemCount: notificationResponse?.data.length ?? 0,
                 itemBuilder: (context, index) {
-                  List<Item>? items = notificationResponse?.data?.items;
+                  List<Datum>? items = notificationResponse?.data;
                   return InkWell(
                     onTap: () {
                       NavUtil.navigateScreen(
@@ -61,7 +61,7 @@ class NotificationListCart extends StatelessWidget {
                                 height: 1.6,
                               ),
                               CustomText(
-                                text: items?[index].description ?? "",
+                                text: items?[index].message ?? "",
                                 color: AppColors.titleTextColor,
                                 fontSize: 14.sp,
                                 maxLine: 3,
@@ -71,27 +71,27 @@ class NotificationListCart extends StatelessWidget {
                               SizedBox(
                                 height: 6.h,
                               ),
-                              Row(
-                                children: [
-                                  CustomText(
-                                    text: items?[index].timeDifference ?? "",
-                                    color: AppColors.colorPrimary,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.6,
-                                  ),
-                                  const SizedBox(
-                                    width: 16,
-                                  ),
-                                  CustomText(
-                                    text: items?[index].createdAt ?? "",
-                                    color: AppColors.colorPrimary,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.6,
-                                  ),
-                                ],
-                              ),
+                              // Row(
+                              //   children: [
+                              //     CustomText(
+                              //       text: items?[index].timeDifference ?? "",
+                              //       color: AppColors.colorPrimary,
+                              //       fontSize: 12.sp,
+                              //       fontWeight: FontWeight.w500,
+                              //       height: 1.6,
+                              //     ),
+                              //     const SizedBox(
+                              //       width: 16,
+                              //     ),
+                              //     CustomText(
+                              //       text: items?[index].createdAt ?? "",
+                              //       color: AppColors.colorPrimary,
+                              //       fontSize: 12.sp,
+                              //       fontWeight: FontWeight.w500,
+                              //       height: 1.6,
+                              //     ),
+                              //   ],
+                              // ),
                             ],
                           ),
                         ),

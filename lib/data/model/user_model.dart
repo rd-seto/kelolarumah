@@ -14,65 +14,91 @@ class UserLogin {
 @HiveType(typeId: 0)
 class UserModel extends Equatable {
   @HiveField(0)
-  final String? name;
-  @HiveField(1)
-  final String? email;
-  @HiveField(2)
   final String? token;
-  @HiveField(3)
+  @HiveField(1)
+  final String? tokenType;
+  @HiveField(2)
   final int? id;
+  @HiveField(3)
+  final String? name;
   @HiveField(4)
-  final String? dateOfBirth;
+  final String? email;
   @HiveField(5)
-  final String? gender;
+  final String? phone;
   @HiveField(6)
-  final String? nid;
+  final String? occupation;
   @HiveField(7)
-  final String? passport;
+  final String? designation;
   @HiveField(8)
-  final int? roleId;
+  final String? institution;
   @HiveField(9)
+  final String? nid;
+  @HiveField(10)
+  final String? dateOfBirth;
+  @HiveField(11)
+  final String? passport;
+  @HiveField(12)
+  final String? gender;
+  @HiveField(13)
+  final int? roleId;
+  @HiveField(14)
   final String? avatar;
 
   const UserModel(
-      {this.name,
-      this.email,
-      this.token,
-      this.id,
-      this.gender,
-      this.nid,
-      this.passport,
-      this.dateOfBirth,
-      this.roleId,
-      this.avatar});
+      {
+        this.token,
+        this.tokenType,
+        this.id,
+        this.name,
+        this.email,
+        this.phone,
+        this.occupation,
+        this.designation,
+        this.institution,
+        this.nid,
+        this.dateOfBirth,
+        this.passport,
+        this.gender,
+        this.roleId,
+        this.avatar});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
+      token: json['access_token'],
+      tokenType: json['token_type'],
+      id: json['id'],
       name: json['name'] == null ? null : json["name"],
       email: json['email'],
-      token: json['access_token'],
-      id: json['id'],
-      gender: json['gender'],
+      phone: json['phone'],
+      occupation: json['occupation'],
+      designation: json['designation'],
+      institution: json['institution'],
       nid: json['nid'],
-      passport: json['passport'],
       dateOfBirth: json['date_of_birth'],
+      passport: json['passport'],
+      gender: json['gender'],
       roleId: json['role_id'],
       avatar: json['avatar'],
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "email": email,
-        'access_token': token,
-        'id': id,
-        'gender': gender,
-        "nid": nid,
-        "passport": passport,
-        "date_of_birth": dateOfBirth,
-        "role_id": roleId,
-        "avatar": avatar,
-      };
+    'access_token': token,
+    "token_type": tokenType,
+    'id': id,
+    "name": name,
+    "email": email,
+    "phone":phone,
+    "occupation": occupation,
+    "designation": designation,
+    "institution":institution,
+    "nid": nid,
+    "date_of_birth": dateOfBirth,
+    "passport": passport,
+    'gender': gender,
+    "role_id": roleId,
+    "avatar": avatar,
+  };
 
   @override
   List<Object?> get props => [name, email, id, avatar];
