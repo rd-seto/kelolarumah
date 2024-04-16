@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/elevated_button_widget.dart';
-import 'package:landlord/components/text_form_field.dart';
 import 'package:landlord/data/model/tenants_details_model.dart';
 import 'package:landlord/data/provider/tenant_edit_provider.dart';
 import 'package:landlord/data/provider/tenants_details_provider.dart';

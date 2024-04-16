@@ -11,14 +11,13 @@ class FromField extends StatelessWidget {
   final IconButton? suffixIcon;
   final Icon? prefixIcon;
   const FromField(
-      {Key? key,
+      {super.key,
       this.hintText,
       this.title,
       this.suffixIcon,
       this.controller,
       this.prefixIcon,
-      this.onChange})
-      : super(key: key);
+      this.onChange});
 
   @override
   Widget build(BuildContext context) {

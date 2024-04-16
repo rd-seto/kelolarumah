@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_app_bar.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/provider/property_provider.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/properties_details_screen.dart';
-import 'package:landlord/pages/landlord/drawer/properties/properties_screen/components/propertiesListContainer.dart';
+import 'package:landlord/pages/landlord/drawer/properties/properties_screen/components/properties_list_container.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/no_data_found_widget.dart';
 import 'package:landlord/utils/theme/app_colors.dart';

@@ -63,7 +63,6 @@ void main() async {
       ],
       path: 'assets/translations',
       saveLocale: true,
-      // assetLoader: CsvAssetLoader(),
       fallbackLocale: const Locale('en', 'US'),
       child: const MyApp()));
 }
@@ -82,9 +81,6 @@ Future<void> getDeviceId() async {
     final result =
         '${androidDeviceInfo.brand}-${androidDeviceInfo.device}-${androidDeviceInfo.id}';
     SPUtill.setValue(SPUtill.keyAndroidDeviceToken, result);
-    // final map = androidDeviceInfo.toMap();
-    // print('Device Map: $map');
-    // return androidDeviceInfo.androidId; // unique ID on Android
   }
 }
 

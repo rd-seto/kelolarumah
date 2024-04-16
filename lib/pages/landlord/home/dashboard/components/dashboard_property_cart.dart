@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_details/properties_details_screen.dart';
-import 'package:landlord/pages/landlord/drawer/properties/properties_screen/components/propertiesListContainer.dart';
+import 'package:landlord/pages/landlord/drawer/properties/properties_screen/components/properties_list_container.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_screen/properties_screen.dart';
 import 'package:landlord/pages/landlord/home/dashboard/components/see_all_container.dart';
 import 'package:landlord/utils/nav_utail.dart';

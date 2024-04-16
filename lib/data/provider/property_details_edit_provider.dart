@@ -233,7 +233,7 @@ class PropertyDetailsEditProvider extends ChangeNotifier {
   onPropertySelect({required FacilityType selectId}) {
     selectedfacilities = selectId;
     typeId = '${selectedfacilities?.id}';
-    print('typeId${typeId}');
+    debugPrint('typeId$typeId');
     notifyListeners();
   }
 

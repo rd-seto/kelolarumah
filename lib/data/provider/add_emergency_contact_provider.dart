@@ -18,7 +18,7 @@ class AddEmergencyContractProvider extends ChangeNotifier {
 
   final debounce = Debounce(milliseconds: 500);
 
-  AddEmergencyContractProvider(context) {}
+  AddEmergencyContractProvider(context);
 
   void addEmergencyContract(context, tenantId, VoidCallback onDone) async {
     final data = {

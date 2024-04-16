@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 
-import '../model/TransactionDetailsModel.dart';
+import '../model/transaction_details_model.dart';
 
 class TransactionDetailsProvider extends ChangeNotifier{
 

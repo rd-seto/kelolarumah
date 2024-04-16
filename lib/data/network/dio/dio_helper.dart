@@ -48,7 +48,7 @@ class DioHelper {
       } else {
         showErrorMessage(response);
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       showErrorMessage(e.response);
     }
     return const Text('Something Went Wrong');
@@ -103,7 +103,7 @@ class DioHelper {
       } else {
         showErrorMessage(response);
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (showLoader) DioUtils.dismissDialog();
       showErrorMessage(e.response);
     }

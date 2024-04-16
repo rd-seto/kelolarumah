@@ -22,7 +22,7 @@ class TenantAppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('device type ${context.deviceType()}');
+    debugPrint('device type ${context.deviceType()}');
     return Drawer(
       backgroundColor: AppColors.backgroundColor,
       child: SafeArea(
