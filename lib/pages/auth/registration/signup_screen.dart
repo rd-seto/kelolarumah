@@ -142,7 +142,7 @@ class SignUpScreen extends StatelessWidget {
                         }
                       },
                       child: Text(
-                        'Sign_In',
+                        'Sign_up',
                         style: TextStyle(
                           color: AppColors.colorPrimary,
                           letterSpacing: 1.sp,

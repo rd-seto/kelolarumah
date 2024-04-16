@@ -69,23 +69,12 @@ class PropertiesDashboardSummary extends StatelessWidget {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w700,
                 ),
-                data?.data?.statistics != null
-                    ? CustomText(
-                        text: data?.data?.statistics?.occupied.toString(),
-                        color: AppColors.colorWhite,
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.w700,
-                      )
-                    : Shimmer.fromColors(
-                        baseColor: const Color(0xFFE8E8E8),
-                        highlightColor: Colors.white,
-                        child: CustomText(
-                          text: '',
-                          color: const Color(0xFFE8E8E8),
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
+                CustomText(
+                  text: data?.data?.statistics?.occupied.toString(),
+                  color: AppColors.colorWhite,
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w700,
+                )
               ],
             ),
           ),
