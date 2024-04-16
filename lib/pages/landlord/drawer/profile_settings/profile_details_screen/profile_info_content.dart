@@ -31,14 +31,14 @@ class ProfileInfoContent extends StatelessWidget {
           //   height: 80.h,
           // ),
           CustomText(
-            text: provider?.profileDetails?.data?.profileInfo?.name ?? '',
+            text: provider?.profileDetails?.data.profileInfo.name ?? '',
             color: AppColors.titleTextColor,
             fontSize: 16.sp,
             fontWeight: FontWeight.w700,
             height: 1.75,
           ),
           CustomText(
-            text: provider?.profileDetails?.data?.profileInfo?.email ?? '',
+            text: provider?.profileDetails?.data.profileInfo.email ?? '',
             color: AppColors.black2Sd,
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,

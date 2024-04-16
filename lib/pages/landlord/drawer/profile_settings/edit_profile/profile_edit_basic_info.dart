@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import '../../../../../components/elevated_button_widget.dart';
 import '../../../../../components/text_form_field.dart';
 import '../../../../../data/model/profile_details_model.dart';
-import '../../../../../data/model/user_model.dart';
 
 class ProfileEditBasicInfo extends StatefulWidget {
   final ProfileInfo? profileData;

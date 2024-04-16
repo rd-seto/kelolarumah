@@ -113,7 +113,7 @@ class PropertyTenantsContainer extends StatelessWidget {
               ],
             ),
           ),
-          provider?.propertyDetailsResponse?.data?.currentTenant == true
+          provider?.propertyDetailsResponse?.data?.currentTenant == null
               ? ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
