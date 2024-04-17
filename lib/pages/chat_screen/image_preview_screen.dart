@@ -44,14 +44,13 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
     try {
       Uint8List imageInUnit8List = base64Decode(message);
       final tempDir = await getTemporaryDirectory();
-      print(tempDir.path.toString());
       File file =
           await File('/storage/emulated/0/Download/image$randomNumber.png')
               .create();
       file.writeAsBytesSync(imageInUnit8List);
       Fluttertoast.showToast(msg: 'Download Complete');
-    } on Exception catch (e) {
-      print(e.toString());
+    } on Exception catch (_) {
+      rethrow;
     }
   }
 }

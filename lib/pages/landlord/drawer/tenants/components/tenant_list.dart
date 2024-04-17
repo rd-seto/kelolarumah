@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/components/tenant_row_item.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';

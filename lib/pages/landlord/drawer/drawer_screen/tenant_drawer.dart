@@ -8,7 +8,6 @@ import 'package:landlord/pages/chat_screen/chat_room.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/profile_details_screen/profile_details_screen.dart';
 import 'package:landlord/pages/language/language_screen.dart';
 import 'package:landlord/pages/tenants/due_payment/view/due_payment_page.dart';
-import 'package:landlord/pages/tenants/my_wishlist/view/my_wishlist_page.dart';
 import 'package:landlord/pages/tenants/properties/view/tenant_properties_screen.dart';
 import 'package:landlord/pages/tenants/purchase_history/view/purchase_history_page.dart';
 import 'package:landlord/utils/nav_utail.dart';
@@ -22,7 +21,7 @@ class TenantAppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('device type ${context.deviceType()}');
+    debugPrint('device type ${context.deviceType()}');
     return Drawer(
       backgroundColor: AppColors.backgroundColor,
       child: SafeArea(

@@ -77,13 +77,11 @@ class _ChatRoomState extends State<ChatRoom> {
                       shrinkWrap: true,
                       itemCount: snapshot.data?.length,
                       itemBuilder: (context, index) {
-                        if (userIdSnapshot.data !=
-                            snapshot.data?.elementAt(index).uid) {
-                          String? chatUser =
-                              snapshot.data?.elementAt(index).uid;
+                        if (userIdSnapshot.data.toString() != snapshot.data?.elementAt(index).uid) {
 
-                          String? lastMessage =
-                              snapshot.data?.elementAt(index).message;
+                          String? chatUser = snapshot.data?.elementAt(index).uid;
+
+                          String? lastMessage = snapshot.data?.elementAt(index).message;
 
                           FirebaseService().getUserData(chatUser ?? '');
 
