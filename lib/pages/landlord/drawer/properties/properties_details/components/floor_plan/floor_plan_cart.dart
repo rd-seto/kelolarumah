@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -52,11 +53,8 @@ class FloorPlanCart extends StatelessWidget {
                   : GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: provider?.propertyDetailsResponse?.data
-                              ?.floorPlans?.length ??
-                          0,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                      itemCount: provider?.propertyDetailsResponse?.data?.floorPlans?.length ?? 0,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                               mainAxisExtent: 150,
                               crossAxisCount: 2,
                               crossAxisSpacing: 20.0,
@@ -64,7 +62,10 @@ class FloorPlanCart extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         final data = provider
                             ?.propertyDetailsResponse?.data?.floorPlans?[index];
-                        return Image.network(data?.path ?? '');
+                        return CachedNetworkImage(
+                          placeholder: (context, url) => const Center(child:  SizedBox( height : 20, width: 20, child: CircularProgressIndicator( color: AppColors.colorPrimary,),),), // Add whatever you want to display.
+                          imageUrl: data!.path!,
+                        );
                       },
                     ),
               // SizedBox(

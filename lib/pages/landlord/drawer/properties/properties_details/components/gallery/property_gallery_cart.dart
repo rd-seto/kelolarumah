@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -30,7 +31,7 @@ class PropertyGalleryCart extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 20.0),
                           child: CustomText(
                             height: 1,
-                            text: 'No Gallery Found Please add some',
+                            text: 'No Gallery Image Found Please add some',
                             color: Colors.black,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w700,
@@ -39,9 +40,7 @@ class PropertyGalleryCart extends StatelessWidget {
                       : GridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: provider?.propertyDetailsResponse?.data
-                                  ?.gallery?.length ??
-                              0,
+                          itemCount: provider?.propertyDetailsResponse?.data?.gallery?.length ?? 0,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                                   mainAxisExtent: 150,
@@ -51,7 +50,11 @@ class PropertyGalleryCart extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             final data = provider?.propertyDetailsResponse?.data
                                 ?.gallery?[index];
-                            return Image.network(data!.path!);
+                            return CachedNetworkImage(
+                              placeholder: (context, url) => const Center(child:  SizedBox( height : 20, width: 20, child: CircularProgressIndicator( color: AppColors.colorPrimary,),),), // Add whatever you want to display.
+                              imageUrl: data!.path!,
+                            );
+                            //return Image.network(data!.path!);
                           },
                         ),
                   // SizedBox(
