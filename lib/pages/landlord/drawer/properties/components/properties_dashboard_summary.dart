@@ -5,9 +5,13 @@ import 'package:landlord/data/model/property_list_model.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../../data/provider/dashboard_provider.dart';
+import '../../../../../data/provider/property_provider.dart';
+
 class PropertiesDashboardSummary extends StatelessWidget {
   final PropertyListModel? data;
-  const PropertiesDashboardSummary({super.key, this.data});
+  final PropertyProvider? provider;
+  const PropertiesDashboardSummary({super.key, this.data, this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -29,23 +33,17 @@ class PropertiesDashboardSummary extends StatelessWidget {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w700,
                 ),
-                data?.data?.statistics != null
-                    ? CustomText(
-                        text: data?.data?.statistics?.total.toString(),
+                provider?.propertyStatics?.total != null ?
+                CustomText(
+                        text: provider?.propertyStatics?.total.toString() ?? "0",
                         color: AppColors.colorWhite,
                         fontSize: 24.sp,
                         fontWeight: FontWeight.w700,
-                      )
-                    : Shimmer.fromColors(
-                        baseColor: const Color(0xFFE8E8E8),
-                        highlightColor: Colors.white,
-                        child: CustomText(
-                          text: '',
-                          color: const Color(0xFFE8E8E8),
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
+                      ) : Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        child: SizedBox( height : 15.h, width: 15.w, child: const CircularProgressIndicator(color: AppColors.colorWhite,)),
+                )
+
               ],
             ),
           ),
@@ -69,11 +67,15 @@ class PropertiesDashboardSummary extends StatelessWidget {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w700,
                 ),
+                provider?.propertyStatics?.occupied != null ?
                 CustomText(
-                  text: data?.data?.statistics?.occupied.toString(),
+                  text: provider?.propertyStatics?.occupied.toString() ?? "0",
                   color: AppColors.colorWhite,
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w700,
+                ) : Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  child: SizedBox( height : 15.h, width: 15.w, child: const CircularProgressIndicator(color: AppColors.colorWhite,)),
                 )
               ],
             ),
@@ -97,28 +99,16 @@ class PropertiesDashboardSummary extends StatelessWidget {
                   color: AppColors.colorWhite,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w700,
-                ),
-                data?.data?.statistics != null
-                    ? CustomText(
-                        text: data?.data?.statistics?.vacant.toString(),
-                        color: AppColors.colorWhite,
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.w700,
-                      )
-                    : SizedBox(
-                        height: 20,
-                        width: 30,
-                        child: Shimmer.fromColors(
-                          baseColor: const Color(0xFFE8E8E8),
-                          highlightColor: Colors.black,
-                          child: CustomText(
-                            text: '',
-                            color: const Color(0xFFE8E8E8),
-                            fontSize: 24.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
+                ),provider?.propertyStatics?.vacant != null ?
+                CustomText(
+                  text: provider?.propertyStatics?.vacant.toString() ?? "0",
+                  color: AppColors.colorWhite,
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w700,
+                ) : Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  child: SizedBox( height : 15.h, width: 15.w, child: const CircularProgressIndicator(color: AppColors.colorWhite,)),
+                )
               ],
             ),
           ),

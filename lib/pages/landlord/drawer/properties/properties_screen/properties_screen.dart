@@ -10,10 +10,11 @@ import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../data/provider/dashboard_provider.dart';
 import 'components/property_list_screen.dart';
 
 class PropertiesScreen extends StatefulWidget {
-  const PropertiesScreen({super.key});
+  const PropertiesScreen({super.key,});
 
   @override
   State<PropertiesScreen> createState() => _PropertiesScreenState();
@@ -56,6 +57,7 @@ class _PropertiesScreenState extends State<PropertiesScreen> {
                     children: [
                       //Dashboard//
                       PropertiesDashboardSummary(
+                        provider: provider,
                           data: provider.propertyListResponse),
                       SizedBox(
                         height: 30.h,

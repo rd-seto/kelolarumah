@@ -7,6 +7,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class PropertyProvider extends ChangeNotifier {
   PropertyListModel? propertyListResponse;
+  Statistics? propertyStatics;
   List<ListElement> listOfProperties = <ListElement>[];
 
   int page = 1;
@@ -53,6 +54,7 @@ class PropertyProvider extends ChangeNotifier {
 
   void propertyData(BuildContext context) async {
     var apiResponse = await RepositoryImpl(context).getPropertyData(page);
+    propertyStatics = apiResponse?.data?.statistics;
     if (apiResponse?.result == true) {
       if(apiResponse?.data?.properties?.list?.isNotEmpty == true){
         if(page == 1){
