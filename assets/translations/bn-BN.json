@@ -255,5 +255,6 @@
   "recommended_properties": "রেকমেন্ডেড প্রোপারটিস",
   "discounted_properties": "ডিসকাউন্টেড প্রোপারটিস",
   "owner": "মালিক",
-  "email": "ইমেইল"
+  "email": "ইমেইল",
+  "No_data_found": "কোন ডাটা পাওয়া যায় নি"
 }
