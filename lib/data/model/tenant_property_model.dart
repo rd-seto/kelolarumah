@@ -1,10 +1,7 @@
 import 'dart:convert';
 
-TenantPropertyModel tenantPropertyModelFromJson(String str) =>
-    TenantPropertyModel.fromJson(json.decode(str));
+TenantPropertyModel tenantPropertyModelFromJson(String str) => TenantPropertyModel.fromJson(json.decode(str));
 
-String tenantPropertyModelToJson(TenantPropertyModel data) =>
-    json.encode(data.toJson());
 
 class TenantPropertyModel {
   final bool? status;
@@ -17,18 +14,11 @@ class TenantPropertyModel {
     this.data,
   });
 
-  factory TenantPropertyModel.fromJson(Map<String, dynamic> json) =>
-      TenantPropertyModel(
-        status: json["status"],
-        message: json["message"],
-        data: json["data"] == null ? null : Data.fromJson(json["data"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
-        "data": data?.toJson(),
-      };
+  factory TenantPropertyModel.fromJson(Map<String, dynamic> json) => TenantPropertyModel(
+    status: json["status"],
+    message: json["message"],
+    data: Data.fromJson(json["data"]),
+  );
 }
 
 class Data {
@@ -47,30 +37,12 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        trendingProperties: json["trending_properties"] == null
-            ? null
-            : Properties.fromJson(json["trending_properties"]),
-        recommendedProperties: json["recommended_properties"] == null
-            ? null
-            : Properties.fromJson(json["recommended_properties"]),
-        discountedProperties: json["discounted_properties"] == null
-            ? null
-            : Properties.fromJson(json["discounted_properties"]),
-        rentProperties: json["rent_properties"] == null
-            ? null
-            : Properties.fromJson(json["rent_properties"]),
-        buyProperties: json["buy_properties"] == null
-            ? null
-            : Properties.fromJson(json["buy_properties"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "trending_properties": trendingProperties?.toJson(),
-        "recommended_properties": recommendedProperties?.toJson(),
-        "discounted_properties": discountedProperties?.toJson(),
-        "rent_properties": rentProperties?.toJson(),
-        "buy_properties": buyProperties?.toJson(),
-      };
+    trendingProperties: Properties.fromJson(json["trending_properties"]),
+    recommendedProperties: Properties.fromJson(json["recommended_properties"]),
+    discountedProperties: Properties.fromJson(json["discounted_properties"]),
+    rentProperties: Properties.fromJson(json["rent_properties"]),
+    buyProperties: Properties.fromJson(json["buy_properties"]),
+  );
 }
 
 class Properties {
@@ -81,17 +53,8 @@ class Properties {
   });
 
   factory Properties.fromJson(Map<String, dynamic> json) => Properties(
-        list: json["list"] == null
-            ? []
-            : List<ListElement>.from(
-                json["list"]!.map((x) => ListElement.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "list": list == null
-            ? []
-            : List<dynamic>.from(list!.map((x) => x.toJson())),
-      };
+    list: List<ListElement>.from(json["list"].map((x) => ListElement.fromJson(x))),
+  );
 }
 
 class ListElement {
@@ -107,16 +70,15 @@ class ListElement {
   final String? price;
   final String? discountAmount;
   final String? discountType;
-  final dynamic rentType;
+  final String? rentType;
   final String? image;
   final int? type;
   final String? vacant;
-  final String? detailsUrl;
   final String? flatNo;
   final String? completion;
   final String? dealType;
   final String? category;
-  final String? owner;
+  final Owner? owner;
 
   ListElement({
     this.id,
@@ -135,7 +97,6 @@ class ListElement {
     this.image,
     this.type,
     this.vacant,
-    this.detailsUrl,
     this.flatNo,
     this.completion,
     this.dealType,
@@ -144,52 +105,47 @@ class ListElement {
   });
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
-        id: json["id"],
-        advertiseId: json["advertise_id"],
-        name: json["name"],
-        slug: json["slug"],
-        address: json["address"],
-        bedrooms: json["bedrooms"],
-        bathrooms: json["bathrooms"],
-        size: json["size"],
-        bookingAmount: json["booking_amount"],
-        price: json["price"],
-        discountAmount: json["discount_amount"],
-        discountType: json["discount_type"],
-        rentType: json["rent_type"],
-        image: json["image"],
-        type: json["type"],
-        vacant: json["vacant"],
-        detailsUrl: json["details_url"],
-        flatNo: json["flat_no"],
-        completion: json["completion"],
-        dealType: json["deal_type"],
-        category: json["category"],
-        owner: json["owner"],
-      );
+    id: json["id"],
+    advertiseId: json["advertise_id"],
+    name: json["name"],
+    slug: json["slug"],
+    address: json["address"],
+    bedrooms: json["bedrooms"],
+    bathrooms: json["bathrooms"],
+    size: json["size"],
+    bookingAmount: json["booking_amount"],
+    price: json["price"],
+    discountAmount: json["discount_amount"],
+    discountType: json["discount_type"],
+    rentType: json["rent_type"],
+    image: json["image"],
+    type: json["type"],
+    vacant: json["vacant"],
+    flatNo: json["flat_no"],
+    completion: json["completion"],
+    dealType: json["deal_type"],
+    category: json["category"],
+    owner: Owner.fromJson(json["owner"]),
+  );
+}
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "advertise_id": advertiseId,
-        "name": name,
-        "slug": slug,
-        "address": address,
-        "bedrooms": bedrooms,
-        "bathrooms": bathrooms,
-        "size": size,
-        "booking_amount": bookingAmount,
-        "price": price,
-        "discount_amount": discountAmount,
-        "discount_type": discountType,
-        "rent_type": rentType,
-        "image": image,
-        "type": type,
-        "vacant": vacant,
-        "details_url": detailsUrl,
-        "flat_no": flatNo,
-        "completion": completion,
-        "deal_type": dealType,
-        "category": category,
-        "owner": owner,
-      };
+class Owner {
+  final int? id;
+  final String? name;
+  final String? email;
+  final String? phone;
+
+  Owner({
+    this.id,
+    this.name,
+    this.email,
+    this.phone,
+  });
+
+  factory Owner.fromJson(Map<String, dynamic> json) => Owner(
+    id: json["id"],
+    name: json["name"],
+    email: json["email"],
+    phone: json["phone"],
+  );
 }

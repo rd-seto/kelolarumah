@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:landlord/data/model/user_model.dart';
 import 'package:landlord/pages/chat_screen/friend.dart';
@@ -22,9 +23,9 @@ class _ChatRoomState extends State<ChatRoom> {
       appBar: AppBar(
         foregroundColor: Colors.white,
         backgroundColor: AppColors.colorPrimary,
-        title: const Text(
-          'Chat Room',
-          style: TextStyle(color: Colors.white),
+        title: Text(
+          'chat_room'.tr(),
+          style: const TextStyle(color: Colors.white),
         ),
       ),
       body: FutureBuilder<int?>(

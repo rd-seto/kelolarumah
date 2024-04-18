@@ -118,30 +118,14 @@ class _TenantPropertiesScreenState extends State<TenantPropertiesScreen> {
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
-                                  provider
-                                              .tenantPropertyModel
-                                              ?.data
-                                              ?.trendingProperties
-                                              ?.list
-                                              ?.isEmpty ==
-                                          false
+                                  provider.tenantPropertyModel?.data?.trendingProperties?.list?.isEmpty == false
                                       ? ListView.builder(
                                           shrinkWrap: true,
                                           physics:
                                               const NeverScrollableScrollPhysics(),
-                                          itemCount: provider
-                                                  .tenantPropertyModel
-                                                  ?.data
-                                                  ?.trendingProperties
-                                                  ?.list
-                                                  ?.length ??
-                                              0,
+                                          itemCount: provider.tenantPropertyModel?.data?.trendingProperties?.list?.length ?? 0,
                                           itemBuilder: (context, index) {
-                                            final data = provider
-                                                .tenantPropertyModel
-                                                ?.data
-                                                ?.trendingProperties
-                                                ?.list?[index];
+                                            final data = provider.tenantPropertyModel?.data?.trendingProperties?.list?[index];
                                             return Padding(
                                               padding:
                                                   const EdgeInsets.symmetric(
@@ -160,24 +144,18 @@ class _TenantPropertiesScreenState extends State<TenantPropertiesScreen> {
                                                   thumbnail: data?.image ?? '',
                                                   title: data?.name ?? "",
                                                   address: data?.address ?? "",
-                                                  bedrooms: data?.bathrooms
-                                                          .toString() ??
-                                                      '',
-                                                  bathrooms: data?.bathrooms
-                                                          .toString() ??
-                                                      '',
+                                                  bedrooms: data?.bathrooms.toString() ?? '',
+                                                  bathrooms: data?.bathrooms.toString() ?? '',
                                                   size: data?.size ?? '',
                                                   price: data?.price ?? '',
-                                                  type: data?.type.toString() ??
-                                                      '',
+                                                  type: data?.type.toString() ?? '',
                                                   vacant: data?.vacant ?? '',
                                                   flatNo: data?.flatNo ?? '',
-                                                  completion:
-                                                      data?.completion ?? '',
-                                                  dealType:
-                                                      data?.dealType ?? '',
-                                                  category:
-                                                      data?.category ?? '',
+                                                  completion: data?.completion ?? '',
+                                                  dealType: data?.dealType ?? '',
+                                                  category: data?.category ?? '',
+                                                  phoneNumber: data?.owner?.phone,
+                                                  emailAddress: data?.owner?.email,
                                                 ),
                                               ),
                                             );
@@ -247,38 +225,21 @@ class _TenantPropertiesScreenState extends State<TenantPropertiesScreen> {
                                                             ));
                                                       },
                                                       child: WishlistContent(
-                                                        thumbnail:
-                                                            data?.image ?? '',
+                                                        thumbnail: data?.image ?? '',
                                                         title: data?.name ?? "",
-                                                        address:
-                                                            data?.address ?? "",
-                                                        bedrooms: data
-                                                                ?.bathrooms
-                                                                .toString() ??
-                                                            '',
-                                                        bathrooms: data
-                                                                ?.bathrooms
-                                                                .toString() ??
-                                                            '',
+                                                        address: data?.address ?? "",
+                                                        bedrooms: data?.bathrooms.toString() ?? '',
+                                                        bathrooms: data?.bathrooms.toString() ?? '',
                                                         size: data?.size ?? '',
-                                                        price:
-                                                            data?.price ?? '',
-                                                        type: data?.type
-                                                                .toString() ??
-                                                            '',
-                                                        vacant:
-                                                            data?.vacant ?? '',
-                                                        flatNo:
-                                                            data?.flatNo ?? '',
-                                                        completion:
-                                                            data?.completion ??
-                                                                '',
-                                                        dealType:
-                                                            data?.dealType ??
-                                                                '',
-                                                        category:
-                                                            data?.category ??
-                                                                '',
+                                                        price: data?.price ?? '',
+                                                        type: data?.type.toString() ?? '',
+                                                        vacant: data?.vacant ?? '',
+                                                        flatNo: data?.flatNo ?? '',
+                                                        completion: data?.completion ?? '',
+                                                        dealType: data?.dealType ?? '',
+                                                        category: data?.category ?? '',
+                                                        phoneNumber: data?.owner?.phone,
+                                                        emailAddress: data?.owner?.email,
                                                       ),
                                                     ),
                                                   );
@@ -383,6 +344,8 @@ class _TenantPropertiesScreenState extends State<TenantPropertiesScreen> {
                                                         category:
                                                             data?.category ??
                                                                 '',
+                                                        phoneNumber: data?.owner?.phone,
+                                                        emailAddress: data?.owner?.email,
                                                       ),
                                                     ),
                                                   );

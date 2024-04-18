@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:remixicon/remixicon.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WishlistContent extends StatelessWidget {
   const WishlistContent({
@@ -21,6 +22,8 @@ class WishlistContent extends StatelessWidget {
     required this.completion,
     required this.dealType,
     required this.category,
+    this.phoneNumber,
+    this.emailAddress,
   });
 
   final String thumbnail;
@@ -36,6 +39,8 @@ class WishlistContent extends StatelessWidget {
   final String completion;
   final String dealType;
   final String category;
+  final String? phoneNumber;
+  final String? emailAddress;
 
   @override
   Widget build(BuildContext context) {
@@ -232,7 +237,9 @@ class WishlistContent extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            _makingPhoneCall(phoneNumber ?? "");
+                          },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(6),
@@ -247,7 +254,9 @@ class WishlistContent extends StatelessWidget {
                     SizedBox(width: 12.w),
                     Expanded(
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            _makingEmail(emailAddress ?? "");
+                          },
                           style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 side: BorderSide(
@@ -272,3 +281,22 @@ class WishlistContent extends StatelessWidget {
     );
   }
 }
+
+_makingPhoneCall(String phoneNumber) async {
+  var url = Uri.parse("tel:$phoneNumber");
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+_makingEmail(String emailAddress) {
+  final Uri emailLaunchUri = Uri(
+    scheme: 'mailto',
+    path: emailAddress,
+  );
+  launchUrl(emailLaunchUri);
+}
+
+
