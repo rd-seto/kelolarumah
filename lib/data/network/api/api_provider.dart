@@ -1,5 +1,6 @@
 class ApiProvider {
   static const String baseUrl = 'https://landlord.onesttech.com/api';
+  // static const String baseUrl = 'https://pm.rentofy.in/api';
 
   static String login = '$baseUrl/public/v1/login';
   static String registration = '$baseUrl/register';
