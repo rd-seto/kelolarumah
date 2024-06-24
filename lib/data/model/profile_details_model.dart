@@ -20,13 +20,13 @@ class ProfileDetailsModel {
   });
 
   factory ProfileDetailsModel.fromJson(Map<String, dynamic> json) => ProfileDetailsModel(
-    status: json["status"],
+    status: json["result"],
     message: json["message"],
     data: Data.fromJson(json["data"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
+    "result": status,
     "message": message,
     "data": data.toJson(),
   };
@@ -50,18 +50,18 @@ class Data {
 
 class ProfileInfo {
   final int id;
-  final String name;
-  final String email;
-  final String phone;
-  final String occupation;
-  final String designation;
-  final String institution;
-  final String nid;
-  final DateTime dateOfBirth;
-  final String passport;
-  final dynamic gender;
-  final int roleId;
-  final String avatar;
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? occupation;
+  final String? designation;
+  final String? institution;
+  final String? nid;
+  final DateTime? dateOfBirth;
+  final String? passport;
+  final String? gender;
+  final int? roleId;
+  final String? avatar;
 
   ProfileInfo({
     required this.id,
@@ -104,7 +104,7 @@ class ProfileInfo {
     "designation": designation,
     "institution": institution,
     "nid": nid,
-    "date_of_birth": "${dateOfBirth.year.toString().padLeft(4, '0')}-${dateOfBirth.month.toString().padLeft(2, '0')}-${dateOfBirth.day.toString().padLeft(2, '0')}",
+    "date_of_birth": "${dateOfBirth?.year.toString().padLeft(4, '0')}-${dateOfBirth?.month.toString().padLeft(2, '0')}-${dateOfBirth?.day.toString().padLeft(2, '0')}",
     "passport": passport,
     "gender": gender,
     "role_id": roleId,
