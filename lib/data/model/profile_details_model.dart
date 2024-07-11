@@ -20,7 +20,7 @@ class ProfileDetailsModel {
   });
 
   factory ProfileDetailsModel.fromJson(Map<String, dynamic> json) => ProfileDetailsModel(
-    status: json["result"],
+    status: json["status"],
     message: json["message"],
     data: Data.fromJson(json["data"]),
   );

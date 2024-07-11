@@ -17,8 +17,8 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return UserModel(
-      token: fields[0] as String,
-      tokenType: fields[1] as String,
+      token: fields[0] as String?,
+      tokenType: fields[1] as String?,
       id: fields[2] as int?,
       name: fields[3] as String?,
       email: fields[4] as String?,
