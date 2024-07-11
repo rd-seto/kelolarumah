@@ -47,13 +47,13 @@ class GridDashboardSummaryCart extends StatelessWidget {
                 const SizedBox(
                   height: 6,
                 ),
-                CustomText(
-                  text: '0',
-                  color: AppColors.paraTxt1,
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
-                  height: 1.75,
-                ),
+                // CustomText(
+                //   text: '0',
+                //   color: AppColors.paraTxt1,
+                //   fontSize: 12.sp,
+                //   fontWeight: FontWeight.w600,
+                //   height: 1.75,
+                // ),
                 CustomText(
                   text: gridDashboardData?[index].title ?? '',
                   color: AppColors.paraTxt1,
