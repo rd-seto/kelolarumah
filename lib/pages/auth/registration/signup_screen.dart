@@ -69,13 +69,13 @@ class SignUpScreen extends StatelessWidget {
                 SizedBox(
                   height: 20.h,
                 ),
-                AuthFromField(
+                const AuthFromField(
                   title: "Phone",
                   hintText: "123345566",
                   cursorColor: AppColors.colorWhite,
-                  onChange: (val) {
-                    userRegistration.phone = val;
-                  },
+                  // onChange: (val) {
+                  //   userRegistration.phone = val;
+                  // },
                 ),
                 SizedBox(
                   height: 20.h,
@@ -142,7 +142,7 @@ class SignUpScreen extends StatelessWidget {
                         }
                       },
                       child: Text(
-                        'Sign_up',
+                        'Sign up'.tr(),
                         style: TextStyle(
                           color: AppColors.colorPrimary,
                           letterSpacing: 1.sp,

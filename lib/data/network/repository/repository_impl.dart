@@ -13,7 +13,7 @@ class RepositoryImpl {
       _repositoryMethods.login(userLogin: userLogin);
 
   Future<UserModel?> registration(UserRegistration userRegistration) =>
-      _repositoryMethods.registration(userLogin: userRegistration);
+      _repositoryMethods.registration(userRegistration: userRegistration);
 
   Future postSentToken(final data) =>
       _repositoryMethods.sentFirebaseToken(data: data);

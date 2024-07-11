@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:landlord/data/model/registration_model.dart';
 import 'package:landlord/data/model/user_model.dart';
 import 'package:landlord/data/network/repository/repository.dart';
@@ -50,7 +51,10 @@ class AuthProvider {
       if (user != null) {
         SPUtill.setIntValue(SPUtill.keyUserId, user.id);
         context.read<LocalAutProvider>().updateUser(user);
-        NavUtil.pushAndRemoveUntil(context, const CustomBottomNavBar());
+        Fluttertoast.showToast(msg: "Registration successfully done");
+        NavUtil.pushAndRemoveUntil(context, const LoginScreen());
+      } else{
+        Fluttertoast.showToast(msg: "Something went wrong");
       }
     });
   }

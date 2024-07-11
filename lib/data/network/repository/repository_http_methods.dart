@@ -16,14 +16,14 @@ class RepositoryMethods {
         name: ApiProvider.login);
   }
 
-  Future<UserModel?> registration({required UserRegistration userLogin}) async {
+  Future<UserModel?> registration({required UserRegistration userRegistration}) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
         methodType: MethodType.post,
-        json: userLogin.toJson(),
+        json: userRegistration.toJson(),
+        showLoader: true,
         toJsonFunc: (json) => UserModel.fromJson(json),
         returnDataFun: (data) => data,
-        showLoader: true,
         name: ApiProvider.registration);
   }
 
