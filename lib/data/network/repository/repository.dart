@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:landlord/data/model/payment_report.dart';
+import 'package:landlord/data/model/tenant_report.dart';
 import 'package:landlord/data/model/transaction_details_model.dart';
 import 'package:landlord/data/model/account_category_model.dart';
 import 'package:landlord/data/model/add_transaction_model.dart';

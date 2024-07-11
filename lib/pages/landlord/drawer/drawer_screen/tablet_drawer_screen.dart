@@ -7,7 +7,6 @@ import 'package:landlord/pages/landlord/drawer/cash_management/cash_management_a
 import 'package:landlord/pages/landlord/drawer/document/document_list/document_list_screen.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/profile_details_screen/profile_details_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/properties_screen/properties_screen.dart';
-import 'package:landlord/pages/landlord/drawer/report/report_screen/report_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_screen/tenants_screen.dart';
 import 'package:landlord/pages/landlord/drawer/transaction/transaction_list/transaction_list_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
@@ -125,8 +124,7 @@ class TabletAppDrawer extends StatelessWidget {
                           ),
                           DrawerListContent(
                             onTap: () {
-                              NavUtil.navigateScreen(
-                                  context, const ReportScreen());
+
                             },
                             image: 'assets/drawer/report_vector.png',
                             title: "Report",

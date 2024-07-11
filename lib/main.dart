@@ -30,6 +30,7 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'data/provider/add_transaction_provider.dart';
+import 'data/provider/report_provider.dart';
 import 'data/provider/transaction_list_provider.dart';
 import 'data/provider/update_profile_provider.dart';
 
@@ -120,8 +121,8 @@ class MyApp extends StatelessWidget {
             create: (context) => TenantProvider(context)),
         ChangeNotifierProvider<ProfileDetailsProvider>(
             create: (context) => ProfileDetailsProvider(context)),
-        ChangeNotifierProvider<DocumentProvider>(
-            create: (context) => DocumentProvider(context))
+        ChangeNotifierProvider<DocumentProvider>(create: (context) => DocumentProvider(context)),
+        ChangeNotifierProvider<ReportProvider>(create: (context) => ReportProvider(context),),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 813),

@@ -307,6 +307,26 @@ class RepositoryMethods {
         name: ApiProvider.documentList);
   }
 
+  Future<List<PaymentReport>> getPaymentReportListData() async {
+    return await GenericHttp<PaymentReport>(context).callApi(
+        returnType: ReturnType.list,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => PaymentReport.fromJson(json),
+        returnDataFun: (data) => data['data']['list'],
+        showLoader: true,
+        name: ApiProvider.paymentReportList) as List<PaymentReport>;
+  }
+
+  Future<List<TenantReport>> getTenantReportListData() async {
+    return await GenericHttp<TenantReport>(context).callApi(
+        returnType: ReturnType.list,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => TenantReport.fromJson(json),
+        returnDataFun: (data) => data['data']['list'],
+        showLoader: true,
+        name: ApiProvider.tenantReportList) as List<TenantReport>;
+  }
+
   Future<TransactionDetailsModel?> getTransactionDetails(id) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,

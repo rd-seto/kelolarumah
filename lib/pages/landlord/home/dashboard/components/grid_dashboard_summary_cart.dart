@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
+import 'package:landlord/data/model/payment_report.dart';
 import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/pages/landlord/drawer/document/add_document/add_document_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/add_property/add_property_screen.dart';
-import 'package:landlord/pages/landlord/drawer/report/report_screen/report_screen.dart';
+import 'package:landlord/pages/landlord/drawer/report/report_screen/payment_report_screen.dart';
+import 'package:landlord/pages/landlord/drawer/report/report_screen/tenant_report_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/add_tenants/add_tenants_screen.dart';
-import 'package:landlord/pages/landlord/drawer/tenants/tenants_details/components/transaction/add_transaction/add_transaction_screen.dart';
 import 'package:landlord/pages/landlord/drawer/tenants/tenants_screen/tenants_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
@@ -47,13 +48,6 @@ class GridDashboardSummaryCart extends StatelessWidget {
                 const SizedBox(
                   height: 6,
                 ),
-                // CustomText(
-                //   text: '0',
-                //   color: AppColors.paraTxt1,
-                //   fontSize: 12.sp,
-                //   fontWeight: FontWeight.w600,
-                //   height: 1.75,
-                // ),
                 CustomText(
                   text: gridDashboardData?[index].title ?? '',
                   color: AppColors.paraTxt1,
@@ -83,13 +77,13 @@ class GridDashboardSummaryCart extends StatelessWidget {
             ));
         break;
       case 2:
-        NavUtil.navigateScreen(context, const AddTransactionScreen());
-        break;
-      case 3:
         NavUtil.navigateScreen(context, const AddDocumentsScreen());
         break;
+      case 3:
+        NavUtil.navigateScreen(context, const PaymentReportScreen());
+        break;
       case 4:
-        NavUtil.navigateScreen(context, const ReportScreen());
+        NavUtil.navigateScreen(context, const TenantReportScreen());
         break;
       case 5:
         NavUtil.navigateScreen(context, const AddTenantsScreen());

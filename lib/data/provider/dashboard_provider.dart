@@ -29,15 +29,15 @@ class DashBoardProvider extends ChangeNotifier {
       assetImage: 'assets/dashboard/add_property_img.png',
     ),
     DashboardDummyData(
-      title: 'Add_Transaction',
-      assetImage: 'assets/dashboard/add_transaction_icon.png',
-    ),
-    DashboardDummyData(
       title: 'Add_Document',
       assetImage: 'assets/dashboard/add_document_icon.png',
     ),
     DashboardDummyData(
-      title: 'Report',
+      title: 'Payment Report',
+      assetImage: 'assets/dashboard/report_icon.png',
+    ),
+    DashboardDummyData(
+      title: 'Tenant Report',
       assetImage: 'assets/dashboard/report_icon.png',
     ),
     DashboardDummyData(

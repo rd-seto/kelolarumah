@@ -120,6 +120,10 @@ class RepositoryImpl {
   Future<AddTransactionModel?> getAddTransactionData() =>
       _repositoryMethods.getAddTransactionData();
 
+  Future<List<PaymentReport>> getPaymentReportListData() => _repositoryMethods.getPaymentReportListData();
+
+  Future<List<TenantReport>> getTenantReportListData() => _repositoryMethods.getTenantReportListData();
+
   Future<BillManagementModel?> getBillManagementListData() =>
       _repositoryMethods.getBillManagementListData();
 
