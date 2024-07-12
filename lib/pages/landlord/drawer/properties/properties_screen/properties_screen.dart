@@ -10,7 +10,6 @@ import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../data/provider/dashboard_provider.dart';
 import 'components/property_list_screen.dart';
 
 class PropertiesScreen extends StatefulWidget {

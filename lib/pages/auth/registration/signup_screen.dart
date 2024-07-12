@@ -22,162 +22,70 @@ class SignUpScreen extends StatelessWidget {
     return Form(
       key: formKey,
       child: Scaffold(
-          body: Container(
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage(
-              "assets/drawer/auth_background.png",
-            ),
-          ),
-        ),
+          body: Container(height: double.infinity, decoration: const BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: AssetImage("assets/drawer/auth_background.png",),),),
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 70.h,
-                ),
-                CustomText(
-                  text: 'Create_Account',
-                  color: const Color(0xffEEEEEE),
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w700,
-                  height: 1.75,
-                ),
-                CustomText(
-                  text: 'create_an_account_to_continue!',
-                  color: const Color(0xffEEEEEE),
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  height: 1.5,
-                ),
-                SizedBox(
-                  height: 30.h,
-                ),
-                AuthFromField(
-                  title: "name",
-                  hintText: "name",
-                  cursorColor: AppColors.colorWhite,
+                SizedBox(height: 70.h,),
+                CustomText(text: 'Create_Account', color: const Color(0xffEEEEEE), fontSize: 20.sp, fontWeight: FontWeight.w700, height: 1.75,),
+                CustomText(text: 'create_an_account_to_continue!', color: const Color(0xffEEEEEE), fontSize: 14.sp, fontWeight: FontWeight.w400, height: 1.5,),
+                SizedBox(height: 30.h,),
+                AuthFromField(title: "name", hintText: "name", cursorColor: AppColors.colorWhite,
                   onChange: (val) {
                     userRegistration.name = val;
                   },
                 ),
-                SizedBox(
-                  height: 20.h,
+                SizedBox(height: 20.h,),
+                const AuthFromField(title: "Phone", hintText: "123345566", cursorColor: AppColors.colorWhite,
                 ),
-                const AuthFromField(
-                  title: "Phone",
-                  hintText: "123345566",
-                  cursorColor: AppColors.colorWhite,
-                  // onChange: (val) {
-                  //   userRegistration.phone = val;
-                  // },
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                AuthFromField(
-                  title: "EMAIL",
-                  hintText: "email@gmail.com",
-                  cursorColor: AppColors.colorWhite,
+                SizedBox(height: 20.h,),
+                AuthFromField(title: "EMAIL", hintText: "email@gmail.com", cursorColor: AppColors.colorWhite,
                   onChange: (val) {
                     userRegistration.email = val;
                   },
                 ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                AuthFromField(
-                  title: "PASSWORD",
-                  hintText: "Enter your password",
-                  cursorColor: AppColors.colorWhite,
+                SizedBox(height: 20.h,),
+                AuthFromField(title: "PASSWORD", hintText: "Enter your password", cursorColor: AppColors.colorWhite,
                   onChange: (val) {
                     userRegistration.password = val;
                   },
                 ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                AuthFromField(
-                  title: "Confirm_Password",
-                  hintText: "Enter your confirm password",
-                  cursorColor: AppColors.colorWhite,
+                SizedBox(height: 20.h,),
+                AuthFromField(title: "Confirm_Password", hintText: "Enter your confirm password", cursorColor: AppColors.colorWhite,
                   onChange: (val) {
                     userRegistration.confirmPassword = val;
                   },
                 ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                SizedBox(
-                  height: 52.h,
-                  width: double.infinity,
+                SizedBox(height: 20.h,),
+                SizedBox(height: 52.h, width: double.infinity,
                   child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0)),
-                          backgroundColor: AppColors.colorWhite),
+                      style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)), backgroundColor: AppColors.colorWhite),
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           if (userRegistration.password ==
                               userRegistration.confirmPassword) {
-                            provider.registration(
-                                userRegistration: userRegistration,
-                                context: context);
+                            provider.registration(userRegistration: userRegistration, context: context);
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                backgroundColor: Colors.red,
-                                content: const Text(
-                                  'Password_and_confirm_password',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold),
-                                ).tr()));
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: Colors.red,
+                                content: const Text('Password_and_confirm_password', style: TextStyle(color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold),).tr()));
                           }
                         }
                       },
-                      child: Text(
-                        'Sign up'.tr(),
-                        style: TextStyle(
-                          color: AppColors.colorPrimary,
-                          letterSpacing: 1.sp,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      )),
+                      child: Text('Sign up'.tr(), style: TextStyle(color: AppColors.colorPrimary, letterSpacing: 1.sp, fontSize: 14.sp, fontWeight: FontWeight.w700,),)),
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                SizedBox(height: 10.h,),
+                Row(mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomText(
-                      text: 'Already_have_any_account?',
-                      color: const Color(0xffEEEEEE),
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w500,
-                      height: 1.75,
-                    ),
-                    SizedBox(
-                      width: 4.w,
-                    ),
+                    CustomText(text: 'Already_have_any_account?', color: const Color(0xffEEEEEE), fontSize: 14.sp, fontWeight: FontWeight.w500, height: 1.75,),
+                    SizedBox(width: 4.w,),
                     InkWell(
                       onTap: () {
                         NavUtil.navigateScreen(context, const LoginScreen());
                       },
-                      child: CustomText(
-                        text: 'Sign_In',
-                        color: const Color(0xffEEEEEE),
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
-                        height: 1.75,
-                      ),
+                      child: CustomText(text: 'Sign_In', color: const Color(0xffEEEEEE), fontSize: 14.sp, fontWeight: FontWeight.w700, height: 1.75,),
                     ),
                   ],
                 )

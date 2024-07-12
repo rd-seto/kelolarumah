@@ -92,106 +92,39 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       child: Scaffold(
         drawer: const AppDrawer(),
         appBar: context.deviceType() == DeviceTypeUtils.phone
-            ? PreferredSize(
-                preferredSize: Size.fromHeight(60.h),
-                child: NewMobileAppBar(
-                  appbarName: barName,
-                ))
-            : PreferredSize(
-                preferredSize: Size.fromHeight(40.h),
-                child: NewTabletAppBar(
-                  appbarName: barName,
-                )),
-        body: Center(
-          child: _widgetOptions.elementAt(selectedIndex),
-        ),
+            ? PreferredSize(preferredSize: Size.fromHeight(60.h), child: NewMobileAppBar(appbarName: barName,))
+            : PreferredSize(preferredSize: Size.fromHeight(40.h), child: NewTabletAppBar(appbarName: barName,)),
+        body: Center(child: _widgetOptions.elementAt(selectedIndex),),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
             boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
-                spreadRadius: 1,
-                blurRadius: 3,
-                offset: const Offset(1, 1),
-              ),
+              BoxShadow(color: Colors.grey.withOpacity(0.3), spreadRadius: 1, blurRadius: 3, offset: const Offset(1, 1),),
             ],
             color: Colors.white,
-            borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+            borderRadius: const BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30)),
           ),
           child: BottomNavigationBar(
             currentIndex: selectedIndex,
             elevation: 2,
             backgroundColor: Colors.white,
             type: BottomNavigationBarType.fixed,
-            selectedIconTheme:
-                const IconThemeData(color: AppColors.colorPrimary),
+            selectedIconTheme: const IconThemeData(color: AppColors.colorPrimary),
             selectedItemColor: AppColors.colorPrimary,
             showUnselectedLabels: true,
             unselectedItemColor: Colors.grey,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: selectedIndex == 0
-                    ? Image.asset(
-                        'assets/navicon/active 1.png',
-                        height: 24.h,
-                        width: 24.w,
-                      )
-                    : Image.asset(
-                        'assets/navicon/In Active 1.png',
-                        height: 24.h,
-                        width: 24.w,
-                      ),
-                label: 'Property',
+                icon: selectedIndex == 0 ? const Icon(Icons.apartment,) : const Icon(Icons.apartment,),label: 'Property',
               ),
               BottomNavigationBarItem(
-                icon: selectedIndex == 1
-                    ? Image.asset(
-                        'assets/navicon/Active 2.png',
-                        height: 24.h,
-                        width: 24.w,
-                      )
-                    : Image.asset(
-                        'assets/navicon/in active 2.png',
-                        height: 24.h,
-                        width: 24.w,
-                      ),
-                label: 'Profile',
+                icon: selectedIndex == 1 ?  const Icon(Icons.person_outline,) : const Icon(Icons.person_outline,), label: 'Profile',
               ),
-              const BottomNavigationBarItem(
-                  backgroundColor: AppColors.colorWhite,
-                  icon: Icon(
-                    Icons.home,
-                    color: Colors.white,
-                  ),
-                  label: ''),
+              const BottomNavigationBarItem(backgroundColor: AppColors.colorWhite, icon: Icon(Icons.home, color: Colors.white,), label: ''),
               BottomNavigationBarItem(
-                icon: selectedIndex == 3
-                    ? Image.asset(
-                        'assets/navicon/Active 3.png',
-                        height: 24.h,
-                        width: 24.w,
-                      )
-                    : Image.asset(
-                        'assets/navicon/in active 3.png',
-                        height: 24.h,
-                        width: 24.w,
-                      ),
-                label: 'Notification',
-              ),
+                icon: selectedIndex == 3 ?  const Icon(Icons.notifications_outlined,) : const Icon(Icons.notifications_outlined,), label: 'Notification',),
               BottomNavigationBarItem(
                 icon: selectedIndex == 4
-                    ? Image.asset(
-                        'assets/navicon/active 4.png',
-                        height: 24.h,
-                        width: 24.w,
-                      )
-                    : Image.asset(
-                        'assets/navicon/in active 4.png',
-                        height: 24.h,
-                        width: 24.w,
-                      ),
-                label: 'Tenants',
+                    ?  const Icon(Icons.diversity_1,) : const Icon(Icons.diversity_1,),label: 'Tenants',
               ),
             ],
             onTap: (index) {
@@ -201,22 +134,13 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          elevation: 10,
-          backgroundColor: AppColors.colorWhite,
+
+          backgroundColor: selectedIndex == 2 ? AppColors.colorPrimary : AppColors.colorPrimary.withOpacity(0.6),
           child: Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                  color: selectedIndex == 2
-                      ? AppColors.colorPrimary
-                      : const Color(0xFF9E9AE3),
-                  borderRadius: BorderRadius.circular(30)),
-              child: const Icon(
-                Icons.dashboard_outlined,
-                size: 20,
-              )),
+            width: double.infinity, height: double.infinity,
+              decoration: BoxDecoration(color: selectedIndex == 2 ? AppColors.colorPrimary : Colors.transparent, borderRadius: BorderRadius.circular(30)),
+              child: const Icon(Icons.dashboard_outlined, size: 20,color: Colors.white,)),
           onPressed: () {
-            // NavUtil.navigateScreen(context, MenuScreen());
             setState(() {
               _onItemTapped(2);
             });

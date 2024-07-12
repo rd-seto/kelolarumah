@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
-import 'package:landlord/data/model/payment_report.dart';
 import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/pages/landlord/drawer/document/add_document/add_document_screen.dart';
 import 'package:landlord/pages/landlord/drawer/properties/add_property/add_property_screen.dart';

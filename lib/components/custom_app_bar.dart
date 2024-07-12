@@ -8,40 +8,23 @@ class CustomAppBar extends StatelessWidget {
   final Function()? onTap;
   final bool? isBackButton;
   final List<Widget>? actions;
-  const CustomAppBar(
-      {super.key,
-      this.appBarName,
-      this.onTap,
-      this.isBackButton,
-      this.actions});
+  const CustomAppBar({super.key, this.appBarName, this.onTap, this.isBackButton, this.actions});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: Visibility(
-        visible: isBackButton ?? true,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 24.0, top: 8, bottom: 8),
+      leading: Visibility(visible: isBackButton ?? true,
+        child: Padding(padding: const EdgeInsets.only(left: 24.0, top: 8, bottom: 8),
           child: InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Image.asset(
-              'assets/dashboard/back_vector.png',
-            ),
+            child: Image.asset('assets/dashboard/back_vector.png',),
           ),
         ),
       ),
-      leadingWidth: 50,
-      automaticallyImplyLeading: false,
-      backgroundColor: AppColors.colorPrimary,
-      elevation: 1,
-      title: Text(
-        '$appBarName',
-        // 'Forget Password',
-        style: TextStyle(
-            fontSize: 18.sp, color: Colors.white, fontWeight: FontWeight.w700),
-      ).tr(),
+      leadingWidth: 50, automaticallyImplyLeading: false, backgroundColor: AppColors.colorPrimary, elevation: 1,
+      title: Text('$appBarName', style: TextStyle(fontSize: 18.sp, color: Colors.white, fontWeight: FontWeight.w700),).tr(),
       actions: actions,
     );
   }

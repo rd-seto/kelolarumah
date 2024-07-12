@@ -127,20 +127,16 @@ class TenantRowItem extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        NavUtil.navigateScreen(
-                            context,
-                            ChatConversation(
-                              userId: userData?.id,
-                              friend: UserModel(
-                                  id: tenant?.id,
-                                  name: tenant?.name,
-                                  email: tenant?.email),
-                            ));
+                        NavUtil.navigateScreen(context, ChatConversation(userId: userData?.id, friend: UserModel(id: tenant?.id, name: tenant?.name, email: tenant?.email),));
                       },
-                      child: Image.asset(
-                        'assets/dashboard/message_vector.png',
-                        height: 30.h,
-                        width: 40.w,
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: AppColors.colorPrimary,
+                        ),
+                        child: const Icon(Icons.mail_outline,color: Colors.white,),
                       ),
                     )
                   ],

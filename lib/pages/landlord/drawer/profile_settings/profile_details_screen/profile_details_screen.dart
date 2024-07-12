@@ -81,11 +81,20 @@ class ProfileDetailsScreen extends StatelessWidget {
                                             provider: provider,
                                           ));
                                     },
-                                    child: Image.asset(
-                                      'assets/dashboard/edit_float_img.png',
-                                      height: 64.h,
-                                      width: 64.w,
+                                    child: Container(
+                                      height: 60,
+                                      width: 60,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50),
+                                        color: AppColors.colorPrimary,
+                                      ),
+                                      child: const Icon(Icons.edit_outlined,color: Colors.white,),
                                     ),
+                                    // child: Image.asset(
+                                    //   'assets/dashboard/edit_float_img.png',
+                                    //   height: 64.h,
+                                    //   width: 64.w,
+                                    // ),
                                   ),
                                 ],
                               ),

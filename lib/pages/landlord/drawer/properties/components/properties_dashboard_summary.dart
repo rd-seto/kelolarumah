@@ -3,9 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/property_list_model.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
-import 'package:shimmer/shimmer.dart';
-
-import '../../../../../data/provider/dashboard_provider.dart';
 import '../../../../../data/provider/property_provider.dart';
 
 class PropertiesDashboardSummary extends StatelessWidget {

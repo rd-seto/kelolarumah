@@ -13,67 +13,39 @@ class LoginOptionScreen extends StatelessWidget {
     return Scaffold(
         body: Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: AssetImage(
-            "assets/drawer/auth_background.png",
-          ),
-        ),
+        image: DecorationImage(fit: BoxFit.cover, image: AssetImage("assets/drawer/auth_background.png",),),
       ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Column(mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/drawer/app_logo.png',
-                height: 120.h,
-              ),
-              SizedBox(
-                height: 50.h,
-              ),
+              Image.asset('assets/drawer/app_logo.png', height: 120.h,),
+              SizedBox(height: 50.h,),
               InkWell(
                 onTap: () {
                   NavUtil.navigateScreen(context, const LoginScreen());
                 },
                 child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.r),
-                      color: AppColors.colorWhite),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: AppColors.colorWhite),
                   child: Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0.sp),
-                      child: const CustomText(
-                        text: "login_as_landLord",
-                        color: AppColors.colorPrimary,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                      ),
+                    child: Padding(padding: EdgeInsets.all(16.0.sp),
+                      child: const CustomText(text: "login_as_landLord", color: AppColors.colorPrimary, fontSize: 18, fontWeight: FontWeight.w700,),
                     ),
                   ),
                 ),
               ),
-              SizedBox(
-                height: 22.h,
-              ),
+              SizedBox(height: 22.h,),
               InkWell(
                 onTap: () {
                   NavUtil.navigateScreen(context, const LoginScreen());
                 },
                 child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.r),
-                      color: AppColors.colorWhite),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r), color: AppColors.colorWhite),
                   child: Center(
                     child: Padding(
                       padding: EdgeInsets.all(16.0.sp),
-                      child: const CustomText(
-                        text: "Login_As_Tenants",
-                        color: AppColors.colorPrimary,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                      ),
+                      child: const CustomText(text: "Login_As_Tenants", color: AppColors.colorPrimary, fontSize: 18, fontWeight: FontWeight.w700,),
                     ),
                   ),
                 ),

@@ -26,68 +26,25 @@ class DashboardScreen extends StatelessWidget {
         return Scaffold(
           backgroundColor: AppColors.backgroundColor,
           appBar: isBottomNav == false
-              ? PreferredSize(
-                  preferredSize: Size.fromHeight(60.h),
-                  child: CustomAppBar(appBarName: "Dashboard".tr()),
-                )
-              : const PreferredSize(
-                  // ignore: sort_child_properties_last
-                  child: SizedBox(),
-                  preferredSize: Size.fromHeight(0)),
+              ? PreferredSize(preferredSize: Size.fromHeight(60.h), child: CustomAppBar(appBarName: "Dashboard".tr()),)
+              : const PreferredSize(preferredSize: Size.fromHeight(0), child: SizedBox()),
           body: Stack(
             children: [
-              Positioned(
-                // top: MediaQuery.of(context).size.height / 4,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Image.asset(
-                  'assets/dashboard/backgorund_img.png',
-                ),
-              ),
+              Positioned(left: 0, right: 0, bottom: 0, child: Image.asset('assets/dashboard/backgorund_img.png',),),
               SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.all(20.0.sp),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      GreetingsSectionCart(
-                          name:
-                              "Hi ${userProvider.getUser()?.name ?? ''}".tr()),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      GridDashboardSummaryCart(
-                          gridDashboardData: provider.gridDashboardData),
-                      SizedBox(
-                        height: 24.h,
-                      ),
-                      DashboardInfoListCart(
-                        title: "Total_Property".tr(),
-                        subTitle: provider
-                            .dashboardResponse?.data?.totalProperties
-                            .toString(),
-                        containerColor: const Color(0xff00B3DA),
-                      ),
-                      SizedBox(
-                        height: 16.h,
-                      ),
-                      DashboardInfoListCart(
-                        title: "Occupied",
-                        subTitle: provider
-                            .dashboardResponse?.data?.totalOccupied
-                            .toString(),
-                        containerColor: AppColors.colorPrimary,
-                      ),
-                      SizedBox(
-                        height: 16.h,
-                      ),
-                      DashboardInfoListCart(
-                        title: "Vacant",
-                        subTitle: provider.dashboardResponse?.data?.totalVacant
-                            .toString(),
-                        containerColor: AppColors.color2Sd,
-                      ),
+                      GreetingsSectionCart(name: "Hi ${userProvider.getUser()?.name ?? ''}".tr()),
+                      SizedBox(height: 20.h,),
+                      GridDashboardSummaryCart(gridDashboardData: provider.gridDashboardData),
+                      SizedBox(height: 24.h,),
+                      DashboardInfoListCart(title: "Total_Property".tr(), subTitle: provider.dashboardResponse?.data?.totalProperties.toString(), containerColor: const Color(0xff00B3DA),),
+                      SizedBox(height: 16.h,),
+                      DashboardInfoListCart(title: "Occupied", subTitle: provider.dashboardResponse?.data?.totalOccupied.toString(), containerColor: AppColors.colorPrimary,),
+                      SizedBox(height: 16.h,),
+                      DashboardInfoListCart(title: "Vacant", subTitle: provider.dashboardResponse?.data?.totalVacant.toString(), containerColor: AppColors.color2Sd,),
                       DashboardPropertyCart(provider: provider),
                       DashboardTransactionCart(provider: provider)
                     ],

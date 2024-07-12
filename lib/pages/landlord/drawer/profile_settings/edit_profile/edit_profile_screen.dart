@@ -35,8 +35,7 @@ class _EditProfileScreenState extends State<EditProfileScreen>
 
   @override
   Widget build(BuildContext context) {
-    final user =
-        Provider.of<LocalAutProvider>(context, listen: false).getUser();
+    final user = Provider.of<LocalAutProvider>(context, listen: false).getUser();
 
     Provider.of<UpdateProfileProvider>(context, listen: false);
 

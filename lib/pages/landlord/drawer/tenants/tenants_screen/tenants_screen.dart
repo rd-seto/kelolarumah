@@ -146,11 +146,20 @@ class _TenantsScreenState extends State<TenantsScreen> {
           onTap: () {
             NavUtil.navigateScreen(context, const AddTenantsScreen());
           },
-          child: Image.asset(
-            'assets/dashboard/add_float_button.png',
-            height: 64.h,
-            width: 64.w,
+          child: Container(
+            height: 60,
+            width: 60,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: AppColors.colorPrimary,
+            ),
+            child: const Icon(Icons.add,color: Colors.white,),
           ),
+          // child: Image.asset(
+          //   'assets/dashboard/add_float_button.png',
+          //   height: 64.h,
+          //   width: 64.w,
+          // ),
         ),
       ),
     );

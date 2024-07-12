@@ -11,7 +11,7 @@ class AppColors {
   static const Color stockColor2 = Color(0xffE9E9E9);
   static const Color titleTextColor = Color(0xff2E2E2E);
   static const Color paraTxt1 = Color(0xff474747);
-  static const Color backgroundColor = Color(0xffF5F6FA);
+  static const Color backgroundColor = Color(0xfff5faf9);
   static const Color errorColor = Colors.red;
   static const Color successColor = Colors.green;
 

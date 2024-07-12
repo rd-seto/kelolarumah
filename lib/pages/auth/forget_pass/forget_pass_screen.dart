@@ -20,12 +20,8 @@ class ForgetPassScreen extends StatelessWidget {
       child: Scaffold(
           body: Container(
         height: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage(
-              "assets/drawer/auth_background.png",
-            ),
+        decoration: const BoxDecoration(image: DecorationImage(fit: BoxFit.cover,
+            image: AssetImage("assets/drawer/auth_background.png",),
           ),
         ),
         child: SingleChildScrollView(
@@ -34,54 +30,26 @@ class ForgetPassScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 50.h,
-                ),
-                Image.asset(
-                  'assets/drawer/app_logo.png',
-                  height: 120.h,
-                ),
-                SizedBox(
-                  height: 50.h,
-                ),
-                AuthFromField(
-                  controller: emailController,
-                  cursorColor: AppColors.colorWhite,
-                  hintText: "email",
-                  title: "email",
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
+                SizedBox(height: 50.h,),
+                Image.asset('assets/drawer/app_logo.png', height: 120.h,),
+                SizedBox(height: 50.h,),
+                AuthFromField(controller: emailController, cursorColor: AppColors.colorWhite, hintText: "email", title: "email",),
+                SizedBox(height: 20.h,),
                 SizedBox(
                   height: 52.h,
                   width: double.infinity,
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
-                        backgroundColor: AppColors.colorWhite),
+                    style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)), backgroundColor: AppColors.colorWhite),
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        provider.forgetPass(
-                            email: emailController.text, context: context);
+                        provider.forgetPass(email: emailController.text, context: context);
                         // NavUtil.navigateScreen(context, const ResetPass());
                       }
                     },
-                    child: Text(
-                      'Send',
-                      style: TextStyle(
-                        color: AppColors.colorPrimary,
-                        letterSpacing: 1.sp,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ).tr(),
+                    child: Text('Send', style: TextStyle(color: AppColors.colorPrimary, letterSpacing: 1.sp, fontSize: 14.sp, fontWeight: FontWeight.w700,),).tr(),
                   ),
                 ),
-                SizedBox(
-                  height: 20.h,
-                ),
+                SizedBox(height: 20.h),
               ],
             ),
           ),
