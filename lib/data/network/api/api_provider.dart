@@ -42,6 +42,7 @@ class ApiProvider {
   static String transactionDetails = "$baseUrl/transaction/details";
   static String addTransaction = '$baseUrl/transaction/create';
   static String billManagementList = '$baseUrl/private/v1/bill/list';
+  static String occupiedList = '$baseUrl/private/v1/bill/occupied-property';
   static String notification = '$baseUrl/private/v1/notifications';
   static String tenantDetails = '$baseUrl/private/v1/tenant/show/';
   static String documentList = '$baseUrl/documents';

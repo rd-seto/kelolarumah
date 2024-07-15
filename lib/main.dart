@@ -20,6 +20,7 @@ import 'package:landlord/data/provider/bill_management_provider.dart';
 import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/data/provider/document_provider.dart';
 import 'package:landlord/data/provider/notification_provider.dart';
+import 'package:landlord/data/provider/occupied_list_provider.dart';
 import 'package:landlord/data/provider/profile_details_provider.dart';
 import 'package:landlord/data/provider/property_provider.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
@@ -109,8 +110,8 @@ class MyApp extends StatelessWidget {
             create: (context) => AddTransactionProvider(context)),
         ChangeNotifierProvider<AddEmergencyContractProvider>(
             create: (context) => AddEmergencyContractProvider(context)),
-        ChangeNotifierProvider<BillManagementListProvider>(
-            create: (context) => BillManagementListProvider(context)),
+        ChangeNotifierProvider<BillManagementListProvider>(create: (context) => BillManagementListProvider(context)),
+        ChangeNotifierProvider<OccupiedProvider>(create: (context) => OccupiedProvider(context)),
         ChangeNotifierProvider<NotificationProvider>(
             create: (context) => NotificationProvider(context)),
         ChangeNotifierProvider<TenantProvider>(

@@ -124,8 +124,9 @@ class RepositoryImpl {
 
   Future<List<TenantReport>> getTenantReportListData() => _repositoryMethods.getTenantReportListData();
 
-  Future<BillManagementModel?> getBillManagementListData() =>
-      _repositoryMethods.getBillManagementListData();
+  Future<BillManagementModel?> getBillManagementListData() => _repositoryMethods.getBillManagementListData();
+
+  Future<OccupiedListModel?> getOccupiedListData() => _repositoryMethods.getOccupiedListData();
 
   Future<PropertyDetailsModel?> getPropertyDetails(id) =>
       _repositoryMethods.getPropertyDetails(id);

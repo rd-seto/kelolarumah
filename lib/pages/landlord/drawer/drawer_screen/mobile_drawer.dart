@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/local/local_auth_provider.dart';
+import 'package:landlord/data/model/occupied_list_,model.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/pages/landlord/drawer/cash_management/bill_management_dashboard/bill_management_screen.dart';
 import 'package:landlord/pages/landlord/drawer/profile_settings/profile_details_screen/profile_details_screen.dart';
@@ -16,6 +17,7 @@ import 'package:provider/provider.dart';
 
 import '../../../auth/login/login_option/login_option_screen.dart';
 import '../../../chat_screen/chat_room.dart';
+import '../generate_bill/generate_bill.dart';
 
 class MobileAppDrawer extends StatelessWidget {
   const MobileAppDrawer({super.key});
@@ -78,7 +80,7 @@ class MobileAppDrawer extends StatelessWidget {
                         SizedBox(height: 20.h,),
                         DrawerListContent(
                           onTap: () {
-                            NavUtil.navigateScreen(context, const BillManagementScreen());
+                            NavUtil.navigateScreen(context,  const GenerateBills());
                           }, image: 'assets/drawer/cash_vector.png', title: "Bill Management",
                         ),
                       ],

@@ -550,6 +550,18 @@ class RepositoryMethods {
         name: ApiProvider.billManagementList);
   }
 
+  ///occupiedList
+  Future<OccupiedListModel?> getOccupiedListData() async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => OccupiedListModel.fromJson(json),
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.occupiedList);
+  }
+
+
   /// Get Area data from add property
   Future createEmergencyContact(data, tenantId) async {
     return await GenericHttp(context).callApi(
