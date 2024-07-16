@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/data/provider/bill_management_provider.dart';
+import 'package:landlord/pages/landlord/drawer/collect_bill/collect_bill_screen.dart';
+import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
@@ -24,123 +27,91 @@ class BillManagementScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Opacity(
-              opacity: 1,
-              child: Image.asset(
-                'assets/dashboard/backgorund_img.png',
-              ),
-            ),
-          ),
+          Positioned(left: 0, right: 0, bottom: 0, child: Opacity(opacity: 1, child: Image.asset('assets/dashboard/backgorund_img.png',),),),
           SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(20.0.sp),
+            child: Padding(padding: EdgeInsets.all(20.0.sp),
               child: provider.billManagementListResponse?.data?.list != null
-                  ? Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  ? Column(crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: provider.billManagementListResponse?.data
-                                    ?.list?.length ??
-                                0,
+                        ListView.builder(shrinkWrap: true, physics: const NeverScrollableScrollPhysics(), itemCount: provider.billManagementListResponse?.data?.list?.length ?? 0,
                             itemBuilder: (context, index) {
-                              final data = provider.billManagementListResponse
-                                  ?.data?.list?[index];
+                              final data = provider.billManagementListResponse?.data?.list?[index];
                               if (kDebugMode) {
                                 print(data);
                               }
-                              return Container(
-                                margin: const EdgeInsets.only(bottom: 8),
-                                decoration: BoxDecoration(
-                                    color: AppColors.colorWhite,
-                                    borderRadius: BorderRadius.circular(8.r),
-                                    border: Border.all(
-                                        color: AppColors.stockColor2)),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 12.0.w, vertical: 16.h),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          CustomText(
-                                            text: data?.tenantId ?? "",
-                                            color: AppColors.titleTextColor,
-                                            fontSize: 16.sp,
-                                            fontWeight: FontWeight.w600,
-                                            height: 1.75,
-                                          ),
-                                          Row(
+                              return InkWell(
+                                onTap: (){
+                                  NavUtil.navigateScreen(context, CollectBillScreen(billData: data,));
+                                },
+                                child: Container(
+                                  margin: const EdgeInsets.only(bottom: 8),
+                                  decoration: BoxDecoration(color: AppColors.colorWhite, borderRadius: BorderRadius.circular(8.r), border: Border.all(color: AppColors.stockColor2)),
+                                  child: Padding(padding: EdgeInsets.symmetric(horizontal: 12.0.w, vertical: 16.h),
+                                    child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Image.asset(
-                                                  'assets/dashboard/file_vector.png',
-                                                  height: 16.h),
-                                              SizedBox(
-                                                width: 8.w,
+                                              CustomText(text: data?.propertyId ?? "", color: AppColors.titleTextColor, fontSize: 14, fontWeight: FontWeight.bold, height: 1.75,),
+                                              Row(
+                                                children: [
+                                                  Text("Due date:",style: TextStyle(color: AppColors.black2Sd,fontSize: 12.sp,fontWeight: FontWeight.bold),),
+                                                  SizedBox(
+                                                    width: 8.w,
+                                                  ),
+                                                  CustomText(
+                                                    text: data?.dueDate ?? "",
+                                                    color: AppColors.black2Sd,
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    height: 1.75,
+                                                  ),
+                                                ],
                                               ),
-                                              CustomText(
-                                                text: '1 Attachment',
-                                                color: AppColors.black2Sd,
-                                                fontSize: 12.sp,
-                                                fontWeight: FontWeight.w500,
-                                                height: 1.75,
+                                              Row(
+                                                children: [
+                                                 Text("Status:",style: TextStyle(color: AppColors.black2Sd,fontSize: 12.sp,fontWeight: FontWeight.bold),),
+                                                  SizedBox(
+                                                    width: 8.w,
+                                                  ),
+                                                  CustomText(
+                                                    text: data?.paymentStatus,
+                                                    color: AppColors.black2Sd,
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w500,
+                                                    height: 1.75,
+                                                    maxLine: 1,
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
-                                          Row(
-                                            children: [
-                                              Image.asset(
-                                                  'assets/dashboard/propertise_vector.png',
-                                                  height: 16.h),
-                                              SizedBox(
-                                                width: 8.w,
-                                              ),
-                                              CustomText(
-                                                text: data?.paymentStatus,
-                                                color: AppColors.black2Sd,
-                                                fontSize: 12.sp,
-                                                fontWeight: FontWeight.w500,
-                                                height: 1.75,
-                                                maxLine: 1,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      const Spacer(),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          CustomText(
-                                            text: "\$ ${data?.amount}",
-                                            color: const Color(0xff00BF08),
-                                            fontSize: 16.sp,
-                                            fontWeight: FontWeight.w700,
-                                            height: 1.75,
-                                          ),
-                                          SizedBox(
-                                            height: 6.h,
-                                          ),
-                                          // CustomText(
-                                          //   text: date,
-                                          //   color: AppColors.black2Sd,
-                                          //   fontSize: 12.sp,
-                                          //   fontWeight: FontWeight.w500,
-                                          //   height: 1.75,
-                                          // ),
-                                        ],
-                                      )
-                                    ],
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            CustomText(
+                                              text: "\$ ${data?.amount}",
+                                              color: AppColors.colorPrimary,
+                                              fontSize: 14.sp,
+                                              fontWeight: FontWeight.bold,
+                                              height: 1.75,
+                                            ),
+                                            SizedBox(
+                                              height: 6.h,
+                                            ),
+                                            // CustomText(
+                                            //   text: date,
+                                            //   color: AppColors.black2Sd,
+                                            //   fontSize: 12.sp,
+                                            //   fontWeight: FontWeight.w500,
+                                            //   height: 1.75,
+                                            // ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );

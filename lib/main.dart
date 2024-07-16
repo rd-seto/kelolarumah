@@ -17,6 +17,7 @@ import 'package:landlord/data/provider/add_property_provider.dart';
 import 'package:landlord/data/provider/auth_provider.dart';
 import 'package:landlord/data/provider/bottom_nav_provider.dart';
 import 'package:landlord/data/provider/bill_management_provider.dart';
+import 'package:landlord/data/provider/collect_bill_provider.dart';
 import 'package:landlord/data/provider/dashboard_provider.dart';
 import 'package:landlord/data/provider/document_provider.dart';
 import 'package:landlord/data/provider/notification_provider.dart';
@@ -94,60 +95,29 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<AuthProvider>(create: (context) => AuthProvider()),
-        ChangeNotifierProvider<UpdateProfileProvider>(
-            create: (context) => UpdateProfileProvider()),
-        ChangeNotifierProvider<LocalAutProvider>(
-            create: (context) => LocalAutProvider()),
-        ChangeNotifierProvider<DashBoardProvider>(
-            create: (context) => DashBoardProvider(context)),
-        ChangeNotifierProvider<BottomNavProvider>(
-            create: (context) => BottomNavProvider(context)),
-        ChangeNotifierProvider<PropertyProvider>(
-            create: (context) => PropertyProvider(context)),
-        ChangeNotifierProvider<TransactionListProvider>(
-            create: (context) => TransactionListProvider(context)),
-        ChangeNotifierProvider<AddTransactionProvider>(
-            create: (context) => AddTransactionProvider(context)),
-        ChangeNotifierProvider<AddEmergencyContractProvider>(
-            create: (context) => AddEmergencyContractProvider(context)),
+        ChangeNotifierProvider<UpdateProfileProvider>(create: (context) => UpdateProfileProvider()),
+        ChangeNotifierProvider<LocalAutProvider>(create: (context) => LocalAutProvider()),
+        ChangeNotifierProvider<DashBoardProvider>(create: (context) => DashBoardProvider(context)),
+        ChangeNotifierProvider<BottomNavProvider>(create: (context) => BottomNavProvider(context)),
+        ChangeNotifierProvider<PropertyProvider>(create: (context) => PropertyProvider(context)),
+        ChangeNotifierProvider<TransactionListProvider>(create: (context) => TransactionListProvider(context)),
+        ChangeNotifierProvider<AddTransactionProvider>(create: (context) => AddTransactionProvider(context)),
+        ChangeNotifierProvider<AddEmergencyContractProvider>(create: (context) => AddEmergencyContractProvider(context)),
         ChangeNotifierProvider<BillManagementListProvider>(create: (context) => BillManagementListProvider(context)),
         ChangeNotifierProvider<OccupiedProvider>(create: (context) => OccupiedProvider(context)),
-        ChangeNotifierProvider<NotificationProvider>(
-            create: (context) => NotificationProvider(context)),
-        ChangeNotifierProvider<TenantProvider>(
-            create: (context) => TenantProvider(context)),
-        ChangeNotifierProvider<AddPropertyProvider>(
-            create: (context) => AddPropertyProvider(context)),
-        ChangeNotifierProvider<TenantProvider>(
-            create: (context) => TenantProvider(context)),
-        ChangeNotifierProvider<ProfileDetailsProvider>(
-            create: (context) => ProfileDetailsProvider(context)),
+        ChangeNotifierProvider<CollectBillProvider>(create: (context) => CollectBillProvider(context)),
+        ChangeNotifierProvider<NotificationProvider>(create: (context) => NotificationProvider(context)),
+        ChangeNotifierProvider<TenantProvider>(create: (context) => TenantProvider(context)),
+        ChangeNotifierProvider<AddPropertyProvider>(create: (context) => AddPropertyProvider(context)),
+        ChangeNotifierProvider<TenantProvider>(create: (context) => TenantProvider(context)),
+        ChangeNotifierProvider<ProfileDetailsProvider>(create: (context) => ProfileDetailsProvider(context)),
         ChangeNotifierProvider<DocumentProvider>(create: (context) => DocumentProvider(context)),
         ChangeNotifierProvider<ReportProvider>(create: (context) => ReportProvider(context),),
       ],
       child: ScreenUtilInit(
-        designSize: const Size(375, 813),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: context.localizationDelegates,
-          locale: context.locale,
-          supportedLocales: context.supportedLocales,
-          theme: ThemeData(
-            textTheme: GoogleFonts.manropeTextTheme(
-              Theme.of(context).textTheme,
-            ),
-            primarySwatch: Colors.deepPurple,
-            elevatedButtonTheme: ElevatedButtonThemeData(
-                style: ButtonStyle(
-              textStyle: MaterialStateProperty.all(
-                  const TextStyle(color: Colors.white)),
-              backgroundColor: MaterialStateProperty.all(
-                AppColors.colorPrimary,
-              ),
-            )),
-          ),
+        designSize: const Size(375, 813), minTextAdapt: true, splitScreenMode: true,
+        builder: (context, child) => MaterialApp(debugShowCheckedModeBanner: false, localizationsDelegates: context.localizationDelegates, locale: context.locale, supportedLocales: context.supportedLocales,
+          theme: ThemeData(textTheme: GoogleFonts.manropeTextTheme(Theme.of(context).textTheme,), primarySwatch: Colors.blueGrey, elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle(textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.white)), backgroundColor: MaterialStateProperty.all(AppColors.colorPrimary,),)),),
           home: const SplashScreen(),
           builder: (ctx, child) {
             child = FlutterEasyLoading(child: child);

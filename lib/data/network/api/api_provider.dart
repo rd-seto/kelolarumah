@@ -13,6 +13,7 @@ class ApiProvider {
   static String searchTenant = '$baseUrl/private/v1/tenant/list?name=';
   static String createTenant = '$baseUrl/private/v1/tenant/store';
   static String editTenant = '$baseUrl/private/v1/tenant/update/';
+  static String tenantAccountUrl = '$baseUrl/private/v1/options/tenant-accounts?id=';
   static String addAccount = '$baseUrl/private/v1/accounts/store/';
   static String editPropertyBasic = '$baseUrl/private/v1/property/update-basic-info/';
   static String propertiesTenant = '$baseUrl/tenant/create';
@@ -25,6 +26,8 @@ class ApiProvider {
   static String getDistrictsData = '$baseUrl/districts';
   static String getAreaData = '$baseUrl/area';
   static String createPropertyData = '$baseUrl/private/v1/property/store';
+  static String generateBillUrl = '$baseUrl/private/v1/bill/generate-bill';
+  static String collectBillUrl = '$baseUrl/private/v1/bill/collect-bill';
   static String galleryImageAdd = '$baseUrl/private/v1/property/add-gallery';
   static String floorPlan = '$baseUrl/private/v1/property/add-floorplan';
   static String propertyDelete = '$baseUrl/private/v1/property/delete/';

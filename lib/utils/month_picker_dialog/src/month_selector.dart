@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'common.dart';
@@ -13,7 +14,7 @@ class MonthSelector extends StatefulWidget {
       upDownButtonEnableStatePublishSubject;
   final Locale? locale;
   const MonthSelector({
-    Key? key,
+    super.key,
     required DateTime this.openDate,
     required DateTime this.selectedDate,
     required this.onMonthSelected,
@@ -22,8 +23,7 @@ class MonthSelector extends StatefulWidget {
     this.firstDate,
     this.lastDate,
     this.locale,
-  })  :
-        super(key: key);
+  });
   @override
   State<StatefulWidget> createState() => MonthSelectorState();
 }
@@ -46,40 +46,17 @@ class MonthSelectorState extends State<MonthSelector> {
         physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.all(8.0),
         crossAxisCount: 4,
-        children: List<Widget>.generate(
-          12,
-          (final int index) => _getMonthButton(
-              DateTime(
-                  widget.firstDate != null
-                      ? widget.firstDate!.year + page
-                      : page,
-                  index + 1),
-              getLocale(context, selectedLocale: widget.locale)),
-        ).toList(growable: false),
+        children: List<Widget>.generate(12, (final int index) => _getMonthButton(DateTime(widget.firstDate != null ? widget.firstDate!.year + page : page, index + 1), getLocale(context, selectedLocale: widget.locale)),).toList(growable: false),
       );
 
   Widget _getMonthButton(final DateTime date, final String locale) {
     final bool isEnabled = _isEnabled(date);
     return TextButton(
-      onPressed: isEnabled
-          ? () => widget.onMonthSelected(DateTime(date.year, date.month))
-          : null,
-      style: TextButton.styleFrom(
-        backgroundColor: date.month == widget.selectedDate!.month &&
-            date.year == widget.selectedDate!.year
-            ? Theme.of(context).colorScheme.secondary
-            : null,
-
-      ),
-      child: Text(
-        DateFormat.MMM(locale).format(date),
-        style: TextStyle(color: date.month == widget.selectedDate!.month &&
-            date.year == widget.selectedDate!.year
-            ? Colors.white
-            : date.month == DateTime.now().month &&
-            date.year == DateTime.now().year
-            ? Theme.of(context).colorScheme.secondary
-            : null,),
+      onPressed: isEnabled ? () => widget.onMonthSelected(DateTime(date.year, date.month)) : null,
+      style: TextButton.styleFrom(backgroundColor: date.month == widget.selectedDate!.month && date.year == widget.selectedDate!.year ? AppColors.colorPrimary : null,),
+      child: Text(DateFormat.MMM(locale).format(date),
+        style: TextStyle(color: date.month == widget.selectedDate!.month && date.year == widget.selectedDate!.year ? Colors.white : date.month == DateTime.now().month &&
+            date.year == DateTime.now().year ? AppColors.colorPrimary : null,),
       ),
     );
     // return FlatButton(

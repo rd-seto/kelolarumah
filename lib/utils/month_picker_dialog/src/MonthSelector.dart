@@ -14,7 +14,7 @@ class MonthSelector extends StatefulWidget {
       upDownButtonEnableStatePublishSubject;
   final Locale? locale;
   const MonthSelector({
-    Key? key,
+    super.key,
     required DateTime this.openDate,
     required DateTime this.selectedDate,
     required this.onMonthSelected,
@@ -27,8 +27,7 @@ class MonthSelector extends StatefulWidget {
         assert(selectedDate != null),
         assert(onMonthSelected != null),
         assert(upDownPageLimitPublishSubject != null),
-        assert(upDownButtonEnableStatePublishSubject != null),
-        super(key: key);
+        assert(upDownButtonEnableStatePublishSubject != null);
   @override
   State<StatefulWidget> createState() => MonthSelectorState();
 }
@@ -51,14 +50,9 @@ class MonthSelectorState extends State<MonthSelector> {
         physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.all(8.0),
         crossAxisCount: 4,
-        children: List<Widget>.generate(
-          12,
+        children: List<Widget>.generate(12,
           (final int index) => _getMonthButton(
-              DateTime(
-                  widget.firstDate != null
-                      ? widget.firstDate!.year + page
-                      : page,
-                  index + 1),
+              DateTime(widget.firstDate != null ? widget.firstDate!.year + page : page, index + 1),
               getLocale(context, selectedLocale: widget.locale)),
         ).toList(growable: false),
       );
@@ -72,7 +66,7 @@ class MonthSelectorState extends State<MonthSelector> {
       style: TextButton.styleFrom(
         backgroundColor: date.month == widget.selectedDate!.month &&
             date.year == widget.selectedDate!.year
-            ? Theme.of(context).colorScheme.secondary
+            ? AppColors.colorPrimary
             : null,
 
       ),
@@ -80,7 +74,7 @@ class MonthSelectorState extends State<MonthSelector> {
         DateFormat.MMM(locale).format(date),
         style: TextStyle(color: date.month == widget.selectedDate!.month &&
             date.year == widget.selectedDate!.year
-            ? AppColors.colorPrimary
+            ? Colors.white
             : date.month == DateTime.now().month &&
             date.year == DateTime.now().year
             ? Theme.of(context).colorScheme.secondary

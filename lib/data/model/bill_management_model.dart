@@ -3,8 +3,6 @@ import 'dart:convert';
 BillManagementModel billManagementModelFromJson(String str) =>
     BillManagementModel.fromJson(json.decode(str));
 
-String billManagementModelToJson(BillManagementModel data) =>
-    json.encode(data.toJson());
 
 class BillManagementModel {
   final bool? status;
@@ -24,11 +22,6 @@ class BillManagementModel {
         data: json["data"] == null ? null : Data.fromJson(json["data"]),
       );
 
-  Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
-        "data": data?.toJson(),
-      };
 }
 
 class Data {
@@ -53,13 +46,6 @@ class Data {
             : Pagination.fromJson(json["pagination"]),
       );
 
-  Map<String, dynamic> toJson() => {
-        "list": list == null
-            ? []
-            : List<dynamic>.from(list!.map((x) => x.toJson())),
-        "links": links?.toJson(),
-        "pagination": pagination?.toJson(),
-      };
 }
 
 class Links {
@@ -92,9 +78,9 @@ class Links {
 
 class ListElement {
   final int? id;
-  final DateTime? dueDate;
+  final String? dueDate;
   final String? propertyId;
-  final String? tenantId;
+  final int? tenantId;
   final String? month;
   final String? amount;
   final String? paymentStatus;
@@ -117,8 +103,7 @@ class ListElement {
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
         id: json["id"],
-        dueDate:
-            json["due_date"] == null ? null : DateTime.parse(json["due_date"]),
+        dueDate:json["due_date"],
         propertyId: json["property_id"],
         tenantId: json["tenant_id"],
         month: json["month"],
@@ -129,19 +114,6 @@ class ListElement {
         totalAmount: json["total_amount"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "due_date":
-            "${dueDate!.year.toString().padLeft(4, '0')}-${dueDate!.month.toString().padLeft(2, '0')}-${dueDate!.day.toString().padLeft(2, '0')}",
-        "property_id": propertyId,
-        "tenant_id": tenantId,
-        "month": month,
-        "amount": amount,
-        "payment_status": paymentStatus,
-        "status": status,
-        "fine_amount": fineAmount,
-        "total_amount": totalAmount,
-      };
 }
 
 class Pagination {

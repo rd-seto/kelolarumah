@@ -58,6 +58,8 @@ class RepositoryImpl {
 
   Future<LocationModel?> getAresData(data) =>
       _repositoryMethods.getAreaData(data);
+  Future generatedApi(data) => _repositoryMethods.billGenerateApi(data);
+  Future collectBillApi(data) => _repositoryMethods.collectBillApi(data);
 
   Future createProperty(data) => _repositoryMethods.createProperty(data);
   Future postGalleryImage(data) => _repositoryMethods.postImage(data);
@@ -96,8 +98,8 @@ class RepositoryImpl {
   Future<List<FacilityType>> getFacilitiesData() =>
       _repositoryMethods.getFacilitiesData();
 
-  Future<bool> tenantsEditBasicInfo(data, int? tenantId) =>
-      _repositoryMethods.tenantsEditBasicInfo(data, tenantId);
+  Future<bool> tenantsEditBasicInfo(data, int? tenantId) => _repositoryMethods.tenantsEditBasicInfo(data, tenantId);
+  Future tenantAccountList(int? tenantId) => _repositoryMethods.tenantAccountList(tenantId);
 
   Future<bool> propertyEditBasicInfo(data, propertyId) =>
       _repositoryMethods.propertyEditBasicInfo(data, propertyId);

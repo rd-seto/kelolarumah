@@ -32,7 +32,7 @@ class BillListModel {
 }
 
 class Data {
-  final List<ListElement>? list;
+  final List<BillData>? list;
   final Links? links;
   final Pagination? pagination;
 
@@ -43,7 +43,7 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    list: json["list"] == null ? [] : List<ListElement>.from(json["list"]!.map((x) => ListElement.fromJson(x))),
+    list: json["list"] == null ? [] : List<BillData>.from(json["list"]!.map((x) => BillData.fromJson(x))),
     links: json["links"] == null ? null : Links.fromJson(json["links"]),
     pagination: json["pagination"] == null ? null : Pagination.fromJson(json["pagination"]),
   );
@@ -77,11 +77,11 @@ class Links {
   };
 }
 
-class ListElement {
+class BillData {
   final int? id;
   final DateTime? dueDate;
   final String? propertyId;
-  final String? tenantId;
+  final int? tenantId;
   final String? month;
   final String? amount;
   final String? paymentStatus;
@@ -89,7 +89,7 @@ class ListElement {
   final String? fineAmount;
   final String? totalAmount;
 
-  ListElement({
+  BillData({
     this.id,
     this.dueDate,
     this.propertyId,
@@ -102,7 +102,7 @@ class ListElement {
     this.totalAmount,
   });
 
-  factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
+  factory BillData.fromJson(Map<String, dynamic> json) => BillData(
     id: json["id"],
     dueDate: json["due_date"] == null ? null : DateTime.parse(json["due_date"]),
     propertyId: json["property_id"],

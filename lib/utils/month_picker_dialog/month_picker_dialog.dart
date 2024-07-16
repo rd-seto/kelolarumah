@@ -8,6 +8,7 @@ import 'package:landlord/utils/month_picker_dialog/src/MonthSelector.dart';
 import 'package:landlord/utils/month_picker_dialog/src/YearSelector.dart';
 import 'package:landlord/utils/month_picker_dialog/src/common.dart';
 import 'package:landlord/utils/month_picker_dialog/src/locale_utils.dart';
+import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:rxdart/rxdart.dart';
 
 /// Displays month picker dialog.
@@ -118,8 +119,7 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
       ),
     );
     return Theme(
-      data:
-          Theme.of(context).copyWith(dialogBackgroundColor: Colors.transparent),
+      data: Theme.of(context).copyWith(dialogBackgroundColor: Colors.transparent),
       child: Dialog(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -162,7 +162,7 @@ class _MonthPickerDialogState extends State<_MonthPickerDialog> {
 
   Widget buildHeader(ThemeData theme, String locale) {
     return Material(
-      color: theme.primaryColor,
+      color: AppColors.colorPrimary,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

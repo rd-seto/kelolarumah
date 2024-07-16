@@ -157,6 +157,30 @@ class RepositoryMethods {
         name: ApiProvider.createPropertyData);
   }
 
+  /// Bill generated
+  Future billGenerateApi(data) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.generateBillUrl);
+  }
+
+  /// Collect Bill
+  Future collectBillApi(data) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.model,
+        methodType: MethodType.post,
+        json: data,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: ApiProvider.collectBillUrl);
+  }
+
   Future postImage(data) async {
     return await GenericHttp(context).callApi(
         returnType: ReturnType.model,
@@ -419,6 +443,17 @@ class RepositoryMethods {
         returnDataFun: (data) => data != null,
         showLoader: true,
         name: "${ApiProvider.editTenant}$tenantId");
+  }
+
+  Future
+  tenantAccountList(int? tenantId) async {
+    return await GenericHttp(context).callApi(
+        returnType: ReturnType.type,
+        methodType: MethodType.get,
+        toJsonFunc: (json) => json,
+        returnDataFun: (data) => data,
+        showLoader: true,
+        name: "${ApiProvider.tenantAccountUrl}$tenantId");
   }
 
   Future<bool> propertyEditBasicInfo(data, propertyId) async {
