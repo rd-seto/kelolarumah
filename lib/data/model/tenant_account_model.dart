@@ -9,24 +9,28 @@ TenantAccountModel tenantAccountModelFromJson(String str) => TenantAccountModel.
 String tenantAccountModelToJson(TenantAccountModel data) => json.encode(data.toJson());
 
 class TenantAccountModel {
-  final bool? status;
+  final bool? result;
+  final String? apiEndPoint;
   final String? message;
   final List<AccountList>? data;
 
   TenantAccountModel({
-    this.status,
+    this.result,
+    this.apiEndPoint,
     this.message,
     this.data,
   });
 
   factory TenantAccountModel.fromJson(Map<String, dynamic> json) => TenantAccountModel(
-    status: json["status"],
+    result: json["result"],
+    apiEndPoint: json["api_end_point"],
     message: json["message"],
     data: json["data"] == null ? [] : List<AccountList>.from(json["data"]!.map((x) => AccountList.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
+    "result": result,
+    "api_end_point": apiEndPoint,
     "message": message,
     "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
   };

@@ -445,12 +445,11 @@ class RepositoryMethods {
         name: "${ApiProvider.editTenant}$tenantId");
   }
 
-  Future
-  tenantAccountList(int? tenantId) async {
+  Future<TenantAccountModel> tenantAccountList(int? tenantId) async {
     return await GenericHttp(context).callApi(
-        returnType: ReturnType.type,
+        returnType: ReturnType.model,
         methodType: MethodType.get,
-        toJsonFunc: (json) => json,
+        toJsonFunc: (json) => TenantAccountModel.fromJson(json),
         returnDataFun: (data) => data,
         showLoader: true,
         name: "${ApiProvider.tenantAccountUrl}$tenantId");

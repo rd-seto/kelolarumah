@@ -80,7 +80,7 @@ class MobileAppDrawer extends StatelessWidget {
                         SizedBox(height: 20.h,),
                         DrawerListContent(
                           onTap: () {
-                            NavUtil.navigateScreen(context,  const GenerateBills());
+                            NavUtil.navigateScreen(context,  const BillManagementScreen());
                           }, image: 'assets/drawer/cash_vector.png', title: "Bill Management",
                         ),
                       ],
@@ -113,8 +113,7 @@ class MobileAppDrawer extends StatelessWidget {
                               content: const Text('Are_you_sure_you_want_to_logout?').tr(),
                               actions: [
                                 TextButton(
-                                    onPressed: () =>
-                                        Navigator.of(context).pop(),
+                                    onPressed: () => Navigator.of(context).pop(),
                                     child: const Text('No').tr()),
                                 TextButton(
                                     onPressed: () async {

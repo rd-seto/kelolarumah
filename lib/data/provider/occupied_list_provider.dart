@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:landlord/data/network/repository/repository.dart';
 import 'package:landlord/pages/landlord/drawer/cash_management/bill_management_dashboard/bill_management_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../../utils/month_picker_dialog/month_picker_dialog.dart';
 import '../../utils/nav_utail.dart';
 import '../model/occupied_list_,model.dart';
+import 'bill_management_provider.dart';
 
 
 class OccupiedProvider extends ChangeNotifier{
@@ -42,16 +44,11 @@ class OccupiedProvider extends ChangeNotifier{
 
   /// Select date.....
   Future selectDate(BuildContext context) async {
-    showMonthPicker(
-      context: context,
-      initialDate: DateTime.now(),
-      locale: const Locale("en"),
-    ).then((date) {
+    showMonthPicker(context: context, initialDate: DateTime.now(), locale: const Locale("en"),).then((date) {
       if (date != null) {
         selectedDate = date;
         currentMonth = DateFormat('MM-y', 'en').format(selectedDate!);
         monthYear = DateFormat('MMMM,y', 'en').format(selectedDate!);
-
         // attendanceReportApi();
         if (kDebugMode) {
           print(DateFormat('MM-y', 'en').format(selectedDate!));
@@ -74,6 +71,8 @@ class OccupiedProvider extends ChangeNotifier{
       var apiResponse = await RepositoryImpl(context).generatedApi(data);
       if (apiResponse['status'] == true) {
         Fluttertoast.showToast(msg: apiResponse['message']);
+        Provider.of<BillManagementListProvider>(context, listen: false).getBillManagementListData(context);
+        // context.read<BillManagementListProvider>().getBillManagementListData(context);
         NavUtil.replaceScreen(context, const BillManagementScreen());
       }else{
         Fluttertoast.showToast(msg: apiResponse['message']);
@@ -83,3 +82,4 @@ class OccupiedProvider extends ChangeNotifier{
   }
 
 }
+

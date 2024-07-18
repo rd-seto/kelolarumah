@@ -99,7 +99,7 @@ class RepositoryImpl {
       _repositoryMethods.getFacilitiesData();
 
   Future<bool> tenantsEditBasicInfo(data, int? tenantId) => _repositoryMethods.tenantsEditBasicInfo(data, tenantId);
-  Future tenantAccountList(int? tenantId) => _repositoryMethods.tenantAccountList(tenantId);
+  Future<TenantAccountModel> tenantAccountList(int? tenantId) => _repositoryMethods.tenantAccountList(tenantId);
 
   Future<bool> propertyEditBasicInfo(data, propertyId) =>
       _repositoryMethods.propertyEditBasicInfo(data, propertyId);

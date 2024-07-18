@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/data/provider/bill_management_provider.dart';
+import 'package:landlord/data/provider/collect_bill_provider.dart';
 import 'package:landlord/pages/landlord/drawer/collect_bill/collect_bill_screen.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
@@ -11,6 +11,8 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../../../components/custom_app_bar.dart';
 import '../../../../../components/custom_text.dart';
+import '../../../../../components/elevated_button_widget.dart';
+import '../../generate_bill/generate_bill.dart';
 
 class BillManagementScreen extends StatelessWidget {
   const BillManagementScreen({super.key});
@@ -41,6 +43,8 @@ class BillManagementScreen extends StatelessWidget {
                               }
                               return InkWell(
                                 onTap: (){
+                                  context.read<CollectBillProvider>().billData = data;
+                                  context.read<CollectBillProvider>().getTenantAccountList(context);
                                   NavUtil.navigateScreen(context, CollectBillScreen(billData: data,));
                                 },
                                 child: Container(
@@ -115,7 +119,8 @@ class BillManagementScreen extends StatelessWidget {
                                   ),
                                 ),
                               );
-                            })
+                            }),
+                        SizedBox(height: 40.h,),
                       ],
                     )
                   : ListView.builder(
@@ -143,17 +148,15 @@ class BillManagementScreen extends StatelessWidget {
           )
         ],
       ),
-      // floatingActionButton: InkWell(
-      //   onTap: () {
-      //     NavUtil.navigateScreen(
-      //         context, const CashManagementApplicantTypePage());
-      //   },
-      //   child: Image.asset(
-      //     'assets/dashboard/add_float_button.png',
-      //     height: 64.h,
-      //     width: 64.w,
-      //   ),
-      // ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(top: 10.0,bottom: 10, right:10.0, left: 35.0),
+        child: ElevatedButtonWidget(
+          text: "Generate Bill",
+          onPressed: () {
+            NavUtil.replaceScreen(context, const GenerateBills());
+          },
+        ),
+      ),
     );
   }
 }
