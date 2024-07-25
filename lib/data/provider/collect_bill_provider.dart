@@ -14,7 +14,7 @@ import '../model/tenant_account_model.dart';
 class CollectBillProvider extends ChangeNotifier {
   ListElement? billData;
   File? attachmentPath;
-  List<AccountList>? accountListResponse;
+  List<AccountList>? accountListResponse = [];
   var additionalTextController = TextEditingController();
   AccountList? occupiedValue;
   int? accountId;
