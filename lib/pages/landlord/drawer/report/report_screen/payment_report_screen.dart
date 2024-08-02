@@ -23,8 +23,7 @@ class PaymentReportScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Positioned(
-            left: 0,
+          Positioned(left: 0,
             right: 0,
             bottom: 0,
             child: Opacity(
