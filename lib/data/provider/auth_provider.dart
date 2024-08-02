@@ -23,22 +23,24 @@ class AuthProvider {
       {required UserLogin userLogin, required BuildContext context}) async {
     RepositoryImpl(context).login(userLogin).then((user) {
       if (user != null) {
-        SPUtill.setIntValue(SPUtill.keyUserId, user.id);
-        ///set token as global variable, so that we can use
-        ///anywhere in the application
-        ///
-        /// store user data to firebase for chat
-        FirebaseService().createAndUpdateUserInfo(
-            user.toJson(), '${user.id}');
+        if(user.isVerified == true){
+          SPUtill.setIntValue(SPUtill.keyUserId, user.id);
+          ///set token as global variable, so that we can use
+          ///anywhere in the application
+          ///
+          /// store user data to firebase for chat
+          FirebaseService().createAndUpdateUserInfo(user.toJson(), '${user.id}');
 
-        GlobalState.instance.set('token', user.token);
-        LoadingDialog.showToastNotification("User Login Successfully",
-            color: AppColors.successColor);
-        context.read<LocalAutProvider>().updateUser(user);
-        if (user.roleId == 4) {
-          NavUtil.pushAndRemoveUntil(context, const CustomBottomNavBar());
-        } else {
-          NavUtil.navigateScreen(context, const TenantBottomNavBar());
+          GlobalState.instance.set('token', user.token);
+          LoadingDialog.showToastNotification("User Login Successfully", color: AppColors.successColor);
+          context.read<LocalAutProvider>().updateUser(user);
+          if (user.roleId == 4) {
+            NavUtil.pushAndRemoveUntil(context, const CustomBottomNavBar());
+          } else {
+            NavUtil.navigateScreen(context, const TenantBottomNavBar());
+          }
+        }else{
+          Fluttertoast.showToast(msg: "Your email is not verified",backgroundColor: AppColors.colorRed);
         }
       }
     });
@@ -49,10 +51,16 @@ class AuthProvider {
       required BuildContext context}) async {
     await RepositoryImpl(context).registration(userRegistration).then((user) {
       if (user != null) {
-        SPUtill.setIntValue(SPUtill.keyUserId, user.id);
-        context.read<LocalAutProvider>().updateUser(user);
-        Fluttertoast.showToast(msg: "Registration successfully done");
-        NavUtil.pushAndRemoveUntil(context, const LoginScreen());
+        if(user.isVerified == true){
+          SPUtill.setIntValue(SPUtill.keyUserId, user.id);
+          context.read<LocalAutProvider>().updateUser(user);
+          Fluttertoast.showToast(msg: "Registration successfully done");
+          NavUtil.pushAndRemoveUntil(context, const LoginScreen());
+        }else {
+          Fluttertoast.showToast(msg: "Your email is not verified",backgroundColor: AppColors.colorRed);
+          NavUtil.pushAndRemoveUntil(context, const LoginScreen());
+        }
+
       } else{
         Fluttertoast.showToast(msg: "Something went wrong");
       }

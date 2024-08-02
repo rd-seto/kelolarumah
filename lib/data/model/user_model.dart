@@ -43,6 +43,8 @@ class UserModel extends Equatable {
   final int? roleId;
   @HiveField(14)
   final String? avatar;
+  @HiveField(15)
+  final bool? isVerified;
 
   const UserModel(
       {
@@ -60,7 +62,8 @@ class UserModel extends Equatable {
         this.passport,
         this.gender,
         this.roleId,
-        this.avatar});
+        this.avatar,
+      this.isVerified});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
@@ -79,6 +82,7 @@ class UserModel extends Equatable {
       gender: json['gender'],
       roleId: json['role_id'],
       avatar: json['avatar'],
+      isVerified: json['is_verified']
     );
   }
 

@@ -83,11 +83,7 @@ class _AddTenantsScreenState extends State<AddTenantsScreen> {
                                   ),
                           )
                         : const Center(
-                            child: Icon(
-                              Icons.add,
-                              color: AppColors.colorPrimary,
-                              size: 36,
-                            ),
+                            child: Icon(Icons.add, color: AppColors.colorPrimary, size: 36,),
                           ),
                   ),
                 ),

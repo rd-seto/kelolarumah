@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/data/provider/report_provider.dart';
+import 'package:landlord/utils/no_data_found_widget.dart';
 import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
@@ -36,7 +37,7 @@ class PaymentReportScreen extends StatelessWidget {
           SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.all(20.0.sp),
-              child: provider.payments.isNotEmpty
+              child: provider.payments.isNotEmpty ? provider.payments != null
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -142,7 +143,7 @@ class PaymentReportScreen extends StatelessWidget {
                           ),
                         );
                       },
-                    ),
+                    ) :const NoDataFoundWidget()
             ),
           )
         ],
