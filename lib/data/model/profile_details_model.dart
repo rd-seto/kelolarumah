@@ -57,7 +57,7 @@ class ProfileInfo {
   final String? designation;
   final String? institution;
   final String? nid;
-  final DateTime? dateOfBirth;
+  final String? dateOfBirth;
   final String? passport;
   final String? gender;
   final int? roleId;
@@ -88,7 +88,7 @@ class ProfileInfo {
     designation: json["designation"],
     institution: json["institution"],
     nid: json["nid"],
-    dateOfBirth: DateTime.parse(json["date_of_birth"]),
+    dateOfBirth: json["date_of_birth"],
     passport: json["passport"],
     gender: json["gender"],
     roleId: json["role_id"],
@@ -104,7 +104,7 @@ class ProfileInfo {
     "designation": designation,
     "institution": institution,
     "nid": nid,
-    "date_of_birth": "${dateOfBirth?.year.toString().padLeft(4, '0')}-${dateOfBirth?.month.toString().padLeft(2, '0')}-${dateOfBirth?.day.toString().padLeft(2, '0')}",
+
     "passport": passport,
     "gender": gender,
     "role_id": roleId,

@@ -16,40 +16,13 @@ class ProfileBasicInfo extends StatelessWidget {
       ),
       child: Column(
         children: [
-          SizedBox(
-            height: 28.h,
-          ),
-          SummaryContainerBlack(
-            title: "Phone",
-            subTitle:
-                provider?.profileDetails?.data.profileInfo.phone ?? "N/A",
-          ),
-          SummaryContainerWhite(
-            title: "Occupation",
-            subTitle: provider?.profileDetails?.data.profileInfo.occupation ??
-                "N/A",
-          ),
-          SummaryContainerBlack(
-            title: "Designation",
-            subTitle:
-                provider?.profileDetails?.data.profileInfo.designation ??
-                    "N/A",
-          ),
-          SummaryContainerWhite(
-            title: "Institution",
-            subTitle:
-                provider?.profileDetails?.data.profileInfo.institution ??
-                    "N/A",
-          ),
-          SummaryContainerBlack(
-            title: "NID_No",
-            subTitle: provider?.profileDetails?.data.profileInfo.nid ?? "N/A",
-          ),
-          SummaryContainerWhite(
-            title: "Passport_No",
-            subTitle:
-                provider?.profileDetails?.data.profileInfo.passport ?? "N/A",
-          ),
+          SizedBox(height: 28.h,),
+          SummaryContainerBlack(title: "Phone", subTitle: provider?.profileDetails?.data.profileInfo.phone ?? "N/A",),
+          SummaryContainerWhite(title: "Occupation", subTitle: provider?.profileDetails?.data.profileInfo.occupation ?? "N/A",),
+          // SummaryContainerBlack(title: "Designation", subTitle: provider?.profileDetails?.data.profileInfo.designation ?? "N/A",),
+          SummaryContainerWhite(title: "Institution", subTitle: provider?.profileDetails?.data.profileInfo.institution ?? "N/A",),
+          SummaryContainerBlack(title: "NID_No", subTitle: provider?.profileDetails?.data.profileInfo.nid ?? "N/A",),
+          // SummaryContainerWhite(title: "Passport_No", subTitle: provider?.profileDetails?.data.profileInfo.passport ?? "N/A",),
           // SummaryContainerWhite(
           //   title: "Gender",
           //   subTitle: provider.profileDetails?.data

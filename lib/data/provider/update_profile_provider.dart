@@ -6,6 +6,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:landlord/data/model/profile_update_model.dart';
 import 'package:landlord/data/provider/tenant_provider.dart';
+import 'package:landlord/pages/landlord/drawer/profile_settings/edit_profile/edit_profile_screen.dart';
+import 'package:landlord/pages/landlord/drawer/profile_settings/profile_details_screen/profile_details_screen.dart';
 import 'package:landlord/pages/landlord/home/bottom_navigation_bar/custom_bottom_nav.dart';
 import 'package:landlord/utils/nav_utail.dart';
 import '../../utils/custom_image_picker_dialog.dart';
@@ -23,14 +25,13 @@ class UpdateProfileProvider extends ChangeNotifier {
 
   void postProfileData(BuildContext context, VoidCallback onDone) async {
     profileBasicInfo.userImage = imagePath;
-    RepositoryImpl(context)
-        .updateProfile(model: profileBasicInfo)
-        .then((success) {
+    RepositoryImpl(context).updateProfile(model: profileBasicInfo).then((success) {
       if (success) {
         Fluttertoast.showToast(msg: "Successfully updated");
         onDone();
         debounce.run(() {
-          Navigator.pop(context);
+          NavUtil.navigateScreen(context, const CustomBottomNavBar());
+          // Navigator.pop(context);
         });
       }
     });

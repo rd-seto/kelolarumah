@@ -36,54 +36,22 @@ class EditProfileInfoContent extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             shape: BoxShape.circle,
-                            border: Border.all(
-                                color: const Color(0xFFE4E4E4), width: 8)),
+                            border: Border.all(color: const Color(0xFFE4E4E4), width: 8)),
                         child: provider.imagePath == null
-                            ? ClipOval(
-                                child: Image.network(
-                                    widget.profileData?.avatar ??
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUefeN8m3w2jrqlb2CaPONb1XVKRTDXpyALbIlnpI-7A&s',
-                                    fit: BoxFit.cover),
-                              )
-                            : ClipOval(
-                                child: Image.file(
-                                provider.imagePath!,
-                                height: 100,
-                                width: 100,
-                                fit: BoxFit.cover,
-                              )),
+                            ? ClipOval(child: Image.network(widget.profileData?.avatar ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUefeN8m3w2jrqlb2CaPONb1XVKRTDXpyALbIlnpI-7A&s', fit: BoxFit.cover),)
+                            : ClipOval(child: Image.file(provider.imagePath!, height: 100, width: 100, fit: BoxFit.cover,)),
                       ),
                       widget.profileData?.avatar == null
                           ? Positioned(
                               bottom: 6,
                               right: 6,
+                              child: Container(padding: const EdgeInsets.all(4), decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.colorPrimary),
+                                child: const Icon(size: 18.0, Icons.add, color: Colors.white,),),)
+                          : Positioned(bottom: 6, right: 6,
                               child: Container(
                                 padding: const EdgeInsets.all(4),
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.colorPrimary),
-                                child: const Icon(
-                                  size: 18.0,
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            )
-                          : Positioned(
-                              bottom: 6,
-                              right: 6,
-                              child: Container(
-                                padding: const EdgeInsets.all(4),
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.colorPrimary),
-                                child: const Icon(
-                                  size: 18.0,
-                                  Icons.edit,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            )
+                                decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.colorPrimary),
+                                child: const Icon(size: 18.0, Icons.edit, color: Colors.white,),),)
                     ],
                   ),
                 ),

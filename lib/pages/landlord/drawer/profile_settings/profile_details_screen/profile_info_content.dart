@@ -13,37 +13,12 @@ class ProfileInfoContent extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Container(
-            height: 80.h,
-            width: 80.w,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                  image: NetworkImage(
-                    provider?.profileDetails?.data.profileInfo.avatar ??
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUefeN8m3w2jrqlb2CaPONb1XVKRTDXpyALbIlnpI-7A&s',
-                  ),
-                  fit: BoxFit.fill),
-            ),
+          Container(height: 80.h, width: 80.w,
+            decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: NetworkImage(provider?.profileDetails?.data.profileInfo.avatar ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUefeN8m3w2jrqlb2CaPONb1XVKRTDXpyALbIlnpI-7A&s',), fit: BoxFit.fill),),
           ),
-          // Image.asset(
-          //   'assets/drawer/profile_edit_img.png',
-          //   height: 80.h,
-          // ),
-          CustomText(
-            text: provider?.profileDetails?.data.profileInfo.name ?? '',
-            color: AppColors.titleTextColor,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w700,
-            height: 1.75,
-          ),
-          CustomText(
-            text: provider?.profileDetails?.data.profileInfo.email ?? '',
-            color: AppColors.black2Sd,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w400,
-            height: 1.75,
-          ),
+          CustomText(text: provider?.profileDetails?.data.profileInfo.name ?? '', color: AppColors.titleTextColor, fontSize: 16.sp, fontWeight: FontWeight.w700, height: 1.75,),
+          CustomText(text: provider?.profileDetails?.data.profileInfo.email ?? '',
+            color: AppColors.black2Sd, fontSize: 14.sp, fontWeight: FontWeight.w400, height: 1.75,),
         ],
       ),
     );

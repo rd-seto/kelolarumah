@@ -32,21 +32,14 @@ class ProfileDetailsScreen extends StatelessWidget {
                     preferredSize: Size.fromHeight(0)),
             body: Stack(
               children: [
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  child: Image.asset(
-                    'assets/dashboard/backgorund_img.png',
-                  ),
+                Positioned(left: 0, right: 0, bottom: 0,
+                  child: Image.asset('assets/dashboard/backgorund_img.png',),
                 ),
                 SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: provider.profileDetails?.data.profileInfo.email !=
-                            null
-                        ? Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                    child: provider.profileDetails?.data.profileInfo.email != null
+                        ? Column(crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               // Profile info content
                               ProfileInfoContent(
@@ -56,14 +49,9 @@ class ProfileDetailsScreen extends StatelessWidget {
                                 height: 30.h,
                               ),
                               Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.colorWhite,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
+                                decoration: BoxDecoration(color: AppColors.colorWhite, borderRadius: BorderRadius.circular(8),),
                                 // profile Basic info
-                                child: ProfileBasicInfo(
-                                  provider: provider,
-                                ),
+                                child: ProfileBasicInfo(provider: provider),
                               ),
                               SizedBox(
                                 height: 30.h,
@@ -73,21 +61,10 @@ class ProfileDetailsScreen extends StatelessWidget {
                                 children: [
                                   InkWell(
                                     onTap: () {
-                                      NavUtil.navigateScreen(
-                                          context,
-                                          EditProfileScreen(
-                                            profileData: provider.profileDetails
-                                                ?.data.profileInfo,
-                                            provider: provider,
-                                          ));
+                                      NavUtil.navigateScreen(context, EditProfileScreen(profileData: provider.profileDetails?.data.profileInfo, provider: provider,));
                                     },
-                                    child: Container(
-                                      height: 60,
-                                      width: 60,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: AppColors.colorPrimary,
-                                      ),
+                                    child: Container(height: 60, width: 60,
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: AppColors.colorPrimary,),
                                       child: const Icon(Icons.edit_outlined,color: Colors.white,),
                                     ),
                                     // child: Image.asset(

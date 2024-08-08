@@ -20,8 +20,7 @@ class DioHelper {
   }
 
   DioCacheManager _getCacheManager() {
-    _manager = DioCacheManager(CacheConfig(
-        baseUrl: ApiProvider.baseUrl, defaultRequestMethod: "POST"));
+    _manager = DioCacheManager(CacheConfig(baseUrl: ApiProvider.baseUrl, defaultRequestMethod: "POST"));
     return _manager;
   }
 
@@ -31,10 +30,7 @@ class DioHelper {
       const Duration(days: 3),
       maxStale: const Duration(days: 7),
       forceRefresh: forceRefresh,
-      options: Options(extra: {}, headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $token',
-      }),
+      options: Options(extra: {}, headers: {'Accept': 'application/json', 'Authorization': 'Bearer $token',}),
     );
   }
 

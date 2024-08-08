@@ -155,13 +155,7 @@ class GenericHttp<T> {
           dataKeyFun == null ? data : Function.apply(dataKeyFun, [data])
         ]);
       case ReturnType.list:
-        return List<T>.from(
-          dataKeyFun == null
-              ? data
-              : Function.apply(dataKeyFun, [data]).map(
-                  (e) => Function.apply(toJsonFunc, [e]),
-                ),
-        );
+        return List<T>.from(dataKeyFun == null ? data : Function.apply(dataKeyFun, [data]).map((e) => Function.apply(toJsonFunc, [e]),),);
     }
   }
 }
