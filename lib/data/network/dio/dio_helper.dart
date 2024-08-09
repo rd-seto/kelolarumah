@@ -298,6 +298,7 @@ class DioHelper {
           }
           break;
         case 401:
+          LoadingDialog.showToastNotification(data['message'], color: Colors.red);
         case 422:
         if (data["errors"] != null) {
           Map<String, dynamic> errors = data["errors"];

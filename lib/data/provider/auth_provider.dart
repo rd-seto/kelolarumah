@@ -18,7 +18,15 @@ import '../local/local_auth_provider.dart';
 
 UserModel? userResponse;
 
-class AuthProvider {
+class AuthProvider{
+  // String? bloodGroupTypeValue;
+  //
+  // /// dropdownMenu for Employee type .....
+  // void dropdownMenu(String? newValue) {
+  //   bloodGroupTypeValue = newValue;
+  //   notifyListeners();
+  // }
+
   void login(
       {required UserLogin userLogin, required BuildContext context}) async {
     RepositoryImpl(context).login(userLogin).then((user) {
@@ -46,9 +54,7 @@ class AuthProvider {
     });
   }
 
-  void registration(
-      {required UserRegistration userRegistration,
-      required BuildContext context}) async {
+  void registration({required UserRegistration userRegistration, required BuildContext context}) async {
     await RepositoryImpl(context).registration(userRegistration).then((user) {
       if (user != null) {
         if(user.isVerified == true){
@@ -77,11 +83,7 @@ class AuthProvider {
     });
   }
 
-  void resetPass(
-      {required String otp,
-      required String email,
-      required String password,
-      required BuildContext context}) async {
+  void resetPass({required String otp, required String email, required String password, required BuildContext context}) async {
     final data = {"otp": otp, "email": email, "password": password};
     await RepositoryImpl(context).resetPass(data).then((response) {
       if (response['status'] == 200) {

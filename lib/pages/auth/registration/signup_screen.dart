@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:landlord/components/custom_text.dart';
@@ -10,15 +11,21 @@ import 'package:landlord/utils/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 import '../../../data/provider/auth_provider.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    final provider = Provider.of<AuthProvider>(context);
-    UserRegistration userRegistration = UserRegistration();
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
 
+class _SignUpScreenState extends State<SignUpScreen> {
+  String? bloodGroupTypeValue;
+  final formKey = GlobalKey<FormState>();
+
+  UserRegistration userRegistration = UserRegistration();
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<AuthProvider>(context);
     return Form(
       key: formKey,
       child: Scaffold(
@@ -33,6 +40,56 @@ class SignUpScreen extends StatelessWidget {
                 CustomText(text: 'Create_Account', color: const Color(0xffEEEEEE), fontSize: 20.sp, fontWeight: FontWeight.w700, height: 1.75,),
                 CustomText(text: 'create_an_account_to_continue!', color: const Color(0xffEEEEEE), fontSize: 14.sp, fontWeight: FontWeight.w400, height: 1.5,),
                 SizedBox(height: 30.h,),
+                Text(
+                  tr("Account Type*"),
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: AppColors.colorPrimary,
+                    boxShadow:  [
+                      BoxShadow(color: AppColors.stockColor.withOpacity(0.5), spreadRadius: 1),
+                    ],
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: Theme(
+                      data: Theme.of(context).copyWith(canvasColor: AppColors.colorPrimary),
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        hint: Text(tr("Select Account Type"), style: TextStyle(fontSize: 14,color: AppColors.stockColor.withOpacity(0.5)),),
+                        value: bloodGroupTypeValue,
+                        icon: const Icon(Icons.arrow_downward, size: 20,color:AppColors.stockColor ,),
+                        iconSize: 24,
+                        elevation: 16,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            if (kDebugMode) {
+                              print(bloodGroupTypeValue);
+                            }
+                            bloodGroupTypeValue = newValue;
+                            userRegistration.type = bloodGroupTypeValue;
+                          });
+                        },
+                        items: <String>["Landlord","Tenant"].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value, style: const TextStyle(fontSize: 14,color: Colors.white),),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20.h,),
                 AuthFromField(title: "name", hintText: "name", cursorColor: AppColors.colorWhite,
                   onChange: (val) {
                     userRegistration.name = val;

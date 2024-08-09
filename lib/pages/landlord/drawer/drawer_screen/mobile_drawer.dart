@@ -52,12 +52,12 @@ class MobileAppDrawer extends StatelessWidget {
                             NavUtil.navigateScreen(context, const PropertiesScreen());
                           }, image: 'assets/drawer/propertise_icon1.png', title: "Properties",
                         ),
-                        SizedBox(height: 20.h,),
-                        DrawerListContent(
-                          onTap: () {
-                            NavUtil.navigateScreen(context, const TenantsScreen(isBottomNav: false,));
-                          }, image: 'assets/drawer/tenants_vector.png', title: "Tenants",
-                        ),
+                        // SizedBox(height: 20.h,),
+                        // DrawerListContent(
+                        //   onTap: () {
+                        //     NavUtil.navigateScreen(context, const TenantsScreen(isBottomNav: false,));
+                        //   }, image: 'assets/drawer/tenants_vector.png', title: "Tenants",
+                        // ),
                       ],
                     ),
                   ),

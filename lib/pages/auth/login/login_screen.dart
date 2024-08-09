@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:landlord/components/custom_text.dart';
 import 'package:landlord/data/model/user_model.dart';
 import 'package:landlord/data/provider/auth_provider.dart';
