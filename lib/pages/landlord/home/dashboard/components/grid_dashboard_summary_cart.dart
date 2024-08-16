@@ -69,14 +69,12 @@ class GridDashboardSummaryCart extends StatelessWidget {
         NavUtil.navigateScreen(context, const AddPropertyScreen());
         break;
       case 1:
-        NavUtil.navigateScreen(
-            context,
-            const TenantsScreen(
-              isBottomNav: false,
-            ));
+        NavUtil.navigateScreen(context, const PaymentReportScreen());
+        // NavUtil.navigateScreen(context, const TenantsScreen(isBottomNav: false,));
         break;
       case 2:
-        NavUtil.navigateScreen(context, const AddDocumentsScreen());
+        NavUtil.navigateScreen(context, const AddTenantsScreen());
+        // NavUtil.navigateScreen(context, const AddDocumentsScreen());
         break;
       case 3:
         NavUtil.navigateScreen(context, const PaymentReportScreen());

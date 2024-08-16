@@ -19,16 +19,7 @@ import '../local/local_auth_provider.dart';
 UserModel? userResponse;
 
 class AuthProvider{
-  // String? bloodGroupTypeValue;
-  //
-  // /// dropdownMenu for Employee type .....
-  // void dropdownMenu(String? newValue) {
-  //   bloodGroupTypeValue = newValue;
-  //   notifyListeners();
-  // }
-
-  void login(
-      {required UserLogin userLogin, required BuildContext context}) async {
+  void login({required UserLogin userLogin, required BuildContext context}) async {
     RepositoryImpl(context).login(userLogin).then((user) {
       if (user != null) {
         if(user.isVerified == true){

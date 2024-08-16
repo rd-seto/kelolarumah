@@ -79,7 +79,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             userRegistration.type = bloodGroupTypeValue;
                           });
                         },
-                        items: <String>["Landlord","Tenant"].map<DropdownMenuItem<String>>((String value) {
+                        items: <String>["landlord","tenant"].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value, style: const TextStyle(fontSize: 14,color: Colors.white),),
